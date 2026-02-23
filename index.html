@@ -198,6 +198,14 @@
       white-space: pre-wrap; line-height: 1.5; overflow-x: auto;
     }
 
+    .api-endpoint.deprecated { opacity: 0.5; }
+    .api-endpoint.deprecated:hover { opacity: 0.7; }
+    .api-deprecated-badge {
+      font-size: 10px; font-weight: 700; padding: 2px 6px;
+      border-radius: 3px; background: #eee; color: #888;
+      text-transform: uppercase; letter-spacing: 0.3px;
+    }
+
     /* API section embedded in articles */
     .api-inline-section {
       margin-top: 16px; margin-bottom: 32px; padding-bottom: 28px;
@@ -514,11 +522,13 @@
 
         endpoints.forEach(({ path, method, op }, idx) => {
           const noAuth = op.security && op.security.length === 1 && Object.keys(op.security[0]).length === 0;
-          html += `<div class="api-endpoint">`;
+          const dep = op.deprecated ? ' deprecated' : '';
+          html += `<div class="api-endpoint${dep}">`;
           html += `<div class="api-endpoint-header" onclick="this.parentElement.classList.toggle('open')">`;
           html += `<span class="api-method ${method.toLowerCase()}">${method}</span>`;
           html += `<span class="api-path">${path}</span>`;
           if (op.summary) html += `<span class="api-summary">${op.summary}</span>`;
+          if (op.deprecated) html += `<span class="api-deprecated-badge">Deprecated</span>`;
           if (noAuth) html += `<span class="api-auth-badge">No Auth</span>`;
           html += `<span class="api-chevron">&#9654;</span>`;
           html += `</div>`;
@@ -654,11 +664,13 @@
 
       endpoints.forEach(({ path, method, op }, idx) => {
         const noAuth = op.security && op.security.length === 1 && Object.keys(op.security[0]).length === 0;
-        html += `<div class="api-endpoint" id="ep-${idx}">`;
+        const dep = op.deprecated ? ' deprecated' : '';
+        html += `<div class="api-endpoint${dep}" id="ep-${idx}">`;
         html += `<div class="api-endpoint-header" onclick="this.parentElement.classList.toggle('open')">`;
         html += `<span class="api-method ${method.toLowerCase()}">${method}</span>`;
         html += `<span class="api-path">${path}</span>`;
         if (op.summary) html += `<span class="api-summary">${op.summary}</span>`;
+        if (op.deprecated) html += `<span class="api-deprecated-badge">Deprecated</span>`;
         if (noAuth) html += `<span class="api-auth-badge">No Auth</span>`;
         html += `<span class="api-chevron">&#9654;</span>`;
         html += `</div>`;
