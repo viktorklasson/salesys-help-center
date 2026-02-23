@@ -200,8 +200,8 @@
 
     /* API section embedded in articles */
     .api-inline-section {
-      margin-top: 48px; padding-top: 32px;
-      border-top: 2px solid var(--primary-light);
+      margin-top: 16px; margin-bottom: 32px; padding-bottom: 28px;
+      border-bottom: 2px solid var(--primary-light);
     }
 
     /* Mobile */
@@ -474,7 +474,14 @@
         }
       }
       const content = document.getElementById('content');
-      content.innerHTML = parseMarkdown(md) + renderApiSectionForArticle(id);
+      const parsed = parseMarkdown(md);
+      const apiSection = renderApiSectionForArticle(id);
+      const h1End = parsed.indexOf('</h1>');
+      if (h1End !== -1 && apiSection) {
+        content.innerHTML = parsed.slice(0, h1End + 5) + apiSection + parsed.slice(h1End + 5);
+      } else {
+        content.innerHTML = parsed + apiSection;
+      }
       content.style.animation = 'none'; content.offsetHeight; content.style.animation = 'fadeIn 0.4s ease';
       document.getElementById('main').scrollTop = 0;
       applyVersion();
