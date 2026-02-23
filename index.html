@@ -198,6 +198,58 @@
       white-space: pre-wrap; line-height: 1.5; overflow-x: auto;
     }
 
+    /* API preview in articles */
+    .api-preview-section {
+      margin-top: 48px; padding-top: 32px;
+      border-top: 2px solid var(--primary-light);
+    }
+    .api-preview-section h2 {
+      border-bottom: none; padding-bottom: 0; margin-bottom: 16px;
+    }
+    .api-preview-tag { margin-bottom: 20px; }
+    .api-preview-tag-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 8px; padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .api-preview-tag-name { font-size: 15px; font-weight: 600; color: var(--text); }
+    .api-preview-tag-count { font-size: 12px; color: var(--text-light); background: var(--primary-light); padding: 1px 8px; border-radius: 10px; }
+    .api-preview-view-all {
+      margin-left: auto; font-size: 13px; color: var(--primary);
+      cursor: pointer; font-weight: 400; transition: opacity var(--transition);
+    }
+    .api-preview-view-all:hover { opacity: 0.7; }
+    .api-preview-endpoint {
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 10px; border-radius: 6px;
+      cursor: pointer; transition: background var(--transition);
+    }
+    .api-preview-endpoint:hover { background: var(--primary-light); }
+    .api-preview-endpoint .api-method { font-size: 10px; padding: 2px 6px; min-width: 46px; }
+    .api-preview-endpoint .api-path { font-size: 12.5px; }
+    .api-preview-summary {
+      font-size: 12px; color: var(--text-light); margin-left: auto;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px;
+    }
+    .api-preview-more {
+      padding: 4px 10px; font-size: 12px; color: var(--primary);
+      cursor: pointer; font-weight: 400;
+    }
+    .api-preview-more:hover { text-decoration: underline; }
+
+    /* Related guide banner on API pages */
+    .api-related-guide {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 16px; margin-bottom: 20px;
+      background: var(--primary-light); border-radius: var(--radius);
+      border: 1px solid #c7dbf5;
+      cursor: pointer; transition: all var(--transition);
+      font-size: 13.5px; color: var(--text);
+    }
+    .api-related-guide:hover { border-color: var(--primary); background: #dce8f8; }
+    .api-related-guide-icon { font-size: 18px; }
+    .api-related-guide-arrow { margin-left: auto; color: var(--primary); font-size: 16px; }
+
     /* Mobile */
     .hamburger {
       display: none; position: fixed; top: 16px; left: 16px; z-index: 100;
@@ -214,6 +266,7 @@
       .sidebar-overlay.open { display: block; }
       .content { padding: 60px 20px 80px; }
       .api-summary { display: none; }
+      .api-preview-summary { display: none; }
     }
 
     /* Welcome */
@@ -328,6 +381,50 @@
     let swaggerSpec = null;
     let apiTags = [];
 
+    // ── Cross-linking maps ──
+    const articleToApiTags = {
+      'orders': ['Orders'],
+      'offers': ['Offers'],
+      'contacts': ['Contacts', 'Contact Fields', 'Contact Tags', 'Contact Updates', 'Exclude Lists'],
+      'calls': [],
+      'calendar': ['Calendar Events'],
+      'products': ['Products'],
+      'users-teams': ['Users', 'Teams', 'User Roles', 'Access Keys', 'Registration Links'],
+      'dashboards': ['Events'],
+      'settings': ['Projects', 'Authentication', 'Webhooks'],
+      'getting-started': ['Authentication']
+    };
+
+    function apiTagToArticle(tag) {
+      for (const [articleId, tags] of Object.entries(articleToApiTags)) {
+        if (tags.includes(tag)) return articleId;
+      }
+      return null;
+    }
+
+    function getArticleLabel(id) {
+      const config = articles[currentLang];
+      for (const section of config.sections) {
+        const item = section.items.find(i => i.id === id);
+        if (item) return item.label;
+      }
+      return id;
+    }
+
+    function getEndpointsByTag(tag) {
+      if (!swaggerSpec) return [];
+      const endpoints = [];
+      const paths = swaggerSpec.paths || {};
+      for (const [path, methods] of Object.entries(paths)) {
+        for (const [method, op] of Object.entries(methods)) {
+          if (!['get','post','put','delete','patch'].includes(method)) continue;
+          if (!(op.tags || []).includes(tag)) continue;
+          endpoints.push({ path, method: method.toUpperCase(), op });
+        }
+      }
+      return endpoints;
+    }
+
     // ── Swagger loading ──
     async function loadSwagger() {
       try {
@@ -429,11 +526,58 @@
         }
       }
       const content = document.getElementById('content');
-      content.innerHTML = parseMarkdown(md);
+      content.innerHTML = parseMarkdown(md) + renderApiPreviewForArticle(id);
       content.style.animation = 'none'; content.offsetHeight; content.style.animation = 'fadeIn 0.4s ease';
       document.getElementById('main').scrollTop = 0;
       applyVersion();
       closeMobileSidebar();
+    }
+
+    // ── API preview section for articles ──
+    function renderApiPreviewForArticle(articleId) {
+      const tags = articleToApiTags[articleId];
+      if (!tags || tags.length === 0 || !swaggerSpec) return '';
+      const allEndpoints = [];
+      tags.forEach(tag => {
+        getEndpointsByTag(tag).forEach(ep => allEndpoints.push({ ...ep, tag }));
+      });
+      if (allEndpoints.length === 0) return '';
+
+      const sectionTitle = currentLang === 'sv' ? 'Relaterade API-endpoints' : 'Related API Endpoints';
+      const viewAll = currentLang === 'sv' ? 'Visa alla' : 'View all';
+
+      let html = `<div class="api-preview-section">`;
+      html += `<h2>${sectionTitle}</h2>`;
+
+      // Group by tag
+      const grouped = {};
+      tags.forEach(tag => { grouped[tag] = getEndpointsByTag(tag); });
+
+      for (const tag of tags) {
+        const eps = grouped[tag];
+        if (!eps || eps.length === 0) continue;
+        html += `<div class="api-preview-tag">`;
+        html += `<div class="api-preview-tag-header">`;
+        html += `<span class="api-preview-tag-name">${tag}</span>`;
+        html += `<span class="api-preview-tag-count">${eps.length} endpoint${eps.length !== 1 ? 's' : ''}</span>`;
+        html += `<a class="api-preview-view-all" onclick="loadApiTag('${tag}')">${viewAll} &rarr;</a>`;
+        html += `</div>`;
+        // Show up to 5 endpoints as compact preview
+        const preview = eps.slice(0, 5);
+        preview.forEach(({ path, method, op }) => {
+          html += `<div class="api-preview-endpoint" onclick="loadApiTag('${tag}')">`;
+          html += `<span class="api-method ${method.toLowerCase()}">${method}</span>`;
+          html += `<span class="api-path">${path}</span>`;
+          if (op.summary) html += `<span class="api-preview-summary">${op.summary}</span>`;
+          html += `</div>`;
+        });
+        if (eps.length > 5) {
+          html += `<div class="api-preview-more" onclick="loadApiTag('${tag}')">+ ${eps.length - 5} ${currentLang === 'sv' ? 'fler' : 'more'}...</div>`;
+        }
+        html += `</div>`;
+      }
+      html += `</div>`;
+      return html;
     }
 
     // ── API Overview ──
@@ -465,9 +609,11 @@
       apiTags.forEach(tag => {
         const tagInfo = (swaggerSpec.tags || []).find(t => t.name === tag);
         const count = countEndpointsByTag(tag);
+        const related = apiTagToArticle(tag);
+        const guideHint = related ? ` · <span style="color:var(--primary)">${getArticleLabel(related)}</span>` : '';
         html += `<div class="welcome-card" onclick="loadApiTag('${tag}')">
           <h3>${tag}</h3>
-          <p>${tagInfo?.description || ''} (${count} endpoints)</p>
+          <p>${tagInfo?.description || ''} (${count} endpoints)${guideHint}</p>
         </div>`;
       });
       html += `</div>`;
@@ -512,6 +658,18 @@
 
       let html = `<h1>${tag}</h1>`;
       if (tagInfo?.description) html += `<p class="api-tag-desc">${tagInfo.description}</p>`;
+
+      // Related guide link
+      const relatedArticle = apiTagToArticle(tag);
+      if (relatedArticle) {
+        const label = getArticleLabel(relatedArticle);
+        const guideText = currentLang === 'sv' ? 'Läs guiden' : 'Read the guide';
+        html += `<div class="api-related-guide" onclick="loadArticle('${relatedArticle}')">`;
+        html += `<span class="api-related-guide-icon">&#128214;</span>`;
+        html += `<span><strong>${guideText}:</strong> ${label}</span>`;
+        html += `<span class="api-related-guide-arrow">&rarr;</span>`;
+        html += `</div>`;
+      }
 
       // Collect endpoints
       const endpoints = [];
