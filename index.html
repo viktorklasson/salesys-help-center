@@ -6,6 +6,7 @@
   <title>SaleSys Help Center</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -61,10 +62,12 @@
       letter-spacing: 1px; color: #999; padding: 12px 8px 4px;
     }
     .nav-item {
-      display: block; padding: 7px 12px; border-radius: 6px; cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+      padding: 7px 12px; border-radius: 6px; cursor: pointer;
       font-size: 13.5px; font-weight: 400; color: var(--text);
       transition: all var(--transition); text-decoration: none;
     }
+    .nav-item .lucide { width: 15px; height: 15px; flex-shrink: 0; stroke-width: 1.8; }
     .nav-item:hover { background: var(--primary-light); color: var(--primary); }
     .nav-item.active { background: var(--primary); color: white; font-weight: 600; }
     .nav-item.hidden { display: none; }
@@ -243,7 +246,8 @@
       cursor: pointer; transition: all var(--transition); text-align: left;
     }
     .welcome-card:hover { border-color: var(--primary); background: var(--primary-light); }
-    .welcome-card h3 { font-size: 14px; font-weight: 600; color: var(--primary); margin-bottom: 4px; }
+    .welcome-card h3 { font-size: 14px; font-weight: 600; color: var(--primary); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+    .welcome-card h3 .lucide { width: 16px; height: 16px; stroke-width: 1.8; }
     .welcome-card p { font-size: 12px; color: var(--text-light); }
   </style>
 </head>
@@ -356,6 +360,45 @@
       'getting-started': ['Authentication']
     };
 
+    // ── Icon maps ──
+    const articleIcons = {
+      'getting-started': 'rocket',
+      'orders': 'clipboard-list',
+      'offers': 'file-signature',
+      'calls': 'phone',
+      'contacts': 'users',
+      'calendar': 'calendar',
+      'dashboards': 'bar-chart-3',
+      'products': 'package',
+      'users-teams': 'shield',
+      'settings': 'settings',
+      'api:overview': 'code'
+    };
+    const apiTagIcons = {
+      'Authentication': 'lock',
+      'Users': 'user',
+      'Teams': 'users',
+      'Projects': 'folder',
+      'User Roles': 'shield-check',
+      'Access Keys': 'key',
+      'Registration Links': 'link',
+      'Contacts': 'contact',
+      'Contact Fields': 'text-cursor-input',
+      'Contact Tags': 'tags',
+      'Contact Updates': 'refresh-cw',
+      'Exclude Lists': 'ban',
+      'Orders': 'clipboard-list',
+      'Offers': 'file-signature',
+      'Products': 'package',
+      'Calendar Events': 'calendar-days',
+      'Events': 'activity',
+      'Webhooks': 'webhook'
+    };
+
+    function icon(name) {
+      return `<i data-lucide="${name}"></i>`;
+    }
+
     function apiTagToArticle(tag) {
       for (const [articleId, tags] of Object.entries(articleToApiTags)) {
         if (tags.includes(tag)) return articleId;
@@ -412,7 +455,8 @@
         html += `<div class="nav-section"><div class="nav-section-title">${section.title}</div>`;
         section.items.forEach(item => {
           const active = currentArticle === item.id ? ' active' : '';
-          html += `<div class="nav-item${active}" data-id="${item.id}" onclick="loadArticle('${item.id}')">${item.label}</div>`;
+          const ic = articleIcons[item.id] || 'file-text';
+          html += `<div class="nav-item${active}" data-id="${item.id}" onclick="loadArticle('${item.id}')">${icon(ic)}${item.label}</div>`;
         });
         html += `</div>`;
       });
@@ -420,11 +464,12 @@
       // API overview link
       if (apiTags.length > 0) {
         html += `<div class="nav-section"><div class="nav-section-title">API Reference</div>`;
-        html += `<div class="nav-item${currentArticle === 'api:overview' ? ' active' : ''}" data-id="api:overview" onclick="loadApiOverview()">Overview</div>`;
+        html += `<div class="nav-item${currentArticle === 'api:overview' ? ' active' : ''}" data-id="api:overview" onclick="loadApiOverview()">${icon('code')}Overview</div>`;
         html += `</div>`;
       }
 
       nav.innerHTML = html;
+      if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
     function filterNav() {
@@ -604,8 +649,9 @@
         const count = countEndpointsByTag(tag);
         const related = apiTagToArticle(tag);
         const guideHint = related ? ` · <span style="color:var(--primary)">${getArticleLabel(related)}</span>` : '';
+        const ic = apiTagIcons[tag] || 'code';
         html += `<div class="welcome-card" onclick="loadApiTag('${tag}')">
-          <h3>${tag}</h3>
+          <h3>${icon(ic)}${tag}</h3>
           <p>${tagInfo?.description || ''} (${count} endpoints)${guideHint}</p>
         </div>`;
       });
@@ -847,11 +893,13 @@
       const c = articles[currentLang];
       const cards = c.welcomeCards.map(card => {
         const onclick = card.isApi ? `loadApiOverview()` : `loadArticle('${card.id}')`;
-        return `<div class="welcome-card" onclick="${onclick}"><h3>${card.title}</h3><p>${card.desc}</p></div>`;
+        const ic = articleIcons[card.id] || 'file-text';
+        return `<div class="welcome-card" onclick="${onclick}"><h3>${icon(ic)}${card.title}</h3><p>${card.desc}</p></div>`;
       }).join('');
       document.getElementById('content').innerHTML = `
         <div class="welcome"><h1>${c.welcomeTitle}</h1><p>${c.welcomeSubtitle}</p>
         <div class="welcome-grid">${cards}</div></div>`;
+      if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
     function toggleSidebar() {
@@ -861,6 +909,7 @@
     function closeMobileSidebar() {
       document.querySelector('.sidebar').classList.remove('open');
       document.querySelector('.sidebar-overlay').classList.remove('open');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
     // Init
