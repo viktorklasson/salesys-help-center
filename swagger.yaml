@@ -1,0 +1,3873 @@
+openapi: 3.0.3
+info:
+  title: SaleSys API
+  description: |
+    REST API for the SaleSys platform. All services expose both public (`/api`) and internal
+    private (`/privateapi`) endpoints.
+
+    ## Authentication
+    Most endpoints require a Bearer access token in the `Authorization` header:
+    ```
+    Authorization: Bearer <access-token>
+    ```
+
+    ## URL Pattern
+    - **Public API:** `/api/{serviceName}/{resource}-v{version}/{path}`
+    - **Private API:** `/privateapi/{serviceName}/{resource}-v{version}/{path}`
+
+    ## IDs
+    All entity IDs are MongoDB ObjectIds (24-character hex strings), e.g. `64a1b2c3d4e5f6a7b8c9d0e1`.
+  version: "1.0.0"
+  contact:
+    name: SaleSys
+
+servers:
+  - url: https://api.example.com
+    description: Production server
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Authentication
+    description: Login, MFA, password reset
+  - name: Users
+    description: User management and profile
+  - name: Teams
+    description: Team management
+  - name: Projects
+    description: Project management
+  - name: User Roles
+    description: Role and rights management
+  - name: Access Keys
+    description: API key management for system users
+  - name: Registration Links
+    description: Self-registration link management
+  - name: Contacts
+    description: Contact management
+  - name: Contact Fields
+    description: Custom contact field definitions
+  - name: Contact Tags
+    description: Contact tag/label management
+  - name: Contact Updates
+    description: Audit trail for contact changes
+  - name: Exclude Lists
+    description: Opt-out and exclusion list management
+  - name: Orders
+    description: Order management (v1 deprecated, use v2/v3)
+  - name: Offers
+    description: Offer/quote management
+  - name: Products
+    description: Product catalog management
+  - name: Calendar Events
+    description: Calendar and scheduling
+  - name: Events
+    description: System event log
+  - name: Webhooks
+    description: Outgoing webhook configuration
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+  schemas:
+    ObjectId:
+      type: string
+      pattern: '^[a-f0-9]{24}$'
+      example: "64a1b2c3d4e5f6a7b8c9d0e1"
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        type:
+          type: string
+        status:
+          type: integer
+        extra:
+          type: object
+
+    # ─── User Models ────────────────────────────────────────────────────────────
+
+    UserType:
+      type: string
+      enum: [standard, admin, systemUser, privateUser]
+
+    User:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        type:
+          $ref: '#/components/schemas/UserType'
+        fullName:
+          type: string
+          minLength: 2
+          maxLength: 50
+        username:
+          type: string
+          minLength: 2
+        alias:
+          type: string
+          nullable: true
+        email:
+          type: string
+          format: email
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        teamId:
+          $ref: '#/components/schemas/ObjectId'
+        supervisedTeamIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+        roleIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+        organizationId:
+          $ref: '#/components/schemas/ObjectId'
+        rights:
+          type: array
+          items:
+            type: string
+        features:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+        suspended:
+          type: boolean
+        identityNumber:
+          type: string
+
+    UserCreate:
+      type: object
+      required: [type, fullName, username]
+      properties:
+        type:
+          $ref: '#/components/schemas/UserType'
+        fullName:
+          type: string
+          minLength: 2
+          maxLength: 50
+        username:
+          type: string
+          minLength: 2
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        teamId:
+          $ref: '#/components/schemas/ObjectId'
+
+    UserUpdate:
+      type: object
+      properties:
+        fullName:
+          type: string
+        email:
+          type: string
+          format: email
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        teamId:
+          $ref: '#/components/schemas/ObjectId'
+        preferences:
+          $ref: '#/components/schemas/UserPreferences'
+
+    UserPreferences:
+      type: object
+      properties:
+        includeVatInSum:
+          type: boolean
+        offerDefaultEmailMessage:
+          type: string
+        offerDefaultEmailSubject:
+          type: string
+        offerDefaultSmsMessage:
+          type: string
+        callConnectNotificationEnabled:
+          type: boolean
+        callerPhoneNumbers:
+          type: array
+          items:
+            type: string
+        calendarCallbackEnabled:
+          type: boolean
+
+    Team:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        name:
+          type: string
+        color:
+          type: string
+          description: Hex color, 2-8 chars
+        rights:
+          type: array
+          items:
+            type: string
+        isLocked:
+          type: boolean
+        calendarAccess:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamCalendarAccess'
+        reference:
+          type: object
+
+    TeamCalendarAccess:
+      type: object
+      properties:
+        teamId:
+          $ref: '#/components/schemas/ObjectId'
+        readOnly:
+          type: boolean
+
+    Project:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          nullable: true
+        iconName:
+          type: string
+        teamIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+        organizationId:
+          $ref: '#/components/schemas/ObjectId'
+        themeId:
+          type: string
+        defaultOrderProductIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+        reference:
+          type: object
+
+    UserRole:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        name:
+          type: string
+        rights:
+          type: array
+          items:
+            type: string
+        calendarAccess:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamCalendarAccess'
+        features:
+          type: array
+          items:
+            type: string
+
+    Organization:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        name:
+          type: string
+        identityNumber:
+          type: string
+        address:
+          type: string
+        postalCode:
+          type: string
+        city:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        website:
+          type: string
+        smsSenderId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    AccessKey:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        userId:
+          $ref: '#/components/schemas/ObjectId'
+        description:
+          type: string
+        prefix:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+          nullable: true
+        isTemporary:
+          type: boolean
+
+    RegistrationLink:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        longId:
+          type: string
+          description: URL-safe identifier used in the registration link URL
+        teamId:
+          $ref: '#/components/schemas/ObjectId'
+        description:
+          type: string
+
+    # ─── Contact Models ──────────────────────────────────────────────────────────
+
+    ContactFieldReference:
+      type: object
+      required: [fieldId, value]
+      properties:
+        fieldId:
+          $ref: '#/components/schemas/ObjectId'
+        value:
+          type: string
+
+    Contact:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        serialId:
+          type: integer
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactFieldReference'
+        tagIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        projectId:
+          $ref: '#/components/schemas/ObjectId'
+        date:
+          type: string
+          format: date-time
+        callIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+
+    ContactCreate:
+      type: object
+      required: [fields]
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactFieldReference'
+        tagIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+        projectId:
+          $ref: '#/components/schemas/ObjectId'
+
+    ContactUpdate:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactFieldReference'
+          nullable: true
+        tagIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+          nullable: true
+        callIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+          nullable: true
+
+    Comment:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        message:
+          type: string
+        userId:
+          $ref: '#/components/schemas/ObjectId'
+        date:
+          type: string
+          format: date-time
+
+    ContactFieldType:
+      type: string
+      enum: [plain, date, numeric, phoneNumber]
+
+    ContactField:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        label:
+          type: string
+          maxLength: 100
+        type:
+          $ref: '#/components/schemas/ContactFieldType'
+        projectIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+          nullable: true
+
+    ContactTag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        name:
+          type: string
+        color:
+          type: string
+        position:
+          type: integer
+
+    ExcludeList:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        name:
+          type: string
+        isGlobal:
+          type: boolean
+
+    ExcludeListString:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        listId:
+          $ref: '#/components/schemas/ObjectId'
+        value:
+          type: string
+        reference:
+          type: object
+
+    ExcludeListContact:
+      type: object
+      properties:
+        contactId:
+          $ref: '#/components/schemas/ObjectId'
+        listIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+
+    EntityOrdering:
+      type: object
+      required: [ordering]
+      properties:
+        ordering:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+
+    # ─── Order Models ────────────────────────────────────────────────────────────
+
+    OrderFieldReference:
+      type: object
+      required: [fieldId, value]
+      properties:
+        fieldId:
+          $ref: '#/components/schemas/ObjectId'
+        value:
+          type: string
+
+    OrderProductReference:
+      type: object
+      properties:
+        productId:
+          $ref: '#/components/schemas/ObjectId'
+        quantity:
+          type: number
+        price:
+          type: number
+        salaryBasis:
+          type: number
+        vat:
+          type: number
+
+    AttachedFile:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        name:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+
+    OrderV3:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        serialId:
+          type: integer
+        userId:
+          $ref: '#/components/schemas/ObjectId'
+        organizationId:
+          $ref: '#/components/schemas/ObjectId'
+        projectId:
+          $ref: '#/components/schemas/ObjectId'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderFieldReference'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderProductReference'
+        tagIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+        businessDate:
+          type: string
+          format: date-time
+          nullable: true
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachedFile'
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        isTest:
+          type: boolean
+        date:
+          type: string
+          format: date-time
+
+    OrderCreateV2:
+      type: object
+      properties:
+        userId:
+          $ref: '#/components/schemas/ObjectId'
+        projectId:
+          $ref: '#/components/schemas/ObjectId'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderFieldReference'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderProductReference'
+        tagIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+        businessDate:
+          type: string
+          format: date-time
+
+    OrderUpdateV2:
+      type: object
+      properties:
+        userId:
+          $ref: '#/components/schemas/ObjectId'
+        businessDate:
+          type: string
+          format: date-time
+          nullable: true
+        replaceFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderFieldReference'
+        addFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderFieldReference'
+        removeFieldIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderProductReference'
+        tagIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+
+    # ─── Offer Models ────────────────────────────────────────────────────────────
+
+    OfferStatus:
+      type: string
+      enum: [pending, signed, declined, cancelled, expired]
+
+    OfferV2:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        serialId:
+          type: integer
+        publicId:
+          type: string
+          nullable: true
+          description: Short ID used in the public offer URL
+        status:
+          $ref: '#/components/schemas/OfferStatus'
+        userId:
+          $ref: '#/components/schemas/ObjectId'
+        organizationId:
+          $ref: '#/components/schemas/ObjectId'
+        templateId:
+          $ref: '#/components/schemas/ObjectId'
+        recipient:
+          type: object
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+              format: email
+            phone:
+              type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderFieldReference'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderProductReference'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachedFile'
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        expireAt:
+          type: string
+          format: date-time
+          nullable: true
+        isTest:
+          type: boolean
+        date:
+          type: string
+          format: date-time
+
+    # ─── Product Models ──────────────────────────────────────────────────────────
+
+    Product:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        price:
+          type: number
+          nullable: true
+        vat:
+          type: number
+          nullable: true
+        imageUrl:
+          type: string
+          nullable: true
+        categoryId:
+          $ref: '#/components/schemas/ObjectId'
+        position:
+          type: integer
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderFieldReference'
+
+    # ─── Calendar Models ─────────────────────────────────────────────────────────
+
+    CalendarEvent:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        userId:
+          $ref: '#/components/schemas/ObjectId'
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        startAt:
+          type: string
+          format: date-time
+        endAt:
+          type: string
+          format: date-time
+        color:
+          type: string
+          nullable: true
+        isRecurring:
+          type: boolean
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachedFile'
+        projectId:
+          $ref: '#/components/schemas/ObjectId'
+        orderId:
+          $ref: '#/components/schemas/ObjectId'
+          nullable: true
+        contactId:
+          $ref: '#/components/schemas/ObjectId'
+          nullable: true
+
+    CalendarEventCreate:
+      type: object
+      required: [title, startAt, endAt]
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        startAt:
+          type: string
+          format: date-time
+        endAt:
+          type: string
+          format: date-time
+        color:
+          type: string
+        projectId:
+          $ref: '#/components/schemas/ObjectId'
+        orderId:
+          $ref: '#/components/schemas/ObjectId'
+        contactId:
+          $ref: '#/components/schemas/ObjectId'
+
+    CalendarEventUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        startAt:
+          type: string
+          format: date-time
+        endAt:
+          type: string
+          format: date-time
+        color:
+          type: string
+          nullable: true
+        projectId:
+          $ref: '#/components/schemas/ObjectId'
+
+    # ─── Webhook Models ───────────────────────────────────────────────────────────
+
+    WebhookEventReference:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          enum:
+            - calendar-event-updated-v1
+            - order-created-v1
+            - order-updated-v1
+
+    Webhook:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEventReference'
+        description:
+          type: string
+          nullable: true
+
+    WebhookCreate:
+      type: object
+      required: [url, events]
+      properties:
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEventReference'
+        description:
+          type: string
+
+paths:
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # AUTHENTICATION  —  service: users
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/users/login-v1:
+    post:
+      tags: [Authentication]
+      summary: Login with username and password
+      description: |
+        Authenticates a user and returns credentials via cookies.
+        If multi-factor authentication is required, a `400` response is returned
+        with a `mfaToken` cookie set.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [usernameOrEmail, password]
+              properties:
+                usernameOrEmail:
+                  type: string
+                  description: Username or email address
+                password:
+                  type: string
+                  format: password
+      responses:
+        "200":
+          description: Login successful. Credentials set as cookies.
+        "400":
+          description: Invalid credentials or MFA required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/users/login-v1/mfa:
+    post:
+      tags: [Authentication]
+      summary: Verify MFA code
+      description: Verifies a 6-digit MFA code using the `s2_mfatoken` cookie.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mfaCode]
+              properties:
+                mfaCode:
+                  type: string
+                  minLength: 6
+                  maxLength: 6
+      responses:
+        "200":
+          description: MFA verified. Credentials set as cookies.
+        "400":
+          description: Invalid or expired MFA code
+
+  /api/users/login-v1/mfa/sms:
+    post:
+      tags: [Authentication]
+      summary: Send MFA code via SMS
+      description: Sends a new MFA code to the user's registered phone number.
+      security: []
+      responses:
+        "200":
+          description: SMS sent successfully
+
+  /api/users/password-reset-v1:
+    get:
+      tags: [Authentication]
+      summary: Get user info by password reset token
+      description: Returns basic user information for the given password reset token.
+      security: []
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: User info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fullName:
+                    type: string
+                  username:
+                    type: string
+    post:
+      tags: [Authentication]
+      summary: Reset password using token
+      description: Resets the password for the user authenticated by the `Authorization` header token.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [newPassword]
+              properties:
+                newPassword:
+                  type: string
+      responses:
+        "200":
+          description: Password reset successfully
+
+  /api/users/password-reset-v1/request:
+    post:
+      tags: [Authentication]
+      summary: Request a password reset link
+      description: Sends a password reset email to the given address.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, lastIdentityNumberDigits]
+              properties:
+                email:
+                  type: string
+                  format: email
+                lastIdentityNumberDigits:
+                  type: string
+                  minLength: 5
+                  maxLength: 5
+                  description: Last 5 digits of the user's identity/personal number
+      responses:
+        "200":
+          description: Reset email sent if user exists
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # USERS  —  service: users
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/users/me-v1:
+    get:
+      tags: [Users]
+      summary: Get current user
+      responses:
+        "200":
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /api/users/me-v1/identifiable:
+    get:
+      tags: [Users]
+      summary: Get identifiable current user (minimal)
+      responses:
+        "200":
+          description: Identifiable user (id, type, organizationId)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/ObjectId'
+                  type:
+                    $ref: '#/components/schemas/UserType'
+                  organizationId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/users/me-v1/rightful:
+    get:
+      tags: [Users]
+      summary: Get current user with rights
+      responses:
+        "200":
+          description: User with rights, teamId, roleIds
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /api/users/me-v1/extended:
+    get:
+      tags: [Users]
+      summary: Get current user with organization details
+      responses:
+        "200":
+          description: User including organization info
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/User'
+                  - type: object
+                    properties:
+                      organization:
+                        $ref: '#/components/schemas/Organization'
+
+  /api/users/users-v1:
+    get:
+      tags: [Users]
+      summary: List users
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+            description: Comma-separated ObjectIds
+        - name: type
+          in: query
+          schema:
+            $ref: '#/components/schemas/UserType'
+        - name: active
+          in: query
+          schema:
+            type: boolean
+        - name: suspended
+          in: query
+          schema:
+            type: boolean
+        - name: organizationIds
+          in: query
+          schema:
+            type: string
+            description: Comma-separated ObjectIds (admin only)
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: reference
+          in: query
+          schema:
+            type: string
+            description: JSON encoded filter object
+      responses:
+        "200":
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      tags: [Users]
+      summary: Create a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        "201":
+          description: User created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/users/users-v1/{userId}:
+    get:
+      tags: [Users]
+      summary: Get a user by ID
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: User with rights
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: User not found
+    put:
+      tags: [Users]
+      summary: Update a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recordId:
+                    $ref: '#/components/schemas/ObjectId'
+                    nullable: true
+    delete:
+      tags: [Users]
+      summary: Delete (suspend) a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: User deleted
+
+  /api/users/users-v1/me:
+    put:
+      tags: [Users]
+      summary: Update current user's own profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recordId:
+                    $ref: '#/components/schemas/ObjectId'
+                    nullable: true
+
+  /api/users/users-v1/{userId}/password:
+    put:
+      tags: [Users]
+      summary: Manually set a user's password (admin)
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [password]
+              properties:
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Password updated
+
+  /api/users/users-v1/{userId}/activation:
+    post:
+      tags: [Users]
+      summary: Send activation email to a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Activation email sent
+
+  /api/users/users-v1/logout/self:
+    post:
+      tags: [Authentication]
+      summary: Logout current user (invalidate token)
+      responses:
+        "200":
+          description: Logged out
+
+  /api/users/users-v1/logout/{userId}:
+    post:
+      tags: [Authentication]
+      summary: Logout a specific user (admin)
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: User logged out
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # TEAMS  —  service: users
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/users/teams-v1:
+    get:
+      tags: [Teams]
+      summary: List teams
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+            description: Comma-separated ObjectIds
+        - name: reference
+          in: query
+          schema:
+            type: string
+            description: JSON encoded filter object
+      responses:
+        "200":
+          description: List of teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+    post:
+      tags: [Teams]
+      summary: Create a team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team'
+      responses:
+        "201":
+          description: Team created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  teamId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/users/teams-v1/ordering:
+    put:
+      tags: [Teams]
+      summary: Update team ordering (admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityOrdering'
+      responses:
+        "200":
+          description: Ordering updated
+
+  /api/users/teams-v1/{teamId}:
+    put:
+      tags: [Teams]
+      summary: Update a team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team'
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Teams]
+      summary: Delete a team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # PROJECTS  —  service: users
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/users/projects-v1:
+    get:
+      tags: [Projects]
+      summary: List accessible projects
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+        - name: reference
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+    post:
+      tags: [Projects]
+      summary: Create a project (admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        "201":
+          description: Project created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  projectId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/users/projects-v1/ordering:
+    put:
+      tags: [Projects]
+      summary: Update project ordering (admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityOrdering'
+      responses:
+        "200":
+          description: Ordering updated
+
+  /api/users/projects-v1/{projectId}:
+    put:
+      tags: [Projects]
+      summary: Update a project (admin only)
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                teamIds:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ObjectId'
+                reference:
+                  type: object
+      responses:
+        "200":
+          description: Updated
+        "404":
+          description: Project not found
+    delete:
+      tags: [Projects]
+      summary: Delete a project (admin only)
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+        "404":
+          description: Project not found
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # USER ROLES  —  service: users
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/users/user-roles-v1:
+    get:
+      tags: [User Roles]
+      summary: List user roles
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of roles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserRole'
+    post:
+      tags: [User Roles]
+      summary: Create a user role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRole'
+      responses:
+        "200":
+          description: Role created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  roleId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/users/user-roles-v1/ordering:
+    put:
+      tags: [User Roles]
+      summary: Update role ordering (admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityOrdering'
+      responses:
+        "200":
+          description: Ordering updated
+
+  /api/users/user-roles-v1/{roleId}:
+    put:
+      tags: [User Roles]
+      summary: Update a user role
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRole'
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [User Roles]
+      summary: Delete a user role
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # ACCESS KEYS  —  service: users
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/users/access-keys-v1/{userId}:
+    get:
+      tags: [Access Keys]
+      summary: List access keys for a user (admin only)
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: List of access keys
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccessKey'
+    post:
+      tags: [Access Keys]
+      summary: Create an access key for a system user (admin only)
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                expiresAt:
+                  type: string
+                  format: date-time
+      responses:
+        "200":
+          description: Key created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string
+                    description: The plaintext access key (shown once only)
+
+  /api/users/access-keys-v1/temporary:
+    post:
+      tags: [Access Keys]
+      summary: Create a temporary access key (system users only)
+      description: Creates a short-lived (max 1 hour) access key, e.g. for public links.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                expireInMinutes:
+                  type: integer
+                  minimum: 0
+                expiresAt:
+                  type: string
+                  format: date-time
+      responses:
+        "200":
+          description: Temporary key created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string
+
+  /api/users/access-keys-v1/{keyId}:
+    put:
+      tags: [Access Keys]
+      summary: Update an access key (admin only)
+      parameters:
+        - name: keyId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                expiresAt:
+                  type: string
+                  format: date-time
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Access Keys]
+      summary: Delete an access key (admin only)
+      parameters:
+        - name: keyId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # REGISTRATION LINKS  —  service: users
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/users/registration-links-v1:
+    get:
+      tags: [Registration Links]
+      summary: List registration links (admin)
+      responses:
+        "200":
+          description: List of registration links
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RegistrationLink'
+    post:
+      tags: [Registration Links]
+      summary: Create a registration link (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationLink'
+      responses:
+        "201":
+          description: Link created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  longId:
+                    type: string
+
+  /api/users/registration-links-v1/{longId}:
+    get:
+      tags: [Registration Links]
+      summary: Get registration link context (for self-registration page)
+      security: []
+      parameters:
+        - name: longId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Registration link context (organization name, fields, etc.)
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags: [Registration Links]
+      summary: Register a new user via a registration link
+      security: []
+      parameters:
+        - name: longId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [fullName, password]
+              properties:
+                fullName:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                phone:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: User created, credentials set as cookies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      tags: [Registration Links]
+      summary: Update a registration link (admin)
+      parameters:
+        - name: longId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Registration Links]
+      summary: Delete a registration link (admin)
+      parameters:
+        - name: longId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # CONTACTS  —  service: contacts
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/contacts/contacts-v1:
+    get:
+      tags: [Contacts]
+      summary: List contacts
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+            description: Comma-separated ObjectIds
+        - name: phoneNumbers
+          in: query
+          schema:
+            type: string
+            description: Comma-separated phone numbers
+        - name: projectIds
+          in: query
+          schema:
+            type: string
+        - name: dialGroupId
+          in: query
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [ascending, descending]
+      responses:
+        "200":
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+    post:
+      tags: [Contacts]
+      summary: Create a contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactCreate'
+      responses:
+        "201":
+          description: Contact created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contactId:
+                    $ref: '#/components/schemas/ObjectId'
+                  serialId:
+                    type: integer
+    delete:
+      tags: [Contacts]
+      summary: Delete multiple contacts
+      parameters:
+        - name: contactIds
+          in: query
+          required: true
+          schema:
+            type: string
+            description: Comma-separated ObjectIds
+      responses:
+        "200":
+          description: Contacts deleted
+
+  /api/contacts/contacts-v1/count:
+    get:
+      tags: [Contacts]
+      summary: Count contacts matching a query
+      parameters:
+        - name: phoneNumbers
+          in: query
+          schema:
+            type: string
+        - name: projectIds
+          in: query
+          schema:
+            type: string
+        - name: ids
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Contact count
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+
+  /api/contacts/contacts-v1/{contactId}:
+    get:
+      tags: [Contacts]
+      summary: Get a contact by ID
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Contact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        "404":
+          description: Not found
+    put:
+      tags: [Contacts]
+      summary: Update a contact
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactUpdate'
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Contacts]
+      summary: Delete a single contact
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  /api/contacts/contacts-v1/{contactId}/comments:
+    post:
+      tags: [Contacts]
+      summary: Add a comment to a contact
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [message]
+              properties:
+                message:
+                  type: string
+      responses:
+        "201":
+          description: Comment created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commentId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/contacts/contacts-v1/{contactId}/comments/{commentId}:
+    delete:
+      tags: [Contacts]
+      summary: Delete a comment from a contact
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: commentId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  /api/contacts/contact-information-v1/id:
+    get:
+      tags: [Contacts]
+      summary: List contact IDs only (lightweight)
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Array of ObjectIds
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObjectId'
+
+  /api/contacts/contact-information-v1/field-digests:
+    get:
+      tags: [Contacts]
+      summary: List field value digests for contacts (used for exclude list matching)
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Field digests per contact
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    contactId:
+                      $ref: '#/components/schemas/ObjectId'
+                    fields:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          fieldId:
+                            $ref: '#/components/schemas/ObjectId'
+                          digests:
+                            type: array
+                            items:
+                              type: string
+
+  # ─── Contact Fields ──────────────────────────────────────────────────────────
+
+  /api/contacts/fields-v1:
+    get:
+      tags: [Contact Fields]
+      summary: List contact fields
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Contact fields
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fields:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContactField'
+    post:
+      tags: [Contact Fields]
+      summary: Create a contact field
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactField'
+      responses:
+        "201":
+          description: Field created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fieldId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/contacts/fields-v1/ordering:
+    put:
+      tags: [Contact Fields]
+      summary: Update field ordering
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityOrdering'
+      responses:
+        "200":
+          description: Ordering updated
+
+  /api/contacts/fields-v1/{fieldId}:
+    put:
+      tags: [Contact Fields]
+      summary: Update a contact field
+      parameters:
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                projectIds:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Contact Fields]
+      summary: Delete a contact field
+      parameters:
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  # ─── Contact Tags ────────────────────────────────────────────────────────────
+
+  /api/contacts/tags-v1:
+    get:
+      tags: [Contact Tags]
+      summary: List contact tags
+      responses:
+        "200":
+          description: List of tags
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tags:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContactTag'
+    post:
+      tags: [Contact Tags]
+      summary: Create a contact tag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactTag'
+      responses:
+        "201":
+          description: Tag created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tagId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/contacts/tags-v1/ordering:
+    put:
+      tags: [Contact Tags]
+      summary: Update tag ordering
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityOrdering'
+      responses:
+        "200":
+          description: Ordering updated
+
+  /api/contacts/tags-v1/{tagId}:
+    put:
+      tags: [Contact Tags]
+      summary: Update a contact tag
+      parameters:
+        - name: tagId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                color:
+                  type: string
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Contact Tags]
+      summary: Delete a contact tag
+      parameters:
+        - name: tagId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  # ─── Contact Updates ─────────────────────────────────────────────────────────
+
+  /api/contacts/contact-updates-v1/{contactId}:
+    get:
+      tags: [Contact Updates]
+      summary: List update history for a contact
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [ascending, descending]
+      responses:
+        "200":
+          description: List of update records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ObjectId'
+                    contactId:
+                      $ref: '#/components/schemas/ObjectId'
+                    userId:
+                      $ref: '#/components/schemas/ObjectId'
+                    beforeUpdate:
+                      type: object
+                    date:
+                      type: string
+                      format: date-time
+
+  # ─── Exclude Lists ───────────────────────────────────────────────────────────
+
+  /api/contacts/exclude-lists-v1:
+    get:
+      tags: [Exclude Lists]
+      summary: List exclude lists
+      responses:
+        "200":
+          description: List of exclude lists
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExcludeList'
+    post:
+      tags: [Exclude Lists]
+      summary: Create an exclude list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name:
+                  type: string
+                isGlobal:
+                  type: boolean
+      responses:
+        "201":
+          description: Exclude list created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  listId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/contacts/exclude-lists-v1/from-digests:
+    post:
+      tags: [Exclude Lists]
+      summary: Find which exclude lists contain given field value digests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [digests]
+              properties:
+                digests:
+                  type: array
+                  items:
+                    type: string
+                listIds:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Matching list IDs with matched digests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    listId:
+                      $ref: '#/components/schemas/ObjectId'
+                    digests:
+                      type: array
+                      items:
+                        type: string
+
+  /api/contacts/exclude-lists-v1/strings:
+    get:
+      tags: [Exclude Lists]
+      summary: List strings in exclude lists
+      parameters:
+        - name: listIds
+          in: query
+          schema:
+            type: string
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of exclude list strings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExcludeListString'
+
+  /api/contacts/exclude-lists-v1/contacts:
+    get:
+      tags: [Exclude Lists]
+      summary: List contacts that are in exclude lists
+      parameters:
+        - name: listIds
+          in: query
+          schema:
+            type: string
+            description: Comma-separated list IDs (can be empty for global lists)
+        - name: contactIds
+          in: query
+          required: true
+          schema:
+            type: string
+            description: Comma-separated contact IDs
+      responses:
+        "200":
+          description: Contacts with their matching list IDs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExcludeListContact'
+
+  /api/contacts/exclude-lists-v1/{listId}:
+    put:
+      tags: [Exclude Lists]
+      summary: Update an exclude list
+      parameters:
+        - name: listId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Exclude Lists]
+      summary: Delete an exclude list
+      parameters:
+        - name: listId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  /api/contacts/exclude-lists-v1/{listId}/strings:
+    post:
+      tags: [Exclude Lists]
+      summary: Add strings to an exclude list
+      parameters:
+        - name: listId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [strings]
+              properties:
+                strings:
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                reference:
+                  type: object
+                  description: Optional metadata attached to each string (e.g. event reference)
+      responses:
+        "200":
+          description: Strings added
+    delete:
+      tags: [Exclude Lists]
+      summary: Remove strings from an exclude list
+      parameters:
+        - name: listId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: strings
+          in: query
+          required: true
+          schema:
+            type: string
+            description: Comma-separated string values to remove
+      responses:
+        "200":
+          description: Strings removed
+
+  /api/contacts/exclude-lists-v1/strings/{stringId}:
+    put:
+      tags: [Exclude Lists]
+      summary: Update an exclude list string
+      parameters:
+        - name: stringId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+      responses:
+        "200":
+          description: Updated
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # ORDERS  —  service: orders
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/orders/orders-v3:
+    get:
+      tags: [Orders]
+      summary: List orders (v3 — current)
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+            description: Comma-separated ObjectIds
+        - name: userId
+          in: query
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: projectId
+          in: query
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: tagIds
+          in: query
+          schema:
+            type: string
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [ascending, descending]
+        - name: isTest
+          in: query
+          schema:
+            type: string
+            enum: ["true", "false", "any"]
+        - name: X-Long-Query
+          in: header
+          schema:
+            type: string
+            description: URL-encoded query string for overflowing query parameters
+      responses:
+        "200":
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderV3'
+
+  /api/orders/orders-v3/{orderId}:
+    get:
+      tags: [Orders]
+      summary: Get a single order (v3)
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderV3'
+        "404":
+          description: Not found
+
+  /api/orders/orders-v2:
+    get:
+      tags: [Orders]
+      summary: List orders (v2 — deprecated, use v3)
+      deprecated: true
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderV3'
+    post:
+      tags: [Orders]
+      summary: Create an order (v2)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreateV2'
+      responses:
+        "201":
+          description: Order created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderId:
+                    $ref: '#/components/schemas/ObjectId'
+                  serialId:
+                    type: integer
+                  fileToken:
+                    type: string
+
+  /api/orders/orders-v2/count:
+    get:
+      tags: [Orders]
+      summary: Count orders
+      parameters:
+        - name: groupBy
+          in: query
+          schema:
+            type: string
+        - name: userId
+          in: query
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        "200":
+          description: Order count (flat or grouped)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    oneOf:
+                      - type: integer
+                      - type: object
+                        additionalProperties:
+                          type: integer
+
+  /api/orders/orders-v2/sum:
+    get:
+      tags: [Orders]
+      summary: Sum order values
+      parameters:
+        - name: groupBy
+          in: query
+          schema:
+            type: string
+        - name: fieldId
+          in: query
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        "200":
+          description: Order sum (flat or grouped)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sum:
+                    oneOf:
+                      - type: number
+                      - type: object
+                        additionalProperties:
+                          type: number
+
+  /api/orders/orders-v2/{orderId}:
+    get:
+      tags: [Orders]
+      summary: Get a single order (v2 — deprecated, use v3)
+      deprecated: true
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderV3'
+        "404":
+          description: Not found
+    put:
+      tags: [Orders]
+      summary: Update an order (v2)
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderUpdateV2'
+      responses:
+        "200":
+          description: Updated
+
+  /api/orders/orders-v1/{orderId}:
+    delete:
+      tags: [Orders]
+      summary: Delete an order
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  /api/orders/orders-v1/{orderId}/files:
+    post:
+      tags: [Orders]
+      summary: Attach a file to an order
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: X-File-Token
+          in: header
+          schema:
+            type: string
+            description: File token from order creation for multi-step uploads
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: File attached
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachedFile'
+
+  /api/orders/orders-v1/{orderId}/files/{fileId}:
+    put:
+      tags: [Orders]
+      summary: Update an attached file's metadata
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Orders]
+      summary: Delete an attached file
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  /api/orders/orders-v1/{orderId}/comments:
+    post:
+      tags: [Orders]
+      summary: Add a comment to an order
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [message]
+              properties:
+                message:
+                  type: string
+      responses:
+        "200":
+          description: Comment created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commentId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/orders/orders-v1/{orderId}/comments/{commentId}:
+    delete:
+      tags: [Orders]
+      summary: Delete a comment from an order
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: commentId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # OFFERS  —  service: offers
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/offers/offers-v2:
+    get:
+      tags: [Offers]
+      summary: List offers (v2 — current)
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+        - name: userId
+          in: query
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/OfferStatus'
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: isTest
+          in: query
+          schema:
+            type: string
+            enum: ["true", "false", "any"]
+      responses:
+        "200":
+          description: List of offers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OfferV2'
+    post:
+      tags: [Offers]
+      summary: Create an offer (v2)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferV2'
+      responses:
+        "201":
+          description: Offer created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  offerId:
+                    $ref: '#/components/schemas/ObjectId'
+                  serialId:
+                    type: integer
+                  publicId:
+                    type: string
+                    nullable: true
+                  linkId:
+                    type: string
+                    nullable: true
+                  linkUrl:
+                    type: string
+                    nullable: true
+
+  /api/offers/offers-v2/{offerId}:
+    get:
+      tags: [Offers]
+      summary: Get a single offer (v2)
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Offer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferV2'
+        "404":
+          description: Not found
+
+  /api/offers/offers-v1/count:
+    get:
+      tags: [Offers]
+      summary: Count offers
+      parameters:
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/OfferStatus'
+        - name: userId
+          in: query
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        "200":
+          description: Offer count
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+
+  /api/offers/offers-v1/{offerId}:
+    put:
+      tags: [Offers]
+      summary: Update an offer
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/OrderFieldReference'
+                products:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/OrderProductReference'
+                recipient:
+                  type: object
+                expireAt:
+                  type: string
+                  format: date-time
+      responses:
+        "200":
+          description: Updated
+    delete:
+      tags: [Offers]
+      summary: Delete an offer
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  /api/offers/offers-v1/{offerId}/cancel:
+    put:
+      tags: [Offers]
+      summary: Cancel an offer
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Offer cancelled
+
+  /api/offers/offers-v1/{offerId}/files:
+    post:
+      tags: [Offers]
+      summary: Attach a file to an offer
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: File attached
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachedFile'
+
+  /api/offers/offers-v1/{offerId}/files/{fileId}:
+    delete:
+      tags: [Offers]
+      summary: Delete an attached file from an offer
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  /api/offers/offers-v1/{offerId}/comments:
+    post:
+      tags: [Offers]
+      summary: Add a comment to an offer
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [message]
+              properties:
+                message:
+                  type: string
+      responses:
+        "200":
+          description: Comment created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commentId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/offers/offers-v1/{offerId}/comments/{commentId}:
+    delete:
+      tags: [Offers]
+      summary: Delete a comment from an offer
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: commentId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # PRODUCTS  —  service: products
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/products/products-v1:
+    get:
+      tags: [Products]
+      summary: List products
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+        - name: categoryId
+          in: query
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+    post:
+      tags: [Products]
+      summary: Create a product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        "201":
+          description: Product created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  productId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/products/products-v1/ordering:
+    put:
+      tags: [Products]
+      summary: Update product ordering (admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [productIds]
+              properties:
+                productIds:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Ordering updated
+
+  /api/products/products-v1/{productId}:
+    get:
+      tags: [Products]
+      summary: Get a product by ID
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        "404":
+          description: Not found
+    put:
+      tags: [Products]
+      summary: Update a product
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                vat:
+                  type: number
+                categoryId:
+                  $ref: '#/components/schemas/ObjectId'
+                fields:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/OrderFieldReference'
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recordId:
+                    $ref: '#/components/schemas/ObjectId'
+                    nullable: true
+    delete:
+      tags: [Products]
+      summary: Delete a product
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  /api/products/products-v1/{productId}/image:
+    put:
+      tags: [Products]
+      summary: Update a product's image
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Image updated
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # CALENDAR EVENTS  —  service: calendar
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/calendar/calendar-events-v2:
+    get:
+      tags: [Calendar Events]
+      summary: List calendar events (v2 — current)
+      parameters:
+        - name: userIds
+          in: query
+          schema:
+            type: string
+            description: Comma-separated user ObjectIds
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: projectIds
+          in: query
+          schema:
+            type: string
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of calendar events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalendarEvent'
+
+  /api/calendar/calendar-events-v2/{eventId}:
+    get:
+      tags: [Calendar Events]
+      summary: Get a calendar event by ID (v2)
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Calendar event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarEvent'
+        "404":
+          description: Not found
+    put:
+      tags: [Calendar Events]
+      summary: Update a calendar event (v2)
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalendarEventUpdate'
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recordId:
+                    $ref: '#/components/schemas/ObjectId'
+                    nullable: true
+
+  /api/calendar/calendar-events-v1/{userId}:
+    get:
+      tags: [Calendar Events]
+      summary: List events for a user (v1 — deprecated, use v2)
+      deprecated: true
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        "200":
+          description: List of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalendarEvent'
+    post:
+      tags: [Calendar Events]
+      summary: Create a calendar event for a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalendarEventCreate'
+      responses:
+        "201":
+          description: Event created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eventId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/calendar/calendar-events-v1/{userId}/reminder:
+    get:
+      tags: [Calendar Events]
+      summary: Get the reminded (upcoming) event for a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: consume
+          in: query
+          schema:
+            type: boolean
+            description: If true, marks the reminder as consumed
+      responses:
+        "200":
+          description: Reminded event or null
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CalendarEvent'
+                  - type: 'null'
+
+  /api/calendar/calendar-events-v1/{userId}/{eventId}:
+    put:
+      tags: [Calendar Events]
+      summary: Update an event (v1 — deprecated)
+      deprecated: true
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalendarEventUpdate'
+      responses:
+        "200":
+          description: Updated
+
+  /api/calendar/calendar-events-v1/{userId}/{eventId}/{occurrence}:
+    delete:
+      tags: [Calendar Events]
+      summary: Delete an event or occurrence
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: occurrence
+          in: path
+          required: false
+          schema:
+            type: string
+            format: date-time
+            description: ISO8601 occurrence date for recurring events
+        - name: deleteAll
+          in: query
+          schema:
+            type: boolean
+        - name: deleteFollowing
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Deleted
+
+  /api/calendar/calendar-events-v1/{userId}/{eventId}/files:
+    post:
+      tags: [Calendar Events]
+      summary: Attach a file to a calendar event
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: File attached
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  file:
+                    $ref: '#/components/schemas/AttachedFile'
+
+  /api/calendar/calendar-events-v1/{userId}/{eventId}/files/{fileId}:
+    delete:
+      tags: [Calendar Events]
+      summary: Delete a file from a calendar event
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Deleted
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # EVENTS  —  service: events
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/events/events-v1:
+    get:
+      tags: [Events]
+      summary: List system events (admin only)
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+            description: Free text search (event name, topic, order serial ID)
+        - name: namePrefixes
+          in: query
+          schema:
+            type: string
+            description: Comma-separated event name prefixes
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: count
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [ascending, descending]
+      responses:
+        "200":
+          description: List of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ObjectId'
+                    date:
+                      type: string
+                      format: date-time
+                    name:
+                      type: string
+                    topic:
+                      type: string
+                    data:
+                      type: object
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # WEBHOOKS  —  service: events
+  # ═══════════════════════════════════════════════════════════════════════════════
+
+  /api/events/webhooks-v1:
+    get:
+      tags: [Webhooks]
+      summary: List webhooks (admin only)
+      responses:
+        "200":
+          description: List of webhooks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      tags: [Webhooks]
+      summary: Create a webhook (admin only)
+      description: |
+        Creates a new outgoing webhook. Supported event names:
+        - `calendar-event-updated-v1`
+        - `order-created-v1`
+        - `order-updated-v1`
+
+        A URL can only be registered once per organization.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookCreate'
+      responses:
+        "200":
+          description: Webhook created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  webhookId:
+                    $ref: '#/components/schemas/ObjectId'
+
+  /api/events/webhooks-v1/{webhookId}:
+    get:
+      tags: [Webhooks]
+      summary: Get a webhook by ID (admin only)
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      responses:
+        "200":
+          description: Webhook
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        "404":
+          description: Not found
+    put:
+      tags: [Webhooks]
+      summary: Update a webhook (admin only)
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                events:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/WebhookEventReference'
+                description:
+                  type: string
+      responses:
+        "200":
+          description: Updated
+        "404":
+          description: Not found

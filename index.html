@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaleSys Help Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #1665c0;
+      --primary-light: #e8f0fe;
+      --primary-hover: #1254a1;
+      --text: #1a1a1a;
+      --text-light: #555;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+      --bg-sidebar: #fafbfc;
+      --radius: 8px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 15px;
+      overflow: hidden;
+      height: 100vh;
+    }
+    .app { display: flex; height: 100vh; }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px; min-width: 280px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      overflow: hidden; transition: transform var(--transition);
+    }
+    .sidebar-header { padding: 24px 20px 16px; border-bottom: 1px solid var(--border); }
+    .sidebar-logo { font-size: 18px; font-weight: 700; color: var(--primary); letter-spacing: -0.3px; }
+    .sidebar-logo span { font-weight: 300; color: var(--text-light); }
+    .sidebar-search { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+    .sidebar-search input {
+      width: 100%; padding: 8px 12px;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 300;
+      outline: none; transition: border-color var(--transition);
+    }
+    .sidebar-search input:focus { border-color: var(--primary); }
+    .sidebar-search input::placeholder { color: #aaa; }
+    .sidebar-nav { flex: 1; overflow-y: auto; padding: 8px 0; }
+    .sidebar-nav::-webkit-scrollbar { width: 4px; }
+    .sidebar-nav::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+    .nav-section { padding: 0 12px; margin-bottom: 4px; }
+    .nav-section-title {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: #999; padding: 12px 8px 4px;
+    }
+    .nav-item {
+      display: block; padding: 7px 12px; border-radius: 6px; cursor: pointer;
+      font-size: 13.5px; font-weight: 400; color: var(--text);
+      transition: all var(--transition); text-decoration: none;
+    }
+    .nav-item:hover { background: var(--primary-light); color: var(--primary); }
+    .nav-item.active { background: var(--primary); color: white; font-weight: 600; }
+    .nav-item.hidden { display: none; }
+
+    /* Controls */
+    .sidebar-controls {
+      padding: 12px 20px; border-top: 1px solid var(--border);
+      display: flex; gap: 8px;
+    }
+    .toggle-btn {
+      flex: 1; padding: 6px 10px;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: white; font-family: 'Nunito', sans-serif;
+      font-size: 12px; font-weight: 400; cursor: pointer;
+      transition: all var(--transition); color: var(--text-light);
+    }
+    .toggle-btn.active { background: var(--primary); color: white; border-color: var(--primary); font-weight: 600; }
+    .toggle-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+
+    /* Main content */
+    .main { flex: 1; overflow-y: auto; scroll-behavior: smooth; }
+    .content {
+      max-width: 1100px; margin: 0 auto;
+      padding: 40px 60px 80px; animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Markdown styles */
+    .content h1 { font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 8px; letter-spacing: -0.5px; }
+    .content h2 { font-size: 20px; font-weight: 600; color: var(--text); margin-top: 36px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid var(--primary-light); }
+    .content h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-top: 24px; margin-bottom: 8px; }
+    .content h4 { font-size: 14px; font-weight: 600; color: var(--text-light); margin-top: 16px; margin-bottom: 6px; }
+    .content p { margin-bottom: 12px; color: var(--text); }
+    .content ul, .content ol { margin-bottom: 12px; padding-left: 24px; }
+    .content li { margin-bottom: 4px; }
+    .content strong { font-weight: 600; }
+    .content code { background: var(--primary-light); padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: 'SF Mono', 'Fira Code', monospace; }
+    .content pre { background: #f6f8fa; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; overflow-x: auto; margin-bottom: 16px; font-size: 13px; line-height: 1.5; }
+    .content pre code { background: none; padding: 0; }
+    .content table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 13.5px; }
+    .content th { text-align: left; padding: 8px 12px; background: var(--primary-light); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--primary); border-bottom: 2px solid var(--primary); }
+    .content td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+    .content tr:hover td { background: #fafbfc; }
+    .content blockquote { border-left: 3px solid var(--primary); padding: 8px 16px; margin-bottom: 12px; background: var(--primary-light); border-radius: 0 var(--radius) var(--radius) 0; }
+    .content hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    .content a { color: var(--primary); text-decoration: none; font-weight: 400; }
+    .content a:hover { text-decoration: underline; }
+    .short-version, .full-version { transition: all var(--transition); }
+    .short-version.hidden, .full-version.hidden { display: none; }
+
+    /* API Docs styles */
+    .api-endpoint {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      margin-bottom: 12px; overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+    .api-endpoint:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .api-endpoint-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; cursor: pointer;
+      transition: background var(--transition);
+    }
+    .api-endpoint-header:hover { background: #fafbfc; }
+    .api-method {
+      font-size: 11px; font-weight: 700; padding: 3px 8px;
+      border-radius: 4px; text-transform: uppercase;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      min-width: 56px; text-align: center;
+    }
+    .api-method.get { background: #e6f4ea; color: #1a7f37; }
+    .api-method.post { background: #e8f0fe; color: #1665c0; }
+    .api-method.put { background: #fff3e0; color: #e65100; }
+    .api-method.delete { background: #fce4ec; color: #c62828; }
+    .api-method.patch { background: #f3e5f5; color: #7b1fa2; }
+    .api-path {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px; font-weight: 400; color: var(--text);
+    }
+    .api-summary {
+      font-size: 13px; color: var(--text-light); margin-left: auto;
+      font-weight: 300; white-space: nowrap; overflow: hidden;
+      text-overflow: ellipsis; max-width: 300px;
+    }
+    .api-chevron {
+      color: #ccc; transition: transform var(--transition);
+      font-size: 12px; flex-shrink: 0;
+    }
+    .api-endpoint.open .api-chevron { transform: rotate(90deg); }
+    .api-endpoint-body {
+      display: none; padding: 16px 20px;
+      border-top: 1px solid var(--border); background: #fafbfc;
+    }
+    .api-endpoint.open .api-endpoint-body { display: block; }
+    .api-detail-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--primary); margin-top: 12px;
+      margin-bottom: 6px;
+    }
+    .api-detail-label:first-child { margin-top: 0; }
+    .api-desc { font-size: 13.5px; color: var(--text); line-height: 1.6; margin-bottom: 8px; white-space: pre-wrap; }
+    .api-param-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 8px; }
+    .api-param-table th {
+      text-align: left; padding: 6px 10px; background: white;
+      font-weight: 600; font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--text-light); border-bottom: 1px solid var(--border);
+    }
+    .api-param-table td { padding: 6px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+    .api-param-name { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: var(--primary); }
+    .api-param-required { color: #c62828; font-size: 10px; font-weight: 700; }
+    .api-param-type { font-size: 11px; color: var(--text-light); }
+    .api-response-code {
+      display: inline-block; font-family: 'SF Mono', monospace;
+      font-size: 12px; font-weight: 600; padding: 1px 6px;
+      border-radius: 3px; margin-right: 8px;
+    }
+    .api-response-code.c2xx { background: #e6f4ea; color: #1a7f37; }
+    .api-response-code.c4xx { background: #fce4ec; color: #c62828; }
+    .api-response-code.c3xx { background: #fff3e0; color: #e65100; }
+    .api-tag-desc { font-size: 13.5px; color: var(--text-light); margin-bottom: 16px; font-style: italic; }
+    .api-auth-badge {
+      font-size: 10px; font-weight: 600; padding: 2px 6px;
+      border-radius: 3px; background: #fff3e0; color: #e65100;
+    }
+    .api-schema-block {
+      background: white; border: 1px solid var(--border);
+      border-radius: 6px; padding: 12px; margin-bottom: 8px;
+      font-family: 'SF Mono', monospace; font-size: 12px;
+      white-space: pre-wrap; line-height: 1.5; overflow-x: auto;
+    }
+
+    /* Mobile */
+    .hamburger {
+      display: none; position: fixed; top: 16px; left: 16px; z-index: 100;
+      width: 36px; height: 36px; border: 1px solid var(--border); border-radius: var(--radius);
+      background: white; cursor: pointer; align-items: center; justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .hamburger svg { width: 18px; height: 18px; color: var(--text); }
+    .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 49; }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .sidebar { position: fixed; left: 0; top: 0; bottom: 0; z-index: 50; transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .sidebar-overlay.open { display: block; }
+      .content { padding: 60px 20px 80px; }
+      .api-summary { display: none; }
+    }
+
+    /* Welcome */
+    .welcome { text-align: center; padding-top: 100px; }
+    .welcome h1 { color: var(--primary); font-size: 32px; margin-bottom: 12px; }
+    .welcome p { color: var(--text-light); font-size: 16px; max-width: 600px; margin: 0 auto; }
+    .welcome-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px; margin-top: 36px; max-width: 900px; margin-left: auto; margin-right: auto;
+    }
+    .welcome-card {
+      padding: 16px; border: 1px solid var(--border); border-radius: var(--radius);
+      cursor: pointer; transition: all var(--transition); text-align: left;
+    }
+    .welcome-card:hover { border-color: var(--primary); background: var(--primary-light); }
+    .welcome-card h3 { font-size: 14px; font-weight: 600; color: var(--primary); margin-bottom: 4px; }
+    .welcome-card p { font-size: 12px; color: var(--text-light); }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <button class="hamburger" onclick="toggleSidebar()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">SaleSys <span>Docs</span></div>
+      </div>
+      <div class="sidebar-search">
+        <input type="text" id="search" placeholder="" oninput="filterNav()">
+      </div>
+      <nav class="sidebar-nav" id="nav"></nav>
+      <div class="sidebar-controls">
+        <button class="toggle-btn active" id="btn-sv" onclick="setLang('sv')">Svenska</button>
+        <button class="toggle-btn" id="btn-en" onclick="setLang('en')">English</button>
+      </div>
+      <div class="sidebar-controls">
+        <button class="toggle-btn" id="btn-short" onclick="setVersion('short')">Kort</button>
+        <button class="toggle-btn active" id="btn-full" onclick="setVersion('full')">Full</button>
+      </div>
+    </aside>
+    <main class="main" id="main">
+      <div class="content" id="content"></div>
+    </main>
+  </div>
+
+  <script>
+    const articles = {
+      sv: {
+        sections: [
+          { title: 'Kom igång', items: [{ id: 'getting-started', label: 'Översikt' }] },
+          { title: 'Funktioner', items: [
+            { id: 'orders', label: 'Ordrar' }, { id: 'offers', label: 'Avtal' },
+            { id: 'calls', label: 'Samtal' }, { id: 'contacts', label: 'Kontakter' },
+            { id: 'calendar', label: 'Kalender' }, { id: 'dashboards', label: 'Statistik & Dashboards' },
+            { id: 'products', label: 'Produkter' }
+          ]},
+          { title: 'Administration', items: [
+            { id: 'users-teams', label: 'Användare & Team' }, { id: 'settings', label: 'Inställningar' }
+          ]}
+        ],
+        searchPlaceholder: 'Sök...',
+        shortLabel: 'Kort', fullLabel: 'Full',
+        welcomeTitle: 'SaleSys Docs',
+        welcomeSubtitle: 'Guider och API-referens för SaleSys-plattformen.',
+        welcomeCards: [
+          { id: 'getting-started', title: 'Kom igång', desc: 'Översikt av systemet' },
+          { id: 'orders', title: 'Ordrar', desc: 'Skapa och hantera ordrar' },
+          { id: 'offers', title: 'Avtal', desc: 'Digitala avtal och signering' },
+          { id: 'calls', title: 'Samtal', desc: 'Ringlistor och uppringning' },
+          { id: 'contacts', title: 'Kontakter', desc: 'Kundregister och import' },
+          { id: 'settings', title: 'Inställningar', desc: 'Konfigurera systemet' },
+          { id: 'api:overview', title: 'API Reference', desc: 'REST API-dokumentation', isApi: true }
+        ]
+      },
+      en: {
+        sections: [
+          { title: 'Getting Started', items: [{ id: 'getting-started', label: 'Overview' }] },
+          { title: 'Features', items: [
+            { id: 'orders', label: 'Orders' }, { id: 'offers', label: 'Offers' },
+            { id: 'calls', label: 'Calls' }, { id: 'contacts', label: 'Contacts' },
+            { id: 'calendar', label: 'Calendar' }, { id: 'dashboards', label: 'Statistics & Dashboards' },
+            { id: 'products', label: 'Products' }
+          ]},
+          { title: 'Administration', items: [
+            { id: 'users-teams', label: 'Users & Teams' }, { id: 'settings', label: 'Settings' }
+          ]}
+        ],
+        searchPlaceholder: 'Search...',
+        shortLabel: 'Short', fullLabel: 'Full',
+        welcomeTitle: 'SaleSys Docs',
+        welcomeSubtitle: 'Guides and API reference for the SaleSys platform.',
+        welcomeCards: [
+          { id: 'getting-started', title: 'Getting Started', desc: 'System overview' },
+          { id: 'orders', title: 'Orders', desc: 'Create and manage orders' },
+          { id: 'offers', title: 'Offers', desc: 'Digital agreements and signing' },
+          { id: 'calls', title: 'Calls', desc: 'Lead lists and dialing' },
+          { id: 'contacts', title: 'Contacts', desc: 'Customer records and import' },
+          { id: 'settings', title: 'Settings', desc: 'Configure the system' },
+          { id: 'api:overview', title: 'API Reference', desc: 'REST API documentation', isApi: true }
+        ]
+      }
+    };
+
+    let currentLang = 'sv';
+    let currentVersion = 'full';
+    let currentArticle = null;
+    let articleCache = {};
+    let swaggerSpec = null;
+    let apiTags = [];
+
+    // ── Swagger loading ──
+    async function loadSwagger() {
+      try {
+        const resp = await fetch('swagger.yaml');
+        const text = await resp.text();
+        swaggerSpec = jsyaml.load(text);
+        apiTags = (swaggerSpec.tags || []).map(t => t.name);
+        renderNav();
+      } catch (e) {
+        console.warn('Could not load swagger.yaml', e);
+      }
+    }
+
+    // ── Nav rendering ──
+    function renderNav() {
+      const config = articles[currentLang];
+      const nav = document.getElementById('nav');
+      document.getElementById('search').placeholder = config.searchPlaceholder;
+      document.getElementById('btn-short').textContent = config.shortLabel;
+      document.getElementById('btn-full').textContent = config.fullLabel;
+
+      let html = '';
+      config.sections.forEach(section => {
+        html += `<div class="nav-section"><div class="nav-section-title">${section.title}</div>`;
+        section.items.forEach(item => {
+          const active = currentArticle === item.id ? ' active' : '';
+          html += `<div class="nav-item${active}" data-id="${item.id}" onclick="loadArticle('${item.id}')">${item.label}</div>`;
+        });
+        html += `</div>`;
+      });
+
+      // API section
+      if (apiTags.length > 0) {
+        html += `<div class="nav-section"><div class="nav-section-title">API Reference</div>`;
+        html += `<div class="nav-item${currentArticle === 'api:overview' ? ' active' : ''}" data-id="api:overview" onclick="loadApiOverview()">Overview</div>`;
+        apiTags.forEach(tag => {
+          const id = 'api:' + tag;
+          const active = currentArticle === id ? ' active' : '';
+          html += `<div class="nav-item${active}" data-id="${id}" onclick="loadApiTag('${tag}')">${tag}</div>`;
+        });
+        html += `</div>`;
+      }
+
+      nav.innerHTML = html;
+    }
+
+    function filterNav() {
+      const query = document.getElementById('search').value.toLowerCase();
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.toggle('hidden', !item.textContent.toLowerCase().includes(query));
+      });
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.getElementById('btn-sv').classList.toggle('active', lang === 'sv');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+      renderNav();
+      if (currentArticle?.startsWith('api:')) return; // API docs are language-neutral
+      if (currentArticle) loadArticle(currentArticle);
+      else showWelcome();
+    }
+
+    function setVersion(version) {
+      currentVersion = version;
+      document.getElementById('btn-short').classList.toggle('active', version === 'short');
+      document.getElementById('btn-full').classList.toggle('active', version === 'full');
+      applyVersion();
+    }
+
+    function applyVersion() {
+      const c = document.getElementById('content');
+      c.querySelectorAll('.short-version').forEach(el => el.classList.toggle('hidden', currentVersion !== 'short'));
+      c.querySelectorAll('.full-version').forEach(el => el.classList.toggle('hidden', currentVersion !== 'full'));
+    }
+
+    // ── Article loading ──
+    async function loadArticle(id) {
+      if (id.startsWith('api:')) {
+        if (id === 'api:overview') return loadApiOverview();
+        return loadApiTag(id.replace('api:', ''));
+      }
+
+      currentArticle = id;
+      renderNav();
+      const cacheKey = `${currentLang}/${id}`;
+      let md;
+      if (articleCache[cacheKey]) { md = articleCache[cacheKey]; }
+      else {
+        try {
+          const resp = await fetch(`docs/${currentLang}/${id}.md`);
+          if (!resp.ok) throw new Error('Not found');
+          md = await resp.text();
+          articleCache[cacheKey] = md;
+        } catch (e) {
+          document.getElementById('content').innerHTML = `<div class="welcome"><h1>404</h1><p>Article not found</p></div>`;
+          return;
+        }
+      }
+      const content = document.getElementById('content');
+      content.innerHTML = parseMarkdown(md);
+      content.style.animation = 'none'; content.offsetHeight; content.style.animation = 'fadeIn 0.4s ease';
+      document.getElementById('main').scrollTop = 0;
+      applyVersion();
+      closeMobileSidebar();
+    }
+
+    // ── API Overview ──
+    function loadApiOverview() {
+      currentArticle = 'api:overview';
+      renderNav();
+      const info = swaggerSpec.info || {};
+      const servers = swaggerSpec.servers || [];
+
+      let html = `<h1>SaleSys API</h1>`;
+      html += `<p style="font-size:14px;color:var(--text-light)">Version ${info.version || '1.0.0'}</p>`;
+
+      // Description
+      if (info.description) {
+        html += `<div style="margin-top:16px">${parseMarkdown(info.description)}</div>`;
+      }
+
+      // Servers
+      if (servers.length) {
+        html += `<h2>Servers</h2>`;
+        servers.forEach(s => {
+          html += `<p><code>${s.url}</code> &mdash; ${s.description || ''}</p>`;
+        });
+      }
+
+      // Tag index
+      html += `<h2>Endpoints</h2>`;
+      html += `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">`;
+      apiTags.forEach(tag => {
+        const tagInfo = (swaggerSpec.tags || []).find(t => t.name === tag);
+        const count = countEndpointsByTag(tag);
+        html += `<div class="welcome-card" onclick="loadApiTag('${tag}')">
+          <h3>${tag}</h3>
+          <p>${tagInfo?.description || ''} (${count} endpoints)</p>
+        </div>`;
+      });
+      html += `</div>`;
+
+      // Schemas
+      const schemas = swaggerSpec.components?.schemas || {};
+      const schemaNames = Object.keys(schemas).filter(n => !['ObjectId', 'Error'].includes(n));
+      if (schemaNames.length) {
+        html += `<h2>Schemas</h2>`;
+        html += `<p style="margin-bottom:12px">${schemaNames.length} data models defined:</p>`;
+        html += `<div style="display:flex;flex-wrap:wrap;gap:6px">`;
+        schemaNames.forEach(name => {
+          html += `<code style="font-size:12px">${name}</code>`;
+        });
+        html += `</div>`;
+      }
+
+      const content = document.getElementById('content');
+      content.innerHTML = html;
+      content.style.animation = 'none'; content.offsetHeight; content.style.animation = 'fadeIn 0.4s ease';
+      document.getElementById('main').scrollTop = 0;
+      closeMobileSidebar();
+    }
+
+    function countEndpointsByTag(tag) {
+      let count = 0;
+      const paths = swaggerSpec.paths || {};
+      for (const [, methods] of Object.entries(paths)) {
+        for (const [m, op] of Object.entries(methods)) {
+          if (['get','post','put','delete','patch'].includes(m) && (op.tags || []).includes(tag)) count++;
+        }
+      }
+      return count;
+    }
+
+    // ── API Tag page ──
+    function loadApiTag(tag) {
+      currentArticle = 'api:' + tag;
+      renderNav();
+      const tagInfo = (swaggerSpec.tags || []).find(t => t.name === tag);
+      const paths = swaggerSpec.paths || {};
+
+      let html = `<h1>${tag}</h1>`;
+      if (tagInfo?.description) html += `<p class="api-tag-desc">${tagInfo.description}</p>`;
+
+      // Collect endpoints
+      const endpoints = [];
+      for (const [path, methods] of Object.entries(paths)) {
+        for (const [method, op] of Object.entries(methods)) {
+          if (!['get','post','put','delete','patch'].includes(method)) continue;
+          if (!(op.tags || []).includes(tag)) continue;
+          endpoints.push({ path, method: method.toUpperCase(), op });
+        }
+      }
+
+      endpoints.forEach(({ path, method, op }, idx) => {
+        const noAuth = op.security && op.security.length === 1 && Object.keys(op.security[0]).length === 0;
+        html += `<div class="api-endpoint" id="ep-${idx}">`;
+        html += `<div class="api-endpoint-header" onclick="this.parentElement.classList.toggle('open')">`;
+        html += `<span class="api-method ${method.toLowerCase()}">${method}</span>`;
+        html += `<span class="api-path">${path}</span>`;
+        if (op.summary) html += `<span class="api-summary">${op.summary}</span>`;
+        if (noAuth) html += `<span class="api-auth-badge">No Auth</span>`;
+        html += `<span class="api-chevron">&#9654;</span>`;
+        html += `</div>`;
+
+        // Body
+        html += `<div class="api-endpoint-body">`;
+        if (op.summary) html += `<p style="font-weight:600;margin-bottom:4px">${op.summary}</p>`;
+        if (op.description) html += `<p class="api-desc">${op.description.trim()}</p>`;
+
+        // Parameters
+        if (op.parameters?.length) {
+          html += `<div class="api-detail-label">Parameters</div>`;
+          html += `<table class="api-param-table"><tr><th>Name</th><th>In</th><th>Type</th><th>Description</th></tr>`;
+          op.parameters.forEach(p => {
+            const req = p.required ? ' <span class="api-param-required">required</span>' : '';
+            const type = p.schema?.type || resolveRef(p.schema) || '';
+            html += `<tr><td><span class="api-param-name">${p.name}</span>${req}</td>`;
+            html += `<td>${p.in}</td><td><span class="api-param-type">${type}</span></td>`;
+            html += `<td>${p.description || ''}</td></tr>`;
+          });
+          html += `</table>`;
+        }
+
+        // Request body
+        if (op.requestBody) {
+          html += `<div class="api-detail-label">Request Body</div>`;
+          const schema = op.requestBody.content?.['application/json']?.schema;
+          if (schema) html += renderSchemaBlock(schema);
+        }
+
+        // Responses
+        if (op.responses) {
+          html += `<div class="api-detail-label">Responses</div>`;
+          for (const [code, resp] of Object.entries(op.responses)) {
+            const cls = code.startsWith('2') ? 'c2xx' : code.startsWith('3') ? 'c3xx' : 'c4xx';
+            html += `<p><span class="api-response-code ${cls}">${code}</span> ${resp.description || ''}</p>`;
+            const rSchema = resp.content?.['application/json']?.schema;
+            if (rSchema) html += renderSchemaBlock(rSchema);
+          }
+        }
+
+        html += `</div></div>`;
+      });
+
+      if (endpoints.length === 0) html += `<p>No endpoints found for this tag.</p>`;
+
+      const content = document.getElementById('content');
+      content.innerHTML = html;
+      content.style.animation = 'none'; content.offsetHeight; content.style.animation = 'fadeIn 0.4s ease';
+      document.getElementById('main').scrollTop = 0;
+      closeMobileSidebar();
+    }
+
+    function resolveRef(schema) {
+      if (!schema) return '';
+      if (schema.$ref) return schema.$ref.split('/').pop();
+      if (schema.type === 'array' && schema.items) {
+        const inner = schema.items.$ref ? schema.items.$ref.split('/').pop() : schema.items.type || '';
+        return `${inner}[]`;
+      }
+      return schema.type || '';
+    }
+
+    function renderSchemaBlock(schema) {
+      if (schema.$ref) {
+        const name = schema.$ref.split('/').pop();
+        const resolved = swaggerSpec.components?.schemas?.[name];
+        if (resolved) return renderObjectSchema(name, resolved);
+        return `<div class="api-schema-block">$ref: ${name}</div>`;
+      }
+      if (schema.type === 'object' && schema.properties) return renderObjectSchema(null, schema);
+      if (schema.type === 'array' && schema.items) {
+        const inner = schema.items.$ref ? schema.items.$ref.split('/').pop() : schema.items.type;
+        return `<div class="api-schema-block">Array of ${inner}</div>`;
+      }
+      return '';
+    }
+
+    function renderObjectSchema(name, schema) {
+      const props = schema.properties || {};
+      const required = schema.required || [];
+      let html = '<table class="api-param-table">';
+      if (name) html += `<tr><th colspan="3" style="color:var(--primary);font-size:12px">${name}</th></tr>`;
+      html += '<tr><th>Field</th><th>Type</th><th>Details</th></tr>';
+      for (const [key, val] of Object.entries(props)) {
+        const req = required.includes(key) ? ' <span class="api-param-required">required</span>' : '';
+        const type = resolveRef(val) || val.type || '';
+        const details = [];
+        if (val.description) details.push(val.description);
+        if (val.format) details.push(`format: ${val.format}`);
+        if (val.enum) details.push(`enum: ${val.enum.join(', ')}`);
+        if (val.minLength !== undefined) details.push(`minLength: ${val.minLength}`);
+        if (val.maxLength !== undefined) details.push(`maxLength: ${val.maxLength}`);
+        if (val.minimum !== undefined) details.push(`min: ${val.minimum}`);
+        if (val.maximum !== undefined) details.push(`max: ${val.maximum}`);
+        if (val.nullable) details.push('nullable');
+        if (val.example !== undefined) details.push(`e.g. ${val.example}`);
+        html += `<tr><td><span class="api-param-name">${key}</span>${req}</td>`;
+        html += `<td><span class="api-param-type">${type}</span></td>`;
+        html += `<td>${details.join(' | ')}</td></tr>`;
+      }
+      html += '</table>';
+      return html;
+    }
+
+    // ── Markdown parser ──
+    function parseMarkdown(md) {
+      let html = '', inShort = false, inFull = false, inCodeBlock = false, codeContent = '';
+      let inTable = false, tableRows = [], inList = false, listType = '', listItems = [];
+      const lines = md.split('\n');
+
+      function flushList() {
+        if (!inList) return '';
+        const tag = listType === 'ol' ? 'ol' : 'ul';
+        const r = `<${tag}>${listItems.join('')}</${tag}>`; inList = false; listItems = []; return r;
+      }
+      function flushTable() {
+        if (!inTable) return '';
+        let r = '<table>';
+        tableRows.forEach((row, i) => {
+          const tag = i === 0 ? 'th' : 'td';
+          r += '<tr>' + row.split('|').filter(c => c.trim()).map(c => `<${tag}>${fmt(c.trim())}</${tag}>`).join('') + '</tr>';
+        });
+        r += '</table>'; inTable = false; tableRows = []; return r;
+      }
+      function fmt(t) {
+        return t.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>')
+          .replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>')
+          .replace(/--/g,'&mdash;');
+      }
+
+      for (const line of lines) {
+        if (line.startsWith('```')) {
+          if (inCodeBlock) { html += flushList() + `<pre><code>${codeContent}</code></pre>`; codeContent = ''; inCodeBlock = false; }
+          else { html += flushList() + flushTable(); inCodeBlock = true; }
+          continue;
+        }
+        if (inCodeBlock) { codeContent += line.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '\n'; continue; }
+        if (line.match(/^## (Kort version|Short version)/)) {
+          html += flushList() + flushTable(); if (inFull) { html += '</div>'; inFull = false; } if (inShort) html += '</div>';
+          inShort = true; html += '<div class="short-version">' + `<h2>${fmt(line.replace(/^## /,''))}</h2>`; continue;
+        }
+        if (line.match(/^## (Fullständig guide|Full guide)/)) {
+          html += flushList() + flushTable(); if (inShort) { html += '</div>'; inShort = false; } if (inFull) html += '</div>';
+          inFull = true; html += '<div class="full-version">' + `<h2>${fmt(line.replace(/^## /,''))}</h2>`; continue;
+        }
+        if (line.includes('|') && line.trim().startsWith('|')) {
+          html += flushList(); if (line.match(/^\|[\s-|]+\|$/)) continue; inTable = true; tableRows.push(line); continue;
+        } else if (inTable) html += flushTable();
+        if (line.startsWith('# ') && !line.startsWith('## ')) { html += flushList() + `<h1>${fmt(line.slice(2))}</h1>`; continue; }
+        if (line.startsWith('## ')) { html += flushList() + `<h2>${fmt(line.slice(3))}</h2>`; continue; }
+        if (line.startsWith('### ')) { html += flushList() + `<h3>${fmt(line.slice(4))}</h3>`; continue; }
+        if (line.startsWith('#### ')) { html += flushList() + `<h4>${fmt(line.slice(5))}</h4>`; continue; }
+        if (line.match(/^---+$/)) { html += flushList() + '<hr>'; continue; }
+        if (line.match(/^\d+\.\s/)) {
+          if (!inList || listType !== 'ol') { html += flushList(); inList = true; listType = 'ol'; }
+          listItems.push(`<li>${fmt(line.replace(/^\d+\.\s/,''))}</li>`); continue;
+        }
+        if (line.match(/^[-*]\s/)) {
+          if (!inList || listType !== 'ul') { html += flushList(); inList = true; listType = 'ul'; }
+          listItems.push(`<li>${fmt(line.replace(/^[-*]\s/,''))}</li>`); continue;
+        }
+        if (line.trim() === '') { html += flushList(); continue; }
+        html += flushList() + `<p>${fmt(line)}</p>`;
+      }
+      html += flushList() + flushTable();
+      if (inShort) html += '</div>';
+      if (inFull) html += '</div>';
+      return html;
+    }
+
+    // ── Welcome ──
+    function showWelcome() {
+      const c = articles[currentLang];
+      const cards = c.welcomeCards.map(card => {
+        const onclick = card.isApi ? `loadApiOverview()` : `loadArticle('${card.id}')`;
+        return `<div class="welcome-card" onclick="${onclick}"><h3>${card.title}</h3><p>${card.desc}</p></div>`;
+      }).join('');
+      document.getElementById('content').innerHTML = `
+        <div class="welcome"><h1>${c.welcomeTitle}</h1><p>${c.welcomeSubtitle}</p>
+        <div class="welcome-grid">${cards}</div></div>`;
+    }
+
+    function toggleSidebar() {
+      document.querySelector('.sidebar').classList.toggle('open');
+      document.querySelector('.sidebar-overlay').classList.toggle('open');
+    }
+    function closeMobileSidebar() {
+      document.querySelector('.sidebar').classList.remove('open');
+      document.querySelector('.sidebar-overlay').classList.remove('open');
+    }
+
+    // Init
+    renderNav();
+    showWelcome();
+    loadSwagger();
+  </script>
+</body>
+</html>
