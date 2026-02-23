@@ -22,7 +22,7 @@ info:
     name: SaleSys
 
 servers:
-  - url: https://api.example.com
+  - url: https://app.salesys.se/api
     description: Production server
 
 security:
