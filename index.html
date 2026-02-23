@@ -68,18 +68,6 @@
     .nav-item:hover { background: var(--primary-light); color: var(--primary); }
     .nav-item.active { background: var(--primary); color: white; font-weight: 600; }
     .nav-item.hidden { display: none; }
-    .nav-sub-item {
-      padding-left: 24px; font-size: 12px; color: var(--text-light);
-      opacity: 0.85;
-    }
-    .nav-sub-item::before {
-      content: ''; display: inline-block;
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--primary); opacity: 0.4;
-      margin-right: 6px; vertical-align: middle;
-    }
-    .nav-sub-item.active { opacity: 1; }
-    .nav-sub-item.active::before { opacity: 1; }
 
     /* Controls */
     .sidebar-controls {
@@ -210,60 +198,11 @@
       white-space: pre-wrap; line-height: 1.5; overflow-x: auto;
     }
 
-    /* API preview in articles */
-    .api-preview-section {
-      margin-top: 12px; margin-bottom: 28px; padding: 16px 20px;
-      background: var(--bg-sidebar); border: 1px solid var(--border);
-      border-radius: var(--radius);
+    /* API section embedded in articles */
+    .api-inline-section {
+      margin-top: 48px; padding-top: 32px;
+      border-top: 2px solid var(--primary-light);
     }
-    .api-preview-section h2 {
-      border-bottom: none; padding-bottom: 0; margin-top: 0; margin-bottom: 12px;
-      font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;
-      color: var(--primary);
-    }
-    .api-preview-tag { margin-bottom: 20px; }
-    .api-preview-tag-header {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 8px; padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-    .api-preview-tag-name { font-size: 15px; font-weight: 600; color: var(--text); }
-    .api-preview-tag-count { font-size: 12px; color: var(--text-light); background: var(--primary-light); padding: 1px 8px; border-radius: 10px; }
-    .api-preview-view-all {
-      margin-left: auto; font-size: 13px; color: var(--primary);
-      cursor: pointer; font-weight: 400; transition: opacity var(--transition);
-    }
-    .api-preview-view-all:hover { opacity: 0.7; }
-    .api-preview-endpoint {
-      display: flex; align-items: center; gap: 10px;
-      padding: 6px 10px; border-radius: 6px;
-      cursor: pointer; transition: background var(--transition);
-    }
-    .api-preview-endpoint:hover { background: var(--primary-light); }
-    .api-preview-endpoint .api-method { font-size: 10px; padding: 2px 6px; min-width: 46px; }
-    .api-preview-endpoint .api-path { font-size: 12.5px; }
-    .api-preview-summary {
-      font-size: 12px; color: var(--text-light); margin-left: auto;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px;
-    }
-    .api-preview-more {
-      padding: 4px 10px; font-size: 12px; color: var(--primary);
-      cursor: pointer; font-weight: 400;
-    }
-    .api-preview-more:hover { text-decoration: underline; }
-
-    /* Related guide banner on API pages */
-    .api-related-guide {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 16px; margin-bottom: 20px;
-      background: var(--primary-light); border-radius: var(--radius);
-      border: 1px solid #c7dbf5;
-      cursor: pointer; transition: all var(--transition);
-      font-size: 13.5px; color: var(--text);
-    }
-    .api-related-guide:hover { border-color: var(--primary); background: #dce8f8; }
-    .api-related-guide-icon { font-size: 18px; }
-    .api-related-guide-arrow { margin-left: auto; color: var(--primary); font-size: 16px; }
 
     /* Mobile */
     .hamburger {
@@ -281,7 +220,6 @@
       .sidebar-overlay.open { display: block; }
       .content { padding: 60px 20px 80px; }
       .api-summary { display: none; }
-      .api-preview-summary { display: none; }
     }
 
     /* Welcome */
@@ -467,28 +405,14 @@
         section.items.forEach(item => {
           const active = currentArticle === item.id ? ' active' : '';
           html += `<div class="nav-item${active}" data-id="${item.id}" onclick="loadArticle('${item.id}')">${item.label}</div>`;
-          // Show related API tags as sub-items
-          const relatedTags = articleToApiTags[item.id] || [];
-          if (relatedTags.length > 0 && swaggerSpec) {
-            relatedTags.forEach(tag => {
-              const tagId = 'api:' + tag;
-              const tagActive = currentArticle === tagId ? ' active' : '';
-              html += `<div class="nav-item nav-sub-item${tagActive}" data-id="${tagId}" onclick="loadApiTag('${tag}')">API: ${tag}</div>`;
-            });
-          }
         });
         html += `</div>`;
       });
 
-      // API section
+      // API overview link
       if (apiTags.length > 0) {
         html += `<div class="nav-section"><div class="nav-section-title">API Reference</div>`;
         html += `<div class="nav-item${currentArticle === 'api:overview' ? ' active' : ''}" data-id="api:overview" onclick="loadApiOverview()">Overview</div>`;
-        apiTags.forEach(tag => {
-          const id = 'api:' + tag;
-          const active = currentArticle === id ? ' active' : '';
-          html += `<div class="nav-item${active}" data-id="${id}" onclick="loadApiTag('${tag}')">${tag}</div>`;
-        });
         html += `</div>`;
       }
 
@@ -550,63 +474,83 @@
         }
       }
       const content = document.getElementById('content');
-      const parsed = parseMarkdown(md);
-      // Insert API preview right after the first h1
-      const apiPreview = renderApiPreviewForArticle(id);
-      const h1End = parsed.indexOf('</h1>');
-      if (h1End !== -1 && apiPreview) {
-        content.innerHTML = parsed.slice(0, h1End + 5) + apiPreview + parsed.slice(h1End + 5);
-      } else {
-        content.innerHTML = apiPreview + parsed;
-      }
+      content.innerHTML = parseMarkdown(md) + renderApiSectionForArticle(id);
       content.style.animation = 'none'; content.offsetHeight; content.style.animation = 'fadeIn 0.4s ease';
       document.getElementById('main').scrollTop = 0;
       applyVersion();
       closeMobileSidebar();
     }
 
-    // ── API preview section for articles ──
-    function renderApiPreviewForArticle(articleId) {
+    // ── Full API section embedded in articles ──
+    function renderApiSectionForArticle(articleId) {
       const tags = articleToApiTags[articleId];
       if (!tags || tags.length === 0 || !swaggerSpec) return '';
-      const allEndpoints = [];
-      tags.forEach(tag => {
-        getEndpointsByTag(tag).forEach(ep => allEndpoints.push({ ...ep, tag }));
-      });
-      if (allEndpoints.length === 0) return '';
 
-      const sectionTitle = currentLang === 'sv' ? 'Relaterade API-endpoints' : 'Related API Endpoints';
-      const viewAll = currentLang === 'sv' ? 'Visa alla' : 'View all';
+      let totalEndpoints = 0;
+      tags.forEach(tag => { totalEndpoints += getEndpointsByTag(tag).length; });
+      if (totalEndpoints === 0) return '';
 
-      let html = `<div class="api-preview-section">`;
+      const sectionTitle = currentLang === 'sv' ? 'API-referens' : 'API Reference';
+
+      let html = `<div class="api-inline-section">`;
       html += `<h2>${sectionTitle}</h2>`;
 
-      // Group by tag
-      const grouped = {};
-      tags.forEach(tag => { grouped[tag] = getEndpointsByTag(tag); });
-
       for (const tag of tags) {
-        const eps = grouped[tag];
-        if (!eps || eps.length === 0) continue;
-        html += `<div class="api-preview-tag">`;
-        html += `<div class="api-preview-tag-header">`;
-        html += `<span class="api-preview-tag-name">${tag}</span>`;
-        html += `<span class="api-preview-tag-count">${eps.length} endpoint${eps.length !== 1 ? 's' : ''}</span>`;
-        html += `<a class="api-preview-view-all" onclick="loadApiTag('${tag}')">${viewAll} &rarr;</a>`;
-        html += `</div>`;
-        // Show up to 5 endpoints as compact preview
-        const preview = eps.slice(0, 5);
-        preview.forEach(({ path, method, op }) => {
-          html += `<div class="api-preview-endpoint" onclick="loadApiTag('${tag}')">`;
+        const endpoints = getEndpointsByTag(tag);
+        if (endpoints.length === 0) continue;
+
+        const tagInfo = (swaggerSpec.tags || []).find(t => t.name === tag);
+        if (tags.length > 1) {
+          html += `<h3>${tag}</h3>`;
+          if (tagInfo?.description) html += `<p class="api-tag-desc">${tagInfo.description}</p>`;
+        }
+
+        endpoints.forEach(({ path, method, op }, idx) => {
+          const noAuth = op.security && op.security.length === 1 && Object.keys(op.security[0]).length === 0;
+          html += `<div class="api-endpoint">`;
+          html += `<div class="api-endpoint-header" onclick="this.parentElement.classList.toggle('open')">`;
           html += `<span class="api-method ${method.toLowerCase()}">${method}</span>`;
           html += `<span class="api-path">${path}</span>`;
-          if (op.summary) html += `<span class="api-preview-summary">${op.summary}</span>`;
+          if (op.summary) html += `<span class="api-summary">${op.summary}</span>`;
+          if (noAuth) html += `<span class="api-auth-badge">No Auth</span>`;
+          html += `<span class="api-chevron">&#9654;</span>`;
           html += `</div>`;
+
+          html += `<div class="api-endpoint-body">`;
+          if (op.summary) html += `<p style="font-weight:600;margin-bottom:4px">${op.summary}</p>`;
+          if (op.description) html += `<p class="api-desc">${op.description.trim()}</p>`;
+
+          if (op.parameters?.length) {
+            html += `<div class="api-detail-label">Parameters</div>`;
+            html += `<table class="api-param-table"><tr><th>Name</th><th>In</th><th>Type</th><th>Description</th></tr>`;
+            op.parameters.forEach(p => {
+              const req = p.required ? ' <span class="api-param-required">required</span>' : '';
+              const type = p.schema?.type || resolveRef(p.schema) || '';
+              html += `<tr><td><span class="api-param-name">${p.name}</span>${req}</td>`;
+              html += `<td>${p.in}</td><td><span class="api-param-type">${type}</span></td>`;
+              html += `<td>${p.description || ''}</td></tr>`;
+            });
+            html += `</table>`;
+          }
+
+          if (op.requestBody) {
+            html += `<div class="api-detail-label">Request Body</div>`;
+            const schema = op.requestBody.content?.['application/json']?.schema;
+            if (schema) html += renderSchemaBlock(schema);
+          }
+
+          if (op.responses) {
+            html += `<div class="api-detail-label">Responses</div>`;
+            for (const [code, resp] of Object.entries(op.responses)) {
+              const cls = code.startsWith('2') ? 'c2xx' : code.startsWith('3') ? 'c3xx' : 'c4xx';
+              html += `<p><span class="api-response-code ${cls}">${code}</span> ${resp.description || ''}</p>`;
+              const rSchema = resp.content?.['application/json']?.schema;
+              if (rSchema) html += renderSchemaBlock(rSchema);
+            }
+          }
+
+          html += `</div></div>`;
         });
-        if (eps.length > 5) {
-          html += `<div class="api-preview-more" onclick="loadApiTag('${tag}')">+ ${eps.length - 5} ${currentLang === 'sv' ? 'fler' : 'more'}...</div>`;
-        }
-        html += `</div>`;
       }
       html += `</div>`;
       return html;
@@ -690,18 +634,6 @@
 
       let html = `<h1>${tag}</h1>`;
       if (tagInfo?.description) html += `<p class="api-tag-desc">${tagInfo.description}</p>`;
-
-      // Related guide link
-      const relatedArticle = apiTagToArticle(tag);
-      if (relatedArticle) {
-        const label = getArticleLabel(relatedArticle);
-        const guideText = currentLang === 'sv' ? 'Läs guiden' : 'Read the guide';
-        html += `<div class="api-related-guide" onclick="loadArticle('${relatedArticle}')">`;
-        html += `<span class="api-related-guide-icon">&#128214;</span>`;
-        html += `<span><strong>${guideText}:</strong> ${label}</span>`;
-        html += `<span class="api-related-guide-arrow">&rarr;</span>`;
-        html += `</div>`;
-      }
 
       // Collect endpoints
       const endpoints = [];
