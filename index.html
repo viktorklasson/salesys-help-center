@@ -200,6 +200,51 @@
       font-family: 'SF Mono', monospace; font-size: 12px;
       white-space: pre-wrap; line-height: 1.5; overflow-x: auto;
     }
+    .api-schema-link {
+      color: var(--primary); cursor: pointer; font-family: 'SF Mono', monospace;
+      font-size: 12px; text-decoration: underline; text-decoration-style: dotted;
+    }
+    .api-schema-link:hover { text-decoration-style: solid; }
+    .api-schema-inline { display: none; margin-top: 8px; }
+    .api-schema-inline.open { display: block; }
+
+    /* Code example tabs */
+    .api-code-tabs {
+      display: flex; gap: 0; margin-top: 12px; border-bottom: 1px solid var(--border);
+    }
+    .api-code-tab {
+      padding: 6px 14px; font-size: 11px; font-weight: 600;
+      cursor: pointer; color: var(--text-light); background: none;
+      border: 1px solid transparent; border-bottom: none;
+      border-radius: 6px 6px 0 0; font-family: 'Nunito', sans-serif;
+      transition: all var(--transition);
+    }
+    .api-code-tab:hover { color: var(--primary); }
+    .api-code-tab.active { color: var(--primary); background: white; border-color: var(--border); margin-bottom: -1px; }
+    .api-code-panel {
+      display: none; position: relative;
+      background: #1e1e2e; color: #cdd6f4; border-radius: 0 0 6px 6px;
+      padding: 14px 16px; font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px; line-height: 1.6; overflow-x: auto;
+      white-space: pre; margin-bottom: 12px;
+    }
+    .api-code-panel.active { display: block; }
+    .api-code-copy {
+      position: absolute; top: 8px; right: 8px;
+      padding: 4px 10px; font-size: 10px; font-weight: 600;
+      background: rgba(255,255,255,0.1); color: #cdd6f4;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;
+      cursor: pointer; font-family: 'Nunito', sans-serif;
+      transition: all var(--transition);
+    }
+    .api-code-copy:hover { background: rgba(255,255,255,0.2); }
+    .api-code-copy.copied { background: #1a7f37; color: white; border-color: #1a7f37; }
+    /* Syntax highlights */
+    .hl-str { color: #a6e3a1; }
+    .hl-key { color: #89b4fa; }
+    .hl-num { color: #fab387; }
+    .hl-kw { color: #cba6f7; }
+    .hl-comment { color: #6c7086; font-style: italic; }
 
     .api-endpoint.deprecated { opacity: 0.5; }
     .api-endpoint.deprecated:hover { opacity: 0.7; }
@@ -565,53 +610,8 @@
           if (tagInfo?.description) html += `<p class="api-tag-desc">${tagInfo.description}</p>`;
         }
 
-        endpoints.forEach(({ path, method, op }, idx) => {
-          const noAuth = op.security && op.security.length === 1 && Object.keys(op.security[0]).length === 0;
-          const dep = op.deprecated ? ' deprecated' : '';
-          html += `<div class="api-endpoint${dep}">`;
-          html += `<div class="api-endpoint-header" onclick="this.parentElement.classList.toggle('open')">`;
-          html += `<span class="api-method ${method.toLowerCase()}">${method}</span>`;
-          html += `<span class="api-path">${path}</span>`;
-          if (op.summary) html += `<span class="api-summary">${op.summary}</span>`;
-          if (op.deprecated) html += `<span class="api-deprecated-badge">Deprecated</span>`;
-          if (noAuth) html += `<span class="api-auth-badge">No Auth</span>`;
-          html += `<span class="api-chevron">&#9654;</span>`;
-          html += `</div>`;
-
-          html += `<div class="api-endpoint-body">`;
-          if (op.summary) html += `<p style="font-weight:600;margin-bottom:4px">${op.summary}</p>`;
-          if (op.description) html += `<p class="api-desc">${op.description.trim()}</p>`;
-
-          if (op.parameters?.length) {
-            html += `<div class="api-detail-label">Parameters</div>`;
-            html += `<table class="api-param-table"><tr><th>Name</th><th>In</th><th>Type</th><th>Description</th></tr>`;
-            op.parameters.forEach(p => {
-              const req = p.required ? ' <span class="api-param-required">required</span>' : '';
-              const type = p.schema?.type || resolveRef(p.schema) || '';
-              html += `<tr><td><span class="api-param-name">${p.name}</span>${req}</td>`;
-              html += `<td>${p.in}</td><td><span class="api-param-type">${type}</span></td>`;
-              html += `<td>${p.description || ''}</td></tr>`;
-            });
-            html += `</table>`;
-          }
-
-          if (op.requestBody) {
-            html += `<div class="api-detail-label">Request Body</div>`;
-            const schema = op.requestBody.content?.['application/json']?.schema;
-            if (schema) html += renderSchemaBlock(schema);
-          }
-
-          if (op.responses) {
-            html += `<div class="api-detail-label">Responses</div>`;
-            for (const [code, resp] of Object.entries(op.responses)) {
-              const cls = code.startsWith('2') ? 'c2xx' : code.startsWith('3') ? 'c3xx' : 'c4xx';
-              html += `<p><span class="api-response-code ${cls}">${code}</span> ${resp.description || ''}</p>`;
-              const rSchema = resp.content?.['application/json']?.schema;
-              if (rSchema) html += renderSchemaBlock(rSchema);
-            }
-          }
-
-          html += `</div></div>`;
+        endpoints.forEach(({ path, method, op }) => {
+          html += renderEndpointCard(method, path, op);
         });
       }
       html += `</div>`;
@@ -662,12 +662,30 @@
       const schemaNames = Object.keys(schemas).filter(n => !['ObjectId', 'Error'].includes(n));
       if (schemaNames.length) {
         html += `<h2>Schemas</h2>`;
-        html += `<p style="margin-bottom:12px">${schemaNames.length} data models defined:</p>`;
-        html += `<div style="display:flex;flex-wrap:wrap;gap:6px">`;
+        html += `<p style="margin-bottom:12px">${schemaNames.length} data models &mdash; click to expand:</p>`;
         schemaNames.forEach(name => {
-          html += `<code style="font-size:12px">${name}</code>`;
+          const sid = uid();
+          const schema = schemas[name];
+          const fieldCount = Object.keys(schema.properties || {}).length;
+          html += `<div class="api-endpoint" style="margin-bottom:8px">`;
+          html += `<div class="api-endpoint-header" onclick="this.parentElement.classList.toggle('open')">`;
+          html += `<span class="api-method post" style="font-size:10px;min-width:auto;padding:2px 6px">Schema</span>`;
+          html += `<span class="api-path">${name}</span>`;
+          html += `<span class="api-summary">${fieldCount} fields</span>`;
+          html += `<span class="api-chevron">&#9654;</span>`;
+          html += `</div>`;
+          html += `<div class="api-endpoint-body">`;
+          html += renderObjectSchema(name, schema);
+          const example = generateExample(schema, 0);
+          if (example) {
+            html += `<div class="api-detail-label">Example</div>`;
+            html += `<div class="api-code-panel active" style="border-radius:6px;margin-top:4px">`;
+            html += `<button class="api-code-copy" onclick="copyCode(this)">Copy</button>`;
+            html += syntaxHighlight(escapeHtml(JSON.stringify(example, null, 2)));
+            html += `</div>`;
+          }
+          html += `</div></div>`;
         });
-        html += `</div>`;
       }
 
       const content = document.getElementById('content');
@@ -708,57 +726,8 @@
         }
       }
 
-      endpoints.forEach(({ path, method, op }, idx) => {
-        const noAuth = op.security && op.security.length === 1 && Object.keys(op.security[0]).length === 0;
-        const dep = op.deprecated ? ' deprecated' : '';
-        html += `<div class="api-endpoint${dep}" id="ep-${idx}">`;
-        html += `<div class="api-endpoint-header" onclick="this.parentElement.classList.toggle('open')">`;
-        html += `<span class="api-method ${method.toLowerCase()}">${method}</span>`;
-        html += `<span class="api-path">${path}</span>`;
-        if (op.summary) html += `<span class="api-summary">${op.summary}</span>`;
-        if (op.deprecated) html += `<span class="api-deprecated-badge">Deprecated</span>`;
-        if (noAuth) html += `<span class="api-auth-badge">No Auth</span>`;
-        html += `<span class="api-chevron">&#9654;</span>`;
-        html += `</div>`;
-
-        // Body
-        html += `<div class="api-endpoint-body">`;
-        if (op.summary) html += `<p style="font-weight:600;margin-bottom:4px">${op.summary}</p>`;
-        if (op.description) html += `<p class="api-desc">${op.description.trim()}</p>`;
-
-        // Parameters
-        if (op.parameters?.length) {
-          html += `<div class="api-detail-label">Parameters</div>`;
-          html += `<table class="api-param-table"><tr><th>Name</th><th>In</th><th>Type</th><th>Description</th></tr>`;
-          op.parameters.forEach(p => {
-            const req = p.required ? ' <span class="api-param-required">required</span>' : '';
-            const type = p.schema?.type || resolveRef(p.schema) || '';
-            html += `<tr><td><span class="api-param-name">${p.name}</span>${req}</td>`;
-            html += `<td>${p.in}</td><td><span class="api-param-type">${type}</span></td>`;
-            html += `<td>${p.description || ''}</td></tr>`;
-          });
-          html += `</table>`;
-        }
-
-        // Request body
-        if (op.requestBody) {
-          html += `<div class="api-detail-label">Request Body</div>`;
-          const schema = op.requestBody.content?.['application/json']?.schema;
-          if (schema) html += renderSchemaBlock(schema);
-        }
-
-        // Responses
-        if (op.responses) {
-          html += `<div class="api-detail-label">Responses</div>`;
-          for (const [code, resp] of Object.entries(op.responses)) {
-            const cls = code.startsWith('2') ? 'c2xx' : code.startsWith('3') ? 'c3xx' : 'c4xx';
-            html += `<p><span class="api-response-code ${cls}">${code}</span> ${resp.description || ''}</p>`;
-            const rSchema = resp.content?.['application/json']?.schema;
-            if (rSchema) html += renderSchemaBlock(rSchema);
-          }
-        }
-
-        html += `</div></div>`;
+      endpoints.forEach(({ path, method, op }) => {
+        html += renderEndpointCard(method, path, op);
       });
 
       if (endpoints.length === 0) html += `<p>No endpoints found for this tag.</p>`;
@@ -770,6 +739,10 @@
       closeMobileSidebar();
     }
 
+    // ── Schema utilities ──
+    let _uid = 0;
+    function uid() { return '_s' + (++_uid); }
+
     function resolveRef(schema) {
       if (!schema) return '';
       if (schema.$ref) return schema.$ref.split('/').pop();
@@ -778,6 +751,15 @@
         return `${inner}[]`;
       }
       return schema.type || '';
+    }
+
+    function resolveSchema(schema) {
+      if (!schema) return null;
+      if (schema.$ref) {
+        const name = schema.$ref.split('/').pop();
+        return { ...swaggerSpec.components?.schemas?.[name], _name: name };
+      }
+      return schema;
     }
 
     function renderSchemaBlock(schema) {
@@ -789,10 +771,25 @@
       }
       if (schema.type === 'object' && schema.properties) return renderObjectSchema(null, schema);
       if (schema.type === 'array' && schema.items) {
-        const inner = schema.items.$ref ? schema.items.$ref.split('/').pop() : schema.items.type;
-        return `<div class="api-schema-block">Array of ${inner}</div>`;
+        if (schema.items.$ref) {
+          const name = schema.items.$ref.split('/').pop();
+          const resolved = swaggerSpec.components?.schemas?.[name];
+          if (resolved) return `<p style="font-size:12px;color:var(--text-light);margin-bottom:4px">Array of ${name}</p>` + renderObjectSchema(name, resolved);
+        }
+        return `<div class="api-schema-block">Array of ${schema.items.type || 'object'}</div>`;
       }
       return '';
+    }
+
+    function renderSchemaClickable(name) {
+      const id = uid();
+      const resolved = swaggerSpec.components?.schemas?.[name];
+      if (!resolved) return `<code>${name}</code>`;
+      let html = `<span class="api-schema-link" onclick="document.getElementById('${id}').classList.toggle('open')">${name}</span>`;
+      html += `<div class="api-schema-inline" id="${id}">`;
+      html += renderObjectSchema(name, resolved);
+      html += `</div>`;
+      return html;
     }
 
     function renderObjectSchema(name, schema) {
@@ -803,7 +800,12 @@
       html += '<tr><th>Field</th><th>Type</th><th>Details</th></tr>';
       for (const [key, val] of Object.entries(props)) {
         const req = required.includes(key) ? ' <span class="api-param-required">required</span>' : '';
-        const type = resolveRef(val) || val.type || '';
+        const rawType = resolveRef(val) || val.type || '';
+        // Make schema references clickable
+        const refName = val.$ref ? val.$ref.split('/').pop() : (val.type === 'array' && val.items?.$ref ? val.items.$ref.split('/').pop() : null);
+        const typeHtml = refName && swaggerSpec.components?.schemas?.[refName]
+          ? renderSchemaClickable(refName) + (val.type === 'array' ? '[]' : '')
+          : `<span class="api-param-type">${rawType}</span>`;
         const details = [];
         if (val.description) details.push(val.description);
         if (val.format) details.push(`format: ${val.format}`);
@@ -815,10 +817,226 @@
         if (val.nullable) details.push('nullable');
         if (val.example !== undefined) details.push(`e.g. ${val.example}`);
         html += `<tr><td><span class="api-param-name">${key}</span>${req}</td>`;
-        html += `<td><span class="api-param-type">${type}</span></td>`;
+        html += `<td>${typeHtml}</td>`;
         html += `<td>${details.join(' | ')}</td></tr>`;
       }
       html += '</table>';
+      return html;
+    }
+
+    // ── Example JSON generation ──
+    function generateExample(schema, depth) {
+      if (!schema) return undefined;
+      if (depth > 4) return '...';
+      const d = (depth || 0) + 1;
+      if (schema.$ref) {
+        const name = schema.$ref.split('/').pop();
+        const resolved = swaggerSpec.components?.schemas?.[name];
+        return resolved ? generateExample(resolved, d) : {};
+      }
+      if (schema.example !== undefined) return schema.example;
+      if (schema.enum) return schema.enum[0];
+      if (schema.type === 'string') {
+        if (schema.format === 'date-time') return '2025-01-15T10:30:00.000Z';
+        if (schema.format === 'uri') return 'https://example.com/webhook';
+        if (schema.pattern === '^[a-f0-9]{24}$') return '64a1b2c3d4e5f6a7b8c9d0e1';
+        if (schema.minLength) return 'x'.repeat(schema.minLength);
+        return 'string';
+      }
+      if (schema.type === 'integer' || schema.type === 'number') return schema.minimum ?? 1;
+      if (schema.type === 'boolean') return false;
+      if (schema.type === 'array') {
+        const item = generateExample(schema.items, d);
+        return item !== undefined ? [item] : [];
+      }
+      if (schema.type === 'object' || schema.properties) {
+        const obj = {};
+        for (const [key, val] of Object.entries(schema.properties || {})) {
+          obj[key] = generateExample(val, d);
+        }
+        return obj;
+      }
+      return null;
+    }
+
+    function syntaxHighlight(json) {
+      return json.replace(/("(?:\\.|[^"\\])*")\s*:/g, '<span class="hl-key">$1</span>:')
+        .replace(/:\s*("(?:\\.|[^"\\])*")/g, ': <span class="hl-str">$1</span>')
+        .replace(/:\s*(\d+\.?\d*)/g, ': <span class="hl-num">$1</span>')
+        .replace(/:\s*(true|false|null)/g, ': <span class="hl-kw">$1</span>')
+        .replace(/^\s*("(?:\\.|[^"\\])*")(?=,?\s*$)/gm, '<span class="hl-str">$1</span>');
+    }
+
+    // ── cURL / fetch generation ──
+    function getServerUrl() {
+      return (swaggerSpec.servers?.[0]?.url || 'https://app.salesys.se/api').replace(/\/$/, '');
+    }
+
+    function generateCurl(method, path, op) {
+      const url = getServerUrl() + path;
+      const noAuth = op.security && op.security.length === 1 && Object.keys(op.security[0]).length === 0;
+      let parts = [`curl -X ${method}`];
+      parts.push(`  '${url}'`);
+      if (!noAuth) parts.push(`  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN'`);
+      const bodySchema = op.requestBody?.content?.['application/json']?.schema;
+      if (bodySchema) {
+        parts.push(`  -H 'Content-Type: application/json'`);
+        const ex = generateExample(bodySchema, 0);
+        if (ex) parts.push(`  -d '${JSON.stringify(ex, null, 2)}'`);
+      }
+      return parts.join(' \\\n');
+    }
+
+    function generateFetch(method, path, op) {
+      const url = getServerUrl() + path;
+      const noAuth = op.security && op.security.length === 1 && Object.keys(op.security[0]).length === 0;
+      const bodySchema = op.requestBody?.content?.['application/json']?.schema;
+      let code = `const response = await fetch('${url}', {\n`;
+      code += `  method: '${method}',\n`;
+      code += `  headers: {\n`;
+      if (!noAuth) code += `    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',\n`;
+      if (bodySchema) code += `    'Content-Type': 'application/json',\n`;
+      code += `  },\n`;
+      if (bodySchema) {
+        const ex = generateExample(bodySchema, 0);
+        if (ex) code += `  body: JSON.stringify(${JSON.stringify(ex, null, 4).split('\n').map((l,i) => i === 0 ? l : '  ' + l).join('\n')}),\n`;
+      }
+      code += `});\n\nconst data = await response.json();`;
+      return code;
+    }
+
+    function generateExampleResponse(op) {
+      const successResp = op.responses?.['200'] || op.responses?.['201'];
+      if (!successResp) return null;
+      const schema = successResp.content?.['application/json']?.schema;
+      if (!schema) return null;
+      return generateExample(schema, 0);
+    }
+
+    // ── Code tabs for an endpoint ──
+    function renderCodeTabs(method, path, op) {
+      const groupId = uid();
+      const curl = generateCurl(method, path, op);
+      const fetch = generateFetch(method, path, op);
+      const respExample = generateExampleResponse(op);
+
+      let html = `<div class="api-code-tabs">`;
+      html += `<div class="api-code-tab active" onclick="switchTab('${groupId}','curl',this)">cURL</div>`;
+      html += `<div class="api-code-tab" onclick="switchTab('${groupId}','fetch',this)">JavaScript</div>`;
+      if (respExample) html += `<div class="api-code-tab" onclick="switchTab('${groupId}','response',this)">Response</div>`;
+      html += `</div>`;
+
+      html += `<div class="api-code-panel active" data-group="${groupId}" data-tab="curl">`;
+      html += `<button class="api-code-copy" onclick="copyCode(this)">Copy</button>`;
+      html += escapeHtml(curl);
+      html += `</div>`;
+
+      html += `<div class="api-code-panel" data-group="${groupId}" data-tab="fetch">`;
+      html += `<button class="api-code-copy" onclick="copyCode(this)">Copy</button>`;
+      html += highlightJs(fetch);
+      html += `</div>`;
+
+      if (respExample) {
+        const jsonStr = JSON.stringify(respExample, null, 2);
+        html += `<div class="api-code-panel" data-group="${groupId}" data-tab="response">`;
+        html += `<button class="api-code-copy" onclick="copyCode(this)">Copy</button>`;
+        html += syntaxHighlight(escapeHtml(jsonStr));
+        html += `</div>`;
+      }
+
+      return html;
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function highlightJs(code) {
+      let h = escapeHtml(code);
+      h = h.replace(/\b(const|let|var|await|async|function|return|if|else)\b/g, '<span class="hl-kw">$1</span>');
+      h = h.replace(/(&#39;|')([^']*?)(&#39;|')/g, '<span class="hl-str">\'$2\'</span>');
+      return h;
+    }
+
+    function switchTab(groupId, tabName, el) {
+      el.parentElement.querySelectorAll('.api-code-tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll(`.api-code-panel[data-group="${groupId}"]`).forEach(p => {
+        p.classList.toggle('active', p.dataset.tab === tabName);
+      });
+    }
+
+    function copyCode(btn) {
+      const panel = btn.parentElement;
+      const text = panel.textContent.replace('Copy', '').replace('Copied!', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    // ── Render endpoint card (header + body) ──
+    function renderEndpointCard(method, path, op) {
+      const noAuth = op.security && op.security.length === 1 && Object.keys(op.security[0]).length === 0;
+      const dep = op.deprecated ? ' deprecated' : '';
+      let html = `<div class="api-endpoint${dep}">`;
+      html += `<div class="api-endpoint-header" onclick="this.parentElement.classList.toggle('open')">`;
+      html += `<span class="api-method ${method.toLowerCase()}">${method}</span>`;
+      html += `<span class="api-path">${path}</span>`;
+      if (op.summary) html += `<span class="api-summary">${op.summary}</span>`;
+      if (op.deprecated) html += `<span class="api-deprecated-badge">Deprecated</span>`;
+      if (noAuth) html += `<span class="api-auth-badge">No Auth</span>`;
+      html += `<span class="api-chevron">&#9654;</span>`;
+      html += `</div>`;
+      html += renderEndpointBody(method, path, op);
+      html += `</div>`;
+      return html;
+    }
+
+    // ── Render a single endpoint body ──
+    function renderEndpointBody(method, path, op) {
+      let html = `<div class="api-endpoint-body">`;
+      if (op.summary) html += `<p style="font-weight:600;margin-bottom:4px">${op.summary}</p>`;
+      if (op.description) html += `<p class="api-desc">${op.description.trim()}</p>`;
+
+      // Parameters
+      if (op.parameters?.length) {
+        html += `<div class="api-detail-label">Parameters</div>`;
+        html += `<table class="api-param-table"><tr><th>Name</th><th>In</th><th>Type</th><th>Description</th></tr>`;
+        op.parameters.forEach(p => {
+          const req = p.required ? ' <span class="api-param-required">required</span>' : '';
+          const type = p.schema?.type || resolveRef(p.schema) || '';
+          html += `<tr><td><span class="api-param-name">${p.name}</span>${req}</td>`;
+          html += `<td>${p.in}</td><td><span class="api-param-type">${type}</span></td>`;
+          html += `<td>${p.description || ''}</td></tr>`;
+        });
+        html += `</table>`;
+      }
+
+      // Request body
+      if (op.requestBody) {
+        html += `<div class="api-detail-label">Request Body</div>`;
+        const schema = op.requestBody.content?.['application/json']?.schema;
+        if (schema) html += renderSchemaBlock(schema);
+      }
+
+      // Responses
+      if (op.responses) {
+        html += `<div class="api-detail-label">Responses</div>`;
+        for (const [code, resp] of Object.entries(op.responses)) {
+          const cls = code.startsWith('2') ? 'c2xx' : code.startsWith('3') ? 'c3xx' : 'c4xx';
+          html += `<p><span class="api-response-code ${cls}">${code}</span> ${resp.description || ''}</p>`;
+          const rSchema = resp.content?.['application/json']?.schema;
+          if (rSchema) html += renderSchemaBlock(rSchema);
+        }
+      }
+
+      // Code examples
+      html += `<div class="api-detail-label">Examples</div>`;
+      html += renderCodeTabs(method, path, op);
+
+      html += `</div>`;
       return html;
     }
 
