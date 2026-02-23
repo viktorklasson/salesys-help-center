@@ -68,6 +68,18 @@
     .nav-item:hover { background: var(--primary-light); color: var(--primary); }
     .nav-item.active { background: var(--primary); color: white; font-weight: 600; }
     .nav-item.hidden { display: none; }
+    .nav-sub-item {
+      padding-left: 24px; font-size: 12px; color: var(--text-light);
+      opacity: 0.85;
+    }
+    .nav-sub-item::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--primary); opacity: 0.4;
+      margin-right: 6px; vertical-align: middle;
+    }
+    .nav-sub-item.active { opacity: 1; }
+    .nav-sub-item.active::before { opacity: 1; }
 
     /* Controls */
     .sidebar-controls {
@@ -200,11 +212,14 @@
 
     /* API preview in articles */
     .api-preview-section {
-      margin-top: 48px; padding-top: 32px;
-      border-top: 2px solid var(--primary-light);
+      margin-top: 12px; margin-bottom: 28px; padding: 16px 20px;
+      background: var(--bg-sidebar); border: 1px solid var(--border);
+      border-radius: var(--radius);
     }
     .api-preview-section h2 {
-      border-bottom: none; padding-bottom: 0; margin-bottom: 16px;
+      border-bottom: none; padding-bottom: 0; margin-top: 0; margin-bottom: 12px;
+      font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--primary);
     }
     .api-preview-tag { margin-bottom: 20px; }
     .api-preview-tag-header {
@@ -452,6 +467,15 @@
         section.items.forEach(item => {
           const active = currentArticle === item.id ? ' active' : '';
           html += `<div class="nav-item${active}" data-id="${item.id}" onclick="loadArticle('${item.id}')">${item.label}</div>`;
+          // Show related API tags as sub-items
+          const relatedTags = articleToApiTags[item.id] || [];
+          if (relatedTags.length > 0 && swaggerSpec) {
+            relatedTags.forEach(tag => {
+              const tagId = 'api:' + tag;
+              const tagActive = currentArticle === tagId ? ' active' : '';
+              html += `<div class="nav-item nav-sub-item${tagActive}" data-id="${tagId}" onclick="loadApiTag('${tag}')">API: ${tag}</div>`;
+            });
+          }
         });
         html += `</div>`;
       });
@@ -526,7 +550,15 @@
         }
       }
       const content = document.getElementById('content');
-      content.innerHTML = parseMarkdown(md) + renderApiPreviewForArticle(id);
+      const parsed = parseMarkdown(md);
+      // Insert API preview right after the first h1
+      const apiPreview = renderApiPreviewForArticle(id);
+      const h1End = parsed.indexOf('</h1>');
+      if (h1End !== -1 && apiPreview) {
+        content.innerHTML = parsed.slice(0, h1End + 5) + apiPreview + parsed.slice(h1End + 5);
+      } else {
+        content.innerHTML = apiPreview + parsed;
+      }
       content.style.animation = 'none'; content.offsetHeight; content.style.animation = 'fadeIn 0.4s ease';
       document.getElementById('main').scrollTop = 0;
       applyVersion();
