@@ -390,6 +390,7 @@
     let articleCache = {};
     let swaggerSpec = null;
     let apiTags = [];
+    const safeMode = new URLSearchParams(window.location.search).has('safemode');
 
     // ── Cross-linking maps ──
     const articleToApiTags = {
@@ -462,11 +463,12 @@
 
     function getEndpointsByTag(tag) {
       if (!swaggerSpec) return [];
+      const safeMethods = safeMode ? ['get','post'] : ['get','post','put','delete','patch'];
       const endpoints = [];
       const paths = swaggerSpec.paths || {};
       for (const [path, methods] of Object.entries(paths)) {
         for (const [method, op] of Object.entries(methods)) {
-          if (!['get','post','put','delete','patch'].includes(method)) continue;
+          if (!safeMethods.includes(method)) continue;
           if (!(op.tags || []).includes(tag)) continue;
           endpoints.push({ path, method: method.toUpperCase(), op });
         }
@@ -696,11 +698,12 @@
     }
 
     function countEndpointsByTag(tag) {
+      const safeMethods = safeMode ? ['get','post'] : ['get','post','put','delete','patch'];
       let count = 0;
       const paths = swaggerSpec.paths || {};
       for (const [, methods] of Object.entries(paths)) {
         for (const [m, op] of Object.entries(methods)) {
-          if (['get','post','put','delete','patch'].includes(m) && (op.tags || []).includes(tag)) count++;
+          if (safeMethods.includes(m) && (op.tags || []).includes(tag)) count++;
         }
       }
       return count;
@@ -711,20 +714,11 @@
       currentArticle = 'api:' + tag;
       renderNav();
       const tagInfo = (swaggerSpec.tags || []).find(t => t.name === tag);
-      const paths = swaggerSpec.paths || {};
 
       let html = `<h1>${tag}</h1>`;
       if (tagInfo?.description) html += `<p class="api-tag-desc">${tagInfo.description}</p>`;
 
-      // Collect endpoints
-      const endpoints = [];
-      for (const [path, methods] of Object.entries(paths)) {
-        for (const [method, op] of Object.entries(methods)) {
-          if (!['get','post','put','delete','patch'].includes(method)) continue;
-          if (!(op.tags || []).includes(tag)) continue;
-          endpoints.push({ path, method: method.toUpperCase(), op });
-        }
-      }
+      const endpoints = getEndpointsByTag(tag);
 
       endpoints.forEach(({ path, method, op }) => {
         html += renderEndpointCard(method, path, op);
