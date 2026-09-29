@@ -2,8 +2,7 @@ openapi: 3.0.3
 info:
   title: SaleSys API
   description: |
-    REST API for the SaleSys platform. All services expose both public (`/api`) and internal
-    private (`/privateapi`) endpoints.
+    REST API for the SaleSys platform. All services are exposed under `/api`.
 
     ## Authentication
     Most endpoints require a Bearer access token in the `Authorization` header:
@@ -13,7 +12,6 @@ info:
 
     ## URL Pattern
     - **Public API:** `/api/{serviceName}/{resource}-v{version}/{path}`
-    - **Private API:** `/privateapi/{serviceName}/{resource}-v{version}/{path}`
 
     ## IDs
     All entity IDs are MongoDB ObjectIds (24-character hex strings), e.g. `64a1b2c3d4e5f6a7b8c9d0e1`.
