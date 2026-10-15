@@ -163,8 +163,8 @@ async function buildMcpIndex() {
     schemas: swagger.components?.schemas || {},
   };
   
-  // Write to .netlify/functions-internal/
-  const outputDir = path.join(process.cwd(), '.netlify', 'functions-internal');
+  // Write to generated/ (bundled into the function via netlify.toml included_files)
+  const outputDir = path.join(process.cwd(), 'generated');
   await fs.mkdir(outputDir, { recursive: true });
   
   const outputPath = path.join(outputDir, 'mcp-index.json');

@@ -278,7 +278,7 @@ The MCP index is generated from `swagger.yaml` and the `docs/` directory:
 npm run build:mcp-index
 ```
 
-This creates `.netlify/functions-internal/mcp-index.json` with:
+This creates `generated/mcp-index.json` with:
 - Endpoint metadata
 - Service definitions
 - Documentation index

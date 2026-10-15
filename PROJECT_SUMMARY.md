@@ -36,7 +36,7 @@
 ### 3. MCP Index Builder (scripts/build-mcp-index.js)
 **Status**: Complete & Tested
 
-**Generates**: `.netlify/functions-internal/mcp-index.json`
+**Generates**: `generated/mcp-index.json`
 
 **Includes**:
 - All 125 endpoints from swagger.yaml (including 4 deprecated)

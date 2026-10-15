@@ -6,11 +6,65 @@ import path from "path";
 let mcpIndex: any = null;
 async function getMcpIndex() {
   if (!mcpIndex) {
-    const indexPath = path.join(process.cwd(), ".netlify/functions-internal/mcp-index.json");
+    const indexPath = path.join(process.cwd(), "generated/mcp-index.json");
     const content = await fs.readFile(indexPath, "utf-8");
     mcpIndex = JSON.parse(content);
   }
   return mcpIndex;
+}
+
+// Guides: the skills/ folder served over MCP (replaces downloading skill zips)
+const SKILLS_DIR = path.join(process.cwd(), "skills");
+let guideCache: { name: string; description: string; files: string[] }[] | null = null;
+async function listFiles(dir: string, prefix = ""): Promise<string[]> {
+  const out: string[] = [];
+  for (const e of await fs.readdir(dir, { withFileTypes: true })) {
+    const rel = prefix ? `${prefix}/${e.name}` : e.name;
+    if (e.isDirectory()) out.push(...(await listFiles(path.join(dir, e.name), rel)));
+    else if (rel !== "SKILL.md") out.push(rel);
+  }
+  return out;
+}
+async function getGuides() {
+  if (!guideCache) {
+    const guides = [];
+    for (const e of await fs.readdir(SKILLS_DIR, { withFileTypes: true })) {
+      if (!e.isDirectory()) continue;
+      try {
+        const md = await fs.readFile(path.join(SKILLS_DIR, e.name, "SKILL.md"), "utf-8");
+        const desc = (/^description:\s*(.+)$/m.exec(md) || [])[1] || "";
+        guides.push({ name: e.name, description: desc.trim(), files: await listFiles(path.join(SKILLS_DIR, e.name)) });
+      } catch { /* folder without SKILL.md */ }
+    }
+    guideCache = guides;
+  }
+  return guideCache;
+}
+async function readGuide(name: string, file?: string) {
+  const guides = await getGuides();
+  const guide = guides.find((g) => g.name === name);
+  if (!guide) return `Unknown guide: ${name}. Available: ${guides.map((g) => g.name).join(", ")}`;
+  const rel = file || "SKILL.md";
+  if (rel !== "SKILL.md" && !guide.files.includes(rel)) {
+    return `Unknown file ${rel} in ${name}. Files: ${guide.files.join(", ") || "(none)"}`;
+  }
+  const text = await fs.readFile(path.join(SKILLS_DIR, name, rel), "utf-8");
+  if (rel !== "SKILL.md" || !guide.files.length) return text;
+  return `${text}\n\n---\nMore files in this guide (read with get_guide, file=...): ${guide.files.join(", ")}`;
+}
+async function serverInstructions() {
+  const guides = await getGuides();
+  return [
+    "SaleSys MCP: read and change data in the user's SaleSys account (Swedish sales and telephony platform).",
+    "Before building or changing anything (views, webhooks, work templates, web forms, agreements, exports, statistics, users, chat),",
+    "call get_guide for the matching guide below and follow it. Guides are the source of truth for SaleSys conventions and best practices;",
+    "read the extra files they list (reference/..., examples/...) when the task needs them.",
+    "Reads run directly. Data-changing calls (POST/PUT/PATCH/DELETE) need confirm=true: always show the user what will change and get their OK first.",
+    "Answer in the user's language (usually Swedish).",
+    "",
+    "Guides:",
+    ...guides.map((g) => `- ${g.name}: ${g.description}`),
+  ].join("\n");
 }
 
 // Service discovery
@@ -133,6 +187,18 @@ const TOOLS = [
     },
   },
   {
+    name: "get_guide",
+    description: "Read a SaleSys guide (how-to and best practices for views, webhooks, work templates, web forms, agreements, statistics, users, export, chat). Call before building anything. Without file it returns the guide's main text plus a list of its extra files.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        name: { type: "string", description: "Guide name, e.g. salesys-custom-views (see server instructions for the list)" },
+        file: { type: "string", description: "Optional extra file inside the guide, e.g. reference/best-practices.md" },
+      },
+      required: ["name"],
+    },
+  },
+  {
     name: "search_docs",
     description: "Search SaleSys documentation articles",
     inputSchema: {
@@ -177,15 +243,31 @@ async function handleMcpRequest(request: any, token: string | null) {
   const { method, params } = request;
   
   switch (method) {
+    case "initialize":
+      return {
+        protocolVersion: params?.protocolVersion || "2025-06-18",
+        capabilities: { tools: {} },
+        serverInfo: { name: "salesys", version: "1.0.0" },
+        instructions: await serverInstructions(),
+      };
+
+    case "ping":
+      return {};
+
     case "tools/list":
       return {
         tools: TOOLS,
       };
     
     case "tools/call": {
-      const { name, arguments: args } = params;
-      
-      if (!token) {
+      const { name, arguments: args = {} } = params;
+
+      if (name === "get_guide") {
+        return { content: [{ type: "text", text: await readGuide(args.name, args.file) }] };
+      }
+
+      const needsToken = !["search_docs", "read_doc"].includes(name);
+      if (needsToken && !token) {
         return {
           content: [
             {
@@ -488,11 +570,16 @@ export default async (req: Request, context: Context) => {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, Mcp-Session-Id, Mcp-Protocol-Version",
       },
     });
   }
   
+  // Streamable HTTP: this server has no server-to-client stream, so GET (SSE) is not offered
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405, headers: { Allow: "POST, OPTIONS", "Access-Control-Allow-Origin": "*" } });
+  }
+
   try {
     // Extract token from multiple sources for compatibility:
     // 1. Authorization header (Claude Desktop, Cursor, CLI)
@@ -521,6 +608,11 @@ export default async (req: Request, context: Context) => {
     
     // Parse request body
     const body = await req.json();
+
+    // JSON-RPC notifications (no id, e.g. notifications/initialized) get no response body
+    if (body.id === undefined || body.id === null) {
+      return new Response(null, { status: 202, headers: { "Access-Control-Allow-Origin": "*" } });
+    }
     
     // Log request (with redacted token)
     console.log("MCP request:", {
@@ -530,9 +622,12 @@ export default async (req: Request, context: Context) => {
     });
     
     // Handle MCP request
-    const result = await handleMcpRequest(body, token);
-    
-    return new Response(JSON.stringify(result), {
+    const result: any = await handleMcpRequest(body, token);
+    const envelope = result?.error && !result.content
+      ? { jsonrpc: "2.0", id: body.id, error: result.error }
+      : { jsonrpc: "2.0", id: body.id, result };
+
+    return new Response(JSON.stringify(envelope), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
@@ -545,6 +640,8 @@ export default async (req: Request, context: Context) => {
     
     return new Response(
       JSON.stringify({
+        jsonrpc: "2.0",
+        id: null,
         error: {
           code: -32603,
           message: error.message || "Internal error",
@@ -562,5 +659,5 @@ export default async (req: Request, context: Context) => {
 };
 
 export const config: Config = {
-  path: ["/api/mcp", "/api/mcp/:token"],
+  path: ["/api/mcp", "/api/mcp/*"],
 };

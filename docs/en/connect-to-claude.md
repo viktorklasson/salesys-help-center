@@ -86,17 +86,18 @@ Add to your `.cursor/mcp_config.json`:
 }
 ```
 
-### Step 3: Install Claude Skills (Optional but Recommended)
+### Step 3: Nothing to install
 
-Skills help Claude understand SaleSys-specific concepts and workflows.
+The guides that teach Claude how SaleSys works (views, webhooks, work templates, web forms, agreements,
+statistics, users, export, chat) are served by the MCP server itself. Claude is told about them when it
+connects and reads them with the `get_guide` tool when a task needs them, so there is nothing to download.
 
-**Download**: [Individual skills](#available-skills) | [Complete bundle](./skills/salesys-skills-bundle.zip)
+The same guides are also available as skill zips below. They are only useful if you want them without
+the MCP connection, for example in Claude Code offline.
 
-**Install**: Upload skill zip files in Claude Desktop > Settings > Skills
+## Available Skills (optional download)
 
-## Available Skills
-
-Click to download individual skills:
+The MCP server already serves these as guides. Download only if you want them without the connection:
 
 | Skill | Download | Description |
 |-------|----------|-------------|
