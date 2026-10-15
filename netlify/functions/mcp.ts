@@ -509,11 +509,12 @@ export default async (req: Request, context: Context) => {
       // Try query parameter
       token = url.searchParams.get("token");
       
-      // Try path parameter (e.g. /api/mcp/TOKEN)
+      // Try path parameter (e.g. /api/mcp/TOKEN). SaleSys login tokens contain +, / and =
+      // so the client URL-encodes the token; take everything after /api/mcp/ and decode it.
       if (!token) {
-        const pathMatch = url.pathname.match(/\/api\/mcp\/([a-f0-9]{24,}|[A-Za-z0-9_-]+)/i);
+        const pathMatch = url.pathname.match(/\/api\/mcp\/(.+)$/);
         if (pathMatch) {
-          token = pathMatch[1];
+          try { token = decodeURIComponent(pathMatch[1]); } catch { token = pathMatch[1]; }
         }
       }
     }

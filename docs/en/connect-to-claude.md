@@ -30,7 +30,7 @@ Choose your Claude client:
    - **Name**: SaleSys
    - **URL**: `https://docs.salesys.io/api/mcp/{{TOKEN}}`
    
-Replace `{{TOKEN}}` with your actual SaleSys token.
+Replace `{{TOKEN}}` with your actual SaleSys token, **URL-encoded** (login tokens contain `+`, `/` and `=`; the SaleSys quickstart view gives you the encoded URL ready to paste).
 
 **Note**: claude.ai custom connectors don't support headers, so the token is passed in the URL. It's stripped from logs for security.
 

@@ -17,6 +17,12 @@
     Access-Control-Allow-Methods = "GET, POST, OPTIONS"
     Access-Control-Allow-Headers = "Content-Type"
 
+# /api/mcp/<token> must still hit the mcp function (the generic rule below would look for a function named mcp/<token>)
+[[redirects]]
+  from = "/api/mcp/*"
+  to = "/.netlify/functions/mcp"
+  status = 200
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
