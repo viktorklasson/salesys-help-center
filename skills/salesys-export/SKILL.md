@@ -1,5 +1,5 @@
 ---
-name: SaleSys Data Export
+name: salesys-export
 description: Use when exporting large datasets - contacts, calls, orders - with custom fields and filtering. Faster than pagination for bulk data.
 ---
 

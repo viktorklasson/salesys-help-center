@@ -1,5 +1,5 @@
 ---
-name: SaleSys Agreements (Avtal)
+name: salesys-agreements
 description: Use when creating, managing, or distributing agreements (avtal/offers) - digital contracts sent via email/SMS for customer signing.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: SaleSys Web Forms (Webbformulär)
+name: salesys-web-forms
 description: Use when integrating SaleSys web forms on customer websites for lead capture, order submission, and agreement signing.
 ---
 

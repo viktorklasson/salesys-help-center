@@ -1,0 +1,122 @@
+<div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+  <Field label="Jag heter" value="{{custom.input}}" onchange="window.form.setState({ input: value })">
+  </Field>
+
+  <SecondaryButton icon="fullscreen" onClick="window.openModal1()">
+    Öppna modal 1
+  </SecondaryButton>
+
+  <SecondaryButton icon="fullscreen" onClick="window.openModal2()">
+    Öppna modal 2
+  </SecondaryButton>
+
+  <SecondaryButton icon="fullscreen" onClick="window.openModal3()">
+    Öppna modal 3
+  </SecondaryButton>
+
+  <!-- Detta element kommer visas i modalen. Observera attributet "modal". Detta element kommer inte finnas i dom:en utanför modalen. -->
+  <div class="my-modal-content" modal style="display: flex; flex-direction: column; gap: 24px;">
+    <div>Ha en fin dag, {{custom.input}}</div>
+
+    <SecondaryButton onClick="window.form.closeModal()" size="compact" style="width: 100%">
+      Stäng modalen
+    </SecondaryButton>
+  </div>
+
+  <div class="my-modal-content2" modal style="display: flex; flex-direction: column; gap: 24px;">
+    <div>Nu ser du en "Stäng" knapp längst ner som stänger modalen.</div>
+
+    <SecondaryButton onClick="window.form.closeModal()" size="compact" style="width: 100%">
+      Denna knapp stänger också modalen
+    </SecondaryButton>
+  </div>
+
+  <div class="my-modal-content3" modal style="display: flex; flex-direction: column; gap: 24px;">
+    <div>Klicka Fortsätt för att göra något asynkront och sedan stänga ner modalen.</div>
+    <div>Klicka Ta bort för att göra något asynkront som resulterar i ett fel.</div>
+  </div>
+</div>
+
+<script>
+  window.form.setState(state => ({
+    input: state.input || "Kalle"
+  }));
+
+  window.openModal1 = function () {
+    //  Första argumentet är vilket element som ska visas i modalen.
+    //  Andra argumentet är alternativ för modalen (se ModalProps i s2-frontend)
+    window.form.openModal('.my-modal-content', {
+      title: 'Hej ' + window.form.custom.input,
+      size: 'medium', //  'small' | 'small-medium' | 'large' | 'xlarge' | 'medium'
+      //  onClose?: () => { ... } //  Callback när modalen stängs. Returnera false för att förhindra att modalen stängs.
+      //  onHidden?: () => { ... } //  Callback när modalen är helt stängd, efter animationen.
+      //  backdropClassName?: string;
+      //  backdropStyle?: { width: '', ... };
+      //  modalClassName?: string;
+      //  modalStyle?: { width: '', ... };
+      //  hideBackdrop?: boolean;
+      //  transparentBackdrop?: boolean;
+      //  onlyBackdrop?: boolean;
+      //  preventPageScroll?: boolean;
+      //  animation?: 'zoom' | 'slide';
+      //  resizes?: boolean; // Sätt true om modalen ändrar storlek ofta, så blir den fäst längst uppe istället för mitten. 
+    });
+  };
+
+  window.openModal2 = function () {
+    //  Första argumentet är vilket element som ska visas i modalen.
+    //  Andra argumentet är alternativ för modalen (se ModalProps i s2-frontend)
+    window.form.openModal('.my-modal-content2', {
+      title: 'Exempel 2',
+      subtitle: 'Jag är en underrubrik.',
+      size: 'medium',
+      cancel: {}
+    });
+  };
+
+  window.openModal3 = function () {
+    //  Första argumentet är vilket element som ska visas i modalen.
+    //  Andra argumentet är alternativ för modalen (se ModalProps i s2-frontend)
+    window.form.openModal('.my-modal-content3', {
+      title: 'Exempel 3',
+      size: 'medium',
+      cancel: {},
+      go: {
+        children: 'Fortsätt',
+        onClick: () => window.doSomethingAsync()
+          .then(() => true), // true stänger modalen.
+        type: 'next', //  'danger' | 'next' | 'nextSimple' | 'ok' | 'okSimple'
+      },
+      cancel: {
+        onClick: () => {
+          window.form.notify('Avbryt-knappen stänger vanligtvis modalen, men är ur funktion just nu!');
+          return false; //  returnera false för att stoppa.
+        }
+      },
+      separated: {
+        children: 'Ta bort',
+        tooltip: 'Något kommer gå snett...',
+        weight: 'danger', //  'primary' | 'normal' | 'dimmed' | 'danger' | 'simple' | 'accent'
+        onClick: () => window.doSomethingAsyncWithError()
+          .then(() => true),
+      }
+    });
+  };
+
+  window.doSomethingAsync = function () {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        window.form.notify("Färdig!");
+        resolve();
+      }, 3500);
+    });
+  }
+
+  window.doSomethingAsyncWithError = function () {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(new Error("Oops"));
+      }, 3500);
+    });
+  }
+</script>

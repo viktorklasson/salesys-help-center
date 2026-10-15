@@ -1,5 +1,5 @@
 ---
-name: SaleSys Statistics API
+name: salesys-statistics
 description: Use when querying SaleSys statistics, analytics, or reports - orders, users, calls, agreements, activity tracking.
 ---
 

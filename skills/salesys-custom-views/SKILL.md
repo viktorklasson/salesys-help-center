@@ -1,384 +1,159 @@
 ---
-name: SaleSys Custom Views (Egna vyer)
-description: Use when building custom views in SaleSys - standalone HTML/Handlebars pages with custom logic, forms, and integrations. Access from settings or navigation menu.
+name: salesys-custom-views
+description: Use when building, editing, or deploying custom views in SaleSys (egna vyer, vymallar, inställningsvyer) - standalone HTML/Handlebars panels in the navigation or settings. Covers the native components (Field, SecondaryButton, SettingsList, Transition with boolLock/lock, Modal), the window.form API, settings via presetState, rights, the reference-object storage pattern, and the best practices that keep a view working in production.
 ---
 
 # SaleSys Custom Views (Egna vyer)
 
-Use this skill when helping users create or modify custom views (egna vyer) in SaleSys - standalone HTML pages with custom functionality.
+A **vy** is a standalone HTML fragment that SaleSys renders as a panel inside `app.salesys.se`, reachable
+from the top navigation or from Inställningar. No framework and no build step: one HTML file with an
+inline `<style>` and `<script>`, calling the SaleSys API as the logged-in user.
 
-## When to Use
+Two layers:
+- **View template / vymall** (`/api/users/view-presets-v1`, admin): the reusable template with `html`,
+  optional `settingsHtml`, icon, and custom rights.
+- **Org view** (`/api/users/views-v1`): one instance per organisation, pointing at a template via `presetId`
+  (or carrying its own `html`). It decides placement and which teams and roles see it.
+  URL: `https://app.salesys.se/views/<viewId>`.
 
-- Building custom dashboards or tools
-- Creating specialized forms or workflows
-- Adding integrations visible in SaleSys UI
-- Showing custom data views or reports
-- Building admin or configuration interfaces
+## First decision: native or raw JS?
 
-## What Are Custom Views?
+Pick before writing anything. The two styles do not mix well.
 
-Custom views are standalone HTML/Handlebars pages that:
-- Use `window.form.custom` and `window.form.setState` for state management
-- Can access SaleSys APIs with `window.getAccessToken()`
-- Appear in Settings or Navigation menu
-- Support custom permissions (rights)
-- Can have settings views (inställningsvyer) for configuration
+| | **Native (Handlebars + components)** | **Raw JS** |
+|---|---|---|
+| Best for | Forms, settings panels, list-to-detail CRUD, anything that should look like SaleSys | Dashboards, games, canvas, heavy realtime, custom layouts the components cannot express |
+| `{{ }}` | Yes, it is the template language | **Never.** The file is rendered through Handlebars first, so stray braces break it |
+| Components | `<Field>`, `<CheckboxField>`, `<PrimaryButton>`, `<SecondaryButton>`, `<SettingsList>`, `<Tooltip>`, `<Transition>`, modals | Plain HTML and your own CSS, themed with SaleSys CSS variables |
+| State | `window.form.setState` / `custom`, `setSettings` / `settings`, `addHook` | Your own variables and a poll loop |
+| Auth | `window.getAccessToken()` | The `s2_utoken` cookie |
 
-## Key Concepts
+**Rule of thumb:** a form or settings screen should be native, because you get validation, theming, and the
+SaleSys look for free. An interactive app that fights the component model should be raw JS.
 
-### Locations
-Views can appear in:
-- **settings** - Under Inställningar menu
-- **navigation** - Main navigation bar (position -1 = left section, >4 = right of Settings)
-- **widgets** / **widgetsLeft** - As sidebar tabs
+## The essentials in one screen
 
-### State Management
-```javascript
-// Set custom state
-window.form.setState({ myData: "value" });
+```html
+<Field label="Namn" required value="{{custom.name}}"
+       onChange="window.form.setState({ name: value })"></Field>
 
-// Access state
-window.form.custom.myData; // "value"
+<Transition boolLock="{{custom.showAdvanced}}">
+  {{#if custom.showAdvanced}}
+    <Field label="Webhook-URL" value="{{custom.url}}" onChange="window.form.setState({ url: value })"></Field>
+  {{else}}
+    <SecondaryButton icon="cog" onClick="window.form.setState({ showAdvanced: true })">Avancerat</SecondaryButton>
+  {{/if}}
+</Transition>
 
-// Use callback for updates based on previous state
-window.form.setState(state => ({ count: state.count + 1 }));
-```
-
-### API Access
-```javascript
-// Get access token from cookies
-const token = window.getAccessToken();
-
-// Or parse cookies manually
-const cookies = document.cookie.split(';').reduce((obj, cookie) => {
-  const [key, value] = cookie.trim().split('=');
-  obj[key] = value;
-  return obj;
-}, {});
-const token = cookies["s2_utoken"];
-
-// Call SaleSys API
-const response = await fetch('https://app.salesys.se/api/contacts/contacts-v1', {
-  headers: { 'Authorization': `Bearer ${token}` }
-});
-```
-
-## Creating Views via MCP
-
-### 1. Create a View
-```javascript
-call_api(
-  method="POST",
-  path="/api/users/views-v1",
-  body={
-    "name": "Min vy",
-    "html": "<div>View content</div>",
-    "teamIds": [],  // Empty = admin only
-    "roleIds": [],  // Additional roles with access
-    "projectIds": null,  // null = all projects
-    "iconName": "user-ninja",  // FontAwesome 5 icon
-    "iconColor": "#1565c0",
-    "locations": [{
-      "type": "settings",
-      "position": 0,
-      "label": "Vyn"
-    }],
-    "rights": [{
-      "right": "canEdit",
-      "name": "Kan redigera",
-      "description": "Tillåter redigering"
-    }]
-  },
-  confirm=true
-)
-```
-
-### 2. Update a View
-```javascript
-call_api(
-  method="PUT",
-  path="/api/users/views-v1/{viewId}",
-  body={
-    "html": "<div>Updated content</div>",
-    "name": "Uppdaterad vy"
-  },
-  confirm=true
-)
-```
-
-### 3. Delete a View
-```javascript
-call_api(
-  method="DELETE",
-  path="/api/users/views-v1/{viewId}",
-  confirm=true
-)
-```
-
-## Common Patterns
-
-### Navigate to Another Page
-```javascript
-window.form.navigate("/calendar");
-```
-
-### Show Notifications
-```javascript
-// Simple notification
-window.form.notify("Saved successfully", "ok");
-
-// Advanced notification
-window.form.notify({
-  id: "myNotif",
-  title: "Done",
-  body: "Operation completed",
-  icon: { name: "check" }
-});
-
-// Remove notification
-window.form.deleteNotification('myNotif');
-```
-
-### Set Page Title
-```javascript
-window.form.setTitle('Custom Title');
-window.form.setTitle(null); // Reset to view name
-```
-
-### Format Text with Contact Info
-```javascript
-// Insert contact information (from current call)
-window.form.formatText("Hej [[förnamn]]"); // "Hej Kalle"
-
-// With additional variables
-window.form.formatText("Hej [[customVar]]", { customVar: "World" });
-
-// Debug available fields
-window.form.formatTextDebug("[[förnamn]]");
-// Returns: { result: "Kalle", data: {...} }
-```
-
-### Custom Validation
-```javascript
-// Set validation message (blocks form submission)
-window.form.setValidationMessage('email', 'Vänligen ange epost');
-
-// Remove validation
-window.form.setValidationMessage('email', null);
-// or
-window.form.removeValidationMessage('email');
-```
-
-### Hooks (React-style)
-```javascript
-// Run code on every state update
-window.form.addHook('myHook', () => {
-  // Always compare previous values to avoid infinite loops!
-  const newValue = calculateSomething();
-  if (window.form.custom.value !== newValue) {
-    window.form.setState({ value: newValue });
-  }
-});
-```
-
-### Modals
-```javascript
-// HTML content with modal attribute
-// <div class="my-modal" modal>...</div>
-
-// Open modal
-window.form.openModal('.my-modal', {
-  title: 'My Modal',
-  size: 'medium',  // small, medium, large
-  go: {
-    children: 'Fortsätt',
-    type: 'next',  // danger, next, nextSimple, ok, okSimple
-    onClick: async () => {
-      await doSomething();
-      return true; // true closes modal
-    }
-  },
-  cancel: {
-    onClick: () => {
-      window.form.notify('Avbruten');
-      return false; // false keeps modal open
-    }
-  }
-});
-
-// Update modal
-window.form.setModal({ title: "New Title" });
-window.form.setModal(modal => ({
-  go: { ...modal.go, disabled: true }
-}));
-```
-
-### File Upload
-```javascript
-const formData = new FormData();
-formData.append('public', 'true');
-formData.append('usage', 'File for custom view');
-formData.append('file', fileInput.files[0]);
-
-const response = await fetch('/api/users/files-v1', {
-  method: 'POST',
-  body: formData,
-  headers: {
-    'Authorization': `Bearer ${window.getAccessToken()}`
-  }
-});
-
-const { key, url } = await response.json();
-// url is public if public=true
-// otherwise fetch via /api/users/files-v1/{key}
-```
-
-### Check Permissions
-```javascript
-// Check view-specific rights
-if (window.form.rights.includes("canEdit")) {
-  // Has permission
-}
-
-// Check system rights
-if (window.form.currentUser.rights.includes("orders.getAll")) {
-  // Can see all orders
-}
-
-// Admin always has all rights
-if (window.form.currentUser.type === 'admin') {
-  // Is admin
-}
-```
-
-### Field Properties (Contact/Order Fields)
-```javascript
-// Make field read-only
-window.form.setFieldProperties('telefonnummer', { readOnly: true });
-window.form.setFieldProperties('förnamn', { readOnly: true });
-
-// By field ID
-window.form.setFieldProperties('6a69ade93e46511962ddb601', { readOnly: true });
-
-// Only for order or contact fields
-window.form.setFieldProperties('telefonnummer', { 
-  readOnly: true, 
-  orderField: true, 
-  contactField: false 
-});
-
-// Reset
-window.form.setFieldProperties('telefonnummer', null);
-
-// Set all at once
-window.form.setAllFieldProperties({
-  "telefonnummer": { readOnly: true },
-  "förnamn": { readOnly: false }
-});
-
-// Default for all fields
-window.form.setDefaultFieldProperties({ readOnly: true });
-```
-
-## Background Views
-
-Views can run in the background (scripts execute without visiting the page):
-```javascript
-{{#if isBackground}}
 <script>
-  // Code runs in background
-  // Useful with window.form.addHook
+  window.form.addHook('set button', function () {
+    window.form.setButton('save', {
+      children: 'Spara', icon: 'check', weight: 'primary',
+      disabled: !window.form.custom.name,
+      onClick: function () { window.save(); }
+    });
+  });
 </script>
-{{/if}}
-
-// Check if background
-window.form.isBackground // true/false
 ```
 
-Access SaleSys without background views: `https://app.salesys.se/?safe` or `?disableBackgroundViews`
+- **`<Transition>`** animates content that appears, disappears, or swaps. `boolLock="{{flag}}"` re-animates
+  when a boolean flips; `lock="{{value}}"` re-animates when any value changes (wizard steps, tabs);
+  `overflowHiddenDuringTransition="true"` clips overflow mid-animation. Wrap every region that changes,
+  not the whole view.
+- **Change state, never the DOM.** The template re-renders on every `setState` / `setSettings`.
+- **Hooks re-run after every state change.** Only write when the value actually changed, or you loop.
+- **Guard real side effects** with `if (window.form.preview) return;` so the admin editor's preview does not
+  send SMS, delete data, or call webhooks.
 
-## Settings Views (Inställningsvyer)
+## Rules for every view
 
-View templates can have settings views where customers configure the view:
+- **No in-view title.** The app already shows the view name. Use `setSubtitle` and `setButton` instead.
+- **Never set the page width.** No `max-width`, fixed width, or `margin: 0 auto` on the root. Lay out fluidly.
+- **No emojis.** FontAwesome 5 free icons (`<i class="fas fa-check"></i>`) or inline SVG.
+- **Theme via CSS variables with fallbacks**, for example `var(--color-primary, #1565c0)`, so dark mode works.
+- **Stop timers when the user leaves** (`window.form.isScriptActive('script-id')`).
+- **Default every setting in code.** `presetState` is empty until an admin saves.
+- **Never log or send the token to a third party.**
 
-### Settings Storage
+## Read next
+
+- **`reference/native-components.md`**: every component and attribute, the full `window.form` API, the modal
+  system, Handlebars helpers, partials, and preloaded `resources`. Read it before building a native view.
+- **`reference/best-practices.md`**: `<Transition>` patterns in depth, hooks, settings via `presetState`,
+  rights, storing data in the user `reference` object, CORS and CSP, raw-JS rules, in-call views, and a
+  pre-ship checklist. Read it before shipping anything.
+- **`examples/webhooks.view.html`**: the masterclass. A full CRUD panel (list, modal editor, edit/preview
+  toggle via `<Transition boolLock>`, nested actions, insert menu) built only from native components.
+- **`examples/stangtider.view.html`**: a second complete native view (opening-hours rules and call routing,
+  settings persisted to `presetState`, file upload).
+- **`examples/modal.view.html`**: the minimal modal demo.
+
+## Creating and updating views via MCP
+
+Every data-changing call needs `confirm=true`. Show the user what will change first.
+
 ```javascript
-// Settings saved per account
-window.form.settings // { ... }
+// Create an org view with its own HTML
+call_api(method="POST", path="/api/users/views-v1", body={
+  "name": "Min vy",
+  "html": "<div>...</div>",
+  "teamIds": [],        // [] = admins only, null = everyone
+  "roleIds": [],
+  "projectIds": null,   // null = all projects
+  "iconName": "user-ninja", "iconColor": "#1565c0",
+  "locations": [{ "type": "navigation", "position": 0, "label": "Min vy" }],
+  "rights": [{ "right": "canEdit", "name": "Kan redigera", "description": "Tillåter redigering" }]
+}, confirm=true)
 
-// Update settings
-window.form.setSettings({ apiKey: "..." });
+// Update (any subset of fields, plus presetState for per-view config)
+call_api(method="PUT", path="/api/users/views-v1/{viewId}", body={ "html": "..." }, confirm=true)
+
+// Delete
+call_api(method="DELETE", path="/api/users/views-v1/{viewId}", confirm=true)
 ```
 
-### Validation
+**Locations:** `settings`, `navigation`, `widgets`, `widgetsLeft`. Navigation positions map to tab groups
+(0 Ringlistor/Samtal/Kontakter, 1 Ordrar/Avtal, 2 Statistik, 3 Kalender, 4 Inställningar);
+`-1` is an own section on the left and above `4` an own section right of Inställningar.
+`locations` is per org view and is not synced from the template.
+
+**Templates (vymallar):** `GET /api/users/view-presets-v1`, `GET .../{presetId}`,
+`PUT .../{presetId}` with `{ name, html, settingsHtml, iconName, iconColor, entityGroupIds, locations, rights, description }`.
+A template's HTML change reaches every org view using it immediately. The first org view from a new template
+must be created via API (`POST /api/users/views-v1 { presetId, ... }`); after that, its settings appear in the UI.
+
+## Other `window.form` helpers
+
 ```javascript
-// Require settings before view can be saved
-window.form.setValidationMessage('apiKey', 'API key required');
-window.form.removeValidationMessage('apiKey');
+window.form.navigate("/calendar");                     // go to a SaleSys page
+window.form.notify("Sparat", "ok");                    // toast with check icon
+window.form.notify({ id: "n1", title: "Klart", body: "...", icon: { name: "check" } });
+window.form.deleteNotification("n1");
+window.form.setTitle("Ny titel");                      // null resets
+window.form.formatText("Hej [[förnamn]]");             // fill from the current call's contact
+window.form.currentContact;                            // set while a customer card is active, else null
+window.form.rights.includes("canEdit");                // this view's rights (admin has all)
+window.form.currentUser.rights.includes("orders.getAll");
+window.form.setFieldProperties("telefonnummer", { readOnly: true }); // lock contact/order fields
+window.form.isBackground;                              // true when running as a background view
 ```
 
-## View Templates (Vymallar)
+Background views run their script without the view being open (use with `addHook`). Open SaleSys without
+them via `https://app.salesys.se/?safe`.
 
-Reusable view templates for distribution:
-
-### List Templates
-```javascript
-call_api(method="GET", path="/api/users/view-presets-v1")
-```
-
-### Get Template
-```javascript
-call_api(method="GET", path="/api/users/view-presets-v1/{presetId}")
-```
-
-### Update Template
-```javascript
-call_api(
-  method="PUT",
-  path="/api/users/view-presets-v1/{presetId}",
-  body={
-    "name": "Template Name",
-    "html": "<div>...</div>",
-    "settingsHtml": "<div>Settings UI</div>",
-    "entityGroupIds": ["..."],  // See entity groups
-    "rights": [...]
-  },
-  confirm=true
-)
-```
-
-## Best Practices
-
-1. **Use hooks**: Run logic on state updates, always check previous values
-2. **Check isScriptActive**: In setInterval/setTimeout, verify user is still on view
-3. **Preserve Swedish terms**: Keep UI labels as users see them (e.g. "förnamn", not "firstName")
-4. **Validate input**: Use `setValidationMessage` for required fields
-5. **Handle background state**: Check `isBackground` if view runs in background
-6. **Test permissions**: Always check `window.form.rights` before showing admin features
-7. **Never log tokens**: Be careful with access tokens in console.log
-
-## Swedish Terminology
+## Swedish terms
 
 | Svenska | English |
-|---------|---------|
-| Vy | View |
-| Egna vyer | Custom views |
+|---|---|
+| Vy / Egna vyer | View / Custom views |
+| Vymall | View template (preset) |
 | Inställningsvy | Settings view |
-| Vymall | View template |
-| Rättigheter | Rights/Permissions |
-| Flik | Tab/Widget |
-| Modal | Modal |
+| Rättigheter | Rights |
+| Flik | Tab / widget |
 | Fält | Field |
-
-## MCP Tools
-
-Use the `salesys-mcp-server` skill to:
-- Create/update views: `POST/PUT /api/users/views-v1`
-- Manage templates: `/api/users/view-presets-v1`
-- Entity groups: `/api/users/entity-groups-v1`
 
 ## Resources
 
-- **View Presets**: https://skills.salesys.se (external view templates)
-- **FontAwesome Icons**: https://fontawesome.com/v5/search
-- **API Docs**: https://docs.salesys.io
+- More view templates and the full internal skill: https://skills.salesys.se
+- API docs: https://docs.salesys.io
+- Icons: https://fontawesome.com/v5/search?ic=free-collection

@@ -1,5 +1,5 @@
 ---
-name: SaleSys Webhooks
+name: salesys-webhooks
 description: Use when setting up webhooks, automations, or event-driven integrations in SaleSys. Create custom actions (åtgärder) triggered by system events.
 ---
 

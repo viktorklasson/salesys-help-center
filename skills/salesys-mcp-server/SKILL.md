@@ -1,5 +1,5 @@
 ---
-name: SaleSys MCP Server
+name: salesys-mcp-server
 description: Use this skill when helping with SaleSys API integration, automation, or data management. Provides access to all SaleSys APIs through an MCP server.
 ---
 

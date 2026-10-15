@@ -1,5 +1,5 @@
 ---
-name: SaleSys Chat Integration
+name: salesys-chat
 description: Use when integrating SaleSys chat on websites - customer messaging, notifications, WebSocket real-time updates, agent-to-agent chat.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: SaleSys Work Templates (Arbetsmallar)
+name: salesys-work-templates
 description: Use when creating or configuring work templates (arbetsmallar) - automated actions for orders and calls triggered after completion or on schedules.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: SaleSys User Management
+name: salesys-users
 description: Use when managing users, teams, projects, roles, or working with the reference object for custom metadata.
 ---
 
