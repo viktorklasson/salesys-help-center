@@ -1,0 +1,1074 @@
+<script>
+  //  Översätt events här. Bara att fylla på.
+  window.eventTranslations = {
+    "after-order-work-executed-v1": "Orderarbete exekverat",
+    "bankid-session-status-updated-v1": "Avtal BankID upddaterat",
+    "calendar-event-deleted-v1": "Händelse raderad",
+    "calendar-event-updated-v1": "Händelse uppdaterad",
+    "call-tag-removed-v1": "Samtalstagg raderad",
+    "contact-updated-v1": "Kontakt uppdaterad",
+    "contacts-deleted-v1": "Kontakter raderade",
+    "dial-group-contacts-added-v1": "Kontakt lagd i lista",
+    "dial-group-contacts-removed-v1": "Kontakt borttagen från lista",
+    "dial-group-created-v1": "Ringlista skapad",
+    "dial-group-deleted-v1": "Ringlista raderad",
+    "dial-group-updated-v1": "Ringlista uppdaterad",
+    "document-ready-v1": "Dokument färdigt",
+    "exclude-list-deleted-v1": "Raderat spärrlista",
+    "exclude-list-strings-added-v1": "Term tillagd",
+    "exclude-list-strings-removed-v1": "Term borttagen",
+    "exclude-list-strings-updated-v1": "Term ändrad",
+    "external-call-created-v1": "",
+    "feature-enabled-v1": "Funktion aktiverad",
+    "import-task-status-updated-v1": "Import uppdaterad",
+    "inbound-sms-received-v1": "SMS mottaget",
+    "offer-created-v1": "Avtal skapat",
+    "offer-message-created-v1": "Avtalsutskick skapat",
+    "offer-recipient-added-v1": "Avtalsmottagare tillagd",
+    "offer-status-updated-v1": "Avtalstatus uppdaterat",
+    "offer-template-created-v1": "Avtalsmall skapad",
+    "offer-template-updated-v1": "Avtalsmall uppdaterad",
+    "order-created-v1": "Order skapad",
+    "order-deleted-v1": "Order raderad",
+    "order-tag-deleted-v1": "Ordertagg raderad",
+    "order-updated-v1": "Order uppdaterad",
+    "outbound-sms-sent-v1": "SMS skickat",
+    "phone-number-status-updated-v1": "Status ändrat",
+    "user-created-v1": "Användare skapad",
+    "user-logged-out-v1": "Användare loggat ut",
+    "user-password-updated-v1": "Ändrat lösenord",
+  };
+
+  //  Events grupperas utifrån prefix. Om ingen match så blir det "Övrigt".
+  window.eventPrefixes = {
+    "call-tag": "Inställningar",
+    "order-tag": "Inställningar",
+
+    //  Exempelvis calendar-event-updated-v1
+    "contact": "Kontakt",
+    "calendar": "Kalender",
+    "user": "Användare",
+    "offer": "Avtal",
+    "document": "Dokument",
+    "order": "Order",
+    "after-order-work": "Order",
+    "dial-group": "Ringlistor",
+    "lead-lists": "Ringlistor",
+    "exclude-list": "Spärrlistor",
+    "phone-number": "Telefonnummer",
+  };
+
+  window.insertOptions = [
+    {
+      text: "Ordernummer",
+      data: { _path: "$.serialId" },  //  Hur datan faktiskt tas fram.
+      group: "Order", //  Frivillig rubrik för att gruppera alternativ, exempelvis "Orderinformation".
+
+      //  Frivilligt, vilka events som detta gäller för.
+      eventPrefix: ["order"],
+    },
+    ...window.form.resources.orderFields.map(field => ({
+      text: field.label,
+      data: { _field: field.id },
+      group: "Orderinformation",
+      eventPrefix: ["order", "offer"]
+    })),
+    {
+      text: "Användarens epost",
+      data: { _path: "$.email" },
+      group: "Användare",
+      eventPrefix: ["user-"],
+    },
+    {
+      text: "Användarens namn",
+      data: { _path: "$.fullName" },
+      group: "Användare",
+      eventPrefix: ["user-"],
+    },
+  ];
+
+  //  Returnerar namnet på en ikon som tillhör en åtgärd.
+  //  https://fontawesome.com/v5/search?q=window&ic=free-collection
+  window.getActionIcon = function(id, name) {
+    //  Lägg till specifika ikoner här. Exempelvis:
+    //  if (id === "Skicka_SMS") { return "mobile-alt"; }
+
+    if (id === "http") { return "code"; }
+
+
+    //  Gissa utifrån namnet.
+    return window.window.guessActionIcon(id, name);
+  }
+  
+  window.guessActionIcon = function(id, name) {
+    //  Lägg inte till någon ikon för ett specifikt ID här!
+
+    name = name || id.split(/[_\-]/).join(' ');
+
+    const tokens = name.split(' ').map(token => token.toLowerCase().replace(/[^\w]/g, ''));
+
+    if (tokens.includes("epost") || tokens.includes("email") || tokens.includes("eposta") || tokens.includes("mail") || tokens.includes("maila")) {
+      return "envelope";
+    
+    } if (tokens.includes("sms")) {
+      return "mobile-alt";
+    
+    } else if (tokens.includes("skicka")) {
+      return "paper-plane";
+    
+    } else if (tokens.includes("notis") || tokens.includes("notifiera") || tokens.includes("avvisera") || tokens.includes("meddela")) {
+      return "bell";
+    }
+
+    return "wrench";
+  }
+
+
+</script>
+
+<style>
+  .webhook-section {
+    padding: 16px;
+    box-sizing: border-box;
+    border: 1px solid var(--color-background-3);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+</style>
+
+<div style="display: flex; flex-direction: column; gap: 48px;">
+  <SettingsList>
+    {{#each custom.webhooks}}
+    <option id="{{id}}"
+      icon="{{either reference.icon 'wrench'}}"
+      label="{{either reference.name 'Webhook'}}"
+      description="{{reference.description}}"
+      onClick="window.openEditor(window.form.custom.webhooks.find(webhook => webhook.id === '{{id}}'))"
+      {{#if ../custom.isRefreshingWebhooks}} disabled {{/if}}
+      {{#ifNot ../custom.webhookEvents}} disabled {{/ifNot}}>
+
+      {{descriptionShort}}
+
+      {{#if automaticDisableReason}}
+      
+      <attribute icon="exclamation-triangle">
+        Har blivit inaktiverad automatiskt. Du behöver klicka redigera och aktivera den igen.
+
+        Anledning: {{automaticDisableReason}}
+      </attribute>
+
+      {{else}}
+        {{#ifNot isEnabled}}
+        <attribute icon="ban">
+          Inaktiverad
+        </attribute>
+        {{/ifNot}}
+      {{/if}}
+      
+      {{#if automaticRetryDisableReason}}
+      <attribute icon="exclamation-triangle">
+        Automatisk omförsök vid fel har blivit inaktiverat automatiskt.
+
+        Anledning: {{automaticRetryDisableReason}}
+      </attribute>
+      {{/if}}
+    </option>
+    {{/each}}
+  </SettingsList>
+
+  <div class="webhook-editor" modal>
+    <Transition
+      lock="{{#if custom.isPreviewOpen}} 1 {{/if}} {{#if custom.previewResult}} 1 {{/if}}"
+      overflowHiddenDuringTransition="true">
+
+      <div style="display: flex; flex-direction: column; gap: 24px; min-height: 240px; position: relative;">
+      {{#if custom.isPreviewOpen}}
+        <!-- Förhandsgranska, som med orderarbeten/samtalsarbeten -->
+        <h2 style="display: flex; flex-direction: row; align-items: center; gap: 6px; margin: 0;">
+          <Tooltip delay="false" tooltip="Tillbaka">
+            <SecondaryButton icon="chevron-left"
+              onClick="window.form.setState({ isPreviewOpen: false })"
+              iconSize="medium">
+            </SecondaryButton>
+          </Tooltip>
+          Förhandsgranska
+        </h2>
+
+        {{#if custom.previewResult}}
+          {{#each custom.previewFields}}
+            <Field
+              label="{{name}}"
+              value="{{value}}"
+              containerStyle="width: 100%"
+              multiline
+              maxRows="6"
+              readOnly>
+            </Field>
+          {{/each}}
+
+          <Field label="Data som kan infogas"
+            value="{{custom.previewResult.sourceJson}}"
+            containerStyle="width: 100%"
+            inputContainerStyle="background-color: var(--color-background-1); "
+            style="font-family: monospace; font-size: 13px; line-height: 150%;"
+            multiline
+            maxRows="40"
+            readOnly>
+          </Field>
+        {{else}}
+          {{#if custom.previewError}}
+            <div style="text-align: center; font-size: 14px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); line-height: 150%; width: 100%; box-sizing: border-box; padding: 0 24px;">
+              {{either custom.previewError.localizedMessage "Något gick snett"}}
+            </div>
+
+          {{else}}
+            <!-- Laddar förhandsgranskning. Visa inbyggd SaleSys-spinner -->
+            <div class="task-indicator large animated"
+              style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+              <div data-spinner></div>
+            </div>
+          {{/if}}
+
+        {{/if}}
+
+      {{else}}
+      <!-- Redigera webhook. -->
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <Field placeholder="Ange namn" containerStyle="width: 100%" style="font-size: 32px; font-weight: 300;"
+            value="{{custom.selectedWebhook.reference.name}}" onchange="window.onWebhookReferenceChange({ name: value })">
+          </Field>
+
+          {{#if custom.selectedWebhook.id}}
+          <div style="text-align: center; font-size: 14px;">
+            ID: {{custom.selectedWebhook.id}}
+          </div>
+          {{/if}}
+        </div>
+        
+        <Field
+          label="Beskrivning"
+          placeholder="Beskriv denna webhook"
+          containerStyle="width: 100%" 
+          multiline
+          maxRows="3"
+          maxLength="500"
+          value="{{custom.selectedWebhook.reference.description}}"
+          onchange="window.onWebhookReferenceChange({ description: value })">
+        </Field>
+
+        <Transition lock="{{#if custom.selectedWebhook.reference.actionId}} 1 {{else}} 0 {{/if}} {{#if custom.isWebhookAdvancedOpen}} 1 {{else}} 0 {{/if}}">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <CheckboxField label="Aktiv"
+              {{#if custom.selectedWebhook.isEnabled}} checked {{/if}}
+              onChange="window.onWebhookChange({ isEnabled: checked })"
+              sub="Bocka ur för att inaktivera denna webhook.">
+            </CheckboxField>
+            
+            {{#ifNot custom.selectedWebhook.reference.actionId}}
+              {{#if custom.isWebhookAdvancedOpen}}
+
+              <CheckboxField label="Automatiska omförsök vid fel"
+                {{#if custom.selectedWebhook.retry}} checked {{/if}}
+                onChange="window.onWebhookChange({ retry: checked })"
+                sub="Försöker igen automatiskt efter en stund vid fel">
+              </CheckboxField>
+              
+              <CheckboxField label="Autentisera anrop"
+                {{#if custom.selectedWebhook.auth}} checked {{/if}}
+                onChange="window.onWebhookChange({ auth: checked })"
+                sub="Systemet skickar med Authorization-header">
+              </CheckboxField>
+              
+              <CheckboxField label="Spara händelser"
+                {{#if custom.selectedWebhook.isExecutionLogEnabled}} checked {{/if}}
+                onChange="window.onWebhookChange({ isExecutionLogEnabled: checked })"
+                sub="Sparar en händelse för varje anrop">
+              </CheckboxField>
+              
+              {{else}}
+
+              <SecondaryButton icon="chevron-down" style="width: 100%" size="compact"
+                onClick="window.form.setState({ isWebhookAdvancedOpen: true })">
+                Visa avancerade inställningar
+              </SecondaryButton>
+
+              {{/if}}
+
+            {{/ifNot}}
+          </div>
+        </Transition>
+
+        <div class="webhook-section">
+          <Field label="Välj händelse" select-type="dropdown" containerStyle="width: 100%"
+            value="{{custom.selectedWebhookEventGroup.label}}"
+            onChange="window.form.setState(state => ({ selectedWebhookEventGroup: state.webhookEventGroups.find(group => group.label === value) }))">
+            {{#each custom.webhookEventGroups}}
+            <option>{{label}}</option>
+            {{/each}}
+          </Field>
+
+          <div style="display: flex; flex-direction: column;">
+            <Field label="Händelser ({{custom.selectedWebhookEventGroup.label}})" select-type="switches" containerStyle="width: 100%;">
+              {{#each custom.selectedWebhookEventGroup.events}}
+              <option {{#ifIncludes ../custom.selectedWebhook.eventNames event}} selected {{/ifIncludes}} value="{{event}}"
+                onChange="window.onWebhookChange(webhook => ({ eventNames: ['{{event}}'] }))">
+                {{translation}}
+              </option>
+              {{/each}}
+            </Field>
+
+            <Transition boolLock="{{custom.selectedWebhook.reference.actionId}}">
+            {{#if custom.selectedWebhook.reference.actionId}}
+              <div style="padding-top: 24px">
+              {{> Filter}}
+              </div>
+            {{/if}}
+            </Transition>
+          </div>
+        </div>
+
+        <div class="webhook-section" style="margin-top: 16px;">
+          <Field label="Välj åtgärd" value="{{either custom.selectedWebhook.reference.actionId 'default'}}"
+            onChange="window.getPreviewFields = null; window.onWebhookReferenceChange({ actionId: value === 'default' ? null : value });"
+            containerStyle="width: 100%;">
+
+            <option value="default">ingen / egen</option>
+
+            {{#each custom.actions}}
+            <option value="{{id}}" icon="{{either icon 'wrench'}}">{{either name id}}</option>
+            {{/each}}
+
+          </Field>
+
+          {{#if custom.selectedWebhook.reference.actionId}}
+
+          <div class="webhook-action-editor"
+            onFocusCapture="if (event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT') { window.webhooksLastFocusedElement = event.target; }">
+            {{{custom.selectedAction.html}}}
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;">
+            <SecondaryButton
+              icon="plus"
+              style="width: 100%"
+              size="compact"
+              position="right"
+              {{#ifNot custom.insertOptions.length}} disabled {{/ifNot}}>
+              Infoga
+
+              {{#each custom.insertOptions}}
+              <option onClick="window.insertText('[[{{text}}]]'.toLowerCase())" group="{{group}}" search="{{search}}">
+                {{text}}
+              </option>
+              {{/each}}
+            </SecondaryButton>
+            
+            <SecondaryButton
+              icon="eye"
+              style="width: 100%"
+              size="compact"
+              onclick="window.form.setState({ isPreviewOpen: true }); window.refreshPreview(window.form.custom.selectedWebhook.eventNames[0]);">
+              Förhandsgranska
+            </SecondaryButton>
+          </div>
+
+          {{else}}
+
+          <!-- URL som default. -->
+          <Field label="URL" value="{{custom.selectedWebhook.url}}"
+            onChange="window.onWebhookChange({ url: value })"
+            containerStyle="width: 100%"
+            placeholder="https://example.org/webhook">
+          </Field>
+
+          {{/if}}
+        </div>
+
+      {{/if}}
+      </div>
+    </Transition>
+    
+  </div>
+
+  {{> Events}}
+</div>
+
+<script>
+  //  GUI för webhooks.
+  //  Detta är inställningar för webhooks, och dessa sparas i webhook.reference och
+  //  hanteras av ett generiskt php-skript.
+
+
+  (function () {
+    // Generisk endpoint som hanterar webhooks via den här vyns inställningar.
+    const webhookUrl = "https://salesys.se/api/action-presets/webhooks/webhook.php";
+
+    window.getAccessToken = function () {
+      const cookies = document.cookie.split(';').reduce((object, cookie) => {
+        const regex = /(.+)=(.+)/;
+        const parts = regex.exec(cookie.trim());
+        if (!parts || !parts.length) {
+          console.warn("Unrecognized cookie %s", cookie, regex);
+          return object;
+        }
+
+
+        object[parts[1]] = parts[2];
+        return object;
+      }, {});
+
+
+      return cookies["s2_utoken"];
+    }
+
+    window.push = function (array, element) {
+      if (!Array.isArray(array)) {
+        return [element];
+      }
+
+      return [...array, element];
+    }
+
+    window.filter = function (array, element, predicate) {
+      if (!Array.isArray(array)) {
+        return [];
+      }
+
+      if (!predicate) {
+        predicate = (e => e !== element);
+      }
+
+      return array.filter(predicate);
+    }
+
+    window.applyUpdate = function (update, original) {
+      if (typeof update === 'function') {
+        update = update(original);
+      }
+
+      return { ...original, ...update };
+    }
+
+    window.toggle = function (array, element) {
+      if (!Array.isArray(array)) {
+        return [element];
+      }
+
+      return array.includes(element) ?
+        array.filter(e => e !== element) :
+        [...array, element];
+    }
+
+
+    const headers = {
+      "Authorization": "Bearer " + window.getAccessToken(),
+      "Content-type": "application/json"
+    };
+
+    //  Grupperar och översätter events.
+    window.listGroupedWebhookEvents = function (eventNames) {
+      return Object.entries(
+        eventNames.reduce((object, event) => {
+          let label = "";
+
+          for (const prefix in window.eventPrefixes) {
+            if (event.startsWith(prefix)) {
+              label = window.eventPrefixes[prefix];
+              break;
+            }
+          }
+
+          if (label) {
+          } else if (event.includes('sms-')) {
+            label = "SMS";
+
+          } else if (event.includes('call')) {
+            label = "Samtal";
+
+          } else {
+            label = "Övrigt";
+          }
+
+          let translation = window.eventTranslations[event];
+
+          if (!translation) {
+            //  Default översättning:
+            //  "user-logged-out-v1" => "user logged out"
+            translation = event.replace(/-v\d$/, '')
+              .replace(/-/g, ' ');
+
+            //  "user logged out" => "User logged out"
+            translation = translation.slice(0, 1).toUpperCase() + translation.slice(1);
+          }
+
+          object[label] = object[label] || [];
+          object[label].push({ event, translation })
+
+          return object;
+        }, {})
+      ).map(([label, events]) => ({
+        label,
+        events: events.sort((a, b) => a.translation.localeCompare(b.translation))
+      })).sort((a, b) => {
+        if (a.label === "Övrigt") {
+          //  Övrigt ska vara längst nere.
+          return 1;
+        }
+
+        if (b.label === "Övrigt") {
+          return -1;
+        }
+
+        return a.label.localeCompare(b.label);
+      });
+    }
+
+    //  Hämtar events som man kan välja mellan.
+    window.refreshWebhookEvents = async function () {
+      try {
+        const response = await window.fetch(
+          new URL("/api/events/webhooks-v1/events", document.location.origin),
+          { headers }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw result;
+        }
+
+        window.form.setState({
+          webhookEvents: result.allowedEvents,
+
+          //  Grupperade och översatta, de som syns i listan.
+          webhookEventGroups: window.listGroupedWebhookEvents(result.allowedEvents),
+        });
+
+      } catch (error) {
+        console.error("Error refreshing webhook events", error);
+        window.form.notify(error.localizedMessage || "Något gick snett");
+      }
+    }
+
+    //  Hämtar webhooks som vi ska lista.
+    window.refreshWebhooks = async function () {
+      window.form.setState({ isRefreshingWebhooks: true });
+
+      try {
+        const response = await window.fetch(
+          new URL("/api/events/webhooks-v1", document.location.origin),
+          { headers }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw result;
+        }
+
+        window.form.setState({
+          webhooks: result.map(webhook => {
+            //  eventNames är lite enklare att jobba med än .events.name.
+            webhook.eventNames = webhook.events.map(event => event.name);
+            webhook.descriptionShort = webhook.reference.description &&
+              webhook.reference.description.length > 28 ?
+              webhook.reference.description.slice(0, 28) + '...' :
+                webhook.reference.description;
+
+            return webhook;
+          })
+        });
+
+        window.form.setSubtitle(result.length ? null : "Inga webhooks än.");
+
+      } catch (error) {
+        console.error("Error refreshing webhooks", error);
+        window.form.notify(error.localizedMessage || "Något gick snett");
+      }
+
+      window.form.setState({ isRefreshingWebhooks: false });
+    }
+
+    window.refreshWebhookEvents();
+    window.refreshWebhooks();
+
+    window.form.setState({
+      actions: window.form.resources.viewPreset.components
+      .filter(component => component.id.toLowerCase() !== 'filter' &&
+        component.id.toLowerCase() !== 'events')
+      .map(component => ({
+        ...component,
+        icon: window.getActionIcon(component.id, component.name)
+      }))
+    });
+
+    window.saveWebhook = async function () {
+      const webhook = window.form.custom.selectedWebhook;
+      const action = window.form.custom.selectedAction || { icon: "wrench" };
+      const actionId = webhook.reference.actionId;
+      const settings = webhook.reference[actionId] || {};
+
+      //  Vad vi alltid ska uppdatera "reference" till. Forcerade värden för "reference".
+      const referenceUpdate = {
+        //  Lägg till data som ska sparas i reference här.
+        name: webhook.reference.name,
+        description: webhook.reference.description,
+        actionId: actionId,
+        icon: action.icon,
+        delayValue: webhook.reference.delayValue,
+        delayUnit: webhook.reference.delayUnit,
+        delayId: webhook.reference.delayId,
+        [actionId]: webhook.reference[actionId],
+
+        //  Saken (ordern, användaren, osv) som eventet berör.
+        //  Skriptet använder denna för att kunna stämma av med filtret.
+        //  Detta funkar tack vare Webhook.parseReference.
+        //  Datan kommer från getWebhookEventSourceCallback i s2-events.
+        entity: { _path: "$" },
+      };
+
+      try {
+        let response;
+        
+        webhook.events = webhook.eventNames.map(name => ({ name: name }));
+
+        if (actionId) {
+          webhook.auth = true;
+          webhook.isExecutionLogEnabled = true;
+          webhook.parseReference = window.getParseReferenceOptions();
+          webhook.authRights = settings.authRights || [];  // Sätts av den andra vymallen.
+          webhook.url = webhookUrl;
+          
+        } else {
+          //  Vanlig webhook med URL (ej konfigurerad via denna vy).
+        }
+
+        if (webhook.id) {
+          //  Uppdatera webhook.
+          response = await window.fetch(
+            new URL("/api/events/webhooks-v1/" + webhook.id, document.location.origin),
+            {
+              headers,
+              method: "PUT",
+              //  TODO: skicka bara med reference.actionId och reference[reference.actionId]
+              body: JSON.stringify({
+                ...webhook,
+
+                //  reference slås ihop på servern.
+                reference: referenceUpdate,
+              }),
+            }
+          );
+
+        } else {
+          //  Skapa webhook.
+          response = await window.fetch(
+            new URL("/api/events/webhooks-v1", document.location.origin),
+            {
+              headers,
+              method: "POST",
+              body: JSON.stringify({
+                ...webhook,
+                reference: { ...referenceUpdate, ...webhook.reference }
+              }),
+            }
+          );
+        }
+
+        if (!response.ok) {
+          throw new Error(await response.text());
+        }
+
+        //  Annars kommer den fråga om du vill stänga modalen.
+        window.checkWebhookChangesBeforeClose = false;
+
+        window.refreshWebhooks();
+
+        //  TODO: bättre text
+        window.form.notify("Sparat", "ok");
+
+        return true;
+
+      } catch (error) {
+        console.error("Error saving webhook %s", webhook.id, error);
+        window.form.notify(error.localizedMessage || "Något gick snett");
+      }
+    }
+
+    window.getWebhookDefaultName = function (webhook) {
+      return "Ett bra namn";
+    }
+
+    window.newWebhook = function () {
+      return {
+        isEnabled: true,
+        events: [],
+        eventNames: [],
+        reference: {
+          name: "",
+        },
+      };
+    }
+
+    window.openEditor = function (webhook) {
+      window.checkWebhookChangesBeforeClose = true;
+
+      window.form.setState(state => {
+        state.selectedWebhook = webhook;
+        state.isWebhookAdvancedOpen = false;
+
+        //  Ta fram vad vi ska visa i dropdownen över typer av händelser.
+        state.selectedWebhookEventGroup = state.webhookEventGroups.find(group =>
+          group.events.find(event => webhook.eventNames.includes(event.event))) || state.webhookEventGroups[0];
+
+        return state;
+      });
+
+      window.form.openModal('.webhook-editor', {
+        go: {
+          type: "ok",
+          children: "Spara",
+          onClick: () => window.saveWebhook(),
+        },
+        size: 'medium',
+        cancel: {},
+        onClose: () => {
+          
+          if (!window.checkWebhookChangesBeforeClose) {
+            return;
+          }
+
+          //  Kolla om webhooken har ändrats, isåfall fråga om rutan ska stängas.
+          const selectedWebhook = window.form.custom.selectedWebhook;
+          const initial = window.form.custom.webhooks.find(webhook => webhook.id === selectedWebhook.id);
+
+          if (JSON.stringify(selectedWebhook) !== JSON.stringify(initial) && 
+            !window.confirm("Vill du stänga redigeraren?")) {
+            return false; //  Stäng inte modalen.
+          }
+          
+          window.form.setState({ isPreviewOpen: false });
+        },
+        onHidden: () => {
+          //  .selectedWebhook är hur vi vet att .webhook-editor är öppen.
+          window.form.setState({ selectedWebhook: null });
+        }
+      });
+    }
+
+    //  Ändrar selectedWebhook
+    window.onWebhookChange = function (update) {
+      window.form.setState(state => {
+        if (state.selectedWebhook) {
+          return { selectedWebhook: window.applyUpdate(update, state.selectedWebhook) };
+        }
+      })
+    }
+
+    //  Ändrar selectedWebhook.reference
+    window.onWebhookReferenceChange = function (update) {
+      window.onWebhookChange(webhook => ({
+        reference: window.applyUpdate(update, webhook.reference)
+      }));
+    }
+
+    //  Ändrar selectedWebhook.reference[actionId]
+    window.onWebhookSettingsChange = function (update) {
+      window.onWebhookChange(webhook => {
+        const actionId = webhook.reference.actionId;
+        if (!actionId) {
+          return {};
+        }
+
+        return {
+          reference: {
+            ...webhook.reference,
+            //  Skilj på inställningar utifrån ID.
+            [actionId]: applyUpdate(update, webhook.reference[actionId] || {})
+          },
+        };
+      });
+    }
+
+    //  Returnerar nuvarande åtgärd.
+    window.getSelectedActionId = () => {
+      const webhook = window.form.custom.selectedWebhook;
+      return webhook ? webhook.reference.actionId : null;
+    }
+
+    //  Returnerar vad vi ska spara som webhook.parseReference.
+    window.getParseReferenceOptions = () => {
+      const webhook = window.form.custom.selectedWebhook;
+      const actionId = window.getSelectedActionId();
+        
+      if (actionId && window.form.custom.insertOptions) {
+        //  T.ex. { "säljare": { _text: "[[user.firstName]]" }, ... }
+        return {
+          ...webhook.parseReference || {},
+          defaultTextVariables:
+            window.form.custom.insertOptions.reduce((object, option) => {
+              object[option.text.toLowerCase()] = option.data;
+              return object;
+            }, {}),
+        };
+      }
+
+      return webhook.parseReference || {};
+    }
+
+    //  Likadant API och implementation som window.form.setValidationMessage.
+    //  Annorlunda namn för att inte förvirra med window.form.setValidationMessage samt för att
+    //  förtydliga att det är per action.
+    window.setActionValidation = function(id, message) {
+      if (arguments.length !== 2) {
+        //  Så man inte råkar skriva setValidationMessage("Vänligen ange epost")
+        throw new Error("You must pass an id and a message to setValidationMessage, for example setValidationMessage('email', 'Enter a valid email address')");
+      }
+      
+      const actionId = window.getSelectedActionId();
+      if (!actionId) {
+        return;
+      }
+
+      window.form.setState(state => {
+        state.validationMessageObject[actionId] = 
+          state.validationMessageObject[actionId] || {};
+        
+        state.validationMessageObject[actionId][id] = message;
+
+        return state;
+      });
+    }
+
+    //  Likadant API och implementation som window.form.removeValidationMessage.
+    window.removeActionValidation = function(id) {
+      if (typeof id !== 'string') {
+        throw new Error("Invalid id oassed to removeValidationMessage: " + JSON.stringify(id));
+      }
+      
+      const actionId = window.getSelectedActionId();
+      if (!actionId) {
+        return;
+      }
+
+      window.form.setState(state => {
+        if (state.validationMessageObject[actionId]) {
+          state.validationMessageObject[actionId][id] = null;
+        }
+        
+        return state;
+      });
+    }
+
+    //  Infogar text i senaste iklickad textruta.
+    window.insertText = function(text) {
+      let element = window.webhooksLastFocusedElement ||
+        document.querySelector('input[default-insert-target], textarea[default-insert-target], [default-insert-target] input, [default-insert-target] textarea');
+
+      if (element && !element.isConnected) {
+        element = null;
+      }
+
+      if (!element) {
+        throw new Error("No element to insert text to. Click on an element, or add an element: <Field default-insert-target=\"\" ...>");
+      }
+
+      let start = element.selectionStart;
+      
+      if (!window.webhooksLastFocusedElement) {
+        //  Om man inte har klickat på något element så är selectionStart=0, men vi ska infoga texten sist.
+        start = element.value.length;
+      }
+
+      if (start >= element.value.length && !text.endsWith(' ')) {
+        //  Anta att det ska vara ett mellanrum mellan den infogade texten.
+        text = ' ' + text;
+      }
+
+      element.value = element.value.substring(0, start) + text +
+        element.value.substring(start);
+
+      //  Kalla onChange från React, som läser av .value och uppdaterar state.
+      //  Denna funktionen är inbyggd i textfält.
+      element.onChange_original();
+    }
+
+    //  Hämtar förhandsgranskningsdata.
+    window.refreshPreview = async function(eventName) {
+      window.form.setState({ previewResult: null, previewError: null, previewFields: null });
+
+      const webhook = window.form.custom.selectedWebhook;
+      const actionId = window.getSelectedActionId();
+
+      try {
+        const url = new URL("/api/events/webhooks-v1/preview", document.location.origin);
+        //  TODO: kunna välja flera event names.
+        url.searchParams.set('eventName', eventName);
+
+        const response = await fetch(url, {
+          headers,
+          method: "POST",
+          body: JSON.stringify({
+            object: webhook.reference,
+            options: window.getParseReferenceOptions()
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.code === "202608210718") {
+          //  Vald händelse har inte hänt än.
+          result.localizedMessage = "För att kunna förhandsgranska måste vald händelse ha inträffat på kontot inom de 3 senaste månaderna.";
+        }
+
+        if (!response.ok) {
+          throw result;
+        }
+
+        //  Din komponent (åtgärd) kan ändra window.getPreviewFields för att
+        //  visa relevant information i förhandsgranskning.
+        if (window.getPreviewFields) {
+          const previewFields = window.getPreviewFields(result.object[actionId]);
+
+          if (!Array.isArray(previewFields)) {
+            throw new Error("getPreviewFields must return an array, returned: " + JSON.stringify(previewFields));
+          }
+
+          window.form.setState({
+            previewFields,
+          });
+        }
+
+        window.form.setState({
+          previewResult: {
+            ...result,
+            sourceJson: JSON.stringify(result.source, null, 2),
+          }
+        });
+
+      } catch (error) {
+        console.error("Error refreshing preview", error);
+        window.form.setState({ previewError: error });
+      }
+    }
+
+    window.form.addHook('set buttons', function () {
+      //  Visa spinner medan vi laddar in webhooks.
+      window.form.setBusy(window.form.custom.isRefreshingWebhooks);
+
+      window.form.setButton('add webhook', {
+        children: 'Lägg till',
+        icon: 'plus',
+        weight: 'primary',
+        disabled: !window.form.custom.webhookEvents,
+        onClick: () => {
+          window.openEditor(window.newWebhook());
+        },
+      });
+
+      if (window.form.custom.isDocsLinkVisible) {
+        window.form.setButton('docs', {
+          children: 'Dokumentation om denna vy',
+          size: 'compact',
+          icon: 'external-link-alt',
+          externalLinkTo: 'https://docs.google.com/document/d/1RzZRjFOP-aInqU1KCpqGdWOxEY7v-Vmw_D4xq_krSpA/edit?usp=sharing'
+        });
+      }
+    });
+
+    window.form.addHook('set webhook .settings', function () {
+      window.form.setState(state => {
+        state.webhooks = state.webhooks.map(webhook => {
+          //  Det kallas "settings" på vissa ställen - onWebhookSettingsChange
+          //  och för enkelhetens skull kan vi hänvisa till de relevanta inställningarna (vid actionId).
+          webhook.settings = webhook.reference[webhook.reference.actionId] || {};
+          return webhook;
+        });
+
+        if (state.selectedWebhook) {
+          state.selectedWebhook.settings =
+            state.selectedWebhook.reference[state.selectedWebhook.reference.actionId] || {};
+        }
+
+        return state;
+      });
+    });
+
+    window.form.addHook('set selectedAction', function() {
+      const webhook = window.form.custom.selectedWebhook;
+
+      if (!webhook || !webhook.reference.actionId) {
+        window.form.setState({
+          selectedAction: null
+        });
+
+        return;
+      }
+
+      window.form.setState(state => ({
+        selectedAction: state.actions.find(action => action.id === webhook.reference.actionId)
+      }));
+    });
+
+    window.form.addHook('set insertOptions', function() {
+      const webhook = window.form.custom.selectedWebhook;
+
+      if (!webhook) {
+        return;
+      }
+
+      window.form.setState(state => ({
+        insertOptions: window.insertOptions
+          .filter(option => {
+            //  Filtrera utifrån eventPrefix.
+            return !option.eventPrefix || !option.eventPrefix.length ||
+              option.eventPrefix.find(prefix =>
+                webhook.eventNames.find(name =>
+                name.startsWith(prefix.toLowerCase())));
+          })
+          .map(option => {
+            //  Vad som är sökbart i dropdown.
+            option.search = option.text;
+
+            return option;
+          })
+      }));
+    });
+
+    window.form.addHook('update editor', function() {
+      const webhook = window.form.custom.selectedWebhook;
+      if (!webhook) {
+        return;
+      }
+
+      const actionId = webhook.reference.actionId;
+
+      //  Valideringsmeddelanden är per åtgärd.
+      const validationMessages = Object.values(window.form.custom.validationMessageObject[actionId] || {})
+        .filter(message => message && typeof message === 'string');
+
+      window.form.setModal((modal, selector) => {
+        if (selector !== '.webhook-editor') {
+          return;
+        }
+
+        modal.go.disabled = validationMessages.length > 0;
+        modal.go.onClickCapture = () => {
+          if (validationMessages.length) {
+            window.form.notify(validationMessages[0]);
+          }
+        };
+
+        return modal;
+      })
+    });
+
+    window.form.setState(state => ({
+      validationMessageObject: state.validationMessageObject || {},
+      isDocsLinkVisible: location.hostname.includes('admin.')
+    }));
+
+  })();
+</script>

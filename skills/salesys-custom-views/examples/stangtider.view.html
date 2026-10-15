@@ -1,0 +1,689 @@
+<style>
+  .hours-item {
+    box-sizing: border-box;
+    padding: 24px;
+    background: var(--color-background-1);
+    border: 1px solid var(--color-background-3);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 440px;
+  }
+
+  .hours-item {
+    width: 360px;
+    transition: opacity 150ms ease-out;
+  }
+
+  .hours-item.partially-invisible {
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .hours-item.invisible {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .hours-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+</style>
+
+<div style="position: relative;">
+  <SettingsList>
+    {{#each settings.rules}}
+    <option value="{}" icon="clock" iconType="regular" label="{{label}}" tooltip="Redigera" {{#ifEq
+      ../custom.selectedRule.id id}} selected {{/ifEq}}
+      onClick="window.form.setState({ selectedRule: window.form.settings.rules.find(rule => rule.id === '{{id}}') }); window.openEditor();">
+      <!-- Testkommentar -->
+      {{#each summary}}
+      {{this}}<br />
+      {{/each}}
+    </option>
+    {{/each}}
+  </SettingsList>
+
+  <div class="hours-editor" modal>
+    {{#with custom.selectedRule}}
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+      <Field label="Från kl." value="{{afterTime}}" type="time" containerStyle="width: 100%" style="font-size: 18px"
+        onchange="window.onTimeChange('{{id}}', value, true)">
+      </Field>
+
+      <div>
+        <Field label="Till kl." value="{{beforeTime}}" type="time" containerStyle="width: 100%" style="font-size: 18px"
+          onchange="window.onTimeChange('{{id}}', value, false)">
+        </Field>
+
+        {{#if beforeHour}}
+        {{#ifLt beforeHour afterHour}}
+        <div style="font-size: 13px; color: var(--color-text-3); margin-top: 8px; padding-left: 8px;">Nästa dag</div>
+        {{/ifLt}}
+        {{/if}}
+      </div>
+    </div>
+
+    {{#ifEq weekdays.length 0}}
+    <div style="text-align: center; font-size: 14px; color: var(--color-text-3); margin-top: 8px;">
+      <i class="fas fa-exclamation-triangle"></i>&nbsp;
+      Du måste välja en eller flera veckodagar.
+    </div>
+    {{/ifEq}}
+
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+      {{#each ../custom.weekdays}}
+      <Tooltip delay="false" tooltip="{{lookup ../../custom.weekdaysLong @index}}">
+        <SecondaryButton {{#ifIncludes ../weekdays @index}} weight="primary" {{/ifIncludes}}
+          style="width: 42px; height: 42px; border-radius: 50%; padding: 0;" textStyle="padding: 0"
+          onClick="window.onRuleChange('{{../id}}', rule => ({ weekdays: window.toggle(rule.weekdays, {{@index}}) }))">
+          {{this}}
+        </SecondaryButton>
+      </Tooltip>
+      {{/each}}
+    </div>
+
+    <Transition boolLock="{{isDateVisible}}">
+      {{#either afterDate beforeDate isDateVisible}}
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+        <Field label="Från datum" type="date" value="{{formatDate afterDate 'YYYY-MM-DD'}}"
+          max="{{formatDate beforeDate 'YYYY-MM-DD'}}" containerStyle="width: 100%"
+          onChange="window.onRuleChange('{{id}}', { afterDate: value })"></Field>
+
+        <Field label="Till datum" type="date" value="{{formatDate beforeDate 'YYYY-MM-DD'}}"
+          min="{{formatDate afterDate 'YYYY-MM-DD'}}" containerStyle="width: 100%"
+          onChange="window.onRuleChange('{{id}}', { beforeDate: value })"></Field>
+      </div>
+      {{else}}
+      <SecondaryButton icon="calendar" size="compact" style="width: 100%"
+        onClick="window.onRuleChange('{{id}}', { isDateVisible: true })">
+        Välj specifika datum
+      </SecondaryButton>
+      {{/either}}
+    </Transition>
+
+    {{#ifEq phoneNumbers.length 0}}
+    <div style="text-align: center; font-size: 14px; color: var(--color-text-3); margin-top: 8px;">
+      <i class="fas fa-exclamation-triangle"></i>&nbsp;
+      Du måste välja ett nummer.
+    </div>
+    {{/ifEq}}
+
+    <Transition boolLock="{{isPhoneNumbersVisible}}">
+      {{#if isPhoneNumbersVisible}}
+
+      <Field label="Gäller telefonnummer" select-type="switches" switches-auto-sort containerStyle="width: 100%">
+        {{#each ../custom.phoneNumbers}}
+        <option value="{{id}}" {{#ifIncludes ../phoneNumbers phoneNumber}} selected {{/ifIncludes}}
+          onChange="window.onRuleChange('{{../id}}', rule => ({ phoneNumbers: window.toggle(rule.phoneNumbers, '{{phoneNumber}}') }))">
+          {{phoneNumber}}
+        </option>
+        {{/each}}
+      </Field>
+
+      {{else}}
+
+      <SecondaryButton size="compact" style="width: 100%" icon="pen"
+        onClick="window.onRuleChange('{{id}}', { isPhoneNumbersVisible: true })">
+        {{#ifGt phoneNumbers.length 1}}
+        {{phoneNumbers.length}} nummer
+        {{else}}
+
+        {{#ifGt phoneNumbers.length 0}}
+        {{lookup phoneNumbers 0}}
+        {{else}}
+        Välj nummer
+        {{/ifGt}}
+
+        {{/ifGt}}
+      </SecondaryButton>
+
+      {{/if}}
+    </Transition>
+
+    <div style="text-align: center; font-size: 14px; color: var(--color-text-3); margin-top: 8px;">
+      När någon ringer in under denna tid...
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <Transition boolLock="{{isAudioVisible}}">
+        <CheckboxField label="Spela ljud" {{#if isAudioVisible}} checked {{/if}}
+          onChange="window.onRuleChange('{{id}}', rule => ({ isAudioVisible: checked, audioUrl: checked ? rule.audioUrl : null }))">
+        </CheckboxField>
+
+        {{#if isAudioVisible}}
+        <Transition boolLock="{{isAudioUrlVisible}}">
+          <div
+            style="padding-top: 12px; padding-left: 36px; box-sizing: border-box; padding-bottom: 8px; display: flex; flex-direction: column; gap: 16px">
+            <SecondaryButton
+              icon="file-audio"
+              size="compact"
+              style="width: 100%"
+              onClick="document.getElementById('audio-{{'id'}}').click()"
+              {{#if isUploadingAudio}} disabled showTaskIndicator {{/if}}>
+              Välj ljudfil
+            </SecondaryButton>
+
+            <input
+              type="file"
+              class="hidden"
+              onChange="window.onAudioFileChange('{{id}}', event)"
+              accept="audio/wav"
+              id="audio-{{'id'}}">
+
+            <audio src="{{audioUrl}}" controls style="width: 100%"></audio>
+          </div>
+        </Transition>
+        {{/if}}
+      </Transition>
+
+      {{#if isAudioVisible}}
+      <div style="font-size: 14px; color: var(--color-text-3);">Och sen</div>
+      {{/if}}
+
+      <Transition lock="{{#ifEq type 'destination'}} 1 {{else}} 2 {{/ifEq}}">
+        <CheckboxField label="Vidarekoppla till nummer" {{#ifEq type 'destination' }} checked {{/ifEq}}
+          onChange="if (checked) { window.onRuleChange('{{id}}', { type: 'destination' }) }" type="radio">
+        </CheckboxField>
+
+        {{#ifEq type 'destination'}}
+        <div
+          style="padding-top: 12px; padding-left: 36px; box-sizing: border-box; padding-bottom: 8px; display: flex; flex-direction: column; gap: 8px">
+          <Field label="Nummer" onChange="window.onRuleChange('{{id}}', { destination: value })" maxLength="16"
+            containerStyle="width: 100%;" value="{{destination}}" placeholder="0770710658">
+          </Field>
+        </div>
+        {{/ifEq}}
+      </Transition>
+
+      <CheckboxField label="Lägg på" {{#ifEq type 'hangup' }} checked {{/ifEq}}
+        onChange="if (checked) { window.onRuleChange('{{id}}', { type: 'hangup' }) }" type="radio"></CheckboxField>
+    </div>
+    {{/with}}
+  </div>
+</div>
+
+<script>
+  (function () {
+
+    window.createId = function () {
+      return Date.now().toString();
+    }
+
+    window.applyUpdate = function (update, original) {
+      if (typeof update === 'function') {
+        update = update(original);
+      }
+
+      return { ...original, ...update };
+    }
+
+    window.toggle = function (array, element) {
+      if (!Array.isArray(array)) {
+        return [element];
+      }
+
+      if (!array.includes(element)) {
+        return [...array, element];
+      }
+
+      return array.filter(e => e !== element);
+    }
+
+    window.unique = function (array) {
+      return new Set(array);
+    }
+
+    window.push = function (array, element) {
+      if (!Array.isArray(array)) {
+        return [element];
+      }
+
+      array.push(element);
+      return array;
+    }
+
+    window.formatTime = function (hour, minute) {
+      minute = minute || 0;
+
+      return String(hour).padStart(2, "0") + ":" + String(minute).padStart(2, "0");
+    }
+
+    window.addRule = function () {
+      const rule = {
+        id: window.createId(),
+        weekdays: [0, 1, 2, 3, 4],
+        phoneNumbers: [],
+        type: 'destination',
+        isPhoneNumbersVisible: true,
+      };
+
+      window.form.setState(state => ({
+        selectedRule: rule
+      }));
+
+      window.openEditor();
+    }
+
+    window.openEditor = function () {
+      window.form.openModal('.hours-editor', {
+        title: "Vilken tid har ni stängt?",
+        onHidden: () => {
+          window.form.setState({ selectedRule: null });
+        },
+        separated: {
+          weight: "danger",
+          children: "Ta bort",
+          onClick: () => {
+            if (window.confirm('Vill du ta bort tiden?')) {
+              return window.removeRule(window.form.custom.selectedRule.id);
+            }
+          }
+        },
+        go: {
+          children: "Spara",
+          onClick: () => {
+            return window.saveRule();
+          }
+        },
+        cancel: {}
+      });
+    }
+
+    window.onRuleChange = function (ruleId, update) {
+      window.form.setState(state => {
+        if (state.selectedRule && state.selectedRule.id === ruleId) {
+          return {
+            selectedRule: { ...window.applyUpdate(update, state.selectedRule), isChanged: true }
+          };
+        }
+
+        return {};
+      });
+    }
+
+    window.onAudioFileChange = async function (ruleId, event) {
+      if (!event.currentTarget.files || !event.currentTarget.files.length) {
+        return;
+      }
+
+      window.onRuleChange(ruleId, { isUploadingAudio: true });
+
+      try {
+        const formData = new FormData();
+        formData.append('public', 'true');
+        formData.append('usage', 'Används för vyn Öppettider');
+        formData.append('file', event.currentTarget.files[0]);
+
+        const response = await window.fetch(
+          new URL("/api/users/files-v1", document.location.origin),
+          {
+            method: "POST",
+            body: formData,
+            headers: {
+              "Authorization": "Bearer " + window.getAccessToken(),
+            }
+          }
+        );
+
+        const result = await response.json();
+        if (!response.ok) {
+          throw result;
+        }
+
+        window.onRuleChange(ruleId, { audioUrl: result.url });
+
+        window.form.notify("Laddat upp ljudfil", "ok");
+
+      } catch (error) {
+        console.error("Error uploading file", error);
+        window.form.notify(error.localizedMessage || "Något gick snett");
+      }
+      
+      window.onRuleChange(ruleId, { isUploadingAudio: false });
+    }
+
+    window.onAudioUrlChange = function (ruleId, audioUrl) {
+      try {
+        const url = new URL(audioUrl);
+        window.onRuleChange(ruleId, { audioUrl });
+
+      } catch (error) {
+        //  Ej giltig URL, spara inte, och uppdatera inte spelaren.
+      }
+    }
+
+    window.onTimeChange = function (ruleId, value, isAfter) {
+      const parts = value.split(':').map(e => parseInt(e));
+
+      let update = {
+        beforeHour: parts[0],
+        beforeMinute: parts[1]
+      };
+
+      if (isAfter) {
+        update = {
+          afterHour: parts[0],
+          afterMinute: parts[1]
+        };
+      }
+
+      window.onRuleChange(ruleId, update);
+    }
+
+    window.getAccessToken = function () {
+      const cookies = document.cookie.split(';').reduce((object, cookie) => {
+        const regex = /(.+)=(.+)/;
+        const parts = regex.exec(cookie.trim());
+        if (!parts || !parts.length) {
+          console.warn("Unrecognized cookie %s", cookie, regex);
+          return object;
+        }
+
+
+        object[parts[1]] = parts[2];
+        return object;
+      }, {});
+
+
+      return cookies["s2_utoken"];
+    }
+
+    window.updateViewSettings = async function (update) {
+      if (window.form.preview) {
+        alert("Du kan inte göra ändringar vid förhandsgranskning.");
+        throw new Error("Preview");
+      }
+
+      //  Spara vyns inställningar, webhooken kollar på detta.
+      const viewId = window.form.view.id;
+
+      //  Hämta nuvarande inställningar om det har ändrats under tiden.
+      const latestView = await window.fetch(new URL("/api/users/views-v1/" + viewId, document.location.origin), {
+        headers: {
+          "Authorization": "Bearer " + window.getAccessToken(),
+          "Content-type": "application/json",
+        }
+      }).then(res => {
+        if (!res.ok) {
+          return res.text().then(text => { throw new Error(text); })
+        }
+        return res.json()
+      });
+
+      await window.fetch(new URL("/api/users/views-v1/" + window.form.view.id, document.location.origin), {
+        method: "PUT",
+        headers: {
+          "Authorization": "Bearer " + window.getAccessToken(),
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          presetState: window.applyUpdate(update, latestView.presetState)
+        })
+      });
+    }
+
+    window.removeRule = async function (ruleId) {
+      window.form.setState({ isRemovingRule: true });
+
+      try {
+        await window.updateViewSettings(settings => {
+          settings.rules = settings.rules || [];
+          settings.rules = settings.rules.filter(rule => rule.id !== ruleId);
+
+          window.form.setSettings({ rules: settings.rules });
+
+          return { rules: settings.rules };
+        });
+
+        window.form.notify("Tagit bort tid", "ok");
+
+        window.form.setState({
+          isRemovingRule: false,
+        });
+
+        window.form.closeModal();
+
+      } catch (error) {
+        console.error(error);
+        alert("Något gick snett. Prova igen senare.");
+      }
+
+      window.form.setState({
+        isRemovingRule: false,
+      });
+    }
+
+    //  Uppdaterar webhook på valda telefonnummer och sparar vyinställningar.
+    window.saveRule = async function () {
+      let rule = window.form.custom.selectedRule;
+      const ruleId = rule.id;
+
+      rule = {
+        ...rule,
+        isSaved: true,  //  Används för att inte spamma "lägg till"-knappen.
+        //  Spara inte denna.
+        isChanged: null,
+        isDateVisible: null,
+        isPhoneNumbersVisible: null,
+      };
+
+      window.form.setState({ isSavingRule: true });
+
+      try {
+        for (const phoneNumber of rule.phoneNumbers) {
+          const phoneNumberId = window.form.custom.phoneNumbers.find(element => element.phoneNumber === phoneNumber).id;
+
+          const webhookUrl = new URL("https://salesys.se/api/action-presets/opening_hours_routing/webhook.php");
+          webhookUrl.searchParams.set('viewId', window.form.view.id);
+
+          //  Lägg till webhook så att inkommande samtal hanteras.
+          await window.fetch(new URL("/api/dial/phone-numbers-v1/" + phoneNumberId, document.location.origin), {
+            method: "PUT",
+            headers: {
+              "Authorization": "Bearer " + window.getAccessToken(),
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              inboundConfiguration: {
+                ...(phoneNumber.inboundConfiguration || {}),
+                enabled: true,
+                webhookAuth: true,
+                url: webhookUrl.href,
+              }
+            })
+          });
+        }
+
+        await window.updateViewSettings(settings => {
+          settings.rules = settings.rules || [];
+          settings.rules = [
+            ...settings.rules.filter(r => r.id !== ruleId),
+            rule,
+          ];
+
+          window.form.setSettings({ rules: settings.rules });
+
+          return { rules: settings.rules };
+        });
+
+        window.form.notify("Sparat regel", "ok");
+
+        window.form.closeModal();
+
+      } catch (error) {
+        console.error(error);
+        alert("Något gick snett. Prova igen senare.");
+      }
+
+      window.form.setState({
+        isSavingRule: false
+      });
+    }
+
+    window.refreshPhoneNumbers = async function () {
+      window.form.setState({ isRefreshingPhoneNumbers: true });
+
+      try {
+        const phoneNumbers = await window.fetch(new URL("/api/dial/phone-numbers-v1", document.location.origin), {
+          headers: {
+            "Authorization": "Bearer " + getAccessToken()
+          }
+        })
+          .then(response => response.json());
+
+        window.form.setState({
+          phoneNumbers: phoneNumbers.filter(phoneNumber => phoneNumber.status === "ready"),
+          error: null
+        });
+
+      } catch (error) {
+        window.form.setState({ error });
+      }
+
+      window.form.setState({ isRefreshingPhoneNumbers: false });
+    }
+
+    window.refreshPhoneNumbers();
+
+    window.form.setState({
+      weekdays: ["Må", "Ti", "On", "To", "Fr", "Lö", "Sö"],
+      weekdaysLong: ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"],
+    });
+
+    window.form.addHook('set button', function () {
+      window.form.setButton('add', {
+        icon: 'plus',
+        weight: 'primary',
+        children: 'Lägg till',
+        onClick: () => window.addRule(),
+        disabled: Boolean(window.form.settings.rules && window.form.settings.rules.find(rule => !rule.isSaved))
+      });
+    });
+
+    window.form.addHook('set subtitle', function () {
+      const rules = window.form.settings.rules || [];
+
+      window.form.setSubtitle(!rules.length ? "Inga inlagda tider än." : null)
+    });
+
+    window.form.addHook('set rule time', function () {
+      if (!window.form.settings.rules) {
+        return;
+      }
+
+      //  Sparar en property som vi sätter på input type="time"
+      //  Undviker detta:
+      //  The specified value "16:3" does not conform to the required format
+      window.form.setSettings(settings => {
+        rules: settings.rules.map(rule => {
+          rule.afterTime = null;
+
+          if (typeof rule.afterHour === 'number') {
+            const minute = rule.afterMinute || 0;
+            rule.afterTime = String(rule.afterHour).padStart(2, '0') + ':' +
+              String(minute).padStart(2, '0');
+          }
+
+          if (typeof rule.beforeHour === 'number') {
+            const minute = rule.beforeMinute || 0;
+            rule.beforeTime = String(rule.beforeHour).padStart(2, '0') + ':' +
+              String(minute).padStart(2, '0');
+          }
+
+          return rule;
+        })
+      });
+    });
+
+    window.form.addHook('set rule error', function () {
+      if (!window.form.settings.rules) {
+        return;
+      }
+
+      window.form.setSettings(settings => ({
+        rules: settings.rules.map(rule => {
+          rule.error = null;
+
+          if (!rule.phoneNumbers.length) {
+            rule.error = "Välj ett nummer";
+          }
+
+          return rule;
+        }),
+      }));
+    })
+
+    window.form.addHook('set rule summary', function () {
+      if (!window.form.settings.rules) {
+        return;
+      }
+
+      window.form.setSettings(settings => ({
+        rules: settings.rules.map(rule => {
+          let summary = [];
+          let label = "Stängt";
+
+          //  veckodag
+          const weekdayNames = ["mån", "tis", "ons", "tor", "fre", "lör", "sön"];
+
+          const weekdays = [...rule.weekdays];
+          weekdays.sort();
+
+          if (JSON.stringify(weekdays) === JSON.stringify([0, 1, 2, 3, 4])) {
+            summary.push('Mån - fre');
+
+          } else if (weekdays.length) {
+            summary.push(weekdayNames.filter((name, index) => rule.weekdays.includes(index)).join(', '));
+
+          } else {
+            summary.push('Gäller ej (ingen veckodag valt)')
+          }
+
+
+          //  klockan
+          if (typeof rule.afterHour === 'number' && typeof rule.beforeHour === 'number') {
+            label += " " + (
+              window.formatTime(rule.afterHour, rule.afterMinute) + " - " +
+              window.formatTime(rule.beforeHour, rule.beforeMinute)
+            );
+
+          } else if (typeof rule.afterHour === 'number') {
+            label += " " + (
+              window.formatTime(rule.afterHour, rule.afterMinute) + "—"
+            );
+
+          } else if (typeof rule.beforeHour === 'number') {
+            label += " " + (
+              "—" + window.formatTime(rule.beforeHour, rule.beforeMinute)
+            );
+          }
+
+          //  nummer
+          if (rule.phoneNumbers.length) {
+            summary.push(rule.phoneNumbers.join(', '));
+          }
+
+          //  åtgärder
+          if (rule.audioUrl) {
+            summary.push('Spela upp ljud');
+          }
+
+          if (rule.type === 'destination' && rule.destination) {
+            summary.push('Vidarekoppla: ' + rule.destination);
+
+          } else if (rule.type === 'hangup') {
+            summary.push('Lägg på');
+          }
+
+          rule.label = label;
+          rule.summary = summary;
+          return rule;
+        }),
+      }));
+    });
+  })();
+</script>
