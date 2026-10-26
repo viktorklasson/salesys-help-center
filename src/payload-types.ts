@@ -69,6 +69,9 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    services: Service;
+    questions: Question;
+    'question-categories': QuestionCategory;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +81,9 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    questions: QuestionsSelect<false> | QuestionsSelect<true>;
+    'question-categories': QuestionCategoriesSelect<false> | QuestionCategoriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -87,8 +93,18 @@ export interface Config {
     defaultIDType: string;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'home-page': HomePage;
+    'services-page': ServicesPage;
+    'common-questions-page': CommonQuestionsPage;
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    'home-page': HomePageSelect<false> | HomePageSelect<true>;
+    'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
+    'common-questions-page': CommonQuestionsPageSelect<false> | CommonQuestionsPageSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -164,6 +180,110 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  name: string;
+  /**
+   * Visas i adressen: /reference/<adress>
+   */
+  slug: string;
+  /**
+   * En mening som visas på korten.
+   */
+  tagline: string;
+  intro: string;
+  whereToFind?: string | null;
+  features?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  gettingStarted?:
+    | {
+        step: string;
+        id?: string | null;
+      }[]
+    | null;
+  icon?:
+    | (
+        | 'calendar-days'
+        | 'circle-help'
+        | 'contact'
+        | 'file-text'
+        | 'log-in'
+        | 'message-circle'
+        | 'package'
+        | 'pen-line'
+        | 'phone-call'
+        | 'shopping-cart'
+        | 'users'
+        | 'webhook'
+      )
+    | null;
+  /**
+   * Lägre nummer visas först.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "questions".
+ */
+export interface Question {
+  id: string;
+  question: string;
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Valfri länk som visas under svaret.
+   */
+  link?: {
+    label?: string | null;
+    href?: string | null;
+  };
+  category: string | QuestionCategory;
+  /**
+   * Lägre nummer visas först inom kategorin.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "question-categories".
+ */
+export interface QuestionCategory {
+  id: string;
+  title: string;
+  /**
+   * Lägre nummer visas först.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -193,6 +313,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: string | Service;
+      } | null)
+    | ({
+        relationTo: 'questions';
+        value: string | Question;
+      } | null)
+    | ({
+        relationTo: 'question-categories';
+        value: string | QuestionCategory;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -279,6 +411,62 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  tagline?: T;
+  intro?: T;
+  whereToFind?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  gettingStarted?:
+    | T
+    | {
+        step?: T;
+        id?: T;
+      };
+  icon?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "questions_select".
+ */
+export interface QuestionsSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  link?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+      };
+  category?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "question-categories_select".
+ */
+export interface QuestionCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -316,6 +504,161 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page".
+ */
+export interface HomePage {
+  id: string;
+  lead: string;
+  getStartedService?: (string | null) | Service;
+  taskColumns?:
+    | {
+        title: string;
+        links?:
+          | {
+              label: string;
+              service: string | Service;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  helpLinks?:
+    | {
+        title: string;
+        description?: string | null;
+        url: string;
+        icon?:
+          | (
+              | 'calendar-days'
+              | 'circle-help'
+              | 'contact'
+              | 'file-text'
+              | 'log-in'
+              | 'message-circle'
+              | 'package'
+              | 'pen-line'
+              | 'phone-call'
+              | 'shopping-cart'
+              | 'users'
+              | 'webhook'
+            )
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services-page".
+ */
+export interface ServicesPage {
+  id: string;
+  lead: string;
+  /**
+   * Visas på varje funktionssida, följd av funktionens API-adress.
+   */
+  developerNote?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "common-questions-page".
+ */
+export interface CommonQuestionsPage {
+  id: string;
+  title: string;
+  /**
+   * Visas i blått efter rubriken.
+   */
+  highlightedTitle?: string | null;
+  lead?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: string;
+  metaDescription?: string | null;
+  footerText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page_select".
+ */
+export interface HomePageSelect<T extends boolean = true> {
+  lead?: T;
+  getStartedService?: T;
+  taskColumns?:
+    | T
+    | {
+        title?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              service?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  helpLinks?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        url?: T;
+        icon?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services-page_select".
+ */
+export interface ServicesPageSelect<T extends boolean = true> {
+  lead?: T;
+  developerNote?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "common-questions-page_select".
+ */
+export interface CommonQuestionsPageSelect<T extends boolean = true> {
+  title?: T;
+  highlightedTitle?: T;
+  lead?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  metaDescription?: T;
+  footerText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

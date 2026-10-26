@@ -1,15 +1,22 @@
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { buildConfig } from 'payload'
-import { fileURLToPath } from 'url'
-import sharp from 'sharp'
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import path from 'path';
+import { buildConfig } from 'payload';
+import { fileURLToPath } from 'url';
+import sharp from 'sharp';
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
+import { Users } from './collections/Users';
+import { Media } from './collections/Media';
+import { QuestionCategories } from './collections/QuestionCategories';
+import { Questions } from './collections/Questions';
+import { Services } from './collections/Services';
+import { CommonQuestionsPage } from './globals/CommonQuestionsPage';
+import { HomePage } from './globals/HomePage';
+import { ServicesPage } from './globals/ServicesPage';
+import { SiteSettings } from './globals/SiteSettings';
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
@@ -18,7 +25,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Services, Questions, QuestionCategories],
+  globals: [HomePage, ServicesPage, CommonQuestionsPage, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -29,4 +37,4 @@ export default buildConfig({
   }),
   sharp,
   plugins: [],
-})
+});

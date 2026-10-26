@@ -5,7 +5,7 @@ Complete reference for collection configurations and patterns.
 ## Basic Collection
 
 ```ts
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -43,7 +43,7 @@ export const Posts: CollectionConfig = {
   ],
   defaultSort: '-createdAt',
   timestamps: true,
-}
+};
 ```
 
 ## Auth Collection
@@ -77,7 +77,7 @@ export const Users: CollectionConfig = {
       required: true,
     },
   ],
-}
+};
 ```
 
 ## Upload Collection
@@ -120,7 +120,7 @@ export const Media: CollectionConfig = {
       localized: true,
     },
   ],
-}
+};
 ```
 
 ## Live Preview
@@ -128,20 +128,20 @@ export const Media: CollectionConfig = {
 Enable real-time content preview during editing.
 
 ```ts
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
 const generatePreviewPath = ({
   slug,
   collection,
   req,
 }: {
-  slug: string
-  collection: string
-  req: any
+  slug: string;
+  collection: string;
+  req: any;
 }) => {
-  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL
-  return `${baseUrl}/api/preview?slug=${slug}&collection=${collection}`
-}
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
+  return `${baseUrl}/api/preview?slug=${slug}&collection=${collection}`;
+};
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -168,7 +168,7 @@ export const Pages: CollectionConfig = {
     { name: 'title', type: 'text' },
     { name: 'slug', type: 'text' },
   ],
-}
+};
 ```
 
 ## Versioning & Drafts
@@ -176,14 +176,14 @@ export const Pages: CollectionConfig = {
 Payload maintains version history and supports draft/publish workflows.
 
 ```ts
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
 // Basic versioning (audit log only)
 export const Users: CollectionConfig = {
   slug: 'users',
   versions: true, // or { maxPerDoc: 100 }
   fields: [{ name: 'name', type: 'text' }],
-}
+};
 
 // Drafts enabled (draft/publish workflow)
 export const Posts: CollectionConfig = {
@@ -193,7 +193,7 @@ export const Posts: CollectionConfig = {
     maxPerDoc: 50,
   },
   fields: [{ name: 'title', type: 'text' }],
-}
+};
 
 // Full configuration with autosave and scheduled publish
 export const Pages: CollectionConfig = {
@@ -207,7 +207,7 @@ export const Pages: CollectionConfig = {
     maxPerDoc: 100, // Keep last 100 versions (0 = unlimited)
   },
   fields: [{ name: 'title', type: 'text' }],
-}
+};
 ```
 
 ### Draft API Usage
@@ -218,7 +218,7 @@ await payload.create({
   collection: 'posts',
   data: { title: 'Draft Post' },
   draft: true, // Saves as draft, skips required field validation
-})
+});
 
 // Update as draft
 await payload.update({
@@ -226,14 +226,14 @@ await payload.update({
   id: '123',
   data: { title: 'Updated Draft' },
   draft: true,
-})
+});
 
 // Read with drafts (returns newest draft if available)
 const post = await payload.findByID({
   collection: 'posts',
   id: '123',
   draft: true, // Returns draft version if exists
-})
+});
 
 // Query only published (REST API)
 // GET /api/posts (returns only _status: 'published')
@@ -245,13 +245,13 @@ export const Posts: CollectionConfig = {
   access: {
     read: ({ req: { user } }) => {
       // Public can only see published
-      if (!user) return { _status: { equals: 'published' } }
+      if (!user) return { _status: { equals: 'published' } };
       // Authenticated can see all
-      return true
+      return true;
     },
   },
   fields: [{ name: 'title', type: 'text' }],
-}
+};
 ```
 
 ### Document Status
@@ -267,7 +267,7 @@ The `_status` field is auto-injected when drafts are enabled:
 Globals are single-instance documents (not collections).
 
 ```ts
-import type { GlobalConfig } from 'payload'
+import type { GlobalConfig } from 'payload';
 
 export const Header: GlobalConfig = {
   slug: 'header',
@@ -299,5 +299,5 @@ export const Header: GlobalConfig = {
       ],
     },
   ],
-}
+};
 ```
