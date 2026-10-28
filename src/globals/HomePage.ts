@@ -19,12 +19,6 @@ export const HomePage: GlobalConfig = {
       required: true,
     },
     {
-      name: 'getStartedService',
-      label: '”Kom igång”-knappen leder till',
-      type: 'relationship',
-      relationTo: 'services',
-    },
-    {
       name: 'taskColumns',
       label: 'Populära uppgifter',
       type: 'array',

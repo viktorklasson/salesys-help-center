@@ -20,7 +20,7 @@ export function ServicePage({
     <article className="page">
       <div className="glow" />
       <div className="container">
-        <Link className="back" href="/reference">
+        <Link className="back" href="/service">
           <ArrowLeft size={16} /> Alla funktioner
         </Link>
 
@@ -28,11 +28,6 @@ export function ServicePage({
           <Icon className="page-icon" size={32} strokeWidth={1.5} />
           <h1>{service.name}</h1>
           <p className="lead">{service.intro}</p>
-          {service.whereToFind && (
-            <p className="chip chip--static">
-              <MapPin size={16} /> Hitta det i SaleSys: <strong>{service.whereToFind}</strong>
-            </p>
-          )}
         </header>
 
         {!!service.features?.length && (
@@ -51,19 +46,6 @@ export function ServicePage({
           </section>
         )}
 
-        {!!service.gettingStarted?.length && (
-          <section>
-            <h2>
-              Kom <b>igång</b>.
-            </h2>
-            <ol className="steps">
-              {service.gettingStarted.map(({ id, step }) => (
-                <li key={id}>{step}</li>
-              ))}
-            </ol>
-          </section>
-        )}
-
         {developerNote && (
           <section className="developer">
             <Code2 size={20} />
@@ -75,6 +57,7 @@ export function ServicePage({
                   {API_BASE_URL}/{service.slug}
                 </code>
               </p>
+                <p>Komplett information finns i tjänstens</p> 
             </div>
           </section>
         )}

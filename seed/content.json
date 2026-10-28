@@ -1,0 +1,1480 @@
+{
+  "media": [
+    {
+      "_id": {
+        "$oid": "6adf6756081c85ea3c5cac01"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:44:38.170Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:44:38.170Z"
+      },
+      "alt": "SaleSys logotyp",
+      "url": "/api/media/file/salesys-logo.webp",
+      "filename": "salesys-logo.webp",
+      "mimeType": "image/webp",
+      "filesize": 9106,
+      "width": 500,
+      "height": 117,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    }
+  ],
+  "services": [
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c41"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.530Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T15:16:24.572Z"
+      },
+      "name": "Samtal",
+      "slug": "dial",
+      "tagline": "Allt som har med samtal att göra - hur du ringer, hur ringlistor fungerar, osv.",
+      "intro": "Samtal är SaleSys:s viktigaste funktion. Ring kontakt för kontakt, låt systemet ringa flera samtidigt med prediktiv dialer, eller ring en enskild kontakt direkt. Tagga samtalet när du är klar så vet alla vad som hände.",
+      "whereToFind": "Samtal, Ringlistor",
+      "features": [
+        {
+          "title": "Ringlistor",
+          "description": "Samla kontakter du vill ringa. Importera från CSV eller lägg till manuellt. Välj vilka personer som ska ha åtkomst, vad som händer när kontakter inte svarar, och så mycket mer.",
+          "id": "6adf656b4a70a654ac5e6955"
+        },
+        {
+          "title": "Prediktiv dialer",
+          "description": "Systemet ringer flera kontakter samtidigt och kopplar dig när någon svarar.",
+          "id": "6adf656b4a70a654ac5e6956"
+        },
+        {
+          "title": "Samtalstaggar",
+          "description": "Markera hur samtalet gick, t.ex. ”Ring tillbaka” eller ”Ej intresserad”. Taggen vad som ska hända med samtalet, exempelvis om det ska dyka upp i ringlistan igen.",
+          "id": "6adf656b4a70a654ac5e6957"
+        },
+        {
+          "title": "Medlyssning",
+          "description": "Säljchefer kan lyssna på pågående samtal och viska tips till säljaren utan att kunden hör. Superbra för att coacha nya säljare i teamet.",
+          "id": "6adf656b4a70a654ac5e6958"
+        }
+      ],
+      "gettingStarted": [
+        {
+          "step": "Gå till Samtal → Ringlistor.",
+          "id": "6adf656b4a70a654ac5e6959"
+        },
+        {
+          "step": "Klicka på Lägg till, ge listan ett namn och välj team.",
+          "id": "6adf656b4a70a654ac5e695a"
+        },
+        {
+          "step": "Importera dina kontakter från en CSV-fil.",
+          "id": "6adf656b4a70a654ac5e695b"
+        },
+        {
+          "step": "Öppna listan och klicka på Starta för att börja ringa.",
+          "id": "6adf656b4a70a654ac5e695c"
+        }
+      ],
+      "icon": "phone-call",
+      "order": 10,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c4b"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.572Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.572Z"
+      },
+      "name": "Kontakter",
+      "slug": "contacts",
+      "tagline": "Allt om dina kunder och prospekt på ett ställe.",
+      "intro": "Kontakter är dina kunder och prospekt. Varje kontakt har sina egna fält, taggar och kommentarer – plus hela historiken av samtal, ordrar och avtal. All kontaktdata lagras krypterat.",
+      "whereToFind": "Samtal → Kontakter",
+      "features": [
+        {
+          "title": "Egna fält",
+          "description": "Bestäm själv vilken information ni sparar: namn, telefon, e-post, personnummer, datum med mera.",
+          "id": "6adf656b4a70a654ac5e695d"
+        },
+        {
+          "title": "Import från CSV",
+          "description": "Ladda upp kontakter direkt till en ringlista. Dubbletter hittas automatiskt och du väljer vad som ska hända med dem.",
+          "id": "6adf656b4a70a654ac5e695e"
+        },
+        {
+          "title": "Spärrlistor",
+          "description": "Se till att kontakter som inte vill bli uppringda aldrig hamnar i en ringlista.",
+          "id": "6adf656b4a70a654ac5e695f"
+        },
+        {
+          "title": "Full historik",
+          "description": "Se alla samtal, ordrar och avtal som hör till kontakten.",
+          "id": "6adf656b4a70a654ac5e6960"
+        }
+      ],
+      "gettingStarted": [
+        {
+          "step": "Be din administratör aktivera Kontakter under Inställningar → Funktioner.",
+          "id": "6adf656b4a70a654ac5e6961"
+        },
+        {
+          "step": "Ställ in vilka fält ni vill spara under Inställningar → Kontakter → Information.",
+          "id": "6adf656b4a70a654ac5e6962"
+        },
+        {
+          "step": "Importera dina första kontakter från en CSV-fil.",
+          "id": "6adf656b4a70a654ac5e6963"
+        }
+      ],
+      "icon": "contact",
+      "order": 20,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c4d"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.595Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.595Z"
+      },
+      "name": "Ordrar",
+      "slug": "orders",
+      "tagline": "Registrera försäljning och håll koll på varje affär.",
+      "intro": "En order är en genomförd försäljning – hjärtat i SaleSys. Du väljer produkter, fyller i orderfälten och lägger till taggar som visar var ordern befinner sig. Allt annat, som SMS och mejl till kunden, kan skötas automatiskt.",
+      "whereToFind": "Ordrar → Orderlista",
+      "features": [
+        {
+          "title": "Orderfält",
+          "description": "Fält som ni själva bestämmer. De kan fyllas i automatiskt från kontakten så du slipper skriva samma sak två gånger.",
+          "id": "6adf656b4a70a654ac5e6964"
+        },
+        {
+          "title": "Taggar",
+          "description": "Visa status på ordern. En tagg kan låsa ordern, markera en retur eller läggas till automatiskt.",
+          "id": "6adf656b4a70a654ac5e6965"
+        },
+        {
+          "title": "Automatiseringar",
+          "description": "Skicka SMS, mejl eller data till andra system direkt när en order skapas.",
+          "id": "6adf656b4a70a654ac5e6966"
+        },
+        {
+          "title": "Filer",
+          "description": "Bifoga filer till ordern, när den skapas eller i efterhand.",
+          "id": "6adf656b4a70a654ac5e6967"
+        }
+      ],
+      "gettingStarted": [
+        {
+          "step": "Gå till Ordrar och klicka på Lägg till.",
+          "id": "6adf656b4a70a654ac5e6968"
+        },
+        {
+          "step": "Fyll i orderfälten och välj produkter.",
+          "id": "6adf656b4a70a654ac5e6969"
+        },
+        {
+          "step": "Lägg till taggar om det behövs och spara.",
+          "id": "6adf656b4a70a654ac5e696a"
+        }
+      ],
+      "icon": "shopping-cart",
+      "order": 30,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c4f"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.601Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.601Z"
+      },
+      "name": "Avtal",
+      "slug": "offers",
+      "tagline": "Skicka avtal som kunden signerar med BankID, SMS eller ett klick.",
+      "intro": "Med Avtal skickar du ett digitalt avtal till kunden via mejl eller SMS. Kunden signerar direkt i mobilen, och du ser hela tiden om avtalet är skickat, läst eller signerat. När kunden har signerat kan en order skapas automatiskt.",
+      "whereToFind": "Ordrar → Avtal",
+      "features": [
+        {
+          "title": "Flera sätt att signera",
+          "description": "BankID, rita din signatur, ett klick eller svara på ett SMS.",
+          "id": "6adf656b4a70a654ac5e696b"
+        },
+        {
+          "title": "Mallar",
+          "description": "Bestäm utseende, signeringsmetod och innehåll en gång – återanvänd för varje avtal.",
+          "id": "6adf656b4a70a654ac5e696c"
+        },
+        {
+          "title": "Följ avtalet",
+          "description": "Se direkt när avtalet är skickat, läst, signerat eller nekat.",
+          "id": "6adf656b4a70a654ac5e696d"
+        },
+        {
+          "title": "Webbformulär",
+          "description": "Låt kunder fylla i och signera avtal själva via ett formulär på er webbplats.",
+          "id": "6adf656b4a70a654ac5e696e"
+        }
+      ],
+      "gettingStarted": [
+        {
+          "step": "Be din administratör skapa en avtalsmall under Inställningar → Avtal → Mallar.",
+          "id": "6adf656b4a70a654ac5e696f"
+        },
+        {
+          "step": "Gå till Avtal och välj mallen.",
+          "id": "6adf656b4a70a654ac5e6970"
+        },
+        {
+          "step": "Fyll i kundens uppgifter och välj produkter.",
+          "id": "6adf656b4a70a654ac5e6971"
+        },
+        {
+          "step": "Förhandsgranska och skicka via mejl eller SMS.",
+          "id": "6adf656b4a70a654ac5e6972"
+        }
+      ],
+      "icon": "pen-line",
+      "order": 40,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c51"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.605Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.605Z"
+      },
+      "name": "Produkter",
+      "slug": "products",
+      "tagline": "Det ni säljer – med priser, moms och kategorier.",
+      "intro": "Produkter är det ni säljer. De samlas i kategorier och väljs när du skapar en order eller ett avtal. Ändrar du en produkt i efterhand påverkas inte ordrar som redan är gjorda.",
+      "whereToFind": "Inställningar → Produkter",
+      "features": [
+        {
+          "title": "Kategorier",
+          "description": "Gruppera produkter och välj vilka team som ser dem och vilka orderfält som visas.",
+          "id": "6adf656b4a70a654ac5e6973"
+        },
+        {
+          "title": "Priser per team",
+          "description": "Sätt olika priser för olika team när det behövs.",
+          "id": "6adf656b4a70a654ac5e6974"
+        },
+        {
+          "title": "Produktfält",
+          "description": "Lägg till egen information på produkterna, fast eller ifylld av säljaren.",
+          "id": "6adf656b4a70a654ac5e6975"
+        },
+        {
+          "title": "Snabbsök",
+          "description": "Tryck Shift två gånger för att hitta en produkt direkt.",
+          "id": "6adf656b4a70a654ac5e6976"
+        }
+      ],
+      "gettingStarted": [
+        {
+          "step": "Gå till Inställningar → Produkter (kräver administratör).",
+          "id": "6adf656b4a70a654ac5e6977"
+        },
+        {
+          "step": "Klicka på Skapa kategori och ge den ett namn.",
+          "id": "6adf656b4a70a654ac5e6978"
+        },
+        {
+          "step": "Lägg till produkter med namn, pris och moms.",
+          "id": "6adf656b4a70a654ac5e6979"
+        }
+      ],
+      "icon": "package",
+      "order": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c53"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.611Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.611Z"
+      },
+      "name": "Kalender",
+      "slug": "calendar",
+      "tagline": "Boka möten och se dina kollegors kalendrar.",
+      "intro": "Kalendern visar en vecka i taget med dina och dina kollegors bokningar. Klicka på en tid för att boka, koppla mötet till en kontakt eller order och få en påminnelse innan det börjar. Synka med Google Kalender eller Outlook så har du allt på ett ställe.",
+      "whereToFind": "Kalender",
+      "features": [
+        {
+          "title": "Veckovy",
+          "description": "Se hela veckan på en gång och bläddra framåt och bakåt.",
+          "id": "6adf656b4a70a654ac5e697a"
+        },
+        {
+          "title": "Påminnelser",
+          "description": "Få en notis en viss tid innan, eller vid en exakt tidpunkt.",
+          "id": "6adf656b4a70a654ac5e697b"
+        },
+        {
+          "title": "Synk med Google & Outlook",
+          "description": "Dina externa möten dyker upp i SaleSys och tvärtom.",
+          "id": "6adf656b4a70a654ac5e697c"
+        },
+        {
+          "title": "Kollegors kalendrar",
+          "description": "Se när kollegor är lediga. Privata möten visas bara som ”Upptagen”.",
+          "id": "6adf656b4a70a654ac5e697d"
+        }
+      ],
+      "gettingStarted": [
+        {
+          "step": "Gå till Kalender.",
+          "id": "6adf656b4a70a654ac5e697e"
+        },
+        {
+          "step": "Klicka på en tid för att skapa en bokning.",
+          "id": "6adf656b4a70a654ac5e697f"
+        },
+        {
+          "step": "Fyll i titel och tid, och koppla gärna en kontakt eller order.",
+          "id": "6adf656b4a70a654ac5e6980"
+        }
+      ],
+      "icon": "calendar-days",
+      "order": 60,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c55"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.615Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.616Z"
+      },
+      "name": "Användare & team",
+      "slug": "users",
+      "tagline": "Lägg till säljare, skapa team och styr vem som ser vad.",
+      "intro": "Här hanterar du alla som använder SaleSys. Lägg till användare, samla dem i team och ge dem roller som styr vad de får se och göra. Administratörer har alltid full åtkomst.",
+      "whereToFind": "Inställningar → Användare",
+      "features": [
+        {
+          "title": "Team",
+          "description": "Gruppera säljare så att rätt personer ser rätt ringlistor, produkter och statistik.",
+          "id": "6adf656b4a70a654ac5e6981"
+        },
+        {
+          "title": "Roller & behörigheter",
+          "description": "Bestäm vad varje roll får göra med ordrar, avtal, samtal, kontakter och mer.",
+          "id": "6adf656b4a70a654ac5e6982"
+        },
+        {
+          "title": "Registreringslänkar",
+          "description": "Skicka en länk så att nya säljare kan skapa sitt konto själva.",
+          "id": "6adf656b4a70a654ac5e6983"
+        },
+        {
+          "title": "Tvåstegsverifiering",
+          "description": "Skydda kontot med en extra kod via mejl eller SMS.",
+          "id": "6adf656b4a70a654ac5e6984"
+        }
+      ],
+      "gettingStarted": [
+        {
+          "step": "Gå till Inställningar → Användare → Lista och klicka på Lägg till.",
+          "id": "6adf656b4a70a654ac5e6985"
+        },
+        {
+          "step": "Fyll i namn och e-post och välj team och roller.",
+          "id": "6adf656b4a70a654ac5e6986"
+        },
+        {
+          "step": "Skicka aktiveringslänken till den nya användaren.",
+          "id": "6adf656b4a70a654ac5e6987"
+        }
+      ],
+      "icon": "users",
+      "order": 70,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c57"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.621Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.621Z"
+      },
+      "name": "Dokument",
+      "slug": "documents",
+      "tagline": "Filer och dokument som hör till dina affärer.",
+      "intro": "Under Dokument hittar du filerna som hör till dina ordrar och avtal, till exempel signerade avtal som PDF och bilagor som du har laddat upp.",
+      "whereToFind": "Ordrar → öppna en order → Filer",
+      "features": [
+        {
+          "title": "Bifoga filer",
+          "description": "Ladda upp filer till en order när den skapas eller i efterhand.",
+          "id": "6adf656b4a70a654ac5e6988"
+        },
+        {
+          "title": "Signerade avtal",
+          "description": "Signerade avtal sparas som PDF så att du alltid kan hitta dem.",
+          "id": "6adf656b4a70a654ac5e6989"
+        },
+        {
+          "title": "Förhandsgranska",
+          "description": "Se hur ett avtal ser ut som PDF innan du skickar det.",
+          "id": "6adf656b4a70a654ac5e698a"
+        }
+      ],
+      "gettingStarted": [
+        {
+          "step": "Öppna en order.",
+          "id": "6adf656b4a70a654ac5e698b"
+        },
+        {
+          "step": "Gå till fliken Filer.",
+          "id": "6adf656b4a70a654ac5e698c"
+        },
+        {
+          "step": "Klicka på Ladda upp och välj filen.",
+          "id": "6adf656b4a70a654ac5e698d"
+        }
+      ],
+      "icon": "file-text",
+      "order": 80,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c59"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.626Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.626Z"
+      },
+      "name": "Händelser & webhooks",
+      "slug": "events",
+      "tagline": "Se vad som händer i systemet och skicka det vidare.",
+      "intro": "Händelseloggen visar vad som har hänt i SaleSys och när. Med webhooks kan du automatiskt skicka information till andra system, till exempel när en order skapas eller ändras eller när en bokning uppdateras.",
+      "whereToFind": "Statistik → Aktivitetslogg",
+      "features": [
+        {
+          "title": "Aktivitetslogg",
+          "description": "Se vem som gjorde vad och när. Bra när du vill förstå vad som hänt med en order.",
+          "id": "6adf656b4a70a654ac5e698e"
+        },
+        {
+          "title": "Webhooks",
+          "description": "Skicka information till ett annat system när något händer – utan att någon behöver göra det manuellt.",
+          "id": "6adf656b4a70a654ac5e698f"
+        },
+        {
+          "title": "Händelser du kan lyssna på",
+          "description": "Order skapad, order uppdaterad och kalenderbokning uppdaterad.",
+          "id": "6adf656b4a70a654ac5e6990"
+        }
+      ],
+      "gettingStarted": [
+        {
+          "step": "Ta reda på vilken adress (URL) det andra systemet tar emot data på.",
+          "id": "6adf656b4a70a654ac5e6991"
+        },
+        {
+          "step": "Skapa en webhook med adressen och välj vilka händelser som ska skickas.",
+          "id": "6adf656b4a70a654ac5e6992"
+        },
+        {
+          "step": "Skapa en testorder och kontrollera att det andra systemet tar emot den.",
+          "id": "6adf656b4a70a654ac5e6993"
+        }
+      ],
+      "icon": "webhook",
+      "order": 90,
+      "__v": 0
+    }
+  ],
+  "questions": [
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422d6"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.874Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.874Z"
+      },
+      "question": "Hur loggar jag in?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till app.salesys.se och logga in med uppgifterna du har fått av din administratör. Har du inte fått några? Be din administratör skicka en aktiveringslänk.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6adf5541073072b485d422d4"
+      },
+      "order": 10,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422d9"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.895Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.895Z"
+      },
+      "question": "Varför ser jag inte en funktion?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Funktionen kan vara avstängd för din organisation, eller så saknar du behörighet. Be din administratör aktivera den under Inställningar → Funktioner eller ge dig rätt roll.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {
+        "label": "Läs om roller och behörigheter",
+        "href": "/reference/users"
+      },
+      "category": {
+        "$oid": "6adf5541073072b485d422d4"
+      },
+      "order": 20,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422dc"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.903Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.903Z"
+      },
+      "question": "Hur skyddar jag mitt konto med tvåstegsverifiering?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Mitt konto och slå på tvåstegsverifiering. Du väljer om koden ska skickas via mejl eller SMS.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6adf5541073072b485d422d4"
+      },
+      "order": 30,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422e1"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.911Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.912Z"
+      },
+      "question": "Hur skapar jag en ringlista?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Samtal → Ringlistor och klicka på Lägg till. Ge listan ett namn, välj vilka team som ska ha åtkomst och importera dina kontakter från en CSV-fil.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {
+        "label": "Läs mer om Ringning",
+        "href": "/reference/dial"
+      },
+      "category": {
+        "$oid": "6adf5541073072b485d422df"
+      },
+      "order": 10,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422e4"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.918Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.918Z"
+      },
+      "question": "Vad betyder det att en kontakt är i karantän?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Kontakten ska ringas upp igen senare. Hur länge den ligger i karantän styrs av samtalstaggen du valde efter samtalet.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6adf5541073072b485d422df"
+      },
+      "order": 20,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422e7"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.925Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.925Z"
+      },
+      "question": "Hur slipper vi ringa personer som inte vill bli kontaktade?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Lägg dem i en spärrlista under Inställningar → Kontakter → Spärrlistor och koppla spärrlistan till dina ringlistor.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6adf5541073072b485d422df"
+      },
+      "order": 30,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422ea"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.932Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.932Z"
+      },
+      "question": "Vad händer med dubbletter när jag importerar kontakter?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "SaleSys hittar dubbletterna automatiskt. Du väljer själv om de ska uppdateras, skapas som nya eller hoppas över.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {
+        "label": "Läs mer om Kontakter",
+        "href": "/reference/contacts"
+      },
+      "category": {
+        "$oid": "6adf5541073072b485d422df"
+      },
+      "order": 40,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422ef"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.941Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.941Z"
+      },
+      "question": "Hur kan kunden signera ett avtal?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Med BankID, genom att rita sin signatur, med ett klick eller genom att svara på ett SMS.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {
+        "label": "Läs mer om Avtal",
+        "href": "/reference/offers"
+      },
+      "category": {
+        "$oid": "6adf5541073072b485d422ed"
+      },
+      "order": 10,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422f2"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.946Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.946Z"
+      },
+      "question": "Hur vet jag om kunden har läst avtalet?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Du ser statusen direkt på avtalet: Skickat, Läst, Signerat – eller Nekat, Utgånget eller Avbrutet.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6adf5541073072b485d422ed"
+      },
+      "order": 20,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422f5"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.952Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.952Z"
+      },
+      "question": "Kan en order skapas automatiskt när kunden har signerat?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ja. När avtalet är signerat kan en order skapas automatiskt.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6adf5541073072b485d422ed"
+      },
+      "order": 30,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422f8"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.957Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.957Z"
+      },
+      "question": "Påverkas gamla ordrar om jag ändrar priset på en produkt?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Nej. Varje order sparar produkten som den såg ut när ordern skapades, så gamla ordrar ändras aldrig.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {
+        "label": "Läs mer om Produkter",
+        "href": "/reference/products"
+      },
+      "category": {
+        "$oid": "6adf5541073072b485d422ed"
+      },
+      "order": 40,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422fd"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.964Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.964Z"
+      },
+      "question": "Kan jag synka med Google Kalender eller Outlook?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ja. Dina externa möten dyker upp i SaleSys, och dina SaleSys-möten i din vanliga kalender.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {
+        "label": "Läs mer om Kalender",
+        "href": "/reference/calendar"
+      },
+      "category": {
+        "$oid": "6adf5541073072b485d422fb"
+      },
+      "order": 10,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d42300"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.969Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.969Z"
+      },
+      "question": "Kan mina kollegor se mina privata möten?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Nej. Privata möten visas bara som ”Upptagen” för andra.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6adf5541073072b485d422fb"
+      },
+      "order": 20,
+      "__v": 0
+    }
+  ],
+  "question-categories": [
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422d4"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.867Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.867Z"
+      },
+      "title": "Kom igång",
+      "order": 10,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422df"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.909Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.909Z"
+      },
+      "title": "Ringning & kontakter",
+      "order": 20,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422ed"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.938Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.938Z"
+      },
+      "title": "Ordrar & avtal",
+      "order": 30,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422fb"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.962Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.962Z"
+      },
+      "title": "Kalender",
+      "order": 40,
+      "__v": 0
+    }
+  ],
+  "globals": [
+    {
+      "_id": {
+        "$oid": "6adf5541073072b485d422d2"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T13:27:29.842Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T13:27:29.842Z"
+      },
+      "globalType": "common-questions-page",
+      "title": "Vanliga",
+      "highlightedTitle": "frågor",
+      "lead": "Snabba svar på det som de flesta undrar över.",
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c5d"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.645Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.645Z"
+      },
+      "globalType": "home-page",
+      "lead": "Guider och svar för allt du gör i SaleSys.",
+      "getStartedService": {
+        "$oid": "6adf656b8107051a9a733c41"
+      },
+      "taskColumns": [
+        {
+          "title": "Sälja",
+          "links": [
+            {
+              "label": "Ring din ringlista",
+              "service": {
+                "$oid": "6adf656b8107051a9a733c41"
+              },
+              "id": "6adf656b4a70a654ac5e6994"
+            },
+            {
+              "label": "Skicka ett avtal för signering",
+              "service": {
+                "$oid": "6adf656b8107051a9a733c4f"
+              },
+              "id": "6adf656b4a70a654ac5e6995"
+            },
+            {
+              "label": "Registrera en order",
+              "service": {
+                "$oid": "6adf656b8107051a9a733c4d"
+              },
+              "id": "6adf656b4a70a654ac5e6996"
+            }
+          ],
+          "id": "6adf656b4a70a654ac5e6997"
+        },
+        {
+          "title": "Kunder & möten",
+          "links": [
+            {
+              "label": "Importera kontakter",
+              "service": {
+                "$oid": "6adf656b8107051a9a733c4b"
+              },
+              "id": "6adf656b4a70a654ac5e6998"
+            },
+            {
+              "label": "Boka ett möte",
+              "service": {
+                "$oid": "6adf656b8107051a9a733c53"
+              },
+              "id": "6adf656b4a70a654ac5e6999"
+            },
+            {
+              "label": "Bifoga filer till en order",
+              "service": {
+                "$oid": "6adf656b8107051a9a733c57"
+              },
+              "id": "6adf656b4a70a654ac5e699a"
+            }
+          ],
+          "id": "6adf656b4a70a654ac5e699b"
+        },
+        {
+          "title": "Administrera",
+          "links": [
+            {
+              "label": "Lägg till en ny säljare",
+              "service": {
+                "$oid": "6adf656b8107051a9a733c55"
+              },
+              "id": "6adf656b4a70a654ac5e699c"
+            },
+            {
+              "label": "Lägg upp produkter och priser",
+              "service": {
+                "$oid": "6adf656b8107051a9a733c51"
+              },
+              "id": "6adf656b4a70a654ac5e699d"
+            },
+            {
+              "label": "Koppla SaleSys till andra system",
+              "service": {
+                "$oid": "6adf656b8107051a9a733c59"
+              },
+              "id": "6adf656b4a70a654ac5e699e"
+            }
+          ],
+          "id": "6adf656b4a70a654ac5e699f"
+        }
+      ],
+      "helpLinks": [
+        {
+          "title": "Vanliga frågor",
+          "description": "Snabba svar på det de flesta undrar.",
+          "url": "/common-questions",
+          "icon": "circle-help",
+          "id": "6adf656b4a70a654ac5e69a0"
+        },
+        {
+          "title": "Kontakta oss",
+          "description": "Hittar du inte svaret? Vi hjälper dig.",
+          "url": "https://salesys.se/kontakt/",
+          "icon": "message-circle",
+          "id": "6adf656b4a70a654ac5e69a1"
+        },
+        {
+          "title": "Logga in i SaleSys",
+          "description": "Gå direkt till appen.",
+          "url": "https://app.salesys.se",
+          "icon": "log-in",
+          "id": "6adf656b4a70a654ac5e69a2"
+        }
+      ],
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c62"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.672Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.672Z"
+      },
+      "globalType": "services-page",
+      "lead": "Välj en funktion för att se vad den gör och hur du kommer igång.",
+      "developerNote": "Vill du koppla ihop den här funktionen med ett annat system? Använd vårt API på",
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c66"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.678Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.678Z"
+      },
+      "globalType": "site-settings",
+      "metaDescription": "Guider och svar på vanliga frågor om SaleSys.",
+      "footerText": "© 2026 SaleSys Sverige AB",
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6ae1a73c89fbbfab6aacc319"
+      },
+      "createdAt": {
+        "$date": "2026-10-28T07:41:48.402Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-28T08:22:06.016Z"
+      },
+      "globalType": "api-reference-page",
+      "lead": "Koppla ihop SaleSys med dina egna system. Här hittar du allt du behöver för att hämta och skicka data via vårt REST-API.",
+      "baseUrl": "https://app.salesys.se/api",
+      "exampleRequest": "curl https://app.salesys.se/api/users/me-v1 \\\n  -H \"Authorization: Bearer <access-token>\"",
+      "basics": [
+        {
+          "title": "Autentisering",
+          "text": "De flesta anrop kräver en access-token i headern `Authorization: Bearer <access-token>`. Systemanvändare kan använda API-nycklar.",
+          "id": "6ae1a73c6160426e60a00bae"
+        },
+        {
+          "title": "Adresser",
+          "text": "Alla adresser följer mönstret `/api/{tjänst}/{resurs}-v{version}`, till exempel `/api/users/me-v1`.",
+          "id": "6ae1a73c6160426e60a00baf"
+        },
+        {
+          "title": "ID:n",
+          "text": "Alla ID:n är MongoDB ObjectId – 24 tecken långa hex-strängar, till exempel `64a1b2c3d4e5f6a7b8c9d0e1`.",
+          "id": "6ae1a73c6160426e60a00bb0"
+        }
+      ],
+      "__v": 0,
+      "prerequisites": [
+        {
+          "title": "Hämta din access token",
+          "introduction": "En access token skapar du genom att först skapa en systemanvändare. Denna process förklaras nedan:",
+          "listStyle": "numbered",
+          "list": [
+            {
+              "item": "Inne i SaleSys, navigera till Inställningar > Användare >Lista.",
+              "id": "6ae1ac9de3bc98f825153583"
+            },
+            {
+              "item": "Säkerställ att du kan se alla systemanvändare, detta kan du göra genom att klicka på kugghjulet högst upp till vänster (till höger om sökrutan). Bocka sedan i \"Visa systemanvändare\".",
+              "id": "6ae1acdbe3bc98f825153585"
+            },
+            {
+              "item": "Klicka sedan på Lägg till. Bocka i \"Integration\" och ange ett namn. Klicka slutligen på \"Spara\".",
+              "id": "6ae1ad10e3bc98f825153587"
+            },
+            {
+              "item": "Navigera sedan till Användare > Roller och skapa en ny roll (klicka på Skapa). Här väljer du rättigheter för din token. Om du exempelvis bara vill kunna hämta ordrar, bocka då i Ordrar > Se alla. Efter att du har valt rättigheter, ge rollen ett namn, exempelvis \"System\" eller \"API\". Klicka sedan på \"Spara\".",
+              "id": "6ae1ad90e3bc98f825153589"
+            },
+            {
+              "item": "Navigera tillbaka till din systemanvändare och klicka på den. Klicka sedan på \"Team/roller\" och välj din nya roll som du precis skapade. och tryck på \"Spara\".",
+              "id": "6ae1ae3de3bc98f82515358b"
+            },
+            {
+              "item": "Slutligen, klicka på systemanvändaren igen och klicka på \"Skapa nyckel\". Formulera sedan en beskrivning vad nyckeln ska användas till, exempelvis \"Hämtar ordrar\". Välj sedan \"Skapa\" och kopiera nyckeln. Detta är din access token, spara den på ett säkert ställe.",
+              "id": "6ae1ae90e3bc98f82515358d"
+            }
+          ],
+          "id": "6ae1a9c862498837d0cce4f0"
+        },
+        {
+          "title": "Inledande information",
+          "introduction": "Här finner du lite inledande information som är bra att veta innan du bygger din integration.",
+          "listStyle": "bulleted",
+          "list": [
+            {
+              "item": "Bas-url:en för alla anrop är https://app.salesys.se/api.",
+              "id": "6ae1b010d5ad07e6153f7005"
+            },
+            {
+              "item": "Din access token behöver användas för alla anrop till SaleSys API, du skickar med den genom headern \"Authorization: Bearer <token>\" där <token> är din token.",
+              "id": "6ae1b039d5ad07e6153f7007"
+            },
+            {
+              "item": "Vi har rate-limiting aktiverat så försök att inte göra för många anrop på samma gång. Försök att gruppera dina anrop så mycket det går.",
+              "id": "6ae1b06bd5ad07e6153f7009"
+            }
+          ],
+          "id": "6ae1af72e3bc98f82515358f"
+        }
+      ]
+    }
+  ]
+}

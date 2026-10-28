@@ -43,8 +43,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
               <span className="logo-suffix">Docs</span>
             </Link>
             <nav>
-              <NavLink href="/reference">Funktioner</NavLink>
+              <NavLink href="/service">Funktioner</NavLink>
               <NavLink href="/common-questions">Vanliga frågor</NavLink>
+              <NavLink href="/api-reference">API-referens</NavLink>
             </nav>
           </div>
         </header>

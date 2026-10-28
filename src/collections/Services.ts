@@ -29,7 +29,7 @@ export const Services: CollectionConfig = {
           required: true,
           unique: true,
           index: true,
-          admin: { description: 'Visas i adressen: /reference/<adress>' },
+          admin: { description: 'Visas i adressen: /service/<adress>' },
         },
       ],
     },
@@ -47,12 +47,6 @@ export const Services: CollectionConfig = {
       required: true,
     },
     {
-      name: 'whereToFind',
-      label: 'Hitta det i SaleSys',
-      type: 'text',
-      admin: { placeholder: 'Samtal → Ringlistor' },
-    },
-    {
       name: 'features',
       label: 'Det här kan du göra',
       type: 'array',
@@ -62,13 +56,6 @@ export const Services: CollectionConfig = {
         { name: 'title', label: 'Rubrik', type: 'text', required: true },
         { name: 'description', label: 'Beskrivning', type: 'textarea', required: true },
       ],
-    },
-    {
-      name: 'gettingStarted',
-      label: 'Kom igång',
-      type: 'array',
-      labels: { singular: 'Steg', plural: 'Steg' },
-      fields: [{ name: 'step', label: 'Steg', type: 'text', required: true }],
     },
     {
       name: 'icon',

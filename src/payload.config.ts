@@ -10,6 +10,7 @@ import { Media } from './collections/Media';
 import { QuestionCategories } from './collections/QuestionCategories';
 import { Questions } from './collections/Questions';
 import { Services } from './collections/Services';
+import { ApiReferencePage } from './globals/ApiReferencePage';
 import { CommonQuestionsPage } from './globals/CommonQuestionsPage';
 import { HomePage } from './globals/HomePage';
 import { ServicesPage } from './globals/ServicesPage';
@@ -26,7 +27,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Services, Questions, QuestionCategories],
-  globals: [HomePage, ServicesPage, CommonQuestionsPage, SiteSettings],
+  globals: [HomePage, ServicesPage, ApiReferencePage, CommonQuestionsPage, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

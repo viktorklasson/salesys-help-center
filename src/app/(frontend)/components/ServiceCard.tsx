@@ -9,7 +9,7 @@ export function ServiceCard({ service }: { service: Service }) {
   const Icon = getIcon(service.icon);
 
   return (
-    <Link className="card card--link" href={`/reference/${service.slug}`}>
+    <Link className="card card--link" href={`/service/${service.slug}`}>
       <Icon className="card-icon" size={24} strokeWidth={1.7} />
       <h3>{service.name}</h3>
       <p>{service.tagline}</p>

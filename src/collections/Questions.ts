@@ -44,7 +44,7 @@ export const Questions: CollectionConfig = {
               name: 'href',
               label: 'Adress',
               type: 'text',
-              admin: { placeholder: '/reference/dial' },
+              admin: { placeholder: '/service/dial' },
             },
           ],
         },

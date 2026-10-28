@@ -96,12 +96,14 @@ export interface Config {
   globals: {
     'home-page': HomePage;
     'services-page': ServicesPage;
+    'api-reference-page': ApiReferencePage;
     'common-questions-page': CommonQuestionsPage;
     'site-settings': SiteSetting;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
+    'api-reference-page': ApiReferencePageSelect<false> | ApiReferencePageSelect<true>;
     'common-questions-page': CommonQuestionsPageSelect<false> | CommonQuestionsPageSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
@@ -186,7 +188,7 @@ export interface Service {
   id: string;
   name: string;
   /**
-   * Visas i adressen: /reference/<adress>
+   * Visas i adressen: /service/<adress>
    */
   slug: string;
   /**
@@ -194,17 +196,10 @@ export interface Service {
    */
   tagline: string;
   intro: string;
-  whereToFind?: string | null;
   features?:
     | {
         title: string;
         description: string;
-        id?: string | null;
-      }[]
-    | null;
-  gettingStarted?:
-    | {
-        step: string;
         id?: string | null;
       }[]
     | null;
@@ -418,18 +413,11 @@ export interface ServicesSelect<T extends boolean = true> {
   slug?: T;
   tagline?: T;
   intro?: T;
-  whereToFind?: T;
   features?:
     | T
     | {
         title?: T;
         description?: T;
-        id?: T;
-      };
-  gettingStarted?:
-    | T
-    | {
-        step?: T;
         id?: T;
       };
   icon?: T;
@@ -512,7 +500,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface HomePage {
   id: string;
   lead: string;
-  getStartedService?: (string | null) | Service;
   taskColumns?:
     | {
         title: string;
@@ -569,6 +556,43 @@ export interface ServicesPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "api-reference-page".
+ */
+export interface ApiReferencePage {
+  id: string;
+  lead: string;
+  /**
+   * Numrerade steg som fälls ut vid klick. Skriv kod inom `backticks`.
+   */
+  prerequisites?:
+    | {
+        title: string;
+        introduction: string;
+        listStyle?: ('numbered' | 'bulleted') | null;
+        list?:
+          | {
+              item: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Skriv kod inom `backticks` för att visa den som kod.
+   */
+  basics?:
+    | {
+        title: string;
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "common-questions-page".
  */
 export interface CommonQuestionsPage {
@@ -599,7 +623,6 @@ export interface SiteSetting {
  */
 export interface HomePageSelect<T extends boolean = true> {
   lead?: T;
-  getStartedService?: T;
   taskColumns?:
     | T
     | {
@@ -633,6 +656,37 @@ export interface HomePageSelect<T extends boolean = true> {
 export interface ServicesPageSelect<T extends boolean = true> {
   lead?: T;
   developerNote?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "api-reference-page_select".
+ */
+export interface ApiReferencePageSelect<T extends boolean = true> {
+  lead?: T;
+  prerequisites?:
+    | T
+    | {
+        title?: T;
+        introduction?: T;
+        listStyle?: T;
+        list?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  basics?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

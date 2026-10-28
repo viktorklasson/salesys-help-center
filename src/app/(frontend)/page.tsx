@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 
 // Relationships come back as full documents at depth 1, or as IDs if the service was deleted
 const serviceHref = (service: Service | string | null | undefined) =>
-  typeof service === 'object' && service ? `/reference/${service.slug}` : null;
+  typeof service === 'object' && service ? `/service/${service.slug}` : null;
 
 export default async function HomePage() {
   const payload = await getPayload({ config });
@@ -25,7 +25,6 @@ export default async function HomePage() {
   const popularQuestions = categories.docs
     .flatMap((category) => questions.docs.filter((q) => q.category === category.id))
     .slice(0, 4);
-  const getStartedHref = serviceHref(page.getStartedService);
 
   return (
     <div className="home">
@@ -36,11 +35,6 @@ export default async function HomePage() {
           <h1>Docs</h1>
           {page.lead && <p className="lead">{page.lead}</p>}
           <div className="home-actions">
-            {getStartedHref && (
-              <Link className="btn-primary" href={getStartedHref}>
-                Kom igång
-              </Link>
-            )}
             <Link className="text-link" href="#funktioner">
               Utforska alla funktioner <ArrowRight size={16} />
             </Link>
@@ -94,7 +88,7 @@ export default async function HomePage() {
           {services.docs.map((service) => {
             const Icon = getIcon(service.icon);
             return (
-              <Link className="product" href={`/reference/${service.slug}`} key={service.id}>
+              <Link className="product" href={`/service/${service.slug}`} key={service.id}>
                 <span className="product-icon">
                   <Icon size={20} strokeWidth={1.7} />
                 </span>
