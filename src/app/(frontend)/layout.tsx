@@ -3,8 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getPayload } from 'payload';
 import React from 'react';
-import { NavLink } from './components/NavLink';
-import './styles.css';
+// Global styles first, so component and page styles can build on them
+import './globals.css';
+import './layout.css';
+import { MobileMenu } from './components/MobileMenu/MobileMenu';
+import { NavLink } from './components/NavLink/NavLink';
 import { Metadata } from 'next';
 
 import config from '@/payload.config';
@@ -33,6 +36,15 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props;
   const settings = await getSiteSettings();
 
+  // Shown in the header on large screens and in the hamburger menu on small ones
+  const navLinks = (
+    <>
+      <NavLink href="/service">Funktioner</NavLink>
+      <NavLink href="/common-questions">Vanliga frågor</NavLink>
+      <NavLink href="/api-reference">API-referens</NavLink>
+    </>
+  );
+
   return (
     <html className={`${nunito.variable} ${nunitoSans.variable}`} lang="sv">
       <body>
@@ -42,11 +54,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
               <Image alt="SaleSys" height={28} width={120} priority src="/api/media/file/salesys-logo.webp" />
               <span className="logo-suffix">Docs</span>
             </Link>
-            <nav>
-              <NavLink href="/service">Funktioner</NavLink>
-              <NavLink href="/common-questions">Vanliga frågor</NavLink>
-              <NavLink href="/api-reference">API-referens</NavLink>
-            </nav>
+            <nav className="site-nav">{navLinks}</nav>
+            <MobileMenu>{navLinks}</MobileMenu>
           </div>
         </header>
         <main>{children}</main>

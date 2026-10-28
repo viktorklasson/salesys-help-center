@@ -1,0 +1,267 @@
+/* Header */
+
+.api-service-icon {
+  margin-bottom: 20px;
+  color: var(--blue);
+}
+
+.api-service-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  font-size: 15px;
+  color: var(--muted);
+
+  code {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: var(--blue);
+    background: var(--blue-tint);
+  }
+}
+
+.api-empty {
+  padding: 32px;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: 18px;
+}
+
+/* Endpoint list */
+
+.endpoint-group {
+  max-width: 960px;
+
+  & + & {
+    margin-top: 40px;
+  }
+
+  h2 {
+    margin: 0 0 12px;
+    font-family: var(--font-body), sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+}
+
+.endpoint-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  interpolate-size: allow-keywords;
+
+  > li + li {
+    border-top: 1px solid var(--divider);
+  }
+
+  > li.is-deprecated summary {
+    opacity: 0.55;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      background: var(--blue-tint);
+
+      .row-summary {
+        color: var(--blue);
+      }
+    }
+  }
+
+  /* Round the hover background with the list's corners */
+  > li:first-child summary {
+    border-radius: 14px 14px 0 0;
+  }
+
+  > li:last-child details:not([open]) summary {
+    border-radius: 0 0 14px 14px;
+  }
+
+  details[open] .row-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Smooth open/close where supported (Chrome/Edge), instant elsewhere */
+  details::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.3s var(--ease),
+      content-visibility 0.3s allow-discrete;
+  }
+
+  details[open]::details-content {
+    height: auto;
+  }
+}
+
+.row-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  flex-grow: 1;
+  min-width: 0;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.row-path {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 13px;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: none;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+}
+
+.row-chevron {
+  flex-shrink: 0;
+  color: var(--muted);
+  transition: transform 0.3s var(--ease);
+}
+
+.endpoint-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* Lined up with the summary text, past the method label */
+  padding: 4px 20px 24px 92px;
+  font-size: 15px;
+
+  @media (max-width: 700px) {
+    padding-left: 20px;
+  }
+}
+
+/* The row hides the path on small screens, so show it in the details instead */
+.details-path {
+  display: none;
+  align-self: flex-start;
+  font-size: 13px;
+  word-break: break-all;
+
+  @media (max-width: 700px) {
+    display: block;
+  }
+}
+
+.path-param {
+  color: var(--blue);
+}
+
+.method {
+  flex-shrink: 0;
+  width: 58px;
+  padding: 3px 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.method--get {
+  color: #157347;
+  background: #e5f6ec;
+}
+
+.method--post {
+  color: var(--blue);
+  /* A shade deeper than the row hover, so it doesn't disappear */
+  background: #e3eefa;
+}
+
+.method--put,
+.method--patch {
+  color: #9a6400;
+  background: #fff4dc;
+}
+
+.method--delete {
+  color: #b42335;
+  background: #fde8eb;
+}
+
+.badge {
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #9a6400;
+  background: #fff4dc;
+  border-radius: 999px;
+}
+
+/* Parameters */
+
+/* Small uppercase label above a block in the opened details, e.g. "Parametrar" */
+.details-heading {
+  margin: 0 0 4px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.parameters {
+  dl {
+    margin: 0;
+  }
+
+  dl > div {
+    padding: 8px 0;
+    border-top: 1px solid var(--divider);
+  }
+
+  dt {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  dd {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+}
+
+.param-type,
+.param-in {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.param-required {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b42335;
+}

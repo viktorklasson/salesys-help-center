@@ -5,6 +5,8 @@ import React from 'react';
 
 import { getIcon } from '@/icons';
 import config from '@/payload.config';
+import { FormattedText } from '../components/FormattedText/FormattedText';
+import './page.css';
 
 // Always render with the latest content from the CMS
 export const dynamic = 'force-dynamic';
@@ -12,10 +14,6 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'API-referens | SaleSys Docs',
 };
-
-// Renders `backticks` in CMS text as inline code
-const withInlineCode = (text: string) =>
-  text.split(/`([^`]+)`/).map((part, i) => (i % 2 ? <code key={i}>{part}</code> : part));
 
 export default async function ApiReferencePage() {
   const payload = await getPayload({ config });
@@ -33,7 +31,7 @@ export default async function ApiReferencePage() {
             <h1>
               API-<b>referens</b>.
             </h1>
-            {page.lead && <p className="lead">{page.lead}</p>}
+            <FormattedText className="lead" data={page.lead} />
           </div>
         </section>
 
@@ -49,11 +47,13 @@ export default async function ApiReferencePage() {
                       {/* Same name = only one step open at a time */}
                       <details name="prerequisites">
                         <summary>{step.title}</summary>
-                        <p>{withInlineCode(step.introduction)}</p>
+                        <FormattedText data={step.introduction} />
                         {!!step.list?.length && (
                           <List className="prerequisite-steps">
                             {step.list.map(({ id, item }) => (
-                              <li key={id}>{withInlineCode(item)}</li>
+                              <li key={id}>
+                                <FormattedText data={item} />
+                              </li>
                             ))}
                           </List>
                         )}
@@ -64,24 +64,27 @@ export default async function ApiReferencePage() {
               </ol>
             </div>
           )}
-          <ul className="endpoint-list">
-            {services.docs.map((service) => {
-              const Icon = getIcon(service.icon);
-              return (
-                <li key={service.id}>
-                  <Link href={`/api-reference/${service.slug}`}>
-                    <Icon className="endpoint-icon" size={20} strokeWidth={1.7} />
-                    <span className="endpoint-name">
-                      <strong>{service.name}</strong>
-                      <span>{service.tagline}</span>
-                    </span>
-                    <code className="endpoint-path">/{service.slug}</code>
-                    <ChevronRight className="endpoint-arrow" size={18} />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div>
+            <h2>Tjänster</h2>
+            <ul className="endpoint-list">
+              {services.docs.map((service) => {
+                const Icon = getIcon(service.icon);
+                return (
+                  <li key={service.id}>
+                    <Link href={`/api-reference/${service.slug}`}>
+                      <Icon className="endpoint-icon" size={20} strokeWidth={1.7} />
+                      <span className="endpoint-name">
+                        <strong>{service.name}</strong>
+                        <span>{service.tagline}</span>
+                      </span>
+                      <code className="endpoint-path">/{service.slug}</code>
+                      <ChevronRight className="endpoint-arrow" size={18} />
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </section>
       </div>
     </div>

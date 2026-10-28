@@ -2,7 +2,8 @@ import { getPayload } from 'payload';
 import React from 'react';
 
 import config from '@/payload.config';
-import { ServiceCard } from '../components/ServiceCard';
+import { FormattedText } from '../components/FormattedText/FormattedText';
+import { ServiceCard } from '../components/ServiceCard/ServiceCard';
 
 // Always render with the latest content from the CMS
 export const dynamic = 'force-dynamic';
@@ -26,7 +27,7 @@ export default async function ReferencePage() {
           <h1>
             Alla <b>funktioner</b>.
           </h1>
-          {page.lead && <p className="lead">{page.lead}</p>}
+          <FormattedText className="lead" data={page.lead} />
         </header>
         <div className="grid">
           {services.docs.map((service) => (

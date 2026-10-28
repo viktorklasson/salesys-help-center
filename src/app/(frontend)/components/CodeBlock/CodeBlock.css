@@ -1,0 +1,30 @@
+.code-block {
+  margin: 0;
+  overflow: hidden;
+  background: #0a111f;
+  border-radius: 14px;
+
+  figcaption {
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #8d9aaf;
+    background: #111b2d;
+  }
+
+  pre {
+    max-height: 420px;
+    margin: 0;
+    padding: 16px;
+    overflow: auto;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  code {
+    padding: 0;
+    font-size: inherit;
+    color: #f2f5f9;
+    background: none;
+  }
+}

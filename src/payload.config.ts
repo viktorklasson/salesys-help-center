@@ -9,6 +9,7 @@ import { Users } from './collections/Users';
 import { Media } from './collections/Media';
 import { QuestionCategories } from './collections/QuestionCategories';
 import { Questions } from './collections/Questions';
+import { Endpoints } from './collections/Endpoints';
 import { Services } from './collections/Services';
 import { ApiReferencePage } from './globals/ApiReferencePage';
 import { CommonQuestionsPage } from './globals/CommonQuestionsPage';
@@ -26,7 +27,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Services, Questions, QuestionCategories],
+  collections: [Users, Media, Services, Endpoints, Questions, QuestionCategories],
   globals: [HomePage, ServicesPage, ApiReferencePage, CommonQuestionsPage, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

@@ -1,5 +1,7 @@
 import type { GlobalConfig } from 'payload';
 
+import { formattedText } from '../fields/formattedText';
+
 export const CommonQuestionsPage: GlobalConfig = {
   slug: 'common-questions-page',
   label: 'Sidinställningar',
@@ -29,11 +31,9 @@ export const CommonQuestionsPage: GlobalConfig = {
         },
       ],
     },
-    {
+    formattedText({
       name: 'lead',
       label: 'Ingress',
-      type: 'textarea',
-      defaultValue: 'Snabba svar på det som de flesta undrar över.',
-    },
+    }),
   ],
 };

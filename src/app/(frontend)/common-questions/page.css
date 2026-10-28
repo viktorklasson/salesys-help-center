@@ -1,0 +1,72 @@
+.page .container--narrow h2 {
+  margin: 64px 0 20px;
+  font-size: 28px;
+}
+
+.faq {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+
+  details + details {
+    border-top: 1px solid var(--divider);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 28px;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    color: var(--heading);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      color: var(--blue);
+    }
+
+    svg {
+      flex-shrink: 0;
+      color: var(--blue);
+      transition: transform 0.3s var(--ease);
+    }
+  }
+
+  details[open] summary svg {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer,
+  details > .card-more {
+    padding: 0 28px;
+  }
+
+  .faq-answer:last-child,
+  details > .card-more {
+    padding-bottom: 24px;
+  }
+
+  .faq-answer {
+    p + p,
+    ul,
+    ol {
+      margin-top: 12px;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: underline;
+    }
+  }
+
+  details > .card-more {
+    padding-top: 12px;
+  }
+}

@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload';
 
+import { formattedText } from '../fields/formattedText';
 import { iconOptions } from '../icons';
 
 export const HomePage: GlobalConfig = {
@@ -12,12 +13,11 @@ export const HomePage: GlobalConfig = {
     read: () => true,
   },
   fields: [
-    {
+    formattedText({
       name: 'lead',
       label: 'Ingress',
-      type: 'textarea',
       required: true,
-    },
+    }),
     {
       name: 'taskColumns',
       label: 'Populära uppgifter',

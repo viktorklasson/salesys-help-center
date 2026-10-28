@@ -6,6 +6,8 @@ import React from 'react';
 import { getIcon } from '@/icons';
 import type { Service } from '@/payload-types';
 import config from '@/payload.config';
+import { FormattedText } from './components/FormattedText/FormattedText';
+import './page.css';
 
 // Always render with the latest content from the CMS
 export const dynamic = 'force-dynamic';
@@ -33,10 +35,13 @@ export default async function HomePage() {
       <section className="container home-hero">
         <div>
           <h1>Docs</h1>
-          {page.lead && <p className="lead">{page.lead}</p>}
+          <FormattedText className="lead" data={page.lead} />
           <div className="home-actions">
-            <Link className="text-link" href="#funktioner">
+            <Link className="text-link" href="/service">
               Utforska alla funktioner <ArrowRight size={16} />
+            </Link>
+            <Link className="text-link" href="/api-reference">
+              Se API-referens <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -56,50 +61,6 @@ export default async function HomePage() {
             </Link>
           </aside>
         )}
-      </section>
-
-      {!!page.taskColumns?.length && (
-        <section className="container home-tasks">
-          {page.taskColumns.map((column) => (
-            <div key={column.id}>
-              <h2>{column.title}</h2>
-              <ul className="link-list">
-                {column.links?.map((link) => {
-                  const href = serviceHref(link.service);
-                  return (
-                    href && (
-                      <li key={link.id}>
-                        <Link href={href}>
-                          {link.label} <ArrowRight size={14} />
-                        </Link>
-                      </li>
-                    )
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
-        </section>
-      )}
-
-      <section className="container" id="funktioner">
-        <h2 className="home-section-title">Bläddra bland funktioner</h2>
-        <div className="product-grid">
-          {services.docs.map((service) => {
-            const Icon = getIcon(service.icon);
-            return (
-              <Link className="product" href={`/service/${service.slug}`} key={service.id}>
-                <span className="product-icon">
-                  <Icon size={20} strokeWidth={1.7} />
-                </span>
-                <span>
-                  <strong>{service.name}</strong>
-                  <span>{service.tagline}</span>
-                </span>
-              </Link>
-            );
-          })}
-        </div>
       </section>
 
       {!!page.helpLinks?.length && (

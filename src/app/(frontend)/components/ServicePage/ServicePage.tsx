@@ -3,7 +3,9 @@ import Link from 'next/link';
 import React from 'react';
 
 import { getIcon } from '@/icons';
-import type { Service } from '@/payload-types';
+import type { Service, ServicesPage } from '@/payload-types';
+import { FormattedText } from '../FormattedText/FormattedText';
+import './ServicePage.css';
 
 const API_BASE_URL = 'https://app.salesys.se/api';
 
@@ -11,7 +13,7 @@ export function ServicePage({
   developerNote,
   service,
 }: {
-  developerNote?: string | null;
+  developerNote?: ServicesPage['developerNote'];
   service: Service;
 }) {
   const Icon = getIcon(service.icon);
@@ -27,7 +29,7 @@ export function ServicePage({
         <header className="page-header">
           <Icon className="page-icon" size={32} strokeWidth={1.5} />
           <h1>{service.name}</h1>
-          <p className="lead">{service.intro}</p>
+          <FormattedText className="lead" data={service.intro} />
         </header>
 
         {!!service.features?.length && (
@@ -39,7 +41,7 @@ export function ServicePage({
               {service.features.map((feature) => (
                 <div className="card" key={feature.id}>
                   <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
+                  <FormattedText data={feature.description} />
                 </div>
               ))}
             </div>
@@ -51,8 +53,8 @@ export function ServicePage({
             <Code2 size={20} />
             <div>
               <h3>För utvecklare</h3>
+              <FormattedText data={developerNote} />
               <p>
-                {developerNote}{' '}
                 <code>
                   {API_BASE_URL}/{service.slug}
                 </code>

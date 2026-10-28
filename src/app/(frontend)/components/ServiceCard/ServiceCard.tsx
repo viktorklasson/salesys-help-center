@@ -4,6 +4,7 @@ import React from 'react';
 
 import { getIcon } from '@/icons';
 import type { Service } from '@/payload-types';
+import './ServiceCard.css';
 
 export function ServiceCard({ service }: { service: Service }) {
   const Icon = getIcon(service.icon);

@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     services: Service;
+    endpoints: Endpoint;
     questions: Question;
     'question-categories': QuestionCategory;
     'payload-kv': PayloadKv;
@@ -82,6 +83,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
+    endpoints: EndpointsSelect<false> | EndpointsSelect<true>;
     questions: QuestionsSelect<false> | QuestionsSelect<true>;
     'question-categories': QuestionCategoriesSelect<false> | QuestionCategoriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -195,11 +197,39 @@ export interface Service {
    * En mening som visas på korten.
    */
   tagline: string;
-  intro: string;
+  intro: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   features?:
     | {
         title: string;
-        description: string;
+        description: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
         id?: string | null;
       }[]
     | null;
@@ -222,6 +252,63 @@ export interface Service {
   /**
    * Lägre nummer visas först.
    */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "endpoints".
+ */
+export interface Endpoint {
+  id: string;
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  /**
+   * Skriv parametrar inom <>, t.ex. <userId>.
+   */
+  path: string;
+  summary: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Läggs in i cURL-exemplet med -d.
+   */
+  requestBody?: string | null;
+  parameters?:
+    | {
+        name: string;
+        in: 'path' | 'query' | 'header';
+        type?: string | null;
+        required?: boolean | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  responseStatus?: number | null;
+  responseDescription?: string | null;
+  responseExample?: string | null;
+  service: string | Service;
+  /**
+   * Endpoints med samma avsnitt visas tillsammans, t.ex. ”Teams”.
+   */
+  group?: string | null;
+  /**
+   * Visas nedtonad med en varning.
+   */
+  deprecated?: boolean | null;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -312,6 +399,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'services';
         value: string | Service;
+      } | null)
+    | ({
+        relationTo: 'endpoints';
+        value: string | Endpoint;
       } | null)
     | ({
         relationTo: 'questions';
@@ -427,6 +518,36 @@ export interface ServicesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "endpoints_select".
+ */
+export interface EndpointsSelect<T extends boolean = true> {
+  method?: T;
+  path?: T;
+  summary?: T;
+  description?: T;
+  requestBody?: T;
+  parameters?:
+    | T
+    | {
+        name?: T;
+        in?: T;
+        type?: T;
+        required?: T;
+        description?: T;
+        id?: T;
+      };
+  responseStatus?: T;
+  responseDescription?: T;
+  responseExample?: T;
+  service?: T;
+  group?: T;
+  deprecated?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "questions_select".
  */
 export interface QuestionsSelect<T extends boolean = true> {
@@ -499,7 +620,21 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface HomePage {
   id: string;
-  lead: string;
+  lead: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   taskColumns?:
     | {
         title: string;
@@ -546,11 +681,39 @@ export interface HomePage {
  */
 export interface ServicesPage {
   id: string;
-  lead: string;
+  lead: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   /**
    * Visas på varje funktionssida, följd av funktionens API-adress.
    */
-  developerNote?: string | null;
+  developerNote?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -560,31 +723,63 @@ export interface ServicesPage {
  */
 export interface ApiReferencePage {
   id: string;
-  lead: string;
+  lead: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   /**
-   * Numrerade steg som fälls ut vid klick. Skriv kod inom `backticks`.
+   * Numrerade steg som fälls ut vid klick.
    */
   prerequisites?:
     | {
         title: string;
-        introduction: string;
+        introduction: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
         listStyle?: ('numbered' | 'bulleted') | null;
         list?:
           | {
-              item: string;
+              item: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
               id?: string | null;
             }[]
           | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Skriv kod inom `backticks` för att visa den som kod.
-   */
-  basics?:
-    | {
-        title: string;
-        text: string;
         id?: string | null;
       }[]
     | null;
@@ -602,7 +797,21 @@ export interface CommonQuestionsPage {
    * Visas i blått efter rubriken.
    */
   highlightedTitle?: string | null;
-  lead?: string | null;
+  lead?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -678,13 +887,6 @@ export interface ApiReferencePageSelect<T extends boolean = true> {
               item?: T;
               id?: T;
             };
-        id?: T;
-      };
-  basics?:
-    | T
-    | {
-        title?: T;
-        text?: T;
         id?: T;
       };
   updatedAt?: T;

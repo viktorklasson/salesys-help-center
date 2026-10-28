@@ -5,6 +5,8 @@ import { getPayload } from 'payload';
 import React from 'react';
 
 import config from '@/payload.config';
+import { FormattedText } from '../components/FormattedText/FormattedText';
+import './page.css';
 
 // Always render with the latest content from the CMS
 export const dynamic = 'force-dynamic';
@@ -37,7 +39,7 @@ export default async function CommonQuestionsPage() {
           <h1>
             {page.title} {page.highlightedTitle && <b>{page.highlightedTitle}</b>}.
           </h1>
-          {page.lead && <p className="lead">{page.lead}</p>}
+          <FormattedText className="lead" data={page.lead} />
         </header>
 
         {groups.map((group) => (

@@ -1,0 +1,10 @@
+.nav-link {
+  &:hover {
+    color: var(--blue);
+  }
+
+  &[aria-current='page'] {
+    font-weight: 600;
+    color: var(--blue);
+  }
+}

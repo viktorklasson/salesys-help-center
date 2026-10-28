@@ -1,0 +1,252 @@
+.api-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 48px 0 64px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.base-url {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 32px;
+  overflow: hidden;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  span {
+    padding: 8px 14px;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--divider);
+  }
+
+  code {
+    padding: 8px 14px;
+    background: #fff;
+  }
+}
+
+.code-window {
+  overflow: hidden;
+  background: #0a111f;
+  border-radius: 18px;
+  box-shadow: 0 20px 46px rgba(20, 60, 120, 0.18);
+
+  pre {
+    margin: 0;
+    padding: 20px 24px 24px;
+    overflow-x: auto;
+  }
+
+  code {
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #f2f5f9;
+    background: none;
+  }
+}
+
+.code-window-bar {
+  display: flex;
+  gap: 8px;
+  padding: 14px 18px;
+  background: #111b2d;
+
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #17233a;
+  }
+}
+
+.prerequisites {
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.prerequisites-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  interpolate-size: allow-keywords;
+
+  /* Only the steps themselves, not items in a nested list */
+  > li {
+    counter-increment: step;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    color: var(--heading);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Step number */
+    &::before {
+      content: counter(step);
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 15px;
+      color: #fff;
+      background: var(--blue);
+    }
+
+    /* + that turns into × when open */
+    &::after {
+      content: '+';
+      margin-left: auto;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--blue);
+      transition: transform 0.3s var(--ease);
+    }
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+
+  details[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  /* The step introduction, not the paragraphs inside list items */
+  details > .formatted-text {
+    padding: 0 0 20px 48px;
+  }
+
+  /* Numbered list inside an opened step */
+  .prerequisite-steps {
+    margin: -8px 0 0;
+    padding: 0 0 20px 70px;
+
+    li {
+      padding: 4px 0;
+    }
+
+    li::marker {
+      font-weight: 600;
+      color: var(--blue);
+    }
+  }
+
+  /* Smooth open/close where supported (Chrome/Edge), instant elsewhere */
+  details::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.3s var(--ease),
+      content-visibility 0.3s allow-discrete;
+  }
+
+  details[open]::details-content {
+    height: auto;
+  }
+}
+
+.api-basics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  padding: 40px 0;
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+
+  h3 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+.endpoint-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  li + li {
+    border-top: 1px solid var(--divider);
+  }
+
+  a {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 18px 24px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: var(--blue-tint);
+
+      .endpoint-arrow {
+        color: var(--blue);
+        transform: translateX(3px);
+      }
+    }
+  }
+}
+
+.endpoint-icon {
+  flex-shrink: 0;
+  color: var(--blue);
+}
+
+.endpoint-name {
+  flex-grow: 1;
+
+  strong {
+    display: block;
+    color: var(--heading);
+  }
+
+  span {
+    font-size: 15px;
+    color: var(--muted);
+  }
+}
+
+.endpoint-path {
+  flex-shrink: 0;
+  color: var(--blue);
+  background: var(--blue-tint);
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.endpoint-arrow {
+  flex-shrink: 0;
+  color: var(--muted);
+  transition:
+    transform 0.2s var(--ease),
+    color 0.2s;
+}

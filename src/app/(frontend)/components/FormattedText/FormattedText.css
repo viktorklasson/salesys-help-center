@@ -1,0 +1,15 @@
+.formatted-text {
+  p + p {
+    margin-top: 0.75em;
+  }
+
+  strong {
+    font-weight: 700;
+    color: var(--heading);
+  }
+
+  /* Underline is rendered as an inline style, not a <u> tag */
+  [style*='underline'] {
+    text-underline-offset: 3px;
+  }
+}

@@ -1,5 +1,7 @@
 import type { GlobalConfig } from 'payload';
 
+import { formattedText } from '../fields/formattedText';
+
 export const ApiReferencePage: GlobalConfig = {
   slug: 'api-reference-page',
   label: 'API-referens',
@@ -10,23 +12,22 @@ export const ApiReferencePage: GlobalConfig = {
     read: () => true,
   },
   fields: [
-    {
+    formattedText({
       name: 'lead',
       label: 'Ingress',
-      type: 'textarea',
       required: true,
-    },
+    }),
     {
       name: 'prerequisites',
       label: 'Börja här',
       type: 'array',
       labels: { singular: 'Steg', plural: 'Steg' },
       admin: {
-        description: 'Numrerade steg som fälls ut vid klick. Skriv kod inom `backticks`.',
+        description: 'Numrerade steg som fälls ut vid klick.',
       },
       fields: [
         { name: 'title', label: 'Rubrik', type: 'text', required: true },
-        { name: 'introduction', label: 'Introduktion', type: 'text', required: true },
+        formattedText({ name: 'introduction', label: 'Introduktion', required: true, code: true }),
         {
           name: 'listStyle',
           label: 'Listtyp',
@@ -43,22 +44,9 @@ export const ApiReferencePage: GlobalConfig = {
           label: 'Lista',
           type: 'array',
           labels: { singular: 'Punkt', plural: 'Punkter' },
-          fields: [{ name: 'item', label: 'Punkt', type: 'text', required: true }],
+          fields: [formattedText({ name: 'item', label: 'Punkt', required: true, code: true })],
         },
       ],
-    },
-    {
-      name: 'basics',
-      label: 'Grunderna',
-      type: 'array',
-      labels: { singular: 'Avsnitt', plural: 'Avsnitt' },
-      admin: {
-        description: 'Skriv kod inom `backticks` för att visa den som kod.',
-      },
-      fields: [
-        { name: 'title', label: 'Rubrik', type: 'text', required: true },
-        { name: 'text', label: 'Text', type: 'textarea', required: true },
-      ],
-    },
+    }
   ],
 };

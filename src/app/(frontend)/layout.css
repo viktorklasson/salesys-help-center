@@ -1,0 +1,61 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 12px rgba(20, 60, 120, 0.04);
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  height: 68px;
+  padding: 10px;
+
+  .site-nav {
+    display: flex;
+    gap: 32px;
+    margin-right: auto;
+
+    /* Replaced by the hamburger menu (see MobileMenu) */
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    width: auto;
+    height: 28px;
+  }
+
+  .logo-suffix {
+    font-family: var(--font-heading), sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--muted);
+  }
+}
+
+.site-footer {
+  padding: 40px 0;
+  font-size: 15px;
+  color: var(--muted);
+  border-top: 1px solid var(--divider);
+}
+
+.site-footer-inner {
+  display: flex;
+  justify-content: center;
+
+  a:hover {
+    color: var(--blue);
+  }
+}

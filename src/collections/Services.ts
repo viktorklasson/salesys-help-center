@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload';
 
+import { formattedText } from '../fields/formattedText';
 import { iconOptions } from '../icons';
 
 export const Services: CollectionConfig = {
@@ -40,12 +41,11 @@ export const Services: CollectionConfig = {
       required: true,
       admin: { description: 'En mening som visas på korten.' },
     },
-    {
+    formattedText({
       name: 'intro',
       label: 'Introduktion',
-      type: 'textarea',
       required: true,
-    },
+    }),
     {
       name: 'features',
       label: 'Det här kan du göra',
@@ -54,7 +54,7 @@ export const Services: CollectionConfig = {
       admin: { initCollapsed: true },
       fields: [
         { name: 'title', label: 'Rubrik', type: 'text', required: true },
-        { name: 'description', label: 'Beskrivning', type: 'textarea', required: true },
+        formattedText({ name: 'description', label: 'Beskrivning', required: true }),
       ],
     },
     {

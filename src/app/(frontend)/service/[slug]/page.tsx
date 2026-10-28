@@ -4,7 +4,7 @@ import { getPayload } from 'payload';
 import React from 'react';
 
 import config from '@/payload.config';
-import { ServicePage } from '../../components/ServicePage';
+import { ServicePage } from '../../components/ServicePage/ServicePage';
 
 // Always render with the latest content from the CMS
 export const dynamic = 'force-dynamic';

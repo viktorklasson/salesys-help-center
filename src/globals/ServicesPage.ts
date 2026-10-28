@@ -1,5 +1,7 @@
 import type { GlobalConfig } from 'payload';
 
+import { formattedText } from '../fields/formattedText';
+
 export const ServicesPage: GlobalConfig = {
   slug: 'services-page',
   label: 'Funktionssidor',
@@ -10,19 +12,17 @@ export const ServicesPage: GlobalConfig = {
     read: () => true,
   },
   fields: [
-    {
+    formattedText({
       name: 'lead',
       label: 'Ingress på ”Alla funktioner”',
-      type: 'textarea',
       required: true,
-    },
-    {
+    }),
+    formattedText({
       name: 'developerNote',
       label: 'Text i ”För utvecklare”-rutan',
-      type: 'textarea',
       admin: {
         description: 'Visas på varje funktionssida, följd av funktionens API-adress.',
       },
-    },
+    }),
   ],
 };
