@@ -41,6 +41,48 @@
       "focalX": 50,
       "focalY": 50,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6ae336ecff0763e730d22967"
+      },
+      "createdAt": {
+        "$date": "2026-10-29T12:07:08.742Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-29T12:07:08.742Z"
+      },
+      "alt": "Exempel på en orderhändelse",
+      "url": "/api/media/file/orderhandelse-example.png",
+      "filename": "orderhandelse-example.png",
+      "mimeType": "image/png",
+      "filesize": 7463,
+      "width": 537,
+      "height": 62,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6ae33718ff0763e730d2299d"
+      },
+      "createdAt": {
+        "$date": "2026-10-29T12:07:52.987Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-29T12:07:52.987Z"
+      },
+      "alt": "Exempel på info om orderhändelse",
+      "url": "/api/media/file/orderhandelse-info-example.png",
+      "filename": "orderhandelse-info-example.png",
+      "mimeType": "image/png",
+      "filesize": 8531,
+      "width": 370,
+      "height": 250,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
     }
   ],
   "services": [
@@ -3316,71 +3358,17 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc805"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.067Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.844Z"
-      },
-      "method": "GET",
-      "path": "/api/orders/orders-v2/sum",
-      "summary": "Summera ordervärden",
-      "parameters": [
-        {
-          "name": "groupBy",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf674"
-        },
-        {
-          "name": "fieldId",
-          "in": "query",
-          "type": "ObjectId",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf675"
-        },
-        {
-          "name": "from",
-          "in": "query",
-          "type": "string (date-time)",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf676"
-        },
-        {
-          "name": "to",
-          "in": "query",
-          "type": "string (date-time)",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf677"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Ordersumma (totalt eller grupperat)",
-      "responseExample": "{\n  \"sum\": 0\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Orders",
-      "deprecated": false,
-      "order": 840,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c4e1bab63cbf762bc80b"
       },
       "createdAt": {
         "$date": "2026-10-28T09:48:17.077Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.859Z"
+        "$date": "2026-10-29T11:34:48.854Z"
       },
       "method": "PUT",
       "path": "/api/orders/orders-v2/<orderId>",
-      "summary": "Uppdatera en order (v2)",
+      "summary": "Uppdatera en order",
       "parameters": [
         {
           "name": "orderId",
@@ -3398,7 +3386,8 @@
       "group": "Orders",
       "deprecated": false,
       "order": 860,
-      "__v": 0
+      "__v": 0,
+      "requestBody": "{\r\n  // Alla fält är valfria - skicka ett, några eller alla.\r\n\r\n  // Ersätter alla taggar på ordern\r\n  \"tagIds\": [\r\n\t\"6ae32f1c93ffe8dfeb426af2\",\r\n\t\"6ae32f22e22e8364fce57da4\"\r\n  ],\r\n  \r\n  // Lista över tagg-ID:n att lägga till (behåller befintliga taggar)\r\n  \"addTagIds\": [\r\n    \"6643a1b8c2d4e5f607182960\",\r\n    \"6643a1b8c2d4e5f607182961\"\r\n  ],\r\n\r\n  // Lista över tagg-ID:n som ska tas bort från ordern\r\n  \"removeTagIds\": [\r\n    \"6643a1b8c2d4e5f607182962\"\r\n  ],\r\n\r\n  // Ersätter orderns fält\r\n  \"replaceFields\": [\r\n    {\r\n      \"fieldId\": \"6643a1b8c2d4e5f607182963\",\r\n      \"value\": \"Ja\"\r\n    },\r\n    {\r\n      \"fieldId\": \"6643a1b8c2d4e5f607182964\",\r\n      \"value\": \"Anna Lindgren\"\r\n    }\r\n  ],\r\n\r\n  // Ersätter alla produkter på ordern\r\n  \"products\": [\r\n    {\r\n      \"productId\": \"6643a1b8c2d4e5f607182965\",\r\n      \"quantity\": \"3\",\r\n      \"price\": \"3490.00\",\r\n      \"salaryBasis\": \"300.00\",\r\n      \"vat\": \"25\"\r\n    }\r\n  ],\r\n\r\n  // Ytterligare produkter som läggs till utöver de befintliga\r\n  \"addProducts\": [\r\n    {\r\n      \"productId\": \"6643a1b8c2d4e5f607182966\",\r\n      \"quantity\": \"1\",\r\n      \"price\": \"1290.00\",\r\n      \"salaryBasis\": \"150.00\",\r\n      \"vat\": \"25\"\r\n    }\r\n  ],\r\n\r\n  // Lista över produkt-ID:n som ska tas bort från ordern\r\n  \"removeProductIds\": [\r\n    \"6643a1b8c2d4e5f607182967\"\r\n  ],\r\n\r\n  \"businessDate\": \"2026-10-29T12:00:00.000Z\",\r\n\r\n  \"userId\": \"6643a1b8c2d4e5f607182968\",\r\n\r\n  \"projectId\": \"6643a1b8c2d4e5f607182969\"\r\n}"
     },
     {
       "_id": {
@@ -4957,61 +4946,17 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c885649571a981ca41c8"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.468Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.439Z"
-      },
-      "method": "GET",
-      "path": "/api/orders/after-order-work-action-updates-v1/<id>",
-      "summary": "Hämta uppdateringar för efterarbete",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a30"
-        },
-        {
-          "name": "beforeUpdateProperties",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c885597b815580b92a31"
-        },
-        {
-          "name": "sortOrder",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c885597b815580b92a32"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "After order work",
-      "order": 1510,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c885649571a981ca41cb"
       },
       "createdAt": {
         "$date": "2026-10-28T10:03:49.474Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.445Z"
+        "$date": "2026-10-29T11:53:23.985Z"
       },
-      "method": "PUT",
-      "path": "/api/orders/after-order-work-v1/<id>",
-      "summary": "Skapa ett efterarbete",
+      "method": "POST",
+      "path": "/api/orders/after-order-work-v1",
+      "summary": "Skapa ett orderarbete",
       "parameters": [
         {
           "name": "id",
@@ -5037,14 +4982,14 @@
         "$date": "2026-10-28T10:03:49.497Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.471Z"
+        "$date": "2026-10-29T12:08:03.999Z"
       },
       "method": "POST",
-      "path": "/api/orders/external-order-events-v1/<id>",
+      "path": "/api/orders/external-order-events-v1/<orderId>",
       "summary": "Skapa en extern orderhändelse",
       "parameters": [
         {
-          "name": "id",
+          "name": "orderId",
           "in": "path",
           "type": "ObjectId",
           "required": true,
@@ -5057,7 +5002,57 @@
       },
       "group": "External order events",
       "order": 1550,
-      "__v": 0
+      "__v": 0,
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om du använder SaleSys API till ett externt system, exempelvis att du skapar ordrar, så kan du via denna endpoint lägga till händelser på ordrarna.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6ae336ec0dddde7786a28182",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6ae336ecff0763e730d22967"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6ae337180dddde7786a28185",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6ae33718ff0763e730d2299d"
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "requestBody": "{\r\n  // Information som visas när man klickar på händelsen.\r\n  \"data\": [\r\n    {\r\n      \"key\": \"betalsatt\",\r\n      \"name\": \"Betalsätt\",\r\n      \"value\": \"Autogiro\"\r\n    }\r\n  ],\r\n  \r\n  //Rubrik.\r\n  \"description\": \"Betalning registrerad\",\r\n  \r\n  // Underrubrik.\r\n  \"subtitleParts\": [\r\n    \"Kund utförde betalningen\"\r\n  ],\r\n  \r\n  //Namn på en (ej pro) FontAwesome v5-ikon.\r\n  \"icon\": {\r\n    \"name\": \"credit-card\"\r\n  }\r\n}"
     },
     {
       "_id": {
