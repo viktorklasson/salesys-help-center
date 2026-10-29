@@ -19,6 +19,8 @@
     overflow: auto;
     font-size: 13px;
     line-height: 1.55;
+    /* Same as the admin's code editor; browsers default to 8, which misaligns pasted tab-indented code */
+    tab-size: 4;
   }
 
   code {
@@ -26,5 +28,10 @@
     font-size: inherit;
     color: #f2f5f9;
     background: none;
+  }
+
+  /* Comments inside the code, e.g. field descriptions */
+  .code-comment {
+    color: #8d9aaf;
   }
 }

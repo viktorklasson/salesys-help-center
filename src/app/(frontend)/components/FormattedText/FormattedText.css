@@ -12,4 +12,37 @@
   [style*='underline'] {
     text-underline-offset: 3px;
   }
+
+  /* Uploads from Media: never wider than the text, with some space around */
+  img,
+  picture,
+  .formatted-media {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0.75em 0;
+    border-radius: 12px;
+  }
+
+  audio.formatted-media {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .formatted-file {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0.5em 0;
+    padding: 8px 14px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--blue);
+    background: var(--blue-tint);
+    border-radius: 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

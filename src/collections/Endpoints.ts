@@ -58,9 +58,23 @@ export const Endpoints: CollectionConfig = {
       type: 'code',
       admin: {
         language: 'json',
-        description: 'Läggs in i cURL-exemplet med -d.',
+        description:
+          'Kommentarer med // visas på sidan, men tas bort i cURL-exemplet så att det skickar giltig JSON.',
         // GET requests have no body
         condition: (data) => data?.method !== 'GET',
+        components: {
+          Field: '/components/admin/JsoncField#JsoncField',
+        },
+      },
+    },
+    {
+      name: 'curlExample',
+      label: 'cURL-exempel',
+      type: 'code',
+      admin: {
+        language: 'shell',
+        description:
+          'Valfritt. Lämna tomt för att skapa kommandot automatiskt från metod, sökväg och body. Fyll i för att visa ditt eget kommando i stället.',
       },
     },
     {
@@ -84,6 +98,7 @@ export const Endpoints: CollectionConfig = {
                 { label: 'Sökväg', value: 'path' },
                 { label: 'Query', value: 'query' },
                 { label: 'Header', value: 'header' },
+                { label: 'Body', value: 'body' },
               ],
             },
             { name: 'type', label: 'Typ', type: 'text', admin: { placeholder: 'string' } },

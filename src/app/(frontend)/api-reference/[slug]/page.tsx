@@ -17,9 +17,134 @@ export const dynamic = 'force-dynamic';
 
 type Props = { params: Promise<{ slug: string }> };
 
-const PARAMETER_LOCATION = { path: 'Sökväg', query: 'Query', header: 'Header' } as const;
+const PARAMETER_LOCATION = {
+  path: 'Sökväg',
+  query: 'Query',
+  header: 'Header',
+  body: 'Body',
+} as const;
+
+type Parameter = NonNullable<Endpoint['parameters']>[number];
+
+/** Path, query and header parameters */
+const ParameterList = ({ params }: { params?: Parameter[] }) => {
+  if (!params?.length) return null;
+
+  return (
+    <div className="parameters">
+      <h3 className="details-heading">Parametrar</h3>
+      <dl>
+        {params.map((param) => (
+          <div key={param.id}>
+            <dt>
+              <code>{param.name}</code>
+              {param.type && <span className="param-type">{param.type}</span>}
+              <span className="param-in">{PARAMETER_LOCATION[param.in]}</span>
+              {param.required && <span className="param-required">Obligatorisk</span>}
+            </dt>
+            {param.description && <dd>{param.description}</dd>}
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+};
+
+/** A placeholder value that shows the type, e.g. "string", ["ObjectId"] or {} */
+const placeholderFor = (type: string | null | undefined): string => {
+  const base = (type ?? '').split(' ')[0];
+  if (base.endsWith('[]')) return `[${placeholderFor(base.slice(0, -2))}]`;
+  if (base === 'object') return '{}';
+  if (base === 'boolean') return 'true';
+  if (base === 'integer' || base === 'number') return '0';
+  return `"${base || 'string'}"`;
+};
+
+/** Body fields as JSON, with each field's description as a comment beside it */
+const BodySchema = ({ params }: { params?: Parameter[] }) => {
+  if (!params?.length) return null;
+
+  const lines = params.map((param, i) => ({
+    code: `  "${param.name}": ${placeholderFor(param.type)}${i < params.length - 1 ? ',' : ''}`,
+    comment: [param.required && 'Obligatorisk.', param.description].filter(Boolean).join(' '),
+  }));
+  // Line the comments up in one column
+  const width = Math.max(...lines.map((line) => line.code.length)) + 2;
+  const allOptional = params.every((param) => !param.required);
+
+  return (
+    <div>
+      <h3 className="details-heading">Body</h3>
+      <CodeBlock>
+        {'{\n'}
+        {allOptional && (
+          <span className="code-comment">
+            {'  // Alla fält är valfria - skicka ett, några eller alla.\n'}
+          </span>
+        )}
+        {lines.map((line, i) => (
+          <React.Fragment key={params[i].id}>
+            {line.comment ? line.code.padEnd(width) : line.code}
+            {line.comment && <span className="code-comment">{`// ${line.comment}`}</span>}
+            {'\n'}
+          </React.Fragment>
+        ))}
+        {'}'}
+      </CodeBlock>
+    </div>
+  );
+};
 
 const API_ORIGIN = 'https://app.salesys.se';
+
+/** Splits a line at its // comment. A // inside a string (e.g. "https://…") is not a comment. */
+const splitComment = (line: string): [code: string, comment: string | null] => {
+  let inString = false;
+  for (let i = 0; i < line.length; i++) {
+    const char = line[i];
+    if (inString && char === '\\')
+      i++; // Skip escaped characters, e.g. \"
+    else if (char === '"') inString = !inString;
+    else if (!inString && char === '/' && line[i + 1] === '/')
+      return [line.slice(0, i), line.slice(i)];
+  }
+  return [line, null];
+};
+
+/** Splits text into lines. Text pasted on Windows uses \r\n, which would otherwise leave a stray \r on every line. */
+const toLines = (text: string) => text.split(/\r\n?|\n/);
+
+const hasComments = (text: string | null | undefined) =>
+  !!text && toLines(text).some((line) => splitComment(line)[1] !== null);
+
+/** Removes // comments so the body is valid JSON again, and tidies the formatting when possible */
+const stripComments = (text: string) => {
+  const code = toLines(text)
+    .map((line) => splitComment(line)[0].trimEnd())
+    .filter((line) => line.trim())
+    .join('\n');
+  try {
+    return JSON.stringify(JSON.parse(code), null, 2);
+  } catch {
+    return code;
+  }
+};
+
+/** JSON with // comments, the comments shown in grey */
+const CommentedJson = ({ text }: { text: string }) => (
+  <CodeBlock>
+    {toLines(text.trim()).map((line, i) => {
+      const [code, comment] = splitComment(line);
+      return (
+        <React.Fragment key={i}>
+          {i > 0 && '\n'}
+          {code}
+          {comment && <span className="code-comment">{comment}</span>}
+        </React.Fragment>
+      );
+    })}
+  </CodeBlock>
+);
 
 /** Builds a copy-pasteable curl command from the endpoint's method, path, required query params and body */
 const toCurl = (endpoint: Endpoint) => {
@@ -38,7 +163,10 @@ const toCurl = (endpoint: Endpoint) => {
 
   if (endpoint.method !== 'GET' && endpoint.requestBody?.trim()) {
     // Escape single quotes for the shell, and indent the JSON under the command
-    const body = endpoint.requestBody.trim().replace(/'/g, `'\\''`).replace(/\n/g, '\n  ');
+    // Comments are only for the docs; the command must send valid JSON
+    const body = stripComments(endpoint.requestBody.trim())
+      .replace(/'/g, `'\\''`)
+      .replace(/\n/g, '\n  ');
     lines.push(`  -d '${body}'`);
   }
 
@@ -99,7 +227,8 @@ export default async function Page({ params }: Props) {
     where: { service: { equals: service.id } },
     sort: 'order',
     limit: 0,
-    depth: 0,
+    // 1 so images and files in descriptions come with their URL
+    depth: 1,
   });
   const Icon = getIcon(service.icon);
 
@@ -112,8 +241,10 @@ export default async function Page({ params }: Props) {
         </Link>
 
         <header className="page-header api-service-header">
-          <Icon className="api-service-icon" size={32} strokeWidth={1.5} />
-          <h1>{service.name}</h1>
+          <div className="page-title-container">
+            <Icon className="api-service-icon" size={48} strokeWidth={1.5} />
+            <h1>{service.name}</h1>
+          </div>
           <p className="lead">{service.tagline}</p>
           <p className="api-service-meta">
             <code>/api/{service.slug}</code>
@@ -122,14 +253,20 @@ export default async function Page({ params }: Props) {
         </header>
 
         {endpoints.length === 0 ? (
-          <p className="api-empty">Det finns ingen API-dokumentation för den här funktionen ännu.</p>
+          <p className="api-empty">
+            Det finns ingen API-dokumentation för den här funktionen ännu.
+          </p>
         ) : (
           groupEndpoints(endpoints).map(([group, items]) => (
             <section className="endpoint-group" key={group}>
               <h2>{group}</h2>
               <ul className="endpoint-rows">
                 {items.map((endpoint) => (
-                  <li className={endpoint.deprecated ? 'is-deprecated' : undefined} id={endpoint.id} key={endpoint.id}>
+                  <li
+                    className={endpoint.deprecated ? 'is-deprecated' : undefined}
+                    id={endpoint.id}
+                    key={endpoint.id}
+                  >
                     <details>
                       {/* One compact row; the details open on click */}
                       <summary>
@@ -150,37 +287,34 @@ export default async function Page({ params }: Props) {
                         </code>
                         <FormattedText data={endpoint.description} />
 
-                        {!!endpoint.parameters?.length && (
-                          <div className="parameters">
-                            <h3 className="details-heading">Parametrar</h3>
-                            <dl>
-                              {endpoint.parameters.map((param) => (
-                                <div key={param.id}>
-                                  <dt>
-                                    <code>{param.name}</code>
-                                    {param.type && <span className="param-type">{param.type}</span>}
-                                    <span className="param-in">{PARAMETER_LOCATION[param.in]}</span>
-                                    {param.required && <span className="param-required">Obligatorisk</span>}
-                                  </dt>
-                                  {param.description && <dd>{param.description}</dd>}
-                                </div>
-                              ))}
-                            </dl>
-                          </div>
+                        <ParameterList
+                          params={endpoint.parameters?.filter((param) => param.in !== 'body')}
+                        />
+                        {endpoint.parameters?.some((param) => param.in === 'body') ? (
+                          <BodySchema
+                            params={endpoint.parameters.filter((param) => param.in === 'body')}
+                          />
+                        ) : (
+                          // A body written with comments in the CMS is shown as-is
+                          endpoint.method !== 'GET' &&
+                          hasComments(endpoint.requestBody) && (
+                            <div>
+                              <h3 className="details-heading">Body</h3>
+                              <CommentedJson text={endpoint.requestBody!} />
+                            </div>
+                          )
                         )}
 
                         <div>
                           <h3 className="details-heading">cURL-exempel</h3>
-                          <CodeBlock>{toCurl(endpoint)}</CodeBlock>
+                          {/* A command written in the CMS wins over the generated one */}
+                          <CodeBlock>{endpoint.curlExample?.trim() || toCurl(endpoint)}</CodeBlock>
                         </div>
                         {/* Only when something is known about the response */}
-                        {(endpoint.responseExample || endpoint.responseDescription) && (
+                        {endpoint.responseExample && (
                           <div>
                             <h3 className="details-heading">Exempelrespons</h3>
-                          <CodeBlock
-                          >
-                            {endpoint.responseExample ?? 'Inget innehåll i svaret.'}
-                          </CodeBlock>
+                            <CodeBlock>{endpoint.responseExample}</CodeBlock>
                           </div>
                         )}
                       </div>

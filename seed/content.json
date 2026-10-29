@@ -20,6 +20,27 @@
       "focalX": 50,
       "focalY": 50,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6ae31afbff0763e730d21a3d"
+      },
+      "createdAt": {
+        "$date": "2026-10-29T10:07:55.125Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-29T10:07:55.125Z"
+      },
+      "alt": "Exempel på notis",
+      "url": "/api/media/file/notification-example.png",
+      "filename": "notification-example.png",
+      "mimeType": "image/png",
+      "filesize": 4244,
+      "width": 390,
+      "height": 136,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
     }
   ],
   "services": [
@@ -859,11 +880,11 @@
         "$date": "2026-10-26T14:36:27.605Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T14:36:27.605Z"
+        "$date": "2026-10-29T10:14:04.125Z"
       },
       "name": "Produkter",
       "slug": "products",
-      "tagline": "Det ni säljer – med priser, moms och kategorier.",
+      "tagline": "Det ni säljer - med priser, moms och kategorier.",
       "intro": {
         "root": {
           "type": "root",
@@ -1269,40 +1290,40 @@
         "$date": "2026-10-26T14:36:27.615Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T14:36:27.616Z"
+        "$date": "2026-10-29T10:02:24.461Z"
       },
-      "name": "Användare & team",
+      "name": "Användare",
       "slug": "users",
-      "tagline": "Lägg till säljare, skapa team och styr vem som ser vad.",
+      "tagline": "Allt som berör användare, teams, roller, samt lite annat.",
       "intro": {
         "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
           "children": [
             {
-              "type": "paragraph",
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Här hanterar du alla som använder SaleSys. Lägg till användare, samla dem i team och ge dem roller som styr vad de får se och göra, samt lite annat.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
               "direction": "ltr",
               "format": "",
               "indent": 0,
+              "type": "paragraph",
               "version": 1,
               "textFormat": 0,
-              "textStyle": "",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Här hanterar du alla som använder SaleSys. Lägg till användare, samla dem i team och ge dem roller som styr vad de får se och göra. Administratörer har alltid full åtkomst.",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
+              "textStyle": ""
             }
-          ]
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
         }
       },
       "whereToFind": "Inställningar → Användare",
@@ -1591,7 +1612,7 @@
         "$date": "2026-10-28T09:48:16.680Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.278Z"
+        "$date": "2026-10-29T07:46:10.890Z"
       },
       "method": "PUT",
       "path": "/api/users/users-v1/<userId>",
@@ -1603,6 +1624,134 @@
           "type": "ObjectId",
           "required": true,
           "id": "6ae1c4e007666e3c1cfcf61c"
+        },
+        {
+          "name": "fullName",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "description": "Fullständigt namn. Minst 2 tecken.",
+          "id": "6ae2f73f1177805f7c1b92b8"
+        },
+        {
+          "name": "username",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "description": "Användarnamn.",
+          "id": "6ae2f73f1177805f7c1b92b9"
+        },
+        {
+          "name": "alias",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "description": "Visningsnamn. Kan vara null.",
+          "id": "6ae2f73f1177805f7c1b92ba"
+        },
+        {
+          "name": "email",
+          "in": "body",
+          "type": "string (email)",
+          "required": false,
+          "description": "E-postadress. Kan vara null.",
+          "id": "6ae2f73f1177805f7c1b92bb"
+        },
+        {
+          "name": "phone",
+          "in": "body",
+          "type": "string (telefonnummer)",
+          "required": false,
+          "description": "Telefonnummer. Kan vara null.",
+          "id": "6ae2f73f1177805f7c1b92bc"
+        },
+        {
+          "name": "personId",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "description": "Personnummer. Kan vara null.",
+          "id": "6ae2f73f1177805f7c1b92bd"
+        },
+        {
+          "name": "mfa",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "description": "Inställningar för tvåstegsverifiering.",
+          "id": "6ae2f73f1177805f7c1b92be"
+        },
+        {
+          "name": "teamId",
+          "in": "body",
+          "type": "ObjectId",
+          "required": false,
+          "description": "Teamet användaren tillhör. Kan vara null.",
+          "id": "6ae2f73f1177805f7c1b92bf"
+        },
+        {
+          "name": "supervisedTeamIds",
+          "in": "body",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Team som användaren är arbetsledare för.",
+          "id": "6ae2f73f1177805f7c1b92c0"
+        },
+        {
+          "name": "roleIds",
+          "in": "body",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Användarens roller.",
+          "id": "6ae2f73f1177805f7c1b92c1"
+        },
+        {
+          "name": "preferences",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "description": "Användarens inställningar.",
+          "id": "6ae2f73f1177805f7c1b92c2"
+        },
+        {
+          "name": "language",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "description": "Språkkod med exakt 2 bokstäver, t.ex. sv. Kan vara null.",
+          "id": "6ae2f73f1177805f7c1b92c3"
+        },
+        {
+          "name": "reference",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "description": "Egen data, t.ex. ett ID från ert system.",
+          "id": "6ae2f73f1177805f7c1b92c4"
+        },
+        {
+          "name": "replaceReference",
+          "in": "body",
+          "type": "boolean",
+          "required": false,
+          "description": "Ersätt hela reference i stället för att uppdatera den.",
+          "id": "6ae2f73f1177805f7c1b92c5"
+        },
+        {
+          "name": "confidentialReference",
+          "in": "body",
+          "type": "object",
+          "required": false,
+          "description": "Fungerar som reference, men för konfidentiell data.",
+          "id": "6ae2f73f1177805f7c1b92c6"
+        },
+        {
+          "name": "replaceConfidentialReference",
+          "in": "body",
+          "type": "boolean",
+          "required": false,
+          "description": "Ersätt hela confidentialReference i stället för att uppdatera den.",
+          "id": "6ae2f73f1177805f7c1b92c7"
         }
       ],
       "responseStatus": 200,
@@ -1614,7 +1763,8 @@
       "group": "Users",
       "deprecated": false,
       "order": 140,
-      "__v": 0
+      "__v": 0,
+      "requestBody": "{\n  \"fullName\": \"Test Testson\"\n}"
     },
     {
       "_id": {
@@ -1624,7 +1774,7 @@
         "$date": "2026-10-28T09:48:16.686Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T14:42:51.566Z"
+        "$date": "2026-10-29T07:50:06.816Z"
       },
       "method": "DELETE",
       "path": "/api/users/users-v1/<userId>",
@@ -1646,7 +1796,38 @@
       "group": "Users",
       "deprecated": false,
       "order": 150,
-      "__v": 0
+      "__v": 0,
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Även fast endpointens metod kan föreslå att användaren tas bort så gör den inte det. Alla data som tillhör användaren behålls.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      }
     },
     {
       "_id": {
@@ -1656,7 +1837,7 @@
         "$date": "2026-10-28T09:48:16.717Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.342Z"
+        "$date": "2026-10-29T09:12:49.977Z"
       },
       "method": "GET",
       "path": "/api/users/teams-v1",
@@ -1679,102 +1860,13 @@
       ],
       "responseStatus": 200,
       "responseDescription": "Lista med team",
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"name\": \"string\",\n    \"color\": \"string\",\n    \"rights\": [\n      \"string\"\n    ],\n    \"isLocked\": false,\n    \"calendarAccess\": [\n      {\n        \"teamId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"readOnly\": false\n      }\n    ],\n    \"reference\": {}\n  }\n]",
+      "responseExample": "[\n    {\n        \"id\": \"673342dac6044f74d569ae3e\",\n        \"name\": \"Säljare Göteborg\",\n        \"color\": \"default\",\n        \"rights\": [\n            \"products.update\",\n            \"offers.getAll\",\n            \"orders.getOwn\",\n            \"orders.update\",\n            \"orders.getAll\",\n            \"orders.getFieldData\"\n        ],\n        \"isLocked\": false,\n        \"calendarAccess\": [],\n        \"reference\": {}\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
       },
       "group": "Teams",
       "deprecated": false,
       "order": 210,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e0bab63cbf762bc74b"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:16.723Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.349Z"
-      },
-      "method": "POST",
-      "path": "/api/users/teams-v1",
-      "summary": "Skapa ett team",
-      "parameters": [],
-      "responseStatus": 201,
-      "responseDescription": "Teamet har skapats",
-      "responseExample": "{\n  \"teamId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "group": "Teams",
-      "deprecated": false,
-      "order": 220,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e0bab63cbf762bc751"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:16.735Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.364Z"
-      },
-      "method": "PUT",
-      "path": "/api/users/teams-v1/<teamId>",
-      "summary": "Uppdatera ett team",
-      "parameters": [
-        {
-          "name": "teamId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e007666e3c1cfcf623"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "group": "Teams",
-      "deprecated": false,
-      "order": 240,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e0bab63cbf762bc754"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:16.740Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.371Z"
-      },
-      "method": "DELETE",
-      "path": "/api/users/teams-v1/<teamId>",
-      "summary": "Ta bort ett team",
-      "parameters": [
-        {
-          "name": "teamId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e007666e3c1cfcf624"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "group": "Teams",
-      "deprecated": false,
-      "order": 250,
       "__v": 0
     },
     {
@@ -1819,95 +1911,6 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e0bab63cbf762bc75a"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:16.751Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.387Z"
-      },
-      "method": "POST",
-      "path": "/api/users/projects-v1",
-      "summary": "Skapa ett projekt (endast admin)",
-      "parameters": [],
-      "responseStatus": 201,
-      "responseDescription": "Projektet har skapats",
-      "responseExample": "{\n  \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "group": "Projects",
-      "deprecated": false,
-      "order": 270,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e0bab63cbf762bc760"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:16.769Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.401Z"
-      },
-      "method": "PUT",
-      "path": "/api/users/projects-v1/<projectId>",
-      "summary": "Uppdatera ett projekt (endast admin)",
-      "parameters": [
-        {
-          "name": "projectId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e007666e3c1cfcf627"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "group": "Projects",
-      "deprecated": false,
-      "order": 290,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e0bab63cbf762bc763"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:16.775Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.408Z"
-      },
-      "method": "DELETE",
-      "path": "/api/users/projects-v1/<projectId>",
-      "summary": "Ta bort ett projekt (endast admin)",
-      "parameters": [
-        {
-          "name": "projectId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e007666e3c1cfcf628"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "group": "Projects",
-      "deprecated": false,
-      "order": 300,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c4e0bab63cbf762bc766"
       },
       "createdAt": {
@@ -1941,38 +1944,13 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e0bab63cbf762bc769"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:16.787Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.422Z"
-      },
-      "method": "POST",
-      "path": "/api/users/user-roles-v1",
-      "summary": "Skapa en användarroll",
-      "parameters": [],
-      "responseStatus": 200,
-      "responseDescription": "Rollen har skapats",
-      "responseExample": "{\n  \"roleId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "group": "User Roles",
-      "deprecated": false,
-      "order": 320,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c4e0bab63cbf762bc76f"
       },
       "createdAt": {
         "$date": "2026-10-28T09:48:16.797Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.436Z"
+        "$date": "2026-10-29T09:25:04.007Z"
       },
       "method": "PUT",
       "path": "/api/users/user-roles-v1/<roleId>",
@@ -1994,39 +1972,8 @@
       "group": "User Roles",
       "deprecated": false,
       "order": 340,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e0bab63cbf762bc772"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:16.802Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.443Z"
-      },
-      "method": "DELETE",
-      "path": "/api/users/user-roles-v1/<roleId>",
-      "summary": "Ta bort en användarroll",
-      "parameters": [
-        {
-          "name": "roleId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e007666e3c1cfcf62b"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "group": "User Roles",
-      "deprecated": false,
-      "order": 350,
-      "__v": 0
+      "__v": 0,
+      "requestBody": "{\n  // Alla fält är valfria – skicka ett, några eller alla.\n  \"name\": \"Säljare\",                                     // Rollens namn. Får inte vara tomt.\n  \"rights\": [\"OrdersCreate\", \"ContactsGetAll\"],          // Behörigheter som rollen ger.\n  \"calendarAccess\": [{ \"teamId\": \"64a1b2c3d4e5f6a7b8c9d0e1\" }], // Vilka teams kalendrar rollen kan se.\n  \"features\": [\"calls\", \"offers\"],                       // Funktioner som rollen har tillgång till.\n  \"homepage\": \"/orders\",                                 // Sidan som öppnas efter inloggning. Kan vara null.\n  \"homepagePriority\": 1                                  // Prioritet om flera roller har en startsida. Kan vara null.\n}"
     },
     {
       "_id": {
@@ -3152,11 +3099,11 @@
         "$date": "2026-10-28T09:48:17.038Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.805Z"
+        "$date": "2026-10-29T10:56:00.331Z"
       },
       "method": "GET",
       "path": "/api/orders/orders-v3",
-      "summary": "Lista ordrar (v3 – aktuell)",
+      "summary": "Lista ordrar",
       "parameters": [
         {
           "name": "ids",
@@ -3245,7 +3192,7 @@
       ],
       "responseStatus": 200,
       "responseDescription": "Lista med ordrar",
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"serialId\": 0,\n    \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"organizationId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"fields\": [\n      {\n        \"fieldId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"value\": \"string\"\n      }\n    ],\n    \"products\": [\n      {\n        \"productId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"quantity\": 0,\n        \"price\": 0,\n        \"salaryBasis\": 0,\n        \"vat\": 0\n      }\n    ],\n    \"tagIds\": [\n      \"64a1b2c3d4e5f6a7b8c9d0e1\"\n    ],\n    \"businessDate\": \"2026-01-01T12:00:00.000Z\",\n    \"files\": [\n      {\n        \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"comments\": [\n      {\n        \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"message\": \"string\",\n        \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"date\": \"2026-01-01T12:00:00.000Z\"\n      }\n    ],\n    \"isTest\": false,\n    \"date\": \"2026-01-01T12:00:00.000Z\"\n  }\n]",
+      "responseExample": "[\n    {\n        \"id\": \"6ae061c42e5bfe486b65521c\",\n        \"organizationId\": \"6862579b2cb8d0a855888243\",\n        \"date\": \"2026-10-27T08:33:08.549Z\",\n        \"updatedAt\": \"2026-10-27T08:33:22.812Z\",\n        \"updatedOrCreatedAt\": \"2026-10-27T08:33:22.812Z\",\n        \"contactId\": \"6ae06185ea56d6cc3da583d2\",\n        \"serialId\": 125,\n        \"tagIds\": [\n            \"6a99177fa95e57afe54a7879\"\n        ],\n        \"fields\": [\n            {\n                \"fieldId\": \"686259d90005846351586218\",\n                \"value\": \"Test\",\n                \"valueAsNumber\": null\n            },\n            {\n                \"fieldId\": \"686259e40005846351586219\",\n                \"value\": \"Testsson\",\n                \"valueAsNumber\": null\n            },\n            {\n                \"fieldId\": \"686259f15f31f8107d087c55\",\n                \"value\": \"0980319247\",\n                \"valueAsNumber\": 980319247\n            },\n            {\n                \"fieldId\": \"6862678d5f31f8107d087e24\",\n                \"value\": \"Testgatan 2, Testort\",\n                \"valueAsNumber\": null\n            },\n            {\n                \"fieldId\": \"6862673400058463515863a5\",\n                \"value\": \"Testföretaget AB\",\n                \"valueAsNumber\": null\n            },\n            {\n                \"fieldId\": \"69ba7ffcb8e08f18198f0fa2\",\n                \"value\": \"44444\",\n                \"valueAsNumber\": 44444\n            }\n        ],\n        \"products\": [],\n        \"comments\": [],\n        \"files\": [],\n        \"externalEvents\": [],\n        \"businessDate\": \"2026-10-29T08:00:00.000Z\",\n        \"userId\": \"6862579b2cb8d0a855888245\",\n        \"isTest\": false,\n        \"isDeleted\": false,\n        \"fullyDeleteAfter\": null,\n        \"afterOrderWorkExecutions\": null,\n        \"projectId\": \"689af0f8e9c43cf65bce4423\",\n        \"calendarEventIds\": [\n            \"6ae061c43e05b29ae789d086\"\n        ],\n        \"parts\": [],\n        \"callId\": \"6ac6147f59054cc04355a793\",\n        \"dialGroupId\": \"6ac4a9a630ad8e4cc7b949c5\",\n        \"shuffleDialGroupId\": null,\n        \"createdAt\": \"2026-10-27T08:33:08.549Z\"\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
       },
@@ -3262,11 +3209,11 @@
         "$date": "2026-10-28T09:48:17.045Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.814Z"
+        "$date": "2026-10-29T10:56:38.863Z"
       },
       "method": "GET",
       "path": "/api/orders/orders-v3/<orderId>",
-      "summary": "Hämta en order (v3)",
+      "summary": "Hämta en order",
       "parameters": [
         {
           "name": "orderId",
@@ -3278,7 +3225,7 @@
       ],
       "responseStatus": 200,
       "responseDescription": "Order",
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"serialId\": 0,\n  \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"organizationId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"fields\": [\n    {\n      \"fieldId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"value\": \"string\"\n    }\n  ],\n  \"products\": [\n    {\n      \"productId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"quantity\": 0,\n      \"price\": 0,\n      \"salaryBasis\": 0,\n      \"vat\": 0\n    }\n  ],\n  \"tagIds\": [\n    \"64a1b2c3d4e5f6a7b8c9d0e1\"\n  ],\n  \"businessDate\": \"2026-01-01T12:00:00.000Z\",\n  \"files\": [\n    {\n      \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"comments\": [\n    {\n      \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"message\": \"string\",\n      \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"date\": \"2026-01-01T12:00:00.000Z\"\n    }\n  ],\n  \"isTest\": false,\n  \"date\": \"2026-01-01T12:00:00.000Z\"\n}",
+      "responseExample": "{\n\t\"id\": \"6ae061c42e5bfe486b65521c\",\n\t\"organizationId\": \"6862579b2cb8d0a855888243\",\n\t\"date\": \"2026-10-27T08:33:08.549Z\",\n\t\"updatedAt\": \"2026-10-27T08:33:22.812Z\",\n\t\"updatedOrCreatedAt\": \"2026-10-27T08:33:22.812Z\",\n\t\"contactId\": \"6ae06185ea56d6cc3da583d2\",\n\t\"serialId\": 125,\n\t\"tagIds\": [\n\t\t\"6a99177fa95e57afe54a7879\"\n\t],\n\t\"fields\": [\n\t\t{\n\t\t\t\"fieldId\": \"686259d90005846351586218\",\n\t\t\t\"value\": \"Test\",\n\t\t\t\"valueAsNumber\": null\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"686259e40005846351586219\",\n\t\t\t\"value\": \"Testsson\",\n\t\t\t\"valueAsNumber\": null\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"686259f15f31f8107d087c55\",\n\t\t\t\"value\": \"0980319247\",\n\t\t\t\"valueAsNumber\": 980319247\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6862678d5f31f8107d087e24\",\n\t\t\t\"value\": \"Testgatan 2, Testort\",\n\t\t\t\"valueAsNumber\": null\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6862673400058463515863a5\",\n\t\t\t\"value\": \"Testföretaget AB\",\n\t\t\t\"valueAsNumber\": null\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"69ba7ffcb8e08f18198f0fa2\",\n\t\t\t\"value\": \"44444\",\n\t\t\t\"valueAsNumber\": 44444\n\t\t}\n\t],\n\t\"products\": [],\n\t\"comments\": [],\n\t\"files\": [],\n\t\"externalEvents\": [],\n\t\"businessDate\": \"2026-10-29T08:00:00.000Z\",\n\t\"userId\": \"6862579b2cb8d0a855888245\",\n\t\"isTest\": false,\n\t\"isDeleted\": false,\n\t\"fullyDeleteAfter\": null,\n\t\"afterOrderWorkExecutions\": null,\n\t\"projectId\": \"689af0f8e9c43cf65bce4423\",\n\t\"calendarEventIds\": [\n\t\t\"6ae061c43e05b29ae789d086\"\n\t],\n\t\"parts\": [],\n\t\"callId\": \"6ac6147f59054cc04355a793\",\n\t\"dialGroupId\": \"6ac4a9a630ad8e4cc7b949c5\",\n\t\"shuffleDialGroupId\": null,\n\t\"createdAt\": \"2026-10-27T08:33:08.549Z\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
       },
@@ -3289,75 +3236,29 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc7fc"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.050Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.821Z"
-      },
-      "method": "GET",
-      "path": "/api/orders/orders-v2",
-      "summary": "Lista ordrar (v2 – utfasad, använd v3)",
-      "parameters": [
-        {
-          "name": "ids",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf66d"
-        },
-        {
-          "name": "count",
-          "in": "query",
-          "type": "integer",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf66e"
-        },
-        {
-          "name": "offset",
-          "in": "query",
-          "type": "integer",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf66f"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med ordrar",
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"serialId\": 0,\n    \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"organizationId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"fields\": [\n      {\n        \"fieldId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"value\": \"string\"\n      }\n    ],\n    \"products\": [\n      {\n        \"productId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"quantity\": 0,\n        \"price\": 0,\n        \"salaryBasis\": 0,\n        \"vat\": 0\n      }\n    ],\n    \"tagIds\": [\n      \"64a1b2c3d4e5f6a7b8c9d0e1\"\n    ],\n    \"businessDate\": \"2026-01-01T12:00:00.000Z\",\n    \"files\": [\n      {\n        \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"comments\": [\n      {\n        \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"message\": \"string\",\n        \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"date\": \"2026-01-01T12:00:00.000Z\"\n      }\n    ],\n    \"isTest\": false,\n    \"date\": \"2026-01-01T12:00:00.000Z\"\n  }\n]",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Orders",
-      "deprecated": true,
-      "order": 810,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c4e1bab63cbf762bc7ff"
       },
       "createdAt": {
         "$date": "2026-10-28T09:48:17.057Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.828Z"
+        "$date": "2026-10-29T11:03:05.078Z"
       },
       "method": "POST",
       "path": "/api/orders/orders-v2",
-      "summary": "Skapa en order (v2)",
+      "summary": "Skapa en order",
       "parameters": [],
       "responseStatus": 201,
       "responseDescription": "Ordern har skapats",
-      "responseExample": "{\n  \"orderId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"serialId\": 0,\n  \"fileToken\": \"string\"\n}",
+      "responseExample": "{\n  \"orderId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"serialId\": 6,\n  \"fileToken\": \"string\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
       },
       "group": "Orders",
       "deprecated": false,
       "order": 820,
-      "__v": 0
+      "__v": 0,
+      "requestBody": "{\r\n  \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\r\n  \"fields\": [\r\n    {\r\n      \"fieldId\": \"64f1a2b3c4d5e6f7a8b9c0d9\",\r\n      \"value\": \"Test Testsson\"\r\n    },\r\n    {\r\n      \"fieldId\": \"64f1a2b3c4d5e6f7a8b9c0da\",\r\n      \"value\": \"Testgatan 2, Testort\"\r\n    }\r\n  ],\r\n  \"products\": [\r\n    {\r\n      \"productId\": \"64f1a2b3c4d5e6f7a8b9c0db\",\r\n      \"quantity\": \"2\",\r\n      \"price\": \"4890.00\",\r\n      \"salaryBasis\": \"450.00\",\r\n      \"vat\": \"25\"\r\n    },\r\n    {\r\n      \"productId\": \"64f1a2b3c4d5e6f7a8b9c0dc\",\r\n      \"quantity\": \"1\",\r\n      \"price\": \"7250.00\",\r\n      \"salaryBasis\": \"650.00\",\r\n      \"vat\": \"25\"\r\n    }\r\n  ],\r\n  \"tagIds\": [\r\n    \"64a1b2c3d4e5f6a7b8c9d0e1\"\r\n  ],\r\n  \"businessDate\": \"2025-01-15T10:30:00.000Z\"\r\n}"
     },
     {
       "_id": {
@@ -3469,39 +3370,6 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc808"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.071Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.852Z"
-      },
-      "method": "GET",
-      "path": "/api/orders/orders-v2/<orderId>",
-      "summary": "Hämta en order (v2 – utfasad, använd v3)",
-      "parameters": [
-        {
-          "name": "orderId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf678"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Order",
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"serialId\": 0,\n  \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"organizationId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"fields\": [\n    {\n      \"fieldId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"value\": \"string\"\n    }\n  ],\n  \"products\": [\n    {\n      \"productId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"quantity\": 0,\n      \"price\": 0,\n      \"salaryBasis\": 0,\n      \"vat\": 0\n    }\n  ],\n  \"tagIds\": [\n    \"64a1b2c3d4e5f6a7b8c9d0e1\"\n  ],\n  \"businessDate\": \"2026-01-01T12:00:00.000Z\",\n  \"files\": [\n    {\n      \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"comments\": [\n    {\n      \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"message\": \"string\",\n      \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"date\": \"2026-01-01T12:00:00.000Z\"\n    }\n  ],\n  \"isTest\": false,\n  \"date\": \"2026-01-01T12:00:00.000Z\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Orders",
-      "deprecated": true,
-      "order": 850,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c4e1bab63cbf762bc80b"
       },
       "createdAt": {
@@ -3534,239 +3402,17 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc80e"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.082Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.866Z"
-      },
-      "method": "DELETE",
-      "path": "/api/orders/orders-v1/<orderId>",
-      "summary": "Ta bort en order",
-      "parameters": [
-        {
-          "name": "orderId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf67a"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Orders",
-      "deprecated": false,
-      "order": 870,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc811"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.087Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.873Z"
-      },
-      "method": "POST",
-      "path": "/api/orders/orders-v1/<orderId>/files",
-      "summary": "Bifoga en fil till en order",
-      "parameters": [
-        {
-          "name": "orderId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf67b"
-        },
-        {
-          "name": "X-File-Token",
-          "in": "header",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf67c"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Filen har bifogats",
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"url\": \"string\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Orders",
-      "deprecated": false,
-      "order": 880,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc814"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.092Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.881Z"
-      },
-      "method": "PUT",
-      "path": "/api/orders/orders-v1/<orderId>/files/<fileId>",
-      "summary": "Uppdatera metadata för en bifogad fil",
-      "parameters": [
-        {
-          "name": "orderId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf67d"
-        },
-        {
-          "name": "fileId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf67e"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Orders",
-      "deprecated": false,
-      "order": 890,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc817"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.098Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.888Z"
-      },
-      "method": "DELETE",
-      "path": "/api/orders/orders-v1/<orderId>/files/<fileId>",
-      "summary": "Ta bort en bifogad fil",
-      "parameters": [
-        {
-          "name": "orderId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf67f"
-        },
-        {
-          "name": "fileId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf680"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Orders",
-      "deprecated": false,
-      "order": 900,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc81a"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.103Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.895Z"
-      },
-      "method": "POST",
-      "path": "/api/orders/orders-v1/<orderId>/comments",
-      "summary": "Lägg till en kommentar på en order",
-      "parameters": [
-        {
-          "name": "orderId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf681"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Kommentaren har skapats",
-      "responseExample": "{\n  \"commentId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Orders",
-      "deprecated": false,
-      "order": 910,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc81d"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.109Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.900Z"
-      },
-      "method": "DELETE",
-      "path": "/api/orders/orders-v1/<orderId>/comments/<commentId>",
-      "summary": "Ta bort en kommentar från en order",
-      "parameters": [
-        {
-          "name": "orderId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf682"
-        },
-        {
-          "name": "commentId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf683"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Orders",
-      "deprecated": false,
-      "order": 920,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c4e1bab63cbf762bc820"
       },
       "createdAt": {
         "$date": "2026-10-28T09:48:17.114Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.908Z"
+        "$date": "2026-10-29T10:29:41.484Z"
       },
       "method": "GET",
       "path": "/api/offers/offers-v2",
-      "summary": "Lista avtal (v2 – aktuell)",
+      "summary": "Lista avtal",
       "parameters": [
         {
           "name": "ids",
@@ -3827,7 +3473,7 @@
       ],
       "responseStatus": 200,
       "responseDescription": "Lista med avtal",
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"serialId\": 0,\n    \"publicId\": \"string\",\n    \"status\": \"pending\",\n    \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"organizationId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"templateId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"namn@exempel.se\",\n      \"phone\": \"string\"\n    },\n    \"fields\": [\n      {\n        \"fieldId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"value\": \"string\"\n      }\n    ],\n    \"products\": [\n      {\n        \"productId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"quantity\": 0,\n        \"price\": 0,\n        \"salaryBasis\": 0,\n        \"vat\": 0\n      }\n    ],\n    \"files\": [\n      {\n        \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"comments\": [\n      {\n        \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"message\": \"string\",\n        \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"date\": \"2026-01-01T12:00:00.000Z\"\n      }\n    ],\n    \"expireAt\": \"2026-01-01T12:00:00.000Z\",\n    \"isTest\": false,\n    \"date\": \"2026-01-01T12:00:00.000Z\"\n  }\n]",
+      "responseExample": "[\n    {\n        \"id\": \"6ae31f5d78ac69c6259e92c3\",\n        \"templateId\": \"6ae31f61ff25f543c6424111\",\n        \"templateVersion\": 1,\n        \"serialId\": 124,\n        \"date\": \"2026-10-08T11:38:57.734Z\",\n        \"userId\": \"6ae31f6464276c585611f2dd\",\n        \"createdByUserId\": \"6ae31f675e024ee8dfcb2340\",\n        \"inserts\": [],\n        \"templateInserts\": [],\n        \"recipient\": {\n            \"name\": null,\n            \"email\": \"example@example.com\",\n            \"sms\": null\n        },\n        \"recipients\": [],\n        \"issuer\": {\n            \"name\": \"Testbolag AB\",\n            \"website\": null,\n            \"phone\": \"0980319247\",\n            \"email\": \"example@example.com\",\n            \"replyToEmail\": null,\n            \"identityNumber\": \"123456781234\",\n            \"logo\": {\n                \"uri\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6862579b2cb8d0a855882363/logos/6862579b2cb8d0a855123243\"\n            }\n        },\n        \"products\": [],\n        \"autoFill\": null,\n        \"fields\": [],\n        \"parts\": [],\n        \"signature\": null,\n        \"unsignedDocument\": {\n            \"documentId\": null,\n            \"key\": null,\n            \"url\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6862579b2cb8d0a855888243/offer-templates/6aaa9a349c888d3b4aa105de/external_document.pdf\",\n            \"pageCount\": 2,\n            \"status\": \"ready\"\n        },\n        \"unsignedDocumentWithInserts\": null,\n        \"isTest\": false,\n        \"publicId\": \"ABCDEFGH525\",\n        \"status\": \"distributed\",\n        \"statusUpdatedAt\": \"2026-10-08T11:39:18.767Z\",\n        \"comments\": [],\n        \"files\": [],\n        \"distributions\": [\n            {\n                \"id\": \"6ae31ff07f3ddfab0aedac9e\",\n                \"smsRecipient\": null,\n                \"smsUserMessageLength\": null,\n                \"emailRecipient\": \"example@example.com\",\n                \"distributedAt\": \"2026-10-08T11:39:18.767Z\",\n                \"twoWaySms\": null\n            },\n            {\n                \"id\": \"6ae32002c110d0c34f955f03\",\n                \"smsRecipient\": null,\n                \"smsUserMessageLength\": null,\n                \"emailRecipient\": \"example@example.com\",\n                \"distributedAt\": \"2026-10-08T11:39:59.666Z\",\n                \"twoWaySms\": null\n            },\n            {\n                \"id\": \"6ae3200538cab0c8edecb6c7\",\n                \"smsRecipient\": null,\n                \"smsUserMessageLength\": null,\n                \"emailRecipient\": \"example@example.com\",\n                \"distributedAt\": \"2026-10-08T11:41:08.434Z\",\n                \"twoWaySms\": null\n            }\n        ],\n        \"signatureToken\": null,\n        \"declineToken\": null,\n        \"read\": null,\n        \"decline\": null,\n        \"cancellation\": null,\n        \"reviewPending\": null,\n        \"expireAt\": \"2026-11-07T23:00:00.000Z\",\n        \"documentId\": null,\n        \"printToken\": null,\n        \"events\": [\n            {\n                \"type\": \"distributed\",\n                \"sessionId\": null,\n                \"begunAt\": null,\n                \"doneAt\": \"2026-10-08T11:39:18.782Z\",\n                \"page\": null,\n                \"ip\": null,\n                \"userAgent\": null,\n                \"error\": null,\n                \"nextStep\": null,\n                \"insertNumber\": null,\n                \"signLocationType\": null,\n                \"distributionMethod\": \"email\"\n            },\n            {\n                \"type\": \"distributed\",\n                \"sessionId\": null,\n                \"begunAt\": null,\n                \"doneAt\": \"2026-10-08T11:39:59.685Z\",\n                \"page\": null,\n                \"ip\": null,\n                \"userAgent\": null,\n                \"error\": null,\n                \"nextStep\": null,\n                \"insertNumber\": null,\n                \"signLocationType\": null,\n                \"distributionMethod\": \"email\"\n            },\n            {\n                \"type\": \"distributed\",\n                \"sessionId\": null,\n                \"begunAt\": null,\n                \"doneAt\": \"2026-10-08T11:41:08.446Z\",\n                \"page\": null,\n                \"ip\": null,\n                \"userAgent\": null,\n                \"error\": null,\n                \"nextStep\": null,\n                \"insertNumber\": null,\n                \"signLocationType\": null,\n                \"distributionMethod\": \"email\"\n            }\n        ],\n        \"bankIdSession\": null,\n        \"orderIds\": [],\n        \"contactId\": null,\n        \"organizationId\": \"6ae3200993294328897149af\",\n        \"createdFrom\": null,\n        \"webhookId\": null,\n        \"statusLinks\": null,\n        \"signMethod\": null,\n        \"country\": \"se\",\n        \"distributeNow\": null,\n        \"projectId\": null,\n        \"additionalPages\": null,\n        \"tags\": [],\n        \"signaturePlace\": null,\n        \"formId\": null,\n        \"orderConfiguration\": null,\n        \"reviews\": [],\n        \"callId\": null,\n        \"dialGroupId\": null,\n        \"shuffleDialGroupId\": null,\n        \"chatToken\": null,\n        \"chatSessionId\": null,\n        \"parentId\": null,\n        \"deletedAt\": null,\n        \"supplementaryFormId\": null,\n        \"updatedViaFormAt\": null,\n        \"bankIdSignArgsUrl\": null,\n        \"createUnsignedDocumentOn\": null,\n        \"isDeleted\": false,\n        \"fullyDeleteAfter\": null\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c4f"
       },
@@ -3844,11 +3490,11 @@
         "$date": "2026-10-28T09:48:17.120Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.915Z"
+        "$date": "2026-10-29T10:42:17.463Z"
       },
       "method": "POST",
       "path": "/api/offers/offers-v2",
-      "summary": "Skapa ett avtal (v2)",
+      "summary": "Skapa ett avtal",
       "parameters": [],
       "responseStatus": 201,
       "responseDescription": "Avtalet har skapats",
@@ -3859,7 +3505,8 @@
       "group": "Offers",
       "deprecated": false,
       "order": 940,
-      "__v": 0
+      "__v": 0,
+      "requestBody": "{\r\n    \"templateId\": \"66572186aa92413966d6ec8a\",\r\n    \"fields\": [\r\n        {\r\n            \"fieldId\": \"6657234af165c6267ae72b77\",\r\n            \"value\": \"John\"\r\n        },\r\n        {\r\n            \"fieldId\": \"66572255f165c6267ae72b32\",\r\n            \"value\": \"Doe\"\r\n        },\r\n        {\r\n            \"fieldId\": \"66572250f165c6267ae72b31\",\r\n            \"value\": \"123 Sales st.\"\r\n        },\r\n        {\r\n            \"fieldId\": \"665721a4f165c6267ae72afb\",\r\n            \"value\": \"Sales YS\"\r\n        }\r\n    ],\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"5e99fa25818697002338470e\",\r\n            \"quantity\": 1\r\n        }\r\n    ],\r\n    \"autoFill\": {\r\n        \"addInsertsFromFields\": true,\r\n        \"setRecipientFromFields\": true\r\n    },\r\n    \"distributeNow\": {\r\n        \"sms\": [\r\n            {\r\n                \"recipient\": \"0980319247\",\r\n                \"messageTemplateId\": \"63cbfc10a626e4c9b0f591ac\"\r\n            }\r\n        ],\r\n        \"email\": [\r\n            {\r\n                \"recipient\": \"john.doe@example.se\",\r\n                \"messageTemplateId\": \"63c94880a626e4c9b0f5919e\"\r\n            }\r\n        ]\r\n    },\r\n    \"userId\": \"65f1b20f7774ba2b04044cd7\",\r\n    \"projectId\": \"65de4dd5ef1829a9e6f69f83\"\r\n}\r\n"
     },
     {
       "_id": {
@@ -3869,11 +3516,11 @@
         "$date": "2026-10-28T09:48:17.125Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.922Z"
+        "$date": "2026-10-29T10:37:01.838Z"
       },
       "method": "GET",
       "path": "/api/offers/offers-v2/<offerId>",
-      "summary": "Hämta ett avtal (v2)",
+      "summary": "Hämta ett avtal via ID",
       "parameters": [
         {
           "name": "offerId",
@@ -3885,7 +3532,7 @@
       ],
       "responseStatus": 200,
       "responseDescription": "Avtal",
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"serialId\": 0,\n  \"publicId\": \"string\",\n  \"status\": \"pending\",\n  \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"organizationId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"templateId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"recipient\": {\n    \"name\": \"string\",\n    \"email\": \"namn@exempel.se\",\n    \"phone\": \"string\"\n  },\n  \"fields\": [\n    {\n      \"fieldId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"value\": \"string\"\n    }\n  ],\n  \"products\": [\n    {\n      \"productId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"quantity\": 0,\n      \"price\": 0,\n      \"salaryBasis\": 0,\n      \"vat\": 0\n    }\n  ],\n  \"files\": [\n    {\n      \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"comments\": [\n    {\n      \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"message\": \"string\",\n      \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"date\": \"2026-01-01T12:00:00.000Z\"\n    }\n  ],\n  \"expireAt\": \"2026-01-01T12:00:00.000Z\",\n  \"isTest\": false,\n  \"date\": \"2026-01-01T12:00:00.000Z\"\n}",
+      "responseExample": "{\n\t\"id\": \"6ae31f5d78ac69c6259e92c3\",\n\t\"templateId\": \"6ae31f61ff25f543c6424111\",\n\t\"templateVersion\": 1,\n\t\"serialId\": 124,\n\t\"date\": \"2026-10-08T11:38:57.734Z\",\n\t\"userId\": \"6ae31f6464276c585611f2dd\",\n\t\"createdByUserId\": \"6ae31f675e024ee8dfcb2340\",\n\t\"inserts\": [],\n\t\"templateInserts\": [],\n\t\"recipient\": {\n\t\t\"name\": null,\n\t\t\"email\": \"example@example.com\",\n\t\t\"sms\": null\n\t},\n\t\"recipients\": [],\n\t\"issuer\": {\n\t\t\"name\": \"Testbolag AB\",\n\t\t\"website\": null,\n\t\t\"phone\": \"0980319247\",\n\t\t\"email\": \"example@example.com\",\n\t\t\"replyToEmail\": null,\n\t\t\"identityNumber\": \"123456781234\",\n\t\t\"logo\": {\n\t\t\t\"uri\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6862579b2cb8d0a855882363/logos/6862579b2cb8d0a855123243\"\n\t\t}\n\t},\n\t\"products\": [],\n\t\"autoFill\": null,\n\t\"fields\": [],\n\t\"parts\": [],\n\t\"signature\": null,\n\t\"unsignedDocument\": {\n\t\t\"documentId\": null,\n\t\t\"key\": null,\n\t\t\"url\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6862579b2cb8d0a855888243/offer-templates/6aaa9a349c888d3b4aa105de/external_document.pdf\",\n\t\t\"pageCount\": 2,\n\t\t\"status\": \"ready\"\n\t},\n\t\"unsignedDocumentWithInserts\": null,\n\t\"isTest\": false,\n\t\"publicId\": \"ABCDEFGH525\",\n\t\"status\": \"distributed\",\n\t\"statusUpdatedAt\": \"2026-10-08T11:39:18.767Z\",\n\t\"comments\": [],\n\t\"files\": [],\n\t\"distributions\": [\n\t\t{\n\t\t\t\"id\": \"6ae31ff07f3ddfab0aedac9e\",\n\t\t\t\"smsRecipient\": null,\n\t\t\t\"smsUserMessageLength\": null,\n\t\t\t\"emailRecipient\": \"example@example.com\",\n\t\t\t\"distributedAt\": \"2026-10-08T11:39:18.767Z\",\n\t\t\t\"twoWaySms\": null\n\t\t},\n\t\t{\n\t\t\t\"id\": \"6ae32002c110d0c34f955f03\",\n\t\t\t\"smsRecipient\": null,\n\t\t\t\"smsUserMessageLength\": null,\n\t\t\t\"emailRecipient\": \"example@example.com\",\n\t\t\t\"distributedAt\": \"2026-10-08T11:39:59.666Z\",\n\t\t\t\"twoWaySms\": null\n\t\t},\n\t\t{\n\t\t\t\"id\": \"6ae3200538cab0c8edecb6c7\",\n\t\t\t\"smsRecipient\": null,\n\t\t\t\"smsUserMessageLength\": null,\n\t\t\t\"emailRecipient\": \"example@example.com\",\n\t\t\t\"distributedAt\": \"2026-10-08T11:41:08.434Z\",\n\t\t\t\"twoWaySms\": null\n\t\t}\n\t],\n\t\"signatureToken\": null,\n\t\"declineToken\": null,\n\t\"read\": null,\n\t\"decline\": null,\n\t\"cancellation\": null,\n\t\"reviewPending\": null,\n\t\"expireAt\": \"2026-11-07T23:00:00.000Z\",\n\t\"documentId\": null,\n\t\"printToken\": null,\n\t\"events\": [\n\t\t{\n\t\t\t\"type\": \"distributed\",\n\t\t\t\"sessionId\": null,\n\t\t\t\"begunAt\": null,\n\t\t\t\"doneAt\": \"2026-10-08T11:39:18.782Z\",\n\t\t\t\"page\": null,\n\t\t\t\"ip\": null,\n\t\t\t\"userAgent\": null,\n\t\t\t\"error\": null,\n\t\t\t\"nextStep\": null,\n\t\t\t\"insertNumber\": null,\n\t\t\t\"signLocationType\": null,\n\t\t\t\"distributionMethod\": \"email\"\n\t\t},\n\t\t{\n\t\t\t\"type\": \"distributed\",\n\t\t\t\"sessionId\": null,\n\t\t\t\"begunAt\": null,\n\t\t\t\"doneAt\": \"2026-10-08T11:39:59.685Z\",\n\t\t\t\"page\": null,\n\t\t\t\"ip\": null,\n\t\t\t\"userAgent\": null,\n\t\t\t\"error\": null,\n\t\t\t\"nextStep\": null,\n\t\t\t\"insertNumber\": null,\n\t\t\t\"signLocationType\": null,\n\t\t\t\"distributionMethod\": \"email\"\n\t\t},\n\t\t{\n\t\t\t\"type\": \"distributed\",\n\t\t\t\"sessionId\": null,\n\t\t\t\"begunAt\": null,\n\t\t\t\"doneAt\": \"2026-10-08T11:41:08.446Z\",\n\t\t\t\"page\": null,\n\t\t\t\"ip\": null,\n\t\t\t\"userAgent\": null,\n\t\t\t\"error\": null,\n\t\t\t\"nextStep\": null,\n\t\t\t\"insertNumber\": null,\n\t\t\t\"signLocationType\": null,\n\t\t\t\"distributionMethod\": \"email\"\n\t\t}\n\t],\n\t\"bankIdSession\": null,\n\t\"orderIds\": [],\n\t\"contactId\": null,\n\t\"organizationId\": \"6ae3200993294328897149af\",\n\t\"createdFrom\": null,\n\t\"webhookId\": null,\n\t\"statusLinks\": null,\n\t\"signMethod\": null,\n\t\"country\": \"se\",\n\t\"distributeNow\": null,\n\t\"projectId\": null,\n\t\"additionalPages\": null,\n\t\"tags\": [],\n\t\"signaturePlace\": null,\n\t\"formId\": null,\n\t\"orderConfiguration\": null,\n\t\"reviews\": [],\n\t\"callId\": null,\n\t\"dialGroupId\": null,\n\t\"shuffleDialGroupId\": null,\n\t\"chatToken\": null,\n\t\"chatSessionId\": null,\n\t\"parentId\": null,\n\t\"deletedAt\": null,\n\t\"supplementaryFormId\": null,\n\t\"updatedViaFormAt\": null,\n\t\"bankIdSignArgsUrl\": null,\n\t\"createUnsignedDocumentOn\": null,\n\t\"isDeleted\": false,\n\t\"fullyDeleteAfter\": null\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4f"
       },
@@ -3902,14 +3549,14 @@
         "$date": "2026-10-28T09:48:17.130Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.930Z"
+        "$date": "2026-10-29T10:39:38.424Z"
       },
       "method": "GET",
-      "path": "/api/offers/offers-v1/count",
+      "path": "/api/offers/offers-v1/count?statuses=signed",
       "summary": "Räkna avtal",
       "parameters": [
         {
-          "name": "status",
+          "name": "statuses",
           "in": "query",
           "type": "string",
           "required": false,
@@ -3939,7 +3586,7 @@
       ],
       "responseStatus": 200,
       "responseDescription": "Antal avtal",
-      "responseExample": "{\n  \"count\": 0\n}",
+      "responseExample": "{\n  \"count\": 6\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4f"
       },
@@ -3950,253 +3597,13 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc82c"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.136Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.938Z"
-      },
-      "method": "PUT",
-      "path": "/api/offers/offers-v1/<offerId>",
-      "summary": "Uppdatera ett avtal",
-      "parameters": [
-        {
-          "name": "offerId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf691"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offers",
-      "deprecated": false,
-      "order": 970,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc82f"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.141Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.944Z"
-      },
-      "method": "DELETE",
-      "path": "/api/offers/offers-v1/<offerId>",
-      "summary": "Ta bort ett avtal",
-      "parameters": [
-        {
-          "name": "offerId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf692"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offers",
-      "deprecated": false,
-      "order": 980,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc832"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.147Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.950Z"
-      },
-      "method": "PUT",
-      "path": "/api/offers/offers-v1/<offerId>/cancel",
-      "summary": "Avbryt ett avtal",
-      "parameters": [
-        {
-          "name": "offerId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf693"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Avtalet har avbrutits",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offers",
-      "deprecated": false,
-      "order": 990,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc835"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.152Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.957Z"
-      },
-      "method": "POST",
-      "path": "/api/offers/offers-v1/<offerId>/files",
-      "summary": "Bifoga en fil till ett avtal",
-      "parameters": [
-        {
-          "name": "offerId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf694"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Filen har bifogats",
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"url\": \"string\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offers",
-      "deprecated": false,
-      "order": 1000,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc838"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.157Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.964Z"
-      },
-      "method": "DELETE",
-      "path": "/api/offers/offers-v1/<offerId>/files/<fileId>",
-      "summary": "Ta bort en bifogad fil från ett avtal",
-      "parameters": [
-        {
-          "name": "offerId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf695"
-        },
-        {
-          "name": "fileId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf696"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offers",
-      "deprecated": false,
-      "order": 1010,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc83b"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.162Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.970Z"
-      },
-      "method": "POST",
-      "path": "/api/offers/offers-v1/<offerId>/comments",
-      "summary": "Lägg till en kommentar på ett avtal",
-      "parameters": [
-        {
-          "name": "offerId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf697"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Kommentaren har skapats",
-      "responseExample": "{\n  \"commentId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offers",
-      "deprecated": false,
-      "order": 1020,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc83e"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.168Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.978Z"
-      },
-      "method": "DELETE",
-      "path": "/api/offers/offers-v1/<offerId>/comments/<commentId>",
-      "summary": "Ta bort en kommentar från ett avtal",
-      "parameters": [
-        {
-          "name": "offerId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf698"
-        },
-        {
-          "name": "commentId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf699"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offers",
-      "deprecated": false,
-      "order": 1030,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c4e1bab63cbf762bc841"
       },
       "createdAt": {
         "$date": "2026-10-28T09:48:17.174Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:53.985Z"
+        "$date": "2026-10-29T10:17:25.305Z"
       },
       "method": "GET",
       "path": "/api/products/products-v1",
@@ -4233,7 +3640,7 @@
       ],
       "responseStatus": 200,
       "responseDescription": "Lista med produkter",
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"price\": 0,\n    \"vat\": 0,\n    \"imageUrl\": \"string\",\n    \"categoryId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"position\": 0,\n    \"fields\": [\n      {\n        \"fieldId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n]",
+      "responseExample": "[\n    {\n        \"id\": \"6ae31cc110d5c535493acaec\",\n        \"categoryId\": \"6ae31cc450249c52dda52928\",\n        \"name\": \"Mobilabonnemang 2GB\",\n        \"price\": 0,\n        \"priceOptions\": [],\n        \"salaryBasis\": null,\n        \"salaryBasisType\": \"fixed\",\n        \"salaryBasisProductFieldIds\": [],\n        \"vat\": 25,\n        \"fields\": [\n            {\n                \"fieldId\": \"6ae31ce92f86b61f7098bdd5\",\n                \"value\": \"2GB\",\n                \"predefinedValues\": []\n            },\n            {\n                \"fieldId\": \"6ae31cedb9848b275f570e60\",\n                \"value\": \"Bra för små hushåll.\",\n                \"predefinedValues\": []\n            }\n        ],\n        \"image\": {\n            \"uri\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6ae31d0df22a967263127df0/products/689052f7cd76677613fe83b1-175538887104\",\n            \"mimetype\": \"image/jpeg\",\n            \"key\": \"6ae31d0df22a967263127df0/products/689052f7cd76677613fe83b1-175538887104\"\n        },\n        \"inputType\": \"none\",\n        \"isVisibleInExpressFlows\": true,\n        \"isVisibleInWebForms\": true,\n        \"deletedAt\": null,\n        \"calendarEventDuration\": {\n            \"_value\": null\n        },\n        \"reference\": {},\n        \"configs\": []\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c51"
       },
@@ -4244,62 +3651,13 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc844"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.179Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.993Z"
-      },
-      "method": "POST",
-      "path": "/api/products/products-v1",
-      "summary": "Skapa en produkt",
-      "parameters": [],
-      "responseStatus": 201,
-      "responseDescription": "Produkten har skapats",
-      "responseExample": "{\n  \"productId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c51"
-      },
-      "group": "Products",
-      "deprecated": false,
-      "order": 1050,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc847"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.183Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:53.999Z"
-      },
-      "method": "PUT",
-      "path": "/api/products/products-v1/ordering",
-      "summary": "Uppdatera produkternas ordning (endast admin)",
-      "parameters": [],
-      "responseStatus": 200,
-      "responseDescription": "Ordningen har uppdaterats",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c51"
-      },
-      "group": "Products",
-      "deprecated": false,
-      "order": 1060,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c4e1bab63cbf762bc84a"
       },
       "createdAt": {
         "$date": "2026-10-28T09:48:17.187Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.006Z"
+        "$date": "2026-10-29T10:18:52.406Z"
       },
       "method": "GET",
       "path": "/api/products/products-v1/<productId>",
@@ -4315,7 +3673,7 @@
       ],
       "responseStatus": 200,
       "responseDescription": "Produkt",
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"price\": 0,\n  \"vat\": 0,\n  \"imageUrl\": \"string\",\n  \"categoryId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"position\": 0,\n  \"fields\": [\n    {\n      \"fieldId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+      "responseExample": "{\n\t\"id\": \"6ae31cc110d5c535493acaec\",\n\t\"categoryId\": \"6ae31cc450249c52dda52928\",\n\t\"name\": \"Mobilabonnemang 2GB\",\n\t\"price\": 0,\n\t\"priceOptions\": [],\n\t\"salaryBasis\": null,\n\t\"salaryBasisType\": \"fixed\",\n\t\"salaryBasisProductFieldIds\": [],\n\t\"vat\": 25,\n\t\"fields\": [\n\t\t{\n\t\t\t\"fieldId\": \"6ae31ce92f86b61f7098bdd5\",\n\t\t\t\"value\": \"2GB\",\n\t\t\t\"predefinedValues\": []\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ae31cedb9848b275f570e60\",\n\t\t\t\"value\": \"Bra för små hushåll.\",\n\t\t\t\"predefinedValues\": []\n\t\t}\n\t],\n\t\"image\": {\n\t\t\"uri\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6ae31d0df22a967263127df0/products/689052f7cd76677613fe83b1-175538887104\",\n\t\t\"mimetype\": \"image/jpeg\",\n\t\t\"key\": \"6ae31d0df22a967263127df0/products/689052f7cd76677613fe83b1-175538887104\"\n\t},\n\t\"inputType\": \"none\",\n\t\"isVisibleInExpressFlows\": true,\n\t\"isVisibleInWebForms\": true,\n\t\"deletedAt\": null,\n\t\"calendarEventDuration\": {\n\t\t\"_value\": null\n\t},\n\t\"reference\": {},\n\t\"configs\": []\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c51"
       },
@@ -4326,114 +3684,17 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc84d"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.193Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.014Z"
-      },
-      "method": "PUT",
-      "path": "/api/products/products-v1/<productId>",
-      "summary": "Uppdatera en produkt",
-      "parameters": [
-        {
-          "name": "productId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf69f"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
-      "responseExample": "{\n  \"recordId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c51"
-      },
-      "group": "Products",
-      "deprecated": false,
-      "order": 1080,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc850"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.199Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.023Z"
-      },
-      "method": "DELETE",
-      "path": "/api/products/products-v1/<productId>",
-      "summary": "Ta bort en produkt",
-      "parameters": [
-        {
-          "name": "productId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6a0"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c51"
-      },
-      "group": "Products",
-      "deprecated": false,
-      "order": 1090,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc853"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.204Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.031Z"
-      },
-      "method": "PUT",
-      "path": "/api/products/products-v1/<productId>/image",
-      "summary": "Uppdatera en produkts bild",
-      "parameters": [
-        {
-          "name": "productId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6a1"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Bilden har uppdaterats",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c51"
-      },
-      "group": "Products",
-      "deprecated": false,
-      "order": 1100,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c4e1bab63cbf762bc856"
       },
       "createdAt": {
         "$date": "2026-10-28T09:48:17.211Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.038Z"
+        "$date": "2026-10-29T10:12:39.314Z"
       },
       "method": "GET",
       "path": "/api/calendar/calendar-events-v2",
-      "summary": "Lista kalenderhändelser (v2 – aktuell)",
+      "summary": "Lista kalenderhändelser",
       "parameters": [
         {
           "name": "userIds",
@@ -4480,384 +3741,13 @@
       ],
       "responseStatus": 200,
       "responseDescription": "Lista med kalenderhändelser",
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"startAt\": \"2026-01-01T12:00:00.000Z\",\n    \"endAt\": \"2026-01-01T12:00:00.000Z\",\n    \"color\": \"string\",\n    \"isRecurring\": false,\n    \"files\": [\n      {\n        \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"orderId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"contactId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n  }\n]",
+      "responseExample": "[\n    {\n        \"id\": \"6ae31c0d82dcfa3fded87e05\",\n        \"from\": \"2026-10-13T12:30:00.000Z\",\n        \"to\": \"2026-10-13T13:00:00.000Z\",\n        \"title\": \"Teamträff\",\n        \"organizationId\": \"6ae31c004e9c84dfb76b5343\",\n        \"userId\": \"6ae31bfd7fe3e162fb6b8014\",\n        \"createdByUserId\": \"6ae31bf7da635b57b2e3429d\",\n        \"note\": \"<p>To be explained</p><p>Scheduled with <a target=\\\"_blank\\\" rel=\\\"noopener noreferrer nofollow\\\" href=\\\"https://www.usemotion.com/referral?ref=calendar\\\">Motion</a></p>\",\n        \"files\": [],\n        \"orderIds\": [],\n        \"externalId\": \"evt_external_69b6634KS7G37f2501b35645\",\n        \"externalCalendarId\": \"cal_aJrwxCHD8Dt7A6d_LqJO7oC20NQwR1WqzDJRvg\",\n        \"sync\": [\n            {\n                \"calendarId\": \"cal_aJrwxCHD8Dt7A6d_LqJO7oC20NQwR1WqzDJRvg\",\n                \"date\": \"2026-03-31T13:02:09.559Z\"\n            }\n        ],\n        \"attendees\": [\n            {\n                \"email\": \"example@example.com\",\n                \"name\": null,\n                \"status\": \"accepted\"\n            },\n            {\n                \"email\": \"example2@example.com\",\n                \"name\": null,\n                \"status\": \"needsAction\"\n            },\n        ],\n        \"isPrivate\": false,\n        \"startOfDay\": \"2026-10-12T22:00:00.000Z\"\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c53"
       },
       "group": "Calendar Events",
       "deprecated": false,
       "order": 1110,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc859"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.219Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.045Z"
-      },
-      "method": "GET",
-      "path": "/api/calendar/calendar-events-v2/<eventId>",
-      "summary": "Hämta en kalenderhändelse via ID (v2)",
-      "parameters": [
-        {
-          "name": "eventId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6a8"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Kalenderhändelse",
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"startAt\": \"2026-01-01T12:00:00.000Z\",\n  \"endAt\": \"2026-01-01T12:00:00.000Z\",\n  \"color\": \"string\",\n  \"isRecurring\": false,\n  \"files\": [\n    {\n      \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"orderId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"contactId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "deprecated": false,
-      "order": 1120,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc85c"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.226Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.052Z"
-      },
-      "method": "PUT",
-      "path": "/api/calendar/calendar-events-v2/<eventId>",
-      "summary": "Uppdatera en kalenderhändelse (v2)",
-      "parameters": [
-        {
-          "name": "eventId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6a9"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
-      "responseExample": "{\n  \"recordId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "deprecated": false,
-      "order": 1130,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc85f"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.232Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.060Z"
-      },
-      "method": "GET",
-      "path": "/api/calendar/calendar-events-v1/<userId>",
-      "summary": "Lista händelser för en användare (v1 – utfasad, använd v2)",
-      "parameters": [
-        {
-          "name": "userId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6aa"
-        },
-        {
-          "name": "from",
-          "in": "query",
-          "type": "string (date-time)",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6ab"
-        },
-        {
-          "name": "to",
-          "in": "query",
-          "type": "string (date-time)",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6ac"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med händelser",
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"startAt\": \"2026-01-01T12:00:00.000Z\",\n    \"endAt\": \"2026-01-01T12:00:00.000Z\",\n    \"color\": \"string\",\n    \"isRecurring\": false,\n    \"files\": [\n      {\n        \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"orderId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"contactId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n  }\n]",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "deprecated": true,
-      "order": 1140,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc862"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.238Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.068Z"
-      },
-      "method": "POST",
-      "path": "/api/calendar/calendar-events-v1/<userId>",
-      "summary": "Skapa en kalenderhändelse för en användare",
-      "parameters": [
-        {
-          "name": "userId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6ad"
-        }
-      ],
-      "responseStatus": 201,
-      "responseDescription": "Händelsen har skapats",
-      "responseExample": "{\n  \"eventId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "deprecated": false,
-      "order": 1150,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc865"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.245Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.076Z"
-      },
-      "method": "GET",
-      "path": "/api/calendar/calendar-events-v1/<userId>/reminder",
-      "summary": "Hämta nästa påminda händelse för en användare",
-      "parameters": [
-        {
-          "name": "userId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6ae"
-        },
-        {
-          "name": "consume",
-          "in": "query",
-          "type": "boolean",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6af"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Påmind händelse eller null",
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"startAt\": \"2026-01-01T12:00:00.000Z\",\n  \"endAt\": \"2026-01-01T12:00:00.000Z\",\n  \"color\": \"string\",\n  \"isRecurring\": false,\n  \"files\": [\n    {\n      \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"orderId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"contactId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "deprecated": false,
-      "order": 1160,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc868"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.252Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.084Z"
-      },
-      "method": "PUT",
-      "path": "/api/calendar/calendar-events-v1/<userId>/<eventId>",
-      "summary": "Uppdatera en händelse (v1 – utfasad)",
-      "parameters": [
-        {
-          "name": "userId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6b0"
-        },
-        {
-          "name": "eventId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6b1"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "deprecated": true,
-      "order": 1170,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc86b"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.260Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.092Z"
-      },
-      "method": "DELETE",
-      "path": "/api/calendar/calendar-events-v1/<userId>/<eventId>/<occurrence>",
-      "summary": "Ta bort en händelse eller ett tillfälle",
-      "parameters": [
-        {
-          "name": "userId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6b2"
-        },
-        {
-          "name": "eventId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6b3"
-        },
-        {
-          "name": "occurrence",
-          "in": "path",
-          "type": "string (date-time)",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6b4"
-        },
-        {
-          "name": "deleteAll",
-          "in": "query",
-          "type": "boolean",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6b5"
-        },
-        {
-          "name": "deleteFollowing",
-          "in": "query",
-          "type": "boolean",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6b6"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "deprecated": false,
-      "order": 1180,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc86e"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.265Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.101Z"
-      },
-      "method": "POST",
-      "path": "/api/calendar/calendar-events-v1/<userId>/<eventId>/files",
-      "summary": "Bifoga en fil till en kalenderhändelse",
-      "parameters": [
-        {
-          "name": "userId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6b7"
-        },
-        {
-          "name": "eventId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6b8"
-        }
-      ],
-      "responseStatus": 201,
-      "responseDescription": "Filen har bifogats",
-      "responseExample": "{\n  \"file\": {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"string\"\n  }\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "deprecated": false,
-      "order": 1190,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc871"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.269Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.108Z"
-      },
-      "method": "DELETE",
-      "path": "/api/calendar/calendar-events-v1/<userId>/<eventId>/files/<fileId>",
-      "summary": "Ta bort en fil från en kalenderhändelse",
-      "parameters": [
-        {
-          "name": "userId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6b9"
-        },
-        {
-          "name": "eventId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6ba"
-        },
-        {
-          "name": "fileId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6bb"
-        }
-      ],
-      "responseStatus": 200,
-      "responseDescription": "Borttagen",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "deprecated": false,
-      "order": 1200,
       "__v": 0
     },
     {
@@ -5153,36 +4043,6 @@
       "group": "Webhooks",
       "deprecated": false,
       "order": 1250,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca413f"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.152Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.116Z"
-      },
-      "method": "DELETE",
-      "path": "/api/calendar/calendar-events-v1/<id>",
-      "summary": "Ta bort en kalenderhändelse",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a0f"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "group": "Calendar Events",
-      "order": 1200.01,
       "__v": 0
     },
     {
@@ -5952,66 +4812,6 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c885649571a981ca4198"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.382Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.340Z"
-      },
-      "method": "GET",
-      "path": "/api/documents/documents-v1",
-      "summary": "Hämta dokument med fel",
-      "parameters": [
-        {
-          "name": "status",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c885597b815580b92a23"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c57"
-      },
-      "group": "Documents",
-      "order": 1410,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca419b"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.387Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.346Z"
-      },
-      "method": "GET",
-      "path": "/api/documents/documents-v1/<id>",
-      "summary": "Hämta ett dokument",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a24"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c57"
-      },
-      "group": "Documents",
-      "order": 1410.01,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c885649571a981ca419e"
       },
       "createdAt": {
@@ -6064,165 +4864,23 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c885649571a981ca41a4"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.403Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.359Z"
-      },
-      "method": "POST",
-      "path": "/api/offers/bankid-credentials-v1/<id>/idkollen",
-      "summary": "Lägg till BankID-uppgifter",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a26"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Bankid credentials",
-      "order": 1430,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41a7"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.408Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.366Z"
-      },
-      "method": "GET",
-      "path": "/api/offers/bankid-credentials-v1",
-      "summary": "Hämta BankID-uppgifter",
-      "parameters": [
-        {
-          "name": "organizationId",
-          "in": "query",
-          "type": "ObjectId",
-          "required": false,
-          "id": "6ae1c885597b815580b92a27"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Bankid credentials",
-      "order": 1430.01,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41aa"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.413Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.373Z"
-      },
-      "method": "POST",
-      "path": "/api/offers/message-templates-v1",
-      "summary": "Skapa en meddelandemall",
-      "parameters": [],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Message templates",
-      "order": 1440,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41ad"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.417Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.380Z"
-      },
-      "method": "GET",
-      "path": "/api/offers/message-templates-v1/<id>",
-      "summary": "Hämta meddelandemallar",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a28"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Message templates",
-      "order": 1440.01,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41b0"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.422Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.386Z"
-      },
-      "method": "GET",
-      "path": "/api/offers/offer-distribution-v1/<id>/email",
-      "summary": "Hämta utskicksmejlet för ett avtal",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a29"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offer distributions",
-      "order": 1450,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c885649571a981ca41b3"
       },
       "createdAt": {
         "$date": "2026-10-28T10:03:49.428Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.393Z"
+        "$date": "2026-10-29T10:48:19.186Z"
       },
       "method": "GET",
-      "path": "/api/offers/offer-information-v1/unsigned-documents-with-inserts",
+      "path": "/api/offers/offer-information-v1/unsigned-documents-with-inserts?offerIds=6ae32445ab7e7e2951f796ff",
       "summary": "Hämta osignerat dokument med ifyllda fält",
       "parameters": [
         {
           "name": "offerIds",
           "in": "query",
           "type": "ObjectId",
-          "required": false,
+          "required": true,
           "id": "6ae1c885597b815580b92a2a"
         }
       ],
@@ -6232,119 +4890,39 @@
       },
       "group": "Offer information",
       "order": 1460,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41b6"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.433Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.399Z"
-      },
-      "method": "GET",
-      "path": "/api/offers/offer-messages-v1",
-      "summary": "Hämta avtalsmeddelanden",
-      "parameters": [
-        {
-          "name": "offerIds",
-          "in": "query",
-          "type": "ObjectId",
-          "required": false,
-          "id": "6ae1c885597b815580b92a2b"
+      "__v": 0,
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Hämta ett avtal innan det har skickats ut för signering. Kan exempelvis användas i webbformulär för att visa kunden en förhandsgranskning på hur avtalet kommer att se ut.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
         }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
       },
-      "group": "Offer messages",
-      "order": 1470,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41b9"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.439Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.405Z"
-      },
-      "method": "POST",
-      "path": "/api/offers/offer-responses-v1/<id>/signature-token",
-      "summary": "Skapa en signeringstoken",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a2c"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offer responses",
-      "order": 1480,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41bc"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.445Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.413Z"
-      },
-      "method": "GET",
-      "path": "/api/offers/offer-templates-v2/<id>",
-      "summary": "Hämta avtalsmallar",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a2d"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offer templates",
-      "order": 1490,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41bf"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.450Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.420Z"
-      },
-      "method": "POST",
-      "path": "/api/offers/offer-templates-v2",
-      "summary": "Skapa en avtalsmall",
-      "parameters": [],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Offer templates",
-      "order": 1490.01,
-      "__v": 0
+      "responseExample": " [\r\n    {\r\n        \"offerId\": \"6ae32445ab7e7e2951f796ff\",\r\n        \"unsignedDocumentWithInserts\": {\r\n            \"documentId\": \"6ae32453fc6a560ba0e75317\",\r\n            \"key\": \"6ae3245aed155b3387fb9f8e/documents/merged/6ae32464fcee0755e96e8410.pdf\",\r\n            \"url\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6ae3245aed155b3387fb9f8e/documents/merged/6ae32464fcee0755e96e8410.pdf\",\r\n            \"pageCount\": 1,\r\n            \"status\": \"ready\"\r\n        }\r\n    }\r\n]"
     },
     {
       "_id": {
@@ -6354,11 +4932,11 @@
         "$date": "2026-10-28T10:03:49.454Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.426Z"
+        "$date": "2026-10-29T10:51:59.397Z"
       },
       "method": "PUT",
       "path": "/api/offers/web-forms-v1/<id>",
-      "summary": "Skapa ett webbformulär",
+      "summary": "Uppdatera ett webbformulär",
       "parameters": [
         {
           "name": "id",
@@ -6374,37 +4952,8 @@
       },
       "group": "Web forms",
       "order": 1500,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41c5"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.461Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.432Z"
-      },
-      "method": "GET",
-      "path": "/api/offers/web-forms-v1/<id>",
-      "summary": "Hämta webbformulär",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a2f"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "group": "Web forms",
-      "order": 1500.01,
-      "__v": 0
+      "__v": 0,
+      "requestBody": "{\r\n  // Alla fält är valfria – skicka bara de du vill ändra.\r\n  \"name\": \"Elavtal 2026\",                                      // Webbformulärets namn.\r\n  \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",                        // Säljaren som avtalen kopplas till. OBS: allowUserId måste vara true.\r\n  \"returnUrl\": \"https://exempel.se/tack\",                      // Dit kunden skickas efteråt. Måste vara en giltig URL.\r\n  \"templateIds\": [\"64a1b2c3d4e5f6a7b8c9d0e2\"],                 // Avtalsmallar som formuläret använder.\r\n  \"isSmsEnabled\": true,                                        // Skicka avtalet via SMS.\r\n  \"smsMessageTemplateId\": \"64a1b2c3d4e5f6a7b8c9d0e3\",          // SMS-mall för utskicket.\r\n  \"isEmailEnabled\": true,                                      // Skicka avtalet via e-post.\r\n  \"emailMessageTemplateId\": \"64a1b2c3d4e5f6a7b8c9d0e4\",        // Mejlmall för utskicket.\r\n  \"testEmails\": [\"namn@exempel.se\"],                           // Adresser för testutskick.\r\n  \"signaturePlace\": \"Stockholm\",                               // Ort som anges vid signeringen.\r\n  \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e5\",                     // Projektet formuläret hör till.\r\n  \"allowUserId\": true,                                         // Tillåt att en säljare anges i formuläret.\r\n  \"allowUserTeamIds\": [\"64a1b2c3d4e5f6a7b8c9d0e6\"],            // Team vars säljare kan anges.\r\n  \"accessTeamIds\": [\"64a1b2c3d4e5f6a7b8c9d0e6\"],               // Team som har åtkomst till formuläret.\r\n  \"accessProjectIds\": [\"64a1b2c3d4e5f6a7b8c9d0e5\"],            // Projekt som har åtkomst till formuläret.\r\n  \"isOfferView\": false,                                        // Visa formuläret som en avtalsvy.\r\n  \"isPresignEnabled\": false,                                   // Aktivera förhandssignering.\r\n  \"bankIdSignArgsUrl\": \"https://exempel.se/bankid\",            // URL för BankID-signeringens argument.\r\n  \"developerMessage\": \"Kontakta IT vid frågor om formuläret.\", // Meddelande till utvecklare.\r\n  \"supplementaryMessageTemplateIds\": [],                       // Ytterligare meddelandemallar.\r\n  \"supplementaryOfferTemplateIds\": [],                         // Ytterligare avtalsmallar.\r\n  \"isRemoved\": false                                           // true tar bort formuläret.\r\n}\r\n"
     },
     {
       "_id": {
@@ -6478,96 +5027,6 @@
       },
       "group": "After order work",
       "order": 1510.01,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41ce"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.480Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.450Z"
-      },
-      "method": "GET",
-      "path": "/api/orders/after-order-work-executions-v1/<id>",
-      "summary": "Hämta körningar av efterarbete för en order",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a34"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "After order work executions",
-      "order": 1520,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41d1"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.485Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.457Z"
-      },
-      "method": "GET",
-      "path": "/api/orders/after-order-work-presets-v1/<id>",
-      "summary": "Hämta mallar för efterarbete",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a35"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "After order work presets",
-      "order": 1530,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41d4"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.491Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.464Z"
-      },
-      "method": "GET",
-      "path": "/api/orders/executable-after-order-work-v1/<id>/orders",
-      "summary": "Visa körningar av efterarbete",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a36"
-        }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Executable after order work",
-      "order": 1540,
       "__v": 0
     },
     {
@@ -6668,47 +5127,27 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c885649571a981ca41e3"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.516Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.495Z"
-      },
-      "method": "GET",
-      "path": "/api/orders/order-information-v1",
-      "summary": "Hämta orderinformation",
-      "parameters": [],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "group": "Order information",
-      "order": 1570.01,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c885649571a981ca41e6"
       },
       "createdAt": {
         "$date": "2026-10-28T10:03:49.520Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.502Z"
+        "$date": "2026-10-29T10:20:20.749Z"
       },
       "method": "GET",
       "path": "/api/products/product-categories-v1",
       "summary": "Hämta produktkategorier",
       "parameters": [],
-      "responseStatus": null,
+      "responseStatus": 200,
       "service": {
         "$oid": "6adf656b8107051a9a733c51"
       },
       "group": "Product categories",
       "order": 1580,
-      "__v": 0
+      "__v": 0,
+      "responseDescription": "Produktkategorier",
+      "responseExample": "[\r\n\t{\r\n        \"id\": \"6aaa9a3493cdb8d52374ea02\",\r\n        \"name\": \"Mobilabonnemang\",\r\n        \"deletedAt\": null,\r\n        \"reference\": {},\r\n        \"fields\": []\r\n    }\r\n]"
     },
     {
       "_id": {
@@ -6718,7 +5157,7 @@
         "$date": "2026-10-28T10:03:49.524Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.508Z"
+        "$date": "2026-10-29T10:24:18.511Z"
       },
       "method": "GET",
       "path": "/api/products/product-fields-v1",
@@ -6730,7 +5169,8 @@
       },
       "group": "Product fields",
       "order": 1590,
-      "__v": 0
+      "__v": 0,
+      "responseExample": "[\r\n    {\r\n        \"id\": \"6ae31eaa9d923d90306727ad\",\r\n        \"label\": \"Bindningstid\",\r\n        \"categoryIds\": [],\r\n        \"inputCategoryIds\": [],\r\n        \"predefinedValues\": [\r\n            {\r\n                \"id\": \"6ae31eb57ce03d2d3fd0ba78\",\r\n                \"value\": \"12 månader\"\r\n            },\r\n            {\r\n                \"id\": \"6ae31eb91b71d0ffd36a638d\",\r\n                \"value\": \"24 månader\"\r\n            }\r\n        ]\r\n    }\r\n]"
     },
     {
       "_id": {
@@ -6740,25 +5180,18 @@
         "$date": "2026-10-28T10:03:49.533Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.515Z"
+        "$date": "2026-10-29T09:34:53.131Z"
       },
       "method": "GET",
-      "path": "/api/users/files-v1/<id>/documents/merged/<id2>.pdf",
+      "path": "/api/users/files-v1/<fileKey>",
       "summary": "Hämta ett dokument",
       "parameters": [
         {
-          "name": "id",
+          "name": "fileKey",
           "in": "path",
-          "type": "ObjectId",
+          "type": "string",
           "required": true,
           "id": "6ae1c885597b815580b92a38"
-        },
-        {
-          "name": "id2",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a39"
         }
       ],
       "responseStatus": null,
@@ -6767,7 +5200,57 @@
       },
       "group": "Files",
       "order": 1600,
-      "__v": 0
+      "__v": 0,
+      "curlExample": "curl --request GET \\\r\n  --url https://app.salesys.se/api/users/files-v1/66e941e119eb2f647ff566d9/documents/merged/6ab134a85e545667b1e4fa0a_6ab134a85e54c067b1e23fa0b.pdf \\\r\n  --header 'Authorization: ' \\\r\n  --header 'Content-Type: application/pdf' \\\r\n  --header 'Cookie: s2_utoken=<token>'",
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Till skillnad från övriga endpoints använder denna endpoint en cookie för authorization. Cookie:n är ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "s2_utoken",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " och ska ha en vanlig access token som värde.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      }
     },
     {
       "_id": {
@@ -6777,7 +5260,7 @@
         "$date": "2026-10-28T10:03:49.548Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.535Z"
+        "$date": "2026-10-29T10:08:02.280Z"
       },
       "method": "POST",
       "path": "/api/users/user-messages-v1",
@@ -6789,29 +5272,58 @@
       },
       "group": "User messages",
       "order": 1620,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41f8"
+      "__v": 0,
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Används för att skicka en notis till en användare inne i SaleSys. Notisen visas högst upp till höger.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6ae31afb09b7a06f3530c9b6",
+              "fields": null,
+              "relationTo": "media",
+              "value": "6ae31afbff0763e730d21a3d"
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
       },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.553Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T14:47:09.837Z"
-      },
-      "method": "GET",
-      "path": "/api/users/dashboards-v1",
-      "summary": "Hämta dashboards",
-      "parameters": [],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "group": "Dashboards",
-      "order": 180.01,
-      "__v": 0
+      "requestBody": "{\r\n  // target och notification krävs. Övriga fält har standardvärden och kan utelämnas.\r\n  \"target\": {                                       // Obligatoriskt. Vilka användare som ska få meddelandet.\r\n    \"teamIds\": [\"64a1b2c3d4e5f6a7b8c9d0e1\"],        // Alla användare i dessa team.\r\n    \"userIds\": [\"64a1b2c3d4e5f6a7b8c9d0e2\"],        // Specifika användare. Kan inte kombineras med types.\r\n    \"exclude\": false                                // true = alla utom de valda.\r\n  },\r\n  \"notification\": {                                 // Notisen som visas. Krävs – annars finns inget att skicka.\r\n    \"iconName\": \"envelope\",                         // Ikonens namn.\r\n    \"title\": \"Nytt säljmål\",                        // Rubrik.\r\n    \"text\": \"Veckans mål är uppdaterat.\",           // Obligatoriskt. Själva meddelandet.\r\n    \"link\": \"/orders?orderId=64a1b2c3d4e5f6a7b8c9d0e3\", // Sökväg i SaleSys eller en fullständig URL.\r\n    \"confetti\": false,                              // Visa konfetti. Standard: false.\r\n    \"reload\": false                                 // Ladda om sidan hos mottagaren. Standard: false.\r\n  },\r\n  \"expireAfterSeconds\": 300,                        // Hur många sekunder användaren kan få meddelandet. Standard: 300 (5 min).\r\n  \"isEnabled\": true,                                // Standard: true.\r\n  \"projectIds\": []                                  // Begränsa till projekt. Standard: [] (inga begränsningar).\r\n}\r\n"
     },
     {
       "_id": {
@@ -6821,18 +5333,19 @@
         "$date": "2026-10-28T10:03:49.557Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.542Z"
+        "$date": "2026-10-29T09:44:51.777Z"
       },
       "method": "PUT",
-      "path": "/api/users/views-v1/<id>",
-      "summary": "Skapa en anpassad vy",
+      "path": "/api/users/views-v1/<viewId>",
+      "summary": "Uppdatera en vy",
       "parameters": [
         {
-          "name": "id",
+          "name": "viewId",
           "in": "path",
           "type": "ObjectId",
           "required": true,
-          "id": "6ae1c885597b815580b92a3c"
+          "description": "Vyns ID.",
+          "id": "6ae31593279fe04254bfe20d"
         }
       ],
       "responseStatus": null,
@@ -6841,6 +5354,210 @@
       },
       "group": "Views",
       "order": 1630,
+      "__v": 0,
+      "description": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Uppdaterar en befintlig vy. Skicka bara de fält du vill ändra.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "requestBody": "{\n  // Alla fält är valfria – skicka bara de du vill ändra.\n  \"name\": \"Min vy\",                          // Vyns namn.\n  \"html\": \"<div>Ny kod för vyn</div>\",       // Vyns HTML/Handlebars.\n  \"locations\": [{ \"type\": \"navigation\" }],   // Var man kommer åt vyn.\n  \"rights\": [],                              // Egna rättigheter. Använder du en vymall uppdaterar du rights på vymallen i stället.\n  \"teamIds\": [\"64a1b2c3d4e5f6a7b8c9d0e1\"],   // Team som ser vyn.\n  \"roleIds\": [],                             // Roller som ser vyn, utöver teamen.\n  \"projectIds\": null,                        // Projekt där vyn syns. null = alla projekt.\n  \"iconName\": \"user-ninja\",                  // Ikon från Font Awesome 5.\n  \"iconColor\": \"#1565c0\"                     // Ikonens färg.\n}"
+    },
+    {
+      "_id": {
+        "$oid": "6ae31593c292778326340bc9"
+      },
+      "createdAt": {
+        "$date": "2026-10-29T09:44:51.800Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-29T09:44:51.800Z"
+      },
+      "method": "POST",
+      "path": "/api/users/views-v1",
+      "summary": "Skapa en egen vy",
+      "description": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Skapar en egen vy (även kallad custom view): fristående HTML/Handlebars som fungerar som webbformulär eller avtalsmallar. Du väljer om vyn ska nås från inställningarna eller navigationsmenyn högst upp. Vyer använder ",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                },
+                {
+                  "type": "text",
+                  "text": "window.form.custom",
+                  "format": 16,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                },
+                {
+                  "type": "text",
+                  "text": " och ",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                },
+                {
+                  "type": "text",
+                  "text": "window.form.setState",
+                  "format": 16,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                },
+                {
+                  "type": "text",
+                  "text": ", precis som webbformulär.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Inställningar för vyer visas under Inställningar → Vyer först när det finns en vy på kontot, så den första vyn behöver du skapa direkt i API:t. Därefter kan du redigera HTML-koden i webbläsaren, precis som med webbformulär och arbetsmallar.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "requestBody": "{\n  \"name\": \"Min vy\",                          // Obligatoriskt. Vyns namn.\n  \"html\": \"<div>Koden för vyn</div>\",        // Obligatoriskt. Vyns HTML/Handlebars.\n  \"locations\": [                             // Obligatoriskt. Var man kommer åt vyn.\n    {\n      \"type\": \"settings\",                    // settings, navigation, widgets eller widgetsLeft.\n      \"position\": 0,                         // Valfritt. Position i listan. För navigation: -1 = egen sektion till vänster, högre än 4 = egen sektion till höger om Inställningar.\n      \"label\": \"Vyn\"                         // Valfritt. Namnet i navigationsmenyn.\n    }\n  ],\n  \"rights\": [                                // Obligatoriskt. Egna rättigheter som visas under användarinställningar.\n    {\n      \"right\": \"createAnything\",             // Rättighetens ID, används i koden.\n      \"name\": \"Skapa allt\",                  // Namnet som visas i inställningar.\n      \"description\": \"Tillåter användaren att skapa allt\" // Valfritt. En beskrivning.\n    }\n  ],\n  \"teamIds\": [],                             // Valfritt. Team som ser vyn. Tom lista = bara admin.\n  \"roleIds\": [],                             // Valfritt. Roller som ser vyn, utöver teamen.\n  \"projectIds\": [],                          // Valfritt. Projekt där vyn syns. null = alla projekt.\n  \"iconName\": \"user-ninja\",                  // Valfritt. Ikon från Font Awesome 5 (gratisikonerna).\n  \"iconColor\": \"#1565c0\"                     // Valfritt. Ikonens färg.\n}",
+      "responseStatus": 200,
+      "responseExample": "{\n  \"viewId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
+      "service": {
+        "$oid": "6adf656b8107051a9a733c55"
+      },
+      "group": "Views",
+      "order": 1629,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6ae31593c292778326340bcc"
+      },
+      "createdAt": {
+        "$date": "2026-10-29T09:44:51.816Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-29T09:44:51.816Z"
+      },
+      "method": "DELETE",
+      "path": "/api/users/views-v1/<viewId>",
+      "summary": "Ta bort en vy",
+      "description": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Tar bort en vy.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parameters": [
+        {
+          "name": "viewId",
+          "in": "path",
+          "type": "ObjectId",
+          "required": true,
+          "description": "Vyns ID.",
+          "id": "6ae31593279fe04254bfe20e"
+        }
+      ],
+      "responseStatus": 200,
+      "service": {
+        "$oid": "6adf656b8107051a9a733c55"
+      },
+      "group": "Views",
+      "order": 1631,
       "__v": 0
     }
   ],

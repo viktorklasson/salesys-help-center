@@ -22,6 +22,13 @@
   }
 }
 
+.page-title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
 .api-empty {
   padding: 32px;
   color: var(--muted);
@@ -265,3 +272,5 @@
   font-weight: 600;
   color: #b42335;
 }
+
+

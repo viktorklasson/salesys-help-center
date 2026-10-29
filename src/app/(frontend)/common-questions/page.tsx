@@ -1,4 +1,3 @@
-import { RichText } from '@payloadcms/richtext-lexical/react';
 import { ArrowRight, Plus } from 'lucide-react';
 import Link from 'next/link';
 import { getPayload } from 'payload';
@@ -21,13 +20,18 @@ export default async function CommonQuestionsPage() {
   const [page, categories, questions] = await Promise.all([
     payload.findGlobal({ slug: 'common-questions-page' }),
     payload.find({ collection: 'question-categories', sort: 'order', limit: 0 }),
-    payload.find({ collection: 'questions', sort: 'order', depth: 0, limit: 0 }),
+    // 1 so images and files in answers come with their URL
+    payload.find({ collection: 'questions', sort: 'order', depth: 1, limit: 0 }),
   ]);
+
+  // At depth 1 the category is the full document, not just its ID
+  const categoryId = (category: (typeof questions.docs)[number]['category']) =>
+    typeof category === 'object' ? category.id : category;
 
   const groups = categories.docs
     .map((category) => ({
       ...category,
-      questions: questions.docs.filter((q) => q.category === category.id),
+      questions: questions.docs.filter((q) => categoryId(q.category) === category.id),
     }))
     .filter((group) => group.questions.length > 0);
 
@@ -52,7 +56,7 @@ export default async function CommonQuestionsPage() {
                     {question}
                     <Plus size={20} />
                   </summary>
-                  <RichText className="faq-answer" data={answer} />
+                  <FormattedText className="faq-answer" data={answer} />
                   {link?.href && (
                     <Link className="card-more" href={link.href}>
                       {link.label || 'Läs mer'} <ArrowRight size={14} />

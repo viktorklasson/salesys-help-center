@@ -284,13 +284,17 @@ export interface Endpoint {
     [k: string]: unknown;
   } | null;
   /**
-   * Läggs in i cURL-exemplet med -d.
+   * Kommentarer med // visas på sidan, men tas bort i cURL-exemplet så att det skickar giltig JSON.
    */
   requestBody?: string | null;
+  /**
+   * Valfritt. Lämna tomt för att skapa kommandot automatiskt från metod, sökväg och body. Fyll i för att visa ditt eget kommando i stället.
+   */
+  curlExample?: string | null;
   parameters?:
     | {
         name: string;
-        in: 'path' | 'query' | 'header';
+        in: 'path' | 'query' | 'header' | 'body';
         type?: string | null;
         required?: boolean | null;
         description?: string | null;
@@ -526,6 +530,7 @@ export interface EndpointsSelect<T extends boolean = true> {
   summary?: T;
   description?: T;
   requestBody?: T;
+  curlExample?: T;
   parameters?:
     | T
     | {
