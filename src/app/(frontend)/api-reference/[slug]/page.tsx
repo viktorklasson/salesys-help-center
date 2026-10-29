@@ -68,10 +68,10 @@ const BodySchema = ({ params }: { params?: Parameter[] }) => {
     code: `  "${param.name}": ${placeholderFor(param.type)}${i < params.length - 1 ? ',' : ''}`,
     comment: [param.required && 'Obligatorisk.', param.description].filter(Boolean).join(' '),
   }));
-  // Line the comments up in one column
-  const width = Math.max(...lines.map((line) => line.code.length)) + 2;
   const allOptional = params.every((param) => !param.required);
 
+  // Same style as bodies written in the CMS: each comment on its own line above the field,
+  // with a blank line between commented fields
   return (
     <div>
       <h3 className="details-heading">Body</h3>
@@ -84,8 +84,14 @@ const BodySchema = ({ params }: { params?: Parameter[] }) => {
         )}
         {lines.map((line, i) => (
           <React.Fragment key={params[i].id}>
-            {line.comment ? line.code.padEnd(width) : line.code}
-            {line.comment && <span className="code-comment">{`// ${line.comment}`}</span>}
+            {line.comment && (
+              <>
+                {(i > 0 || allOptional) && '\n'}
+                <span className="code-comment">{`  // ${line.comment}`}</span>
+                {'\n'}
+              </>
+            )}
+            {line.code}
             {'\n'}
           </React.Fragment>
         ))}
