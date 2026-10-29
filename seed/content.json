@@ -3113,11 +3113,11 @@
         "$date": "2026-10-28T10:03:49.217Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.185Z"
+        "$date": "2026-10-29T14:56:44.686Z"
       },
       "method": "POST",
       "path": "/api/dial/call-actions-v1",
-      "summary": "Skapa en samtalsåtgärd",
+      "summary": "Skapa ett samtalsarbete",
       "parameters": [],
       "responseStatus": null,
       "service": {
@@ -3125,7 +3125,39 @@
       },
       "group": "Call actions",
       "order": 1280,
-      "__v": 0
+      "__v": 0,
+      "requestBody": "{\r\n  \"name\": \"Skicka samtal till CRM\",\r\n\r\n  // Om arbetet är aktiverat.\r\n  \"isEnabled\": true,\r\n\r\n  // Körs automatiskt på samtal som matchar villkoren.\r\n  \"isAutomatic\": true,\r\n\r\n  // Vilka samtal arbetet körs på.\r\n  \"conditions\": {\r\n    // Samtalet har någon av dessa samtalstaggar (utfall).\r\n    \"anyTagId\": [\r\n      \"6a9acf26232b25269f61fa06\",\r\n      \"6a9acf2f89916c6232cbaab3\",\r\n      \"6a9acf38232b25269f61fa2c\",\r\n      \"6a9acf6b232b25269f61fa61\",\r\n      \"6a9acf737982be049c96fe5c\",\r\n      \"6a9acf50232b25269f61fa41\",\r\n      \"6a9acf7dd64c31100a2bf4c4\",\r\n      \"6a9acf84232b25269f61fa7f\",\r\n      \"6a9acf8fd33f8631000e278a\",\r\n      \"6a9acf9789916c6232cbab88\",\r\n      \"6a9acfa1d64c31100a2bf500\",\r\n      \"6a9acfb75cf3a8249fba6c01\",\r\n      \"6a9acfaf89916c6232cbabb6\",\r\n      \"6a9acf5bd33f8631000e26fe\"\r\n    ],\r\n\r\n    // Samtalet har ingen av dessa taggar.\r\n    \"notAnyTagId\": [\r\n      \"6a3123ab5adf993619356eea\",\r\n      \"67c481ab2a50741ee9861a43\",\r\n      \"67c481c50f291326f7e8bb5c\",\r\n      \"6a31185e9b52ac48be1bbd56\"\r\n    ],\r\n\t\r\n    // Bara samtal i detta projekt.\r\n    \"projectIds\": [\r\n      \"6a9abefd936e18d5550f6efb\"\r\n    ],\r\n  },\r\n\r\n  // Hur gammalt ett samtal får vara för att arbetet ska köras.\r\n  \"maxLag\": {\r\n    \"days\": 2\r\n  },\r\n\r\n  // Vad arbetet gör. Exakt en åtgärd, här ett HTTP-anrop.\r\n  \"toDo\": {\r\n    \"http\": {\r\n\t  // HTTP-metod för anropet.\r\n      \"method\": \"POST\",\r\n\t  \r\n\t  // Endpoint som ska anropas.\r\n      \"url\": {\r\n        \"_firstNonNull\": [\r\n          \"https://example.com/api/add-call-to-crm\"\r\n        ]\r\n      },\r\n      \"headers\": {\r\n\t\t// Standard för HTTP-arbeten.\r\n        \"content-type\": \"application/json\",\r\n\t\t\r\n\t\t// Authorization för anropet, nyckeln krypteras automatiskt efter arbetet skapas.\r\n\t\t\"authorization\": \"Bearer token\"\r\n      },\r\n\t  \r\n\t  // Valfria query-parametrar.\r\n      \"query\": {\r\n\t\t\"isTest\": \"true\"\r\n\t  },\r\n\r\n      // Skickar svaret från pre-anropet som body.\r\n      \"body\": {\r\n        \"_path\": \"$.pre\"\r\n      },\r\n\r\n      // Anropas först: bygger händelsen som sedan skickas vidare.\r\n      \"pre\": {\r\n        \"request\": {\r\n          \"method\": \"POST\",\r\n          \"url\": {\r\n            \"_firstNonNull\": [\r\n              \"https://example.com/api/get-crm-body\"\r\n            ]\r\n          },\r\n          \"headers\": {\r\n            \"content-type\": \"application/json\",\r\n            \"authorization\": \"Bearer token2\"\r\n          },\r\n          \"body\": {\r\n            \"recurringPayments\": {\r\n              \"_field\": \"6aba8ce6d49bda4f22f97403\"\r\n            },\r\n\t\t\t\r\n            \"autogiroInfo\": {\r\n              \"_field\": \"6aba8cf2f067bf4ef64c3015\"\r\n            },\r\n\r\n            // Samtalets taggar.\r\n            \"dialTagIds\": {\r\n              \"_path\": \"$.tagIds\"\r\n            },\r\n\r\n            // Numret som ringdes.\r\n            \"recipient\": {\r\n              \"_path\": \"$.recipient\"\r\n            },\r\n\r\n            // Samtalets datum, formaterat som 2026-10-29.\r\n            \"answerDate\": {\r\n              \"_path\": \"$.connectingAt\",\r\n              \"_formatDate\": \"YYYY-MM-DD\"\r\n            },\r\n\r\n            // Kontaktens ID och kampanj-ID, från kontaktfält.\r\n            \"contactIdField\": {\r\n\t\t\t  // Innebär att det första fältet med ett värde kommer att väljas.\r\n              \"_firstNonNull\": [\r\n                {\r\n                  \"_field\": \"6a9ad8c63f9d1fa18736e8ec\",\r\n                },\r\n\t\t\t\t{\r\n\t\t\t\t  \"_field\": \"6a9abf06936e18d5550f6f25\"\r\n\t\t\t\t}\r\n              ]\r\n            }\r\n          }\r\n        }\r\n      },\r\n\r\n      // Spara inte svaret permanent. Rekommenderas.\r\n      \"isResponseBodyAlwaysAvailable\": false,\r\n    }\r\n  },\r\n\r\n  // Teamet som får köra arbetet.\r\n  \"access\": [\r\n    {\r\n      \"teamId\": \"6a9abf06936e18d5550f6f1b\",\r\n      \"canExecuteAction\": true\r\n    }\r\n  ],\r\n\r\n  // Hur händelsen ska visas på samtalet.\r\n  \"presentation\": {\r\n    \"isDiscreet\": false,\r\n    \"icon\": {\r\n      \"name\": \"address-book\"\r\n    },\r\n    \"executionDescription\": \"Lade till samtalet i Röda Korset CRM\"\r\n  },\r\n\r\n  // Max antal körningar.\r\n  \"maxExecutions\": 1,\r\n  \"executeAgainConditions\": [],\r\n  \"features\": []\r\n}\r\n",
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ett samtalsarbete utför någonting löpande på ringda samtal, eller pågående samtal. Läs mer på sidan om samtalsarbeten.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      }
     },
     {
       "_id": {
@@ -3135,11 +3167,11 @@
         "$date": "2026-10-28T10:03:49.234Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.197Z"
+        "$date": "2026-10-29T15:06:29.870Z"
       },
       "method": "POST",
       "path": "/api/dial/call-information-v1/operators",
-      "summary": "Testa operatorer på samtal",
+      "summary": "Testa samtals-operatorer",
       "parameters": [],
       "responseStatus": null,
       "service": {
@@ -3147,7 +3179,40 @@
       },
       "group": "Call information",
       "order": 1290,
-      "__v": 0
+      "__v": 0,
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "I samtalsarbeten används JSON-path för att referera till en mängd olika variabler, exempelvis en orders ID. Via denna endpoint kan du se vilka variabler som finns. Värden hämtas från det senaste samtalet.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "requestBody": "{\r\n  \"object\": {\r\n\t// \"$\" hämtar alla värden.\r\n\t// Exempelvis \"$.recipient\" hämtar numret som ringdes till och \"$.user.username\" SaleSys-användaren som gjorde samtalets användarnamn.\r\n    \"_path\": \"$\"\r\n  }\r\n}",
+      "responseExample": "{\r\n  \"callId\": \"6ae360b8beb8951e71603baf\",\r\n  \"callSerialId\": 312311,\r\n  \"result\": \"test-testsson\"\r\n}"
     },
     {
       "_id": {
