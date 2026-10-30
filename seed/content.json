@@ -3216,38 +3216,16 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c885649571a981ca4159"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.242Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.204Z"
-      },
-      "method": "GET",
-      "path": "/api/dial/call-statistics-v2",
-      "summary": "Hämta samtalsstatistik",
-      "parameters": [],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c41"
-      },
-      "group": "Call statistics",
-      "order": 1300,
-      "__v": 0
-    },
-    {
-      "_id": {
         "$oid": "6ae1c885649571a981ca4165"
       },
       "createdAt": {
         "$date": "2026-10-28T10:03:49.275Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.230Z"
+        "$date": "2026-10-30T10:50:16.021Z"
       },
       "method": "GET",
-      "path": "/api/dial/calls-v1/<id>/recording.wav",
+      "path": "/api/dial/calls-v1/<callId>/recording.wav",
       "summary": "Hämta en samtalsinspelning",
       "parameters": [
         {
@@ -3264,7 +3242,29 @@
       },
       "group": "Calls",
       "order": 1330.01,
-      "__v": 0
+      "__v": 0,
+      "curlExample": "curl --request GET \\\r\n  --url https://app.salesys.se/api/dial/calls-v1/<callId>/recording.wav \\\r\n  --header 'Authorization: Bearer <token>' \\\r\n  --header 'Content-Type: application/octet-stream'",
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      }
     },
     {
       "_id": {
@@ -3274,7 +3274,7 @@
         "$date": "2026-10-28T10:03:49.290Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.236Z"
+        "$date": "2026-10-30T11:04:23.095Z"
       },
       "method": "GET",
       "path": "/api/dial/calls-v1",
@@ -3283,16 +3283,282 @@
         {
           "name": "ids",
           "in": "query",
-          "type": "ObjectId",
+          "type": "ObjectId[]",
           "required": false,
-          "id": "6ae1c885597b815580b92a16"
+          "description": "Bara samtal med dessa ID:n.",
+          "id": "6ae47802d5f2b840f0dc88c6"
+        },
+        {
+          "name": "excludeIds",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Exkludera ids i stället för att filtrera på dem.",
+          "id": "6ae47802d5f2b840f0dc88c7"
+        },
+        {
+          "name": "search",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "Fritextsökning. Kan även skrivas som s.",
+          "id": "6ae47802d5f2b840f0dc88c8"
+        },
+        {
+          "name": "after",
+          "in": "query",
+          "type": "date",
+          "required": false,
+          "description": "Bara samtal efter denna tidpunkt.",
+          "id": "6ae47802d5f2b840f0dc88c9"
+        },
+        {
+          "name": "before",
+          "in": "query",
+          "type": "date",
+          "required": false,
+          "description": "Bara samtal före denna tidpunkt.",
+          "id": "6ae47802d5f2b840f0dc88ca"
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Antal samtal att hämta. Högst 100.",
+          "id": "6ae47802d5f2b840f0dc88cb"
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Antal samtal att hoppa över, för sidnumrering.",
+          "id": "6ae47802d5f2b840f0dc88cc"
+        },
+        {
+          "name": "sortOrder",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "asc eller desc.",
+          "id": "6ae47802d5f2b840f0dc88ce"
+        },
+        {
+          "name": "allTagIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Samtalet har alla dessa taggar.",
+          "id": "6ae47802d5f2b840f0dc88cf"
+        },
+        {
+          "name": "anyTagId",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Samtalet har någon av dessa taggar.",
+          "id": "6ae47802d5f2b840f0dc88d0"
+        },
+        {
+          "name": "notAnyTagId",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Samtalet har ingen av dessa taggar.",
+          "id": "6ae47802d5f2b840f0dc88d1"
+        },
+        {
+          "name": "notAllTagIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Samtalet saknar minst en av dessa taggar.",
+          "id": "6ae47802d5f2b840f0dc88d2"
+        },
+        {
+          "name": "userIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal från dessa användare.",
+          "id": "6ae47802d5f2b840f0dc88d4"
+        },
+        {
+          "name": "teamIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal från användare i dessa team.",
+          "id": "6ae47802d5f2b840f0dc88d6"
+        },
+        {
+          "name": "contactIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal till dessa kontakter.",
+          "id": "6ae47802d5f2b840f0dc88d7"
+        },
+        {
+          "name": "dialGroupIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal från dessa ringlistor.",
+          "id": "6ae47802d5f2b840f0dc88d9"
+        },
+        {
+          "name": "projectIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal i dessa projekt.",
+          "id": "6ae47802d5f2b840f0dc88db"
+        },
+        {
+          "name": "organizationIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal i dessa organisationer.",
+          "id": "6ae47802d5f2b840f0dc88dd"
+        },
+        {
+          "name": "serialIds",
+          "in": "query",
+          "type": "integer[]",
+          "required": false,
+          "description": "Bara samtal med dessa samtalsnummer.",
+          "id": "6ae47802d5f2b840f0dc88e0"
+        },
+        {
+          "name": "recipients",
+          "in": "query",
+          "type": "string[]",
+          "required": false,
+          "description": "Bara samtal till dessa nummer.",
+          "id": "6ae47802d5f2b840f0dc88e2"
+        },
+        {
+          "name": "callers",
+          "in": "query",
+          "type": "string[]",
+          "required": false,
+          "description": "Bara samtal från dessa nummer.",
+          "id": "6ae47802d5f2b840f0dc88e4"
+        },
+        {
+          "name": "country",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "Landskod med 2 bokstäver, används för att normalisera telefonnummer, t.ex. se.",
+          "id": "6ae47802d5f2b840f0dc88e6"
+        },
+        {
+          "name": "isConnected",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Båda parter har svarat.",
+          "id": "6ae47802d5f2b840f0dc88e7"
+        },
+        {
+          "name": "isDisconnected",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Samtalet är avslutat.",
+          "id": "6ae47802d5f2b840f0dc88e8"
+        },
+        {
+          "name": "isContactAnswer",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Kontakten har svarat. I prediktivt läge kan samtalet ha besvarats utan att en användare kopplades in.",
+          "id": "6ae47802d5f2b840f0dc88e9"
+        },
+        {
+          "name": "isInbound",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Bara inkommande (true) eller utgående (false) samtal.",
+          "id": "6ae47802d5f2b840f0dc88eb"
+        },
+        {
+          "name": "isLatest",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Bara det senaste samtalet till varje kontakt.",
+          "id": "6ae47802d5f2b840f0dc88ec"
+        },
+        {
+          "name": "leadListModes",
+          "in": "query",
+          "type": "string[]",
+          "required": false,
+          "description": "Ringlistans läge: sequential, predictive, single eller none.",
+          "id": "6ae47802d5f2b840f0dc88f0"
+        },
+        {
+          "name": "voicemail",
+          "in": "query",
+          "type": "boolean eller number",
+          "required": false,
+          "description": "Filtrera på röstbrevlåda. Se voicemailHangUpThresholdId på ringlistan.",
+          "id": "6ae47802d5f2b840f0dc88f2"
+        },
+        {
+          "name": "connectedDurationMin",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Minsta tid som samtalet var kopplat.",
+          "id": "6ae47802d5f2b840f0dc88f4"
+        },
+        {
+          "name": "connectedDurationMax",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Längsta tid som samtalet var kopplat.",
+          "id": "6ae47802d5f2b840f0dc88f5"
+        },
+        {
+          "name": "totalDurationMin",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Minsta totala längd.",
+          "id": "6ae47802d5f2b840f0dc88f6"
+        },
+        {
+          "name": "totalDurationMax",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Längsta totala längd.",
+          "id": "6ae47802d5f2b840f0dc88f7"
+        },
+        {
+          "name": "disconnectReasons",
+          "in": "query",
+          "type": "string[]",
+          "required": false,
+          "description": "Varför samtalet avslutades: heartbeatTimedOut, callAction, voicemail, noPredictiveModeUsers, other, contactHangUp, userHangUpNormal, userHangUpCohearing, userAnswerInboundCall, userLeavePredictiveQueue, userDistributedOffer eller userOther.",
+          "id": "6ae47802d5f2b840f0dc88f8"
         },
         {
           "name": "isRemoved",
           "in": "query",
-          "type": "boolean",
+          "type": "string",
           "required": false,
-          "id": "6ae1c885597b815580b92a17"
+          "description": "Borttagna samtal: true, false eller any.",
+          "id": "6ae47802d5f2b840f0dc88fa"
         }
       ],
       "responseStatus": null,
@@ -3301,7 +3567,8 @@
       },
       "group": "Calls",
       "order": 1330.02,
-      "__v": 0
+      "__v": 0,
+      "responseExample": "{\r\n    \"calls\": [\r\n        {\r\n            \"id\": \"6ae468af1e6c7ef06286f409\",\r\n            \"serialId\": 130137,\r\n            \"isLatest\": true,\r\n            \"previousCallCount\": 3,\r\n            \"shuffleDialGroupId\": null,\r\n            \"dialGroupMode\": null,\r\n            \"connectingAt\": \"2026-10-30T09:51:43.570Z\",\r\n            \"hourOfDay\": 9,\r\n            \"connectedAt\": \"2026-10-30T09:51:44.634Z\",\r\n            \"initialConnectedAt\": \"2026-10-30T09:51:44.634Z\",\r\n            \"disconnectedAt\": \"2026-10-30T09:51:47.743Z\",\r\n            \"isDisconnectHandled\": true,\r\n            \"disconnectReason\": \"userHangUpNormal\",\r\n            \"disconnectCode\": \"normal_clearing\",\r\n            \"recipient\": \"+46980319248\",\r\n            \"caller\": \"+46980319247\",\r\n            \"userId\": \"6aa2ac1227369e8d96369e60\",\r\n            \"organizationId\": \"690c65bc999cab62e4bb041a\",\r\n            \"easyTelecomUserCallId\": \"c2225cggb5dwd-3qytcx2-3c56hbk-dgkk\",\r\n            \"easyTelecomContactCallId\": \"c2225cggb5grg-lpslnn2-3c56hbk-dgkk\",\r\n            \"tagIds\": [],\r\n            \"evaluationTagIds\": [],\r\n            \"userNotifications\": [],\r\n            \"isInbound\": false,\r\n            \"inboundType\": null,\r\n            \"isDisconnected\": true,\r\n            \"isConnected\": true,\r\n            \"isContactAnswer\": true,\r\n            \"connectedDuration\": 3000,\r\n            \"totalDuration\": 4000,\r\n            \"billedDuration\": 60000,\r\n            \"heartbeatAt\": \"2026-10-30T09:51:47.842Z\",\r\n            \"comments\": [],\r\n            \"actionExecutions\": [],\r\n            \"bridgeOnRinging\": true,\r\n            \"voicemail\": {\r\n                \"confidence\": 99,\r\n                \"notifiedAt\": \"2026-10-30T09:51:44.729Z\"\r\n            },\r\n            \"debug\": [\r\n                \"2026-10-30T09:51:43.184Z m=audio 63718 UDP/TLS/RTP/SAVPF 111 63 9 0 8 13 110 126\",\r\n                \"2026-10-30T09:51:43.184Z a=candidate:3982682806 1 udp 2122260223 192.168.101.7 63718 typ host generation 0 network-id 1 network-cost 10\",\r\n                \"2026-10-30T09:51:43.450Z m=audio 29034 UDP/TLS/RTP/SAVPF 8 126\",\r\n                \"2026-10-30T09:51:43.450Z a=candidate:oOV8q91J26195HWI 1 UDP 2130706431 192.165.225.56 29034 typ host\"\r\n            ],\r\n            \"isRemoved\": false,\r\n            \"isBrief\": true,\r\n            \"summary\": [],\r\n            \"contactConnectedAt\": \"2026-10-30T09:51:44.634Z\",\r\n            \"date\": \"2026-10-30T09:51:43.570Z\"\r\n        }\r\n\t]\r\n}"
     },
     {
       "_id": {
@@ -3311,25 +3578,291 @@
         "$date": "2026-10-28T10:03:49.298Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.243Z"
+        "$date": "2026-10-30T11:10:34.221Z"
       },
       "method": "GET",
       "path": "/api/dial/calls-v1/count",
-      "summary": "Räkna samtal som matchar en sökning",
+      "summary": "Räkna samtal",
       "parameters": [
         {
-          "name": "before",
+          "name": "ids",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal med dessa ID:n.",
+          "id": "6ae47b2af7fa9963f48189dd"
+        },
+        {
+          "name": "excludeIds",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Exkludera ids i stället för att filtrera på dem.",
+          "id": "6ae47b2af7fa9963f48189de"
+        },
+        {
+          "name": "search",
           "in": "query",
           "type": "string",
           "required": false,
-          "id": "6ae1c885597b815580b92a18"
+          "description": "Fritextsökning. Kan även skrivas som s.",
+          "id": "6ae47b2af7fa9963f48189df"
         },
         {
           "name": "after",
           "in": "query",
+          "type": "date",
+          "required": false,
+          "description": "Bara samtal efter denna tidpunkt.",
+          "id": "6ae47b2af7fa9963f48189e0"
+        },
+        {
+          "name": "before",
+          "in": "query",
+          "type": "date",
+          "required": false,
+          "description": "Bara samtal före denna tidpunkt.",
+          "id": "6ae47b2af7fa9963f48189e1"
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Antal samtal att hämta. Högst 100.",
+          "id": "6ae47b2af7fa9963f48189e2"
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Antal samtal att hoppa över, för sidnumrering.",
+          "id": "6ae47b2af7fa9963f48189e3"
+        },
+        {
+          "name": "sortOrder",
+          "in": "query",
           "type": "string",
           "required": false,
-          "id": "6ae1c885597b815580b92a19"
+          "description": "asc eller desc.",
+          "id": "6ae47b2af7fa9963f48189e4"
+        },
+        {
+          "name": "allTagIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Samtalet har alla dessa taggar.",
+          "id": "6ae47b2af7fa9963f48189e5"
+        },
+        {
+          "name": "anyTagId",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Samtalet har någon av dessa taggar.",
+          "id": "6ae47b2af7fa9963f48189e6"
+        },
+        {
+          "name": "notAnyTagId",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Samtalet har ingen av dessa taggar.",
+          "id": "6ae47b2af7fa9963f48189e7"
+        },
+        {
+          "name": "notAllTagIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Samtalet saknar minst en av dessa taggar.",
+          "id": "6ae47b2af7fa9963f48189e8"
+        },
+        {
+          "name": "userIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal från dessa användare.",
+          "id": "6ae47b2af7fa9963f48189e9"
+        },
+        {
+          "name": "teamIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal från användare i dessa team.",
+          "id": "6ae47b2af7fa9963f48189ea"
+        },
+        {
+          "name": "contactIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal till dessa kontakter.",
+          "id": "6ae47b2af7fa9963f48189eb"
+        },
+        {
+          "name": "dialGroupIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal från dessa ringlistor.",
+          "id": "6ae47b2af7fa9963f48189ec"
+        },
+        {
+          "name": "projectIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal i dessa projekt.",
+          "id": "6ae47b2af7fa9963f48189ed"
+        },
+        {
+          "name": "organizationIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara samtal i dessa organisationer.",
+          "id": "6ae47b2af7fa9963f48189ee"
+        },
+        {
+          "name": "serialIds",
+          "in": "query",
+          "type": "integer[]",
+          "required": false,
+          "description": "Bara samtal med dessa samtalsnummer.",
+          "id": "6ae47b2af7fa9963f48189ef"
+        },
+        {
+          "name": "recipients",
+          "in": "query",
+          "type": "string[]",
+          "required": false,
+          "description": "Bara samtal till dessa nummer.",
+          "id": "6ae47b2af7fa9963f48189f0"
+        },
+        {
+          "name": "callers",
+          "in": "query",
+          "type": "string[]",
+          "required": false,
+          "description": "Bara samtal från dessa nummer.",
+          "id": "6ae47b2af7fa9963f48189f1"
+        },
+        {
+          "name": "country",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "Landskod med 2 bokstäver, används för att normalisera telefonnummer, t.ex. se.",
+          "id": "6ae47b2af7fa9963f48189f2"
+        },
+        {
+          "name": "isConnected",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Båda parter har svarat.",
+          "id": "6ae47b2af7fa9963f48189f3"
+        },
+        {
+          "name": "isDisconnected",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Samtalet är avslutat.",
+          "id": "6ae47b2af7fa9963f48189f4"
+        },
+        {
+          "name": "isContactAnswer",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Kontakten har svarat. I prediktivt läge kan samtalet ha besvarats utan att en användare kopplades in.",
+          "id": "6ae47b2af7fa9963f48189f5"
+        },
+        {
+          "name": "isInbound",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Bara inkommande (true) eller utgående (false) samtal.",
+          "id": "6ae47b2af7fa9963f48189f6"
+        },
+        {
+          "name": "isLatest",
+          "in": "query",
+          "type": "boolean",
+          "required": false,
+          "description": "Bara det senaste samtalet till varje kontakt.",
+          "id": "6ae47b2af7fa9963f48189f7"
+        },
+        {
+          "name": "leadListModes",
+          "in": "query",
+          "type": "string[]",
+          "required": false,
+          "description": "Ringlistans läge: sequential, predictive, single eller none.",
+          "id": "6ae47b2af7fa9963f48189f8"
+        },
+        {
+          "name": "voicemail",
+          "in": "query",
+          "type": "boolean eller number",
+          "required": false,
+          "description": "Filtrera på röstbrevlåda. Se voicemailHangUpThresholdId på ringlistan.",
+          "id": "6ae47b2af7fa9963f48189f9"
+        },
+        {
+          "name": "connectedDurationMin",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Minsta tid som samtalet var kopplat.",
+          "id": "6ae47b2af7fa9963f48189fa"
+        },
+        {
+          "name": "connectedDurationMax",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Längsta tid som samtalet var kopplat.",
+          "id": "6ae47b2af7fa9963f48189fb"
+        },
+        {
+          "name": "totalDurationMin",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Minsta totala längd.",
+          "id": "6ae47b2af7fa9963f48189fc"
+        },
+        {
+          "name": "totalDurationMax",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Längsta totala längd.",
+          "id": "6ae47b2af7fa9963f48189fd"
+        },
+        {
+          "name": "disconnectReasons",
+          "in": "query",
+          "type": "string[]",
+          "required": false,
+          "description": "Varför samtalet avslutades: heartbeatTimedOut, callAction, voicemail, noPredictiveModeUsers, other, contactHangUp, userHangUpNormal, userHangUpCohearing, userAnswerInboundCall, userLeavePredictiveQueue, userDistributedOffer eller userOther.",
+          "id": "6ae47b2af7fa9963f48189fe"
+        },
+        {
+          "name": "isRemoved",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "Borttagna samtal: true, false eller any.",
+          "id": "6ae47b2af7fa9963f48189ff"
         }
       ],
       "responseStatus": null,
@@ -3338,7 +3871,8 @@
       },
       "group": "Calls",
       "order": 1330.03,
-      "__v": 0
+      "__v": 0,
+      "responseExample": "{\r\n\t\"count\": 14\r\n}"
     },
     {
       "_id": {
@@ -3348,7 +3882,7 @@
         "$date": "2026-10-28T10:03:49.307Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.249Z"
+        "$date": "2026-10-30T11:28:39.142Z"
       },
       "method": "DELETE",
       "path": "/api/dial/dial-group-contacts-v1/<id>/contacts",
@@ -3364,8 +3898,8 @@
         {
           "name": "contactIds",
           "in": "query",
-          "type": "string",
-          "required": false,
+          "type": "ObjectId",
+          "required": true,
           "id": "6ae1c885597b815580b92a1b"
         }
       ],
@@ -3375,7 +3909,9 @@
       },
       "group": "Dial group contacts",
       "order": 1340,
-      "__v": 0
+      "__v": 0,
+      "curlExample": "curl -X DELETE \"https://app.salesys.se/api/dial/dial-group-contacts-v1/<id>/contacts?contactIds=<contactId>,<contactId>\" \\\r\n  -H \"Authorization: Bearer <access-token>\" \\\r\n  -H \"Content-Type: application/json\"",
+      "requestBody": null
     },
     {
       "_id": {
@@ -3385,7 +3921,7 @@
         "$date": "2026-10-28T10:03:49.314Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.255Z"
+        "$date": "2026-10-30T11:38:43.485Z"
       },
       "method": "GET",
       "path": "/api/dial/dial-group-contacts-v1/<id>",
@@ -3397,6 +3933,86 @@
           "type": "ObjectId",
           "required": true,
           "id": "6ae1c885597b815580b92a1c"
+        },
+        {
+          "name": "contactIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara dessa kontakter. Kan även skrivas som contactId.",
+          "id": "6ae4814918c2907b2407ffca"
+        },
+        {
+          "name": "dialGroupIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara kontakter i dessa ringlistor. Kan även skrivas som dialGroupId.",
+          "id": "6ae4814918c2907b2407ffcb"
+        },
+        {
+          "name": "isReserved",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "Kontakten är reserverad, dvs. någon ringer den just nu: true, false eller any.",
+          "id": "6ae4814918c2907b2407ffcc"
+        },
+        {
+          "name": "isQuarantined",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "Kontakten är i karantän och ska ringas upp senare: true, false eller any.",
+          "id": "6ae4814918c2907b2407ffcd"
+        },
+        {
+          "name": "isExcluded",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "description": "Kontakten finns i en spärrlista: true, false eller any.",
+          "id": "6ae4814918c2907b2407ffcf"
+        },
+        {
+          "name": "excludeListIds",
+          "in": "query",
+          "type": "ObjectId[]",
+          "required": false,
+          "description": "Bara kontakter som finns i dessa spärrlistor.",
+          "id": "6ae4814918c2907b2407ffd0"
+        },
+        {
+          "name": "addedAfter",
+          "in": "query",
+          "type": "date",
+          "required": false,
+          "description": "Bara kontakter som lades till i ringlistan efter denna tidpunkt.",
+          "id": "6ae4814918c2907b2407ffd2"
+        },
+        {
+          "name": "addedBefore",
+          "in": "query",
+          "type": "date",
+          "required": false,
+          "description": "Bara kontakter som lades till i ringlistan före denna tidpunkt.",
+          "id": "6ae4814918c2907b2407ffd3"
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Antal kontakter att hämta, 0–100. Kan även skrivas som limit.",
+          "id": "6ae4814918c2907b2407ffd4"
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Antal kontakter att hoppa över, för sidnumrering.",
+          "id": "6ae4814918c2907b2407ffd5"
         }
       ],
       "responseStatus": null,
@@ -3405,7 +4021,8 @@
       },
       "group": "Dial group contacts",
       "order": 1340.01,
-      "__v": 0
+      "__v": 0,
+      "responseExample": "[\r\n    {\r\n        \"id\": \"6ad2117d4f740fa1539d4736\",\r\n        \"contactId\": \"6ad2117d4e6dc665d1f30d26\",\r\n        \"dialGroupId\": \"6ad2116f4f740fa1539d4712\",\r\n        \"organizationId\": \"6862579b2cb8d0a855888243\",\r\n        \"position\": 1792151933817,\r\n        \"reservedAt\": \"2026-10-16T11:59:04.486Z\",\r\n        \"reserverUserId\": \"6862579b2cb8d0a855888245\",\r\n        \"reserverDialGroupId\": \"6ad2116f4f740fa1539d4712\",\r\n        \"excludeListIds\": [],\r\n        \"quarantinedUntil\": null,\r\n        \"isReserved\": true,\r\n        \"isSkipped\": false,\r\n        \"isQuarantined\": false,\r\n        \"isUnreservable\": false,\r\n        \"unreserveAfter\": null\r\n    }\r\n]"
     },
     {
       "_id": {
@@ -3415,11 +4032,11 @@
         "$date": "2026-10-28T10:03:49.320Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.262Z"
+        "$date": "2026-10-30T11:31:07.157Z"
       },
       "method": "POST",
-      "path": "/api/dial/dial-group-contacts-v1/<id>",
-      "summary": "Lägg till en kontakt i en ringlista",
+      "path": "/api/dial/dial-group-contacts-v1/<dialGroupId>",
+      "summary": "Lägg till kontakter i en ringlista",
       "parameters": [
         {
           "name": "id",
@@ -3435,7 +4052,8 @@
       },
       "group": "Dial group contacts",
       "order": 1340.02,
-      "__v": 0
+      "__v": 0,
+      "requestBody": "{\r\n    \"contactIds\": [\"6ad9fe1b505e2a7db1573b0f\"]\r\n}"
     },
     {
       "_id": {
@@ -3445,7 +4063,7 @@
         "$date": "2026-10-28T10:03:49.326Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.269Z"
+        "$date": "2026-10-30T11:39:27.783Z"
       },
       "method": "POST",
       "path": "/api/dial/dial-groups-v1",
@@ -3457,7 +4075,8 @@
       },
       "group": "Dial groups",
       "order": 1350,
-      "__v": 0
+      "__v": 0,
+      "requestBody": "{\r\n  \"name\": \"Min testlista\",\r\n  \"projectIds\": [\"6899a4b0619580e6bb54adcb\"]\r\n}"
     },
     {
       "_id": {
@@ -3467,7 +4086,7 @@
         "$date": "2026-10-28T10:03:49.331Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.275Z"
+        "$date": "2026-10-30T11:41:32.953Z"
       },
       "method": "GET",
       "path": "/api/dial/dial-groups-v2/<id>",
@@ -3487,59 +4106,29 @@
       },
       "group": "Dial groups",
       "order": 1350.01,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca4189"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.356Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.306Z"
-      },
-      "method": "GET",
-      "path": "/api/dial/sms-v1",
-      "summary": "Hämta SMS",
-      "parameters": [
-        {
-          "name": "offset",
-          "in": "query",
-          "type": "integer",
-          "required": false,
-          "id": "6ae1c885597b815580b92a21"
+      "__v": 0,
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
         }
-      ],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c41"
       },
-      "group": "Sms",
-      "order": 1380,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca418c"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.361Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-28T10:11:54.313Z"
-      },
-      "method": "POST",
-      "path": "/api/dial/sms-v1",
-      "summary": "Skicka SMS",
-      "parameters": [],
-      "responseStatus": null,
-      "service": {
-        "$oid": "6adf656b8107051a9a733c41"
-      },
-      "group": "Sms",
-      "order": 1380.01,
-      "__v": 0
+      "responseExample": "{\r\n  \"id\": \"6ae0638e5b68bd6289f59009\",\r\n  \"name\": \"Testlista\",\r\n  \"serialId\": 57,\r\n  \"userId\": \"6862579b2cb8d0a855888245\",\r\n  \"organizationId\": \"6862579b2cb8d0a855888243\",\r\n  \"accessTeamIds\": [],\r\n  \"accessRoleIds\": [],\r\n  \"skipCalledBackContacts\": true,\r\n  \"repositionQuarantinedContacts\": true,\r\n  \"defaultQuarantineDestination\": false,\r\n  \"unroutedContactFlow\": null,\r\n  \"isShuffle\": false,\r\n  \"country\": \"se\",\r\n  \"predictiveDialAggression\": 50,\r\n  \"predictiveDialUsers\": [],\r\n  \"predictiveDialRingingTimeout\": 24,\r\n  \"voicemailHangUpThresholdId\": 1,\r\n  \"importTask\": {\r\n    \"taskId\": \"6ae0638b8556501f838028ef\",\r\n    \"status\": \"finished\",\r\n    \"needsConflictResolution\": null\r\n  },\r\n  \"excludeListIds\": [],\r\n  \"projectIds\": [\r\n    \"689af0f8e9c43cf65bce4423\"\r\n  ],\r\n  \"contactSummaryCache\": {\r\n    \"contactCount\": 0,\r\n    \"reservedContactCount\": 0,\r\n    \"skippedContactCount\": 0,\r\n    \"quarantinedContactCount\": 0,\r\n    \"isLatest\": true,\r\n    \"shuffleConfigurationId\": null\r\n  },\r\n  \"isCallback\": false,\r\n  \"predictiveVersion\": 2,\r\n  \"predictiveWaitForEvaluation\": false,\r\n  \"deletedAt\": null,\r\n  \"ownerTeamIds\": [],\r\n  \"date\": \"2026-10-27T08:40:46.000Z\"\r\n}"
     },
     {
       "_id": {
@@ -5388,7 +5977,7 @@
         "$date": "2026-10-28T07:41:48.402Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T09:28:48.535Z"
+        "$date": "2026-10-30T11:42:42.873Z"
       },
       "globalType": "api-reference-page",
       "lead": {
@@ -6185,33 +6774,33 @@
             {
               "item": {
                 "root": {
-                  "type": "root",
-                  "direction": "ltr",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
                   "children": [
                     {
-                      "type": "paragraph",
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 0,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "Vi har rate-limiting aktiverat så undvik att göra för många anrop på samma gång. Försök att gruppera dina anrop så mycket det går.",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
                       "direction": "ltr",
                       "format": "",
                       "indent": 0,
+                      "type": "paragraph",
                       "version": 1,
                       "textFormat": 0,
-                      "textStyle": "",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "Vi har rate-limiting aktiverat så försök att inte göra för många anrop på samma gång. Försök att gruppera dina anrop så mycket det går.",
-                          "format": 0,
-                          "detail": 0,
-                          "mode": "normal",
-                          "style": "",
-                          "version": 1
-                        }
-                      ]
+                      "textStyle": ""
                     }
-                  ]
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "root",
+                  "version": 1
                 }
               },
               "id": "6ae1b06bd5ad07e6153f7009"
