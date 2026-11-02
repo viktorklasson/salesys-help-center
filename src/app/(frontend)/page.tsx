@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { getPayload } from 'payload';
 import React from 'react';
+import Image from 'next/image';
 
 import { getIcon } from '@/icons';
 import type { Service } from '@/payload-types';
@@ -34,7 +35,10 @@ export default async function HomePage() {
 
       <section className="container home-hero">
         <div>
-          <h1>Docs</h1>
+          <div style={{ display: 'flex' }}>
+            <Image alt="SaleSys logo" width={64} height={64} src="/api/media/file/salesys-logo-img.png" />
+            <h1>Docs</h1>
+          </div>
           <FormattedText className="lead" data={page.lead} />
           <div className="home-actions">
             <Link className="text-link" href="/service">

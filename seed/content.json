@@ -83,6 +83,27 @@
       "focalX": 50,
       "focalY": 50,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6ae83a12f5ccc30b9f3fc783"
+      },
+      "createdAt": {
+        "$date": "2026-11-02T07:21:54.715Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-02T07:21:54.715Z"
+      },
+      "alt": "SaleSys logo",
+      "url": "/api/media/file/salesys-logo-img.png",
+      "filename": "salesys-logo-img.png",
+      "mimeType": "image/png",
+      "filesize": 13022,
+      "width": 512,
+      "height": 512,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
     }
   ],
   "services": [
@@ -2550,7 +2571,7 @@
         "$date": "2026-10-28T09:48:17.120Z"
       },
       "updatedAt": {
-        "$date": "2026-10-29T10:42:17.463Z"
+        "$date": "2026-11-02T09:13:17.666Z"
       },
       "method": "POST",
       "path": "/api/offers/offers-v2",
@@ -2566,7 +2587,7 @@
       "deprecated": false,
       "order": 940,
       "__v": 0,
-      "requestBody": "{\r\n    \"templateId\": \"66572186aa92413966d6ec8a\",\r\n    \"fields\": [\r\n        {\r\n            \"fieldId\": \"6657234af165c6267ae72b77\",\r\n            \"value\": \"John\"\r\n        },\r\n        {\r\n            \"fieldId\": \"66572255f165c6267ae72b32\",\r\n            \"value\": \"Doe\"\r\n        },\r\n        {\r\n            \"fieldId\": \"66572250f165c6267ae72b31\",\r\n            \"value\": \"123 Sales st.\"\r\n        },\r\n        {\r\n            \"fieldId\": \"665721a4f165c6267ae72afb\",\r\n            \"value\": \"Sales YS\"\r\n        }\r\n    ],\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"5e99fa25818697002338470e\",\r\n            \"quantity\": 1\r\n        }\r\n    ],\r\n    \"autoFill\": {\r\n        \"addInsertsFromFields\": true,\r\n        \"setRecipientFromFields\": true\r\n    },\r\n    \"distributeNow\": {\r\n        \"sms\": [\r\n            {\r\n                \"recipient\": \"0980319247\",\r\n                \"messageTemplateId\": \"63cbfc10a626e4c9b0f591ac\"\r\n            }\r\n        ],\r\n        \"email\": [\r\n            {\r\n                \"recipient\": \"john.doe@example.se\",\r\n                \"messageTemplateId\": \"63c94880a626e4c9b0f5919e\"\r\n            }\r\n        ]\r\n    },\r\n    \"userId\": \"65f1b20f7774ba2b04044cd7\",\r\n    \"projectId\": \"65de4dd5ef1829a9e6f69f83\"\r\n}\r\n"
+      "requestBody": "{\r\n    \"templateId\": \"66572186aa92413966d6ec8a\",\r\n    \"fields\": [\r\n        {\r\n            \"fieldId\": \"6657234af165c6267ae72b77\",\r\n            \"value\": \"Test\"\r\n        },\r\n        {\r\n            \"fieldId\": \"66572255f165c6267ae72b32\",\r\n            \"value\": \"Testsson\"\r\n        },\r\n        {\r\n            \"fieldId\": \"66572250f165c6267ae72b31\",\r\n            \"value\": \"Testgatan 5\"\r\n        },\r\n        {\r\n            \"fieldId\": \"665721a4f165c6267ae72afb\",\r\n            \"value\": \"0980319247\"\r\n        }\r\n    ],\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"5e99fa25818697002338470e\",\r\n            \"quantity\": 1\r\n        }\r\n    ],\r\n    \"autoFill\": {\r\n        \"addInsertsFromFields\": true,\r\n        \"setRecipientFromFields\": true\r\n    },\r\n    \"distributeNow\": {\r\n        \"sms\": [\r\n            {\r\n                \"recipient\": \"0980319247\",\r\n                \"messageTemplateId\": \"63cbfc10a626e4c9b0f591ac\"\r\n            }\r\n        ],\r\n        \"email\": [\r\n            {\r\n                \"recipient\": \"example@example.com\",\r\n                \"messageTemplateId\": \"63c94880a626e4c9b0f5919e\"\r\n            }\r\n        ]\r\n    },\r\n    \"userId\": \"65f1b20f7774ba2b04044cd7\",\r\n    \"projectId\": \"65de4dd5ef1829a9e6f69f83\"\r\n}\r\n"
     },
     {
       "_id": {
@@ -3882,10 +3903,10 @@
         "$date": "2026-10-28T10:03:49.307Z"
       },
       "updatedAt": {
-        "$date": "2026-10-30T11:28:39.142Z"
+        "$date": "2026-11-02T09:24:45.830Z"
       },
       "method": "DELETE",
-      "path": "/api/dial/dial-group-contacts-v1/<id>/contacts",
+      "path": "/api/dial/dial-group-contacts-v1/<dialGroupId>/contacts",
       "summary": "Ta bort kontakter från en ringlista",
       "parameters": [
         {
@@ -3898,7 +3919,7 @@
         {
           "name": "contactIds",
           "in": "query",
-          "type": "ObjectId",
+          "type": "ObjectId[]",
           "required": true,
           "id": "6ae1c885597b815580b92a1b"
         }
@@ -3910,7 +3931,7 @@
       "group": "Dial group contacts",
       "order": 1340,
       "__v": 0,
-      "curlExample": "curl -X DELETE \"https://app.salesys.se/api/dial/dial-group-contacts-v1/<id>/contacts?contactIds=<contactId>,<contactId>\" \\\r\n  -H \"Authorization: Bearer <access-token>\" \\\r\n  -H \"Content-Type: application/json\"",
+      "curlExample": "curl -X DELETE \"https://app.salesys.se/api/dial/dial-group-contacts-v1/<dialGroupId>/contacts?contactIds=<contactId>,<contactId>\" \\\r\n  -H \"Authorization: Bearer <token>\" \\\r\n  -H \"Content-Type: application/json\"",
       "requestBody": null
     },
     {
@@ -3921,10 +3942,10 @@
         "$date": "2026-10-28T10:03:49.314Z"
       },
       "updatedAt": {
-        "$date": "2026-10-30T11:38:43.485Z"
+        "$date": "2026-11-02T09:23:51.509Z"
       },
       "method": "GET",
-      "path": "/api/dial/dial-group-contacts-v1/<id>",
+      "path": "/api/dial/dial-group-contacts-v1/<dialGroupId>",
       "summary": "Hämta kontakter i en ringlista",
       "parameters": [
         {
@@ -4086,10 +4107,10 @@
         "$date": "2026-10-28T10:03:49.331Z"
       },
       "updatedAt": {
-        "$date": "2026-10-30T11:41:32.953Z"
+        "$date": "2026-11-02T09:25:10.356Z"
       },
       "method": "GET",
-      "path": "/api/dial/dial-groups-v2/<id>",
+      "path": "/api/dial/dial-groups-v2/<dialGroupId>",
       "summary": "Hämta en ringlista",
       "parameters": [
         {
@@ -4190,10 +4211,10 @@
         "$date": "2026-10-28T10:03:49.428Z"
       },
       "updatedAt": {
-        "$date": "2026-10-29T10:48:19.186Z"
+        "$date": "2026-11-02T09:15:49.527Z"
       },
       "method": "GET",
-      "path": "/api/offers/offer-information-v1/unsigned-documents-with-inserts?offerIds=6ae32445ab7e7e2951f796ff",
+      "path": "/api/offers/offer-information-v1/unsigned-documents-with-inserts",
       "summary": "Hämta osignerat dokument med ifyllda fält",
       "parameters": [
         {
@@ -4252,10 +4273,10 @@
         "$date": "2026-10-28T10:03:49.454Z"
       },
       "updatedAt": {
-        "$date": "2026-10-29T13:39:41.778Z"
+        "$date": "2026-11-02T09:16:40.213Z"
       },
       "method": "PUT",
-      "path": "/api/offers/web-forms-v1/<id>",
+      "path": "/api/offers/web-forms-v1/<webFormId>",
       "summary": "Uppdatera ett webbformulär",
       "parameters": [
         {
@@ -4425,7 +4446,7 @@
         "$date": "2026-10-28T10:03:49.502Z"
       },
       "updatedAt": {
-        "$date": "2026-10-28T10:11:54.477Z"
+        "$date": "2026-11-02T09:21:56.322Z"
       },
       "method": "POST",
       "path": "/api/orders/fields-v1",
@@ -4437,7 +4458,30 @@
       },
       "group": "Fields",
       "order": 1560,
-      "__v": 0
+      "__v": 0,
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "requestBody": "{\r\n  \"label\": \"Testfält\",\r\n  \"type\": \"plain\",\r\n  \"description\": \"Mitt testfält\"\r\n}",
+      "responseExample": "{\r\n  \"fieldId\": \"6ae855e4762c48aef75c025f\"\r\n}"
     },
     {
       "_id": {
@@ -4571,7 +4615,7 @@
         "$date": "2026-10-28T10:03:49.533Z"
       },
       "updatedAt": {
-        "$date": "2026-10-29T09:34:53.131Z"
+        "$date": "2026-11-02T07:32:47.020Z"
       },
       "method": "GET",
       "path": "/api/users/files-v1/<fileKey>",
@@ -4592,7 +4636,7 @@
       "group": "Files",
       "order": 1600,
       "__v": 0,
-      "curlExample": "curl --request GET \\\r\n  --url https://app.salesys.se/api/users/files-v1/66e941e119eb2f647ff566d9/documents/merged/6ab134a85e545667b1e4fa0a_6ab134a85e54c067b1e23fa0b.pdf \\\r\n  --header 'Authorization: ' \\\r\n  --header 'Content-Type: application/pdf' \\\r\n  --header 'Cookie: s2_utoken=<token>'",
+      "curlExample": "curl --request GET \\\r\n  --url https://app.salesys.se/api/users/files-v1/<fileKey> \\\r\n  --header 'Authorization: ' \\\r\n  --header 'Content-Type: application/pdf' \\\r\n  --header 'Cookie: s2_utoken=<token>'",
       "description": {
         "root": {
           "children": [
@@ -4622,6 +4666,62 @@
                   "mode": "normal",
                   "style": "",
                   "text": " och ska ha en vanlig access token som värde.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Exempel på en ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "<fileKey>",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " är ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "66e941e119eb2f647ff566d9/documents/merged/6ab134a85e545667b1e4fa0a_6ab134a85e54c067b1e23fa0b.pdf",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
                   "type": "text",
                   "version": 1
                 }

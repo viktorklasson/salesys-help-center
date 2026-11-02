@@ -163,7 +163,7 @@ const toCurl = (endpoint: Endpoint) => {
   const lines = [
     // GET is curl's default, so -X is only needed for other methods
     `curl ${endpoint.method === 'GET' ? '' : `-X ${endpoint.method} `}"${url}"`,
-    `  -H "Authorization: Bearer <access-token>"`,
+    `  -H "Authorization: Bearer <token>"`,
     `  -H "Content-Type: application/json"`,
   ];
 
