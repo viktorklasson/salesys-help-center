@@ -27,7 +27,7 @@ Categories are managed under **Settings > Products**.
   - **Include** -- Show only these fields
   - **Exclude** -- Show all except these fields
 - **Projects** -- Restrict to specific projects
-- **Express flow hostnames** -- On which websites the category appears
+- **Express flow hostnames** -- On which websites the category appears (includes verbal.salesys.se for quick flows)
 - **Product fields** -- Custom fields for the category's products
 
 Categories can be reordered with drag-and-drop. Deleting a category also removes all its products (soft delete).

@@ -33,7 +33,7 @@ Statusen **Granskas** kan förekomma om avtalet kräver godkännande innan det s
 
 ### Avtalsmallar
 
-Mallar skapas och hanteras under **Inställningar > Avtal > Mallar**.
+Mallar skapas och hanteras under **Inställningar > Avtal**. Sedan oktober 2026 är malltyper organiserade på separata sidor (avtalsmallar, vymallar, formulärmallar, arbetsmallar och utskicksmallar).
 
 **Mallkomponenter (inserts):**
 - **Fält** -- Orderfält, produktfält, datum, namn och andra dynamiska värden

@@ -1056,6 +1056,113 @@ paths:
                       organization:
                         $ref: '#/components/schemas/Organization'
 
+  /api/users/user-information-v1/identifiable:
+    get:
+      tags: [Users]
+      summary: Get basic user information (identifiable)
+      description: |
+        Fetches basic identifiable user information. This is part of a two-call pattern
+        for retrieving user data with enforced limits on the number of users returned.
+        Use this endpoint together with `/api/users/user-information-v1/rightful` to get
+        complete user information while respecting API limits.
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+            description: Comma-separated user ObjectIds
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            description: Maximum number of users to return (enforced limit)
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            description: Number of users to skip for pagination
+      responses:
+        "200":
+          description: List of identifiable user information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ObjectId'
+                    type:
+                      $ref: '#/components/schemas/UserType'
+                    organizationId:
+                      $ref: '#/components/schemas/ObjectId'
+
+  /api/users/user-information-v1/rightful:
+    get:
+      tags: [Users]
+      summary: Get user information with rights (rightful)
+      description: |
+        Fetches user information including rights, roles, and permissions. This is part
+        of a two-call pattern for retrieving user data with enforced limits on the number
+        of users returned. Use this endpoint together with `/api/users/user-information-v1/identifiable`
+        to get complete user information while respecting API limits.
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+            description: Comma-separated user ObjectIds
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            description: Maximum number of users to return (enforced limit)
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            description: Number of users to skip for pagination
+      responses:
+        "200":
+          description: List of users with rights information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+  /api/users/user-information-v1/reference:
+    get:
+      tags: [Users]
+      summary: Get user reference metadata
+      description: Fetches user reference (custom metadata) information
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+            description: Comma-separated user ObjectIds
+      responses:
+        "200":
+          description: User reference data
+
+  /api/users/user-information-v1/confidential-reference:
+    get:
+      tags: [Users]
+      summary: Get confidential user reference metadata
+      description: Fetches confidential user reference information (admin only)
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+            description: Comma-separated user ObjectIds
+      responses:
+        "200":
+          description: Confidential user reference data
+
   /api/users/users-v1:
     get:
       tags: [Users]

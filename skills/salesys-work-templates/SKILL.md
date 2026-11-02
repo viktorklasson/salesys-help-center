@@ -17,7 +17,9 @@ Use this skill when helping users create or configure work templates (arbetsmall
 
 ## What Are Work Templates?
 
-Work templates (arbetsmallar or action presets) are reusable automation templates with:
+Work templates (arbetsmallar or action presets) are reusable automation templates managed under **Inställningar** (Settings). As of October 2026, template types are organized on separate pages per type. Work templates (arbetsmallar) are found on their own dedicated page.
+
+Work templates have:
 - **Settings UI**: Handlebars/HTML form for configuration
 - **State Management**: Using `window.form.setState` and `window.form.custom`
 - **Backend Logic**: `toDo` object with HTTP requests/webhooks

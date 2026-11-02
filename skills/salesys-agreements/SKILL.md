@@ -197,6 +197,8 @@ call_api(method="GET", path="/api/offers/offer-fields-v1")
 
 ## Templates
 
+Templates are managed in the admin interface under **Inställningar > Avtal** (Settings > Offers). As of October 2026, template types are organized on separate pages per type (agreement templates, view templates, form templates, work templates, and mailing templates).
+
 ### List Templates
 
 ```javascript

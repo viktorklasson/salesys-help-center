@@ -1,6 +1,43 @@
 # Changes Made - Ready for Review
 
 **Branch**: `cursor/salesys-mcp-server-2b53`  
+**Date**: November 2, 2026
+
+## Weekly Docs Sync - October 26-28, 2026 Releases
+
+Updated documentation, skills, and MCP index for the following released changes:
+
+1. **Templates UI reorganization (Oct 26)**: The "Mallar" (templates) page on admin.salesys.se has been split into separate pages per template type (views, forms, work templates, agreements, mailing templates). Updated all references in:
+   - `docs/sv/settings.md`, `docs/en/settings.md`
+   - `docs/sv/offers.md`, `docs/en/offers.md`
+   - `skills/salesys-agreements/SKILL.md`
+   - `skills/salesys-work-templates/SKILL.md`
+   - `skills/salesys-web-forms/SKILL.md`
+   - `skills/salesys-custom-views/SKILL.md`
+
+2. **Users API two-call pattern (Oct 26)**: Fetching users now uses two separate calls with enforced pagination limits. Added new endpoints and documentation:
+   - Added `/api/users/user-information-v1/identifiable` endpoint to `swagger.yaml`
+   - Added `/api/users/user-information-v1/rightful` endpoint to `swagger.yaml`
+   - Added `/api/users/user-information-v1/reference` endpoint to `swagger.yaml`
+   - Added `/api/users/user-information-v1/confidential-reference` endpoint to `swagger.yaml`
+   - Updated `skills/salesys-users/SKILL.md` with two-call pattern examples
+
+3. **New call filter (Oct 28)**: Added "Har transkript" (has transcript) filter for calls:
+   - Updated `docs/sv/calls.md`
+   - Updated `docs/en/calls.md`
+
+4. **verbal.salesys.se quick flow (Oct 28)**: Added verbal.salesys.se as an available express flow hostname:
+   - Updated `docs/sv/products.md`
+   - Updated `docs/en/products.md`
+
+5. **Statistics order field summing (Oct 28)**: Statistics views can now sum order fields:
+   - Updated `skills/salesys-statistics/SKILL.md`
+
+All skill packages (`.zip` files) and the MCP index have been rebuilt to include these changes.
+
+---
+
+**Branch**: `cursor/salesys-mcp-server-2b53`  
 **Date**: October 15, 2026
 
 ## Summary

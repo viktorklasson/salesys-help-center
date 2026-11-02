@@ -126,6 +126,9 @@ Actions can be automatic or manual, with conditions and timing control.
 
 Available under **Calls > Statistics**.
 
+**Call filters:**
+- Has transcript -- filter calls based on whether they have a transcript or not
+
 **Metrics:**
 - Connected vs. not connected calls
 - Call duration
