@@ -26,7 +26,7 @@ Settings
 │   ├── Information (fields)
 │   └── Utilities
 ├── Offers*
-│   ├── Templates
+│   ├── Templates (split into separate pages per template type)
 │   ├── Distribution
 │   └── Web Forms*
 ├── Contacts*
@@ -155,7 +155,7 @@ Under **Settings > My Account**, you manage personal settings.
 - **Utilities** -- Configure automated workflows (SMS, email, HTTP) after order creation
 
 #### Offers
-- **Templates** -- Create offer templates with layout, signing method, and inserts
+- **Templates** -- Agreement templates, view templates, form templates, work templates, and more (separate pages per type)
 - **Distribution** -- Configure message templates and reminder rules
 - **Web Forms** -- Build multi-step forms for websites
 

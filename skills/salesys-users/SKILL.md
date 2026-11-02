@@ -143,10 +143,39 @@ call_api(
 
 ## Users
 
+**Note:** As of October 2026, fetching users now uses a two-call pattern with enforced limits on the number of users returned. Use `/api/users/user-information-v1/identifiable` and `/api/users/user-information-v1/rightful` for paginated access to user data.
+
 ### List Users
 
 ```javascript
 call_api(method="GET", path="/api/users/users-v1")
+```
+
+### Get User Information (Two-Call Pattern)
+
+For retrieving multiple users with pagination support:
+
+```javascript
+// 1. Get identifiable information (basic user data)
+const identifiable = call_api(
+  method="GET",
+  path="/api/users/user-information-v1/identifiable",
+  query={
+    "limit": 100,
+    "offset": 0
+  }
+);
+
+// 2. Get rightful information (with rights and roles)
+const rightful = call_api(
+  method="GET",
+  path="/api/users/user-information-v1/rightful",
+  query={
+    "ids": identifiable.map(u => u.id).join(','),
+    "limit": 100,
+    "offset": 0
+  }
+);
 ```
 
 ### Get User

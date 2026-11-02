@@ -6,7 +6,9 @@ description: Use when building, editing, or deploying custom views in SaleSys (e
 # SaleSys Custom Views (Egna vyer)
 
 A **vy** is a standalone HTML fragment that SaleSys renders as a panel inside `app.salesys.se`, reachable
-from the top navigation or from Inställningar. No framework and no build step: one HTML file with an
+from the top navigation or from Inställningar (Settings). As of October 2026, template types (including view templates/vymallar) are organized on separate pages in the admin interface.
+
+No framework and no build step: one HTML file with an
 inline `<style>` and `<script>`, calling the SaleSys API as the logged-in user.
 
 Two layers:

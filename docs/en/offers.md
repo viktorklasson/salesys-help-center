@@ -33,7 +33,7 @@ The status **Review Pending** may appear if the offer requires approval before b
 
 ### Offer templates
 
-Templates are created and managed under **Settings > Offers > Templates**.
+Templates are created and managed under **Settings > Offers**. Since October 2026, template types are organized on separate pages (agreement templates, view templates, form templates, work templates, and mailing templates).
 
 **Template components (inserts):**
 - **Field** -- Order fields, product fields, dates, names, and other dynamic values

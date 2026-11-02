@@ -15,6 +15,7 @@ Use this skill when helping users query statistics, build dashboards, or analyze
 - Tracking user activity
 - Monitoring call metrics
 - Aggregating data over time
+- Summing order fields in statistics views
 
 ## Authentication
 
@@ -54,6 +55,8 @@ Many statistics endpoints support fixed intervals:
 - To get full day in Swedish time, use previous day: `"2023-12-31"`
 
 ## Orders (Ordrar)
+
+**Note:** Statistics views now support summing order fields for aggregate calculations.
 
 ### Orders by User and Tag
 

@@ -26,7 +26,7 @@ Inställningar
 │   ├── Information (fält)
 │   └── Verktyg
 ├── Avtal*
-│   ├── Mallar
+│   ├── Mallar (uppdelat i separata sidor per malltyp)
 │   ├── Utskick
 │   └── Webbformulär*
 ├── Kontakter*
@@ -155,7 +155,7 @@ Under **Inställningar > Mitt konto** hanterar du personliga inställningar.
 - **Verktyg** -- Konfigurera automatiska arbetsflöden (SMS, e-post, HTTP) efter orderskapande
 
 #### Avtal
-- **Mallar** -- Skapa avtalsmallar med layout, signeringsmetod och inserts
+- **Mallar** -- Avtalsmallar, vymallar, formulärmallar, arbetsmallar och mer (separata sidor per typ)
 - **Utskick** -- Konfigurera meddelandemallar och påminnelseregler
 - **Webbformulär** -- Bygg flerstegsformulär för webbplatser
 

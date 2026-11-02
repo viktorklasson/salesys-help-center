@@ -17,7 +17,9 @@ Use this skill when helping users integrate SaleSys web forms on their websites 
 
 ## What Are Web Forms?
 
-Web forms are embeddable HTML forms that:
+Web forms are embeddable HTML forms managed under **Inställningar > Avtal > Webbformulär** (Settings > Offers > Web Forms). As of October 2026, template types are organized on separate pages, with web forms (webbformulär) on their own dedicated page.
+
+Web forms:
 - Load in an iframe on customer websites
 - Create orders or agreements in SaleSys
 - Support product selection and custom fields

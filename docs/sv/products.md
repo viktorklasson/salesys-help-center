@@ -27,7 +27,7 @@ Kategorier hanteras under **Inställningar > Produkter**.
   - **Inkludera** -- Visa enbart dessa fält
   - **Exkludera** -- Visa alla utom dessa fält
 - **Projekt** -- Begränsa till specifika projekt
-- **Express Flow-hostnamn** -- På vilka webbplatser kategorin syns
+- **Express Flow-hostnamn** -- På vilka webbplatser kategorin syns (inkluderar verbal.salesys.se för snabbflöden)
 - **Produktfält** -- Anpassade fält för kategorins produkter
 
 Kategorier kan ordnas med drag-and-drop. Att ta bort en kategori tar även bort alla dess produkter (mjuk borttagning).

@@ -126,6 +126,9 @@ Konfigureras under **Inställningar > Samtal > Verktyg**.
 
 Tillgänglig under **Samtal > Statistik**.
 
+**Samtalsfilter:**
+- Har transkript -- filtrera samtal baserat på om de har transkript eller inte
+
 **Mätvärden:**
 - Anslutna vs icke-anslutna samtal
 - Samtalstid
