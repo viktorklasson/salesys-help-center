@@ -68,3 +68,61 @@
     color: var(--blue);
   }
 }
+
+.header-icon-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+/* The function's content block from the CMS */
+.service-content {
+  max-width: 760px;
+  padding: 0 12px;
+
+  /* The global heading styles are made for page sections; tighter spacing inside running text */
+  h2 {
+    margin: 48px 0 16px;
+    font-size: clamp(1.6rem, 2.6vw, 2rem);
+  }
+
+  h3 {
+    margin: 32px 0 8px;
+    font-size: 20px;
+  }
+
+  h4,
+  h5,
+  h6 {
+    margin: 24px 0 8px;
+    font-size: 17px;
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  ul,
+  ol {
+    margin: 12px 0;
+    padding-left: 24px;
+
+    li + li {
+      margin-top: 6px;
+    }
+  }
+
+  blockquote {
+    margin: 20px 0;
+    padding: 4px 0 4px 18px;
+    color: var(--muted);
+    border-left: 3px solid var(--blue);
+  }
+
+  hr {
+    margin: 32px 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+  }
+}

@@ -10,6 +10,8 @@ import type { Endpoint } from '@/payload-types';
 import config from '@/payload.config';
 import { CodeBlock } from '../../components/CodeBlock/CodeBlock';
 import { FormattedText } from '../../components/FormattedText/FormattedText';
+import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
+import { endpointAnchor, slugify } from '@/lib/slugify';
 import './page.css';
 
 // Always render with the latest content from the CMS
@@ -183,20 +185,31 @@ const getService = async (slug: string) => {
   const payload = await getPayload({ config });
   const { docs } = await payload.find({
     collection: 'services',
-    where: { slug: { equals: slug } },
+    // Advanced functions aren't part of the API reference, so their page is a 404
+    where: { slug: { equals: slug }, isAdvanced: { not_equals: true } },
     limit: 1,
   });
   return docs[0];
 };
 
 /** Groups endpoints by section, keeping the order they come in */
+const METHOD_ORDER: Endpoint['method'][] = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
+
 const groupEndpoints = (endpoints: Endpoint[]) => {
   const groups = new Map<string, Endpoint[]>();
   for (const endpoint of endpoints) {
     const name = endpoint.group || 'Övrigt';
     groups.set(name, [...(groups.get(name) ?? []), endpoint]);
   }
-  return [...groups];
+  // Within each section: GET, POST, PUT, PATCH, DELETE. The sort is stable,
+  // so endpoints with the same method keep their order from the CMS.
+  return [...groups].map(
+    ([name, items]) =>
+      [
+        name,
+        [...items].sort((a, b) => METHOD_ORDER.indexOf(a.method) - METHOD_ORDER.indexOf(b.method)),
+      ] as const,
+  );
 };
 
 /** Highlights <placeholders> in a path */
@@ -265,12 +278,13 @@ export default async function Page({ params }: Props) {
         ) : (
           groupEndpoints(endpoints).map(([group, items]) => (
             <section className="endpoint-group" key={group}>
-              <h2>{group}</h2>
+              <SectionHeading id={slugify(group)}>{group}</SectionHeading>
               <ul className="endpoint-rows">
                 {items.map((endpoint) => (
                   <li
                     className={endpoint.deprecated ? 'is-deprecated' : undefined}
-                    id={endpoint.id}
+                    // Readable and stable, e.g. "get-api-dial-calls-v1". Same as the endpoint's stored url.
+                    id={endpointAnchor(endpoint.method, endpoint.path)}
                     key={endpoint.id}
                   >
                     <details>
@@ -280,6 +294,14 @@ export default async function Page({ params }: Props) {
                         <span className="row-summary">
                           {endpoint.summary}
                           {endpoint.deprecated && <span className="badge">Utfasad</span>}
+                          {/* Clicking a link inside <summary> follows it instead of toggling the row */}
+                          <a
+                            aria-label="Länk till endpointen"
+                            className="anchor-link"
+                            href={`#${endpointAnchor(endpoint.method, endpoint.path)}`}
+                          >
+                            #
+                          </a>
                         </span>
                         <code className="row-path">
                           <PathText path={endpoint.path} />

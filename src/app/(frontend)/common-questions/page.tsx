@@ -5,6 +5,8 @@ import React from 'react';
 
 import config from '@/payload.config';
 import { FormattedText } from '../components/FormattedText/FormattedText';
+import { SectionHeading } from '../components/SectionHeading/SectionHeading';
+import { slugify } from '@/lib/slugify';
 import './page.css';
 
 // Always render with the latest content from the CMS
@@ -48,12 +50,18 @@ export default async function CommonQuestionsPage() {
 
         {groups.map((group) => (
           <section key={group.id}>
-            <h2>{group.title}</h2>
+            <SectionHeading id={slugify(group.title)}>{group.title}</SectionHeading>
             <div className="faq">
               {group.questions.map(({ answer, id, link, question }) => (
                 <details id={`q-${id}`} key={id}>
                   <summary>
-                    {question}
+                    <span>
+                      {question}
+                      {/* Clicking a link inside <summary> follows it instead of toggling the question */}
+                      <a aria-label="Länk till frågan" className="anchor-link" href={`#q-${id}`}>
+                        #
+                      </a>
+                    </span>
                     <Plus size={20} />
                   </summary>
                   <FormattedText className="faq-answer" data={answer} />

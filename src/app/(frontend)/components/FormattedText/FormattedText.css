@@ -8,6 +8,17 @@
     color: var(--heading);
   }
 
+  /* Links from the CMS. Global styles make links look like plain text, so make them visible again. */
+  a:not(.formatted-file, .anchor-link) {
+    color: var(--blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      text-decoration-thickness: 2px;
+    }
+  }
+
   /* Underline is rendered as an inline style, not a <u> tag */
   [style*='underline'] {
     text-underline-offset: 3px;

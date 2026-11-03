@@ -11,13 +11,15 @@ import {
 } from '@payloadcms/richtext-lexical';
 import type { RichTextField } from 'payload';
 
+import { linkFeature } from './linkFeature';
+
 type Options = Omit<RichTextField, 'type' | 'editor'> & {
   /** Also allow `inline code`, e.g. for API texts */
   code?: boolean;
 };
 
 /**
- * Body text with light formatting: bold, italic, underline, and images or other files from Media.
+ * Body text with light formatting: bold, italic, underline, links, and images or other files from Media.
  * Use this for paragraphs on the site, not for titles, labels or links.
  */
 export const formattedText = ({ code = false, ...field }: Options): RichTextField => ({
@@ -30,6 +32,8 @@ export const formattedText = ({ code = false, ...field }: Options): RichTextFiel
       ItalicFeature(),
       UnderlineFeature(),
       ...(code ? [InlineCodeFeature()] : []),
+      // Links to other websites, typed addresses, or a function, FAQ question/category or endpoint
+      linkFeature(),
       // Images, videos, audio and other files from the Media collection
       UploadFeature(),
       FixedToolbarFeature(),

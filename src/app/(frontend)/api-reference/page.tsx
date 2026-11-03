@@ -6,6 +6,8 @@ import React from 'react';
 import { getIcon } from '@/icons';
 import config from '@/payload.config';
 import { FormattedText } from '../components/FormattedText/FormattedText';
+import { SectionHeading } from '../components/SectionHeading/SectionHeading';
+import { slugify } from '@/lib/slugify';
 import './page.css';
 
 // Always render with the latest content from the CMS
@@ -19,7 +21,13 @@ export default async function ApiReferencePage() {
   const payload = await getPayload({ config });
   const [page, services] = await Promise.all([
     payload.findGlobal({ slug: 'api-reference-page' }),
-    payload.find({ collection: 'services', sort: 'order', limit: 0 }),
+    // Advanced functions aren't part of the API reference
+    payload.find({
+      collection: 'services',
+      where: { isAdvanced: { not_equals: true } },
+      sort: 'order',
+      limit: 0,
+    }),
   ]);
 
   return (
@@ -38,15 +46,27 @@ export default async function ApiReferencePage() {
         <section>
           {!!page.prerequisites?.length && (
             <div className="prerequisites">
-              <h2>Börja här</h2>
+              <SectionHeading id="borja-har">Börja här</SectionHeading>
               <ol className="prerequisites-list">
                 {page.prerequisites.map((step) => {
                   const List = step.listStyle === 'bulleted' ? 'ul' : 'ol';
+                  const stepId = slugify(step.title);
                   return (
-                    <li key={step.id}>
+                    <li id={stepId} key={step.id}>
                       {/* Same name = only one step open at a time */}
                       <details name="prerequisites">
-                        <summary>{step.title}</summary>
+                        <summary>
+                          <span>
+                            {step.title}
+                            <a
+                              aria-label="Länk till steget"
+                              className="anchor-link"
+                              href={`#${stepId}`}
+                            >
+                              #
+                            </a>
+                          </span>
+                        </summary>
                         <FormattedText data={step.introduction} />
                         {!!step.list?.length && (
                           <List className="prerequisite-steps">
@@ -65,7 +85,7 @@ export default async function ApiReferencePage() {
             </div>
           )}
           <div>
-            <h2>Tjänster</h2>
+            <SectionHeading id="tjanster">Tjänster</SectionHeading>
             <ul className="endpoint-list">
               {services.docs.map((service) => {
                 const Icon = getIcon(service.icon);

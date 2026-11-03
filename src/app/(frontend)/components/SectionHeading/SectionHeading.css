@@ -1,0 +1,19 @@
+/* The # link next to a heading: only visible on hover or keyboard focus */
+.anchor-link {
+  margin-left: 0.35em;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+
+  &:hover {
+    color: var(--blue);
+  }
+}
+
+.section-heading:hover .anchor-link,
+summary:hover .anchor-link,
+.anchor-link:focus-visible {
+  opacity: 1;
+}

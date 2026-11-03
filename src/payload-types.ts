@@ -212,27 +212,24 @@ export interface Service {
     };
     [k: string]: unknown;
   };
-  features?:
-    | {
-        title: string;
-        description: {
-          root: {
-            type: string;
-            children: {
-              type: any;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        };
-        id?: string | null;
-      }[]
-    | null;
+  /**
+   * Visas under introduktionen. Rubriker, listor, länkar, bilder och filer.
+   */
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   icon?:
     | (
         | 'calendar-days'
@@ -253,6 +250,10 @@ export interface Service {
    * Lägre nummer visas först.
    */
   order?: number | null;
+  /**
+   * Visas under ”Avancerade funktioner” på sidan Alla funktioner.
+   */
+  isAdvanced?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -314,6 +315,10 @@ export interface Endpoint {
    */
   deprecated?: boolean | null;
   order?: number | null;
+  /**
+   * Fylls i automatiskt när endpointen sparas.
+   */
+  url?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -508,15 +513,10 @@ export interface ServicesSelect<T extends boolean = true> {
   slug?: T;
   tagline?: T;
   intro?: T;
-  features?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        id?: T;
-      };
+  content?: T;
   icon?: T;
   order?: T;
+  isAdvanced?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -548,6 +548,7 @@ export interface EndpointsSelect<T extends boolean = true> {
   group?: T;
   deprecated?: T;
   order?: T;
+  url?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -1,10 +1,52 @@
-import type { DefaultNodeTypes, SerializedUploadNode } from '@payloadcms/richtext-lexical';
-import { type JSXConvertersFunction, RichText } from '@payloadcms/richtext-lexical/react';
+import type {
+  DefaultNodeTypes,
+  SerializedHeadingNode,
+  SerializedLinkNode,
+  SerializedUploadNode,
+} from '@payloadcms/richtext-lexical';
+import {
+  type JSXConvertersFunction,
+  LinkJSXConverter,
+  RichText,
+} from '@payloadcms/richtext-lexical/react';
 import { Paperclip } from 'lucide-react';
 import React from 'react';
 
 import type { Media } from '@/payload-types';
+import { slugify } from '@/lib/slugify';
+import { SectionHeading } from '../SectionHeading/SectionHeading';
 import './FormattedText.css';
+
+/** All text inside a node, e.g. a heading with bold parts */
+const textOf = (node: { text?: string; children?: unknown[] }): string =>
+  node.text ?? (node.children ?? []).map((child) => textOf(child as typeof node)).join('');
+
+/**
+ * The address of something picked with the CMS link button: a function, FAQ question,
+ * FAQ category or endpoint. The optional "Avsnitt på sidan" field adds #<section>.
+ */
+const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
+  const { relationTo, value } = linkNode.fields.doc ?? {};
+  // Only populated when the page queries with depth ≥ 1
+  if (!value || typeof value !== 'object') return '#';
+
+  const anchor = String(linkNode.fields.anchor ?? '').replace(/^#/, '').trim();
+  const withAnchor = (href: string) => (anchor ? `${href.split('#')[0]}#${anchor}` : href);
+
+  switch (relationTo) {
+    case 'services':
+      return withAnchor(`/service/${value.slug}`);
+    case 'questions':
+      return withAnchor(`/common-questions#q-${value.id}`);
+    case 'question-categories':
+      return withAnchor(`/common-questions#${slugify(String(value.title ?? ''))}`);
+    case 'endpoints':
+      // Stored on the endpoint when it's saved, e.g. /api-reference/dial#get-api-dial-calls-v1
+      return withAnchor(String(value.url ?? '/api-reference'));
+    default:
+      return '#';
+  }
+};
 
 type Props = {
   /** A rich text field from the CMS */
@@ -13,47 +55,76 @@ type Props = {
 };
 
 /**
+ * Headings get an id from their text (and a # link), so every section can be linked to.
  * Images use Payload's default rendering. Videos and audio get native players,
  * and any other file (PDF, zip, …) becomes a download link.
+ *
+ * Built per text block, so two headings with the same text get unique ids (…-2, …-3).
  */
-const converters: JSXConvertersFunction<DefaultNodeTypes> = ({ defaultConverters }) => ({
-  ...defaultConverters,
-  upload: (args) => {
-    // Only populated when the page queries with depth ≥ 1
-    const file = (args.node as SerializedUploadNode).value;
-    if (!file || typeof file !== 'object') return null;
+const createConverters =
+  (): JSXConvertersFunction<DefaultNodeTypes> =>
+  ({ defaultConverters }) => {
+    const usedIds = new Map<string, number>();
 
-    const { alt, filename, mimeType, url } = file as Media;
-    if (!url) return null;
+    return {
+      ...defaultConverters,
+      ...LinkJSXConverter({ internalDocToHref }),
+      heading: ({ node, nodesToJSX }) => {
+        const heading = node as SerializedHeadingNode;
+        const base = slugify(textOf(heading)) || 'avsnitt';
+        const count = (usedIds.get(base) ?? 0) + 1;
+        usedIds.set(base, count);
 
-    if (mimeType?.startsWith('video/')) {
-      return <video className="formatted-media" controls preload="metadata" src={url} title={alt} />;
-    }
-    if (mimeType?.startsWith('audio/')) {
-      return <audio className="formatted-media" controls preload="metadata" src={url} title={alt} />;
-    }
-    if (!mimeType?.startsWith('image/')) {
-      return (
-        <a className="formatted-file" download href={url}>
-          <Paperclip size={16} />
-          {alt || filename}
-        </a>
-      );
-    }
+        return (
+          <SectionHeading
+            as={heading.tag === 'h1' ? 'h2' : heading.tag}
+            id={count > 1 ? `${base}-${count}` : base}
+          >
+            {nodesToJSX({ nodes: heading.children })}
+          </SectionHeading>
+        );
+      },
+      upload: (args) => {
+        // Only populated when the page queries with depth ≥ 1
+        const file = (args.node as SerializedUploadNode).value;
+        if (!file || typeof file !== 'object') return null;
 
-    const defaultUpload = defaultConverters.upload;
-    return typeof defaultUpload === 'function' ? defaultUpload(args) : null;
-  },
-});
+        const { alt, filename, mimeType, url } = file as Media;
+        if (!url) return null;
 
-/** Renders CMS text with bold, italic, underline, inline code and media */
+        if (mimeType?.startsWith('video/')) {
+          return (
+            <video className="formatted-media" controls preload="metadata" src={url} title={alt} />
+          );
+        }
+        if (mimeType?.startsWith('audio/')) {
+          return (
+            <audio className="formatted-media" controls preload="metadata" src={url} title={alt} />
+          );
+        }
+        if (!mimeType?.startsWith('image/')) {
+          return (
+            <a className="formatted-file" download href={url}>
+              <Paperclip size={16} />
+              {alt || filename}
+            </a>
+          );
+        }
+
+        const defaultUpload = defaultConverters.upload;
+        return typeof defaultUpload === 'function' ? defaultUpload(args) : null;
+      },
+    };
+  };
+
+/** Renders CMS text with headings, bold, italic, underline, inline code, links and media */
 export function FormattedText({ className, data }: Props) {
   if (!data?.root?.children?.length) return null;
 
   return (
     <RichText
       className={['formatted-text', className].filter(Boolean).join(' ')}
-      converters={converters}
+      converters={createConverters()}
       data={data}
     />
   );

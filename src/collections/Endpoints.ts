@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload';
 
 import { formattedText } from '../fields/formattedText';
+import { endpointAnchor } from '../lib/slugify';
 
 export const HTTP_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'] as const;
 
@@ -19,6 +20,31 @@ export const Endpoints: CollectionConfig = {
   defaultSort: 'order',
   access: {
     read: () => true,
+  },
+  hooks: {
+    // Store the endpoint's address on its API page, so links to it from text work
+    // even when the endpoint is loaded without its function (e.g. as a link target)
+    beforeChange: [
+      async ({ data, originalDoc, req }) => {
+        const method = data.method ?? originalDoc?.method;
+        const path = data.path ?? originalDoc?.path;
+        const serviceRef = data.service ?? originalDoc?.service;
+        const serviceId = typeof serviceRef === 'object' ? serviceRef?.id : serviceRef;
+
+        if (method && path && serviceId) {
+          // disableErrors: an endpoint whose function was removed can still be saved
+          const service = await req.payload.findByID({
+            collection: 'services',
+            id: serviceId,
+            depth: 0,
+            disableErrors: true,
+            req,
+          });
+          data.url = service ? `/api-reference/${service.slug}#${endpointAnchor(method, path)}` : null;
+        }
+        return data;
+      },
+    ],
   },
   fields: [
     {
@@ -165,6 +191,16 @@ export const Endpoints: CollectionConfig = {
       type: 'number',
       defaultValue: 0,
       admin: { position: 'sidebar' },
+    },
+    {
+      name: 'url',
+      label: 'Adress på sidan',
+      type: 'text',
+      admin: {
+        readOnly: true,
+        position: 'sidebar',
+        description: 'Fylls i automatiskt när endpointen sparas.',
+      },
     },
   ],
 };

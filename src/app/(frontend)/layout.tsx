@@ -7,6 +7,7 @@ import React from 'react';
 import './globals.css';
 import './layout.css';
 import { MobileMenu } from './components/MobileMenu/MobileMenu';
+import { HashTarget } from './components/HashTarget/HashTarget';
 import { NavLink } from './components/NavLink/NavLink';
 import { Metadata } from 'next';
 
@@ -59,6 +60,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           </div>
         </header>
         <main>{children}</main>
+        <HashTarget />
         <footer className="site-footer">
           <div className="site-footer-inner">
             {settings.footerText && <p>{settings.footerText}</p>}

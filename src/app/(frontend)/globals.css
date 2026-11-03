@@ -185,6 +185,11 @@ code {
 
 /* Inner pages */
 
+/* Linked sections (#id) end up below the sticky header instead of under it */
+[id] {
+  scroll-margin-top: 90px;
+}
+
 .page {
   position: relative;
   /* clip (not hidden) so position: sticky still works inside */

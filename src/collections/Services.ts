@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload';
 
 import { formattedText } from '../fields/formattedText';
+import { richContent } from '../fields/richContent';
 import { iconOptions } from '../icons';
 
 export const Services: CollectionConfig = {
@@ -17,6 +18,26 @@ export const Services: CollectionConfig = {
   defaultSort: 'order',
   access: {
     read: () => true,
+  },
+  hooks: {
+    // Endpoints store their address (/api-reference/<slug>#…); re-save them when the slug changes
+    afterChange: [
+      async ({ doc, previousDoc, operation, req }) => {
+        if (operation !== 'update' || doc.slug === previousDoc?.slug) return doc;
+
+        const { docs: endpoints } = await req.payload.find({
+          collection: 'endpoints',
+          where: { service: { equals: doc.id } },
+          limit: 0,
+          depth: 0,
+          req,
+        });
+        for (const endpoint of endpoints) {
+          await req.payload.update({ collection: 'endpoints', id: endpoint.id, data: {}, req });
+        }
+        return doc;
+      },
+    ],
   },
   fields: [
     {
@@ -46,17 +67,13 @@ export const Services: CollectionConfig = {
       label: 'Introduktion',
       required: true,
     }),
-    {
-      name: 'features',
-      label: 'Det här kan du göra',
-      type: 'array',
-      labels: { singular: 'Funktion', plural: 'Funktioner' },
-      admin: { initCollapsed: true },
-      fields: [
-        { name: 'title', label: 'Rubrik', type: 'text', required: true },
-        formattedText({ name: 'description', label: 'Beskrivning', required: true }),
-      ],
-    },
+    richContent({
+      name: 'content',
+      label: 'Innehåll',
+      admin: {
+        description: 'Visas under introduktionen. Rubriker, listor, länkar, bilder och filer.',
+      },
+    }),
     {
       name: 'icon',
       label: 'Ikon',
@@ -72,6 +89,17 @@ export const Services: CollectionConfig = {
       defaultValue: 0,
       admin: {
         description: 'Lägre nummer visas först.',
+        position: 'sidebar',
+      },
+    },
+    {
+      name: 'isAdvanced',
+      label: 'Avancerad funktion',
+      type: 'checkbox',
+      defaultValue: false,
+      index: true,
+      admin: {
+        description: 'Visas under ”Avancerade funktioner” på sidan Alla funktioner.',
         position: 'sidebar',
       },
     },
