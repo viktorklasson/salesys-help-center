@@ -14,6 +14,7 @@ import React from 'react';
 
 import type { Media } from '@/payload-types';
 import { slugify } from '@/lib/slugify';
+import { CodeBlock } from '../CodeBlock/CodeBlock';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import './FormattedText.css';
 
@@ -30,7 +31,9 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   // Only populated when the page queries with depth ≥ 1
   if (!value || typeof value !== 'object') return '#';
 
-  const anchor = String(linkNode.fields.anchor ?? '').replace(/^#/, '').trim();
+  const anchor = String(linkNode.fields.anchor ?? '')
+    .replace(/^#/, '')
+    .trim();
   const withAnchor = (href: string) => (anchor ? `${href.split('#')[0]}#${anchor}` : href);
 
   switch (relationTo) {
@@ -83,6 +86,12 @@ const createConverters =
             {nodesToJSX({ nodes: heading.children })}
           </SectionHeading>
         );
+      },
+      // Code blocks from the CMS (fields/codeBlockFeature), in the same dark panel as the API examples
+      blocks: {
+        Code: ({ node }: { node: { fields: { code?: string; language?: string } } }) => (
+          <CodeBlock>{node.fields.code ?? ''}</CodeBlock>
+        ),
       },
       upload: (args) => {
         // Only populated when the page queries with depth ≥ 1

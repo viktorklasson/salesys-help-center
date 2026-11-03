@@ -11,6 +11,7 @@ import {
 } from '@payloadcms/richtext-lexical';
 import type { RichTextField } from 'payload';
 
+import { codeBlockFeature } from './codeBlockFeature';
 import { linkFeature } from './linkFeature';
 
 type Options = Omit<RichTextField, 'type' | 'editor'> & {
@@ -34,6 +35,7 @@ export const formattedText = ({ code = false, ...field }: Options): RichTextFiel
       ...(code ? [InlineCodeFeature()] : []),
       // Links to other websites, typed addresses, or a function, FAQ question/category or endpoint
       linkFeature(),
+      codeBlockFeature(),
       // Images, videos, audio and other files from the Media collection
       UploadFeature(),
       FixedToolbarFeature(),

@@ -9,7 +9,32 @@ export const linkFeature = () =>
   LinkFeature({
     enabledCollections: ['services', 'questions', 'question-categories', 'endpoints'],
     fields: ({ defaultFields }) => [
-      ...defaultFields,
+      ...defaultFields.map((field) =>
+        'name' in field && field.name === 'url'
+          ? {
+              ...field,
+              hooks: {
+                // Payload's own hook runs encodeURIComponent on URLs it considers invalid, e.g.
+                // http://localhost:3000/…, and again on every save, which breaks the link.
+                // Instead: keep the URL as typed, and undo any earlier encoding.
+                beforeChange: [
+                  ({ value }: { value?: string }) => {
+                    let url = value?.trim();
+                    while (url && /%(25|3A|2F|23)/i.test(url) && !url.includes('://')) {
+                      const decoded = decodeURIComponent(url);
+                      if (decoded === url) break;
+                      url = decoded;
+                    }
+                    // A localhost address only works on your own computer: keep just the path,
+                    // so the link also works on the live site
+                    url = url?.replace(/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?(?=\/|#|$)/i, '') || url;
+                    return url || undefined;
+                  },
+                ],
+              },
+            }
+          : field,
+      ),
       {
         name: 'anchor',
         label: 'Avsnitt på sidan (valfritt)',

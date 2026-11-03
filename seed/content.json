@@ -398,6 +398,69 @@
       "focalX": 50,
       "focalY": 50,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6ae9bd9ee9c7e04a762de3cf"
+      },
+      "createdAt": {
+        "$date": "2026-11-03T10:55:26.230Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-03T10:55:26.230Z"
+      },
+      "alt": "Exempel på hur man hämtar ett orderarbete via API",
+      "url": "/api/media/file/hamta-orderarbete-via-api-example.png",
+      "filename": "hamta-orderarbete-via-api-example.png",
+      "mimeType": "image/png",
+      "filesize": 88933,
+      "width": 1251,
+      "height": 635,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6ae9bf6be9c7e04a762de665"
+      },
+      "createdAt": {
+        "$date": "2026-11-03T11:03:07.909Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-03T11:03:07.909Z"
+      },
+      "alt": "Exempel på anrop i orderarbete",
+      "url": "/api/media/file/orderarbete-anrop-example.png",
+      "filename": "orderarbete-anrop-example.png",
+      "mimeType": "image/png",
+      "filesize": 36144,
+      "width": 576,
+      "height": 372,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6ae9c6b8e9c7e04a762de958"
+      },
+      "createdAt": {
+        "$date": "2026-11-03T11:34:16.822Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-03T11:34:16.822Z"
+      },
+      "alt": "Exempel på ett respons från ett orderarbete",
+      "url": "/api/media/file/webhook-site-respons-example.png",
+      "filename": "webhook-site-respons-example.png",
+      "mimeType": "image/png",
+      "filesize": 52324,
+      "width": 1603,
+      "height": 609,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
     }
   ],
   "services": [
@@ -1798,7 +1861,7 @@
         "$date": "2026-10-26T14:36:27.615Z"
       },
       "updatedAt": {
-        "$date": "2026-11-03T09:45:28.630Z"
+        "$date": "2026-11-03T11:30:48.246Z"
       },
       "name": "Användare",
       "slug": "users",
@@ -2029,11 +2092,11 @@
         "$date": "2026-11-02T12:54:35.238Z"
       },
       "updatedAt": {
-        "$date": "2026-11-03T09:39:37.818Z"
+        "$date": "2026-11-03T11:37:41.836Z"
       },
       "name": "Orderarbeten",
       "slug": "order-work",
-      "tagline": "Välj vad som ska hända när en order skapas. Du bestämmer.",
+      "tagline": "Välj vad som ska hända när en order skapas.",
       "intro": {
         "root": {
           "children": [
@@ -4386,7 +4449,7 @@
                   "type": "link",
                   "version": 3,
                   "fields": {
-                    "url": "http%3A%2F%2Flocalhost%3A3000%2Fapi-reference%23hur-du-enklast-hamtar-id-n-pa-entiteter-i-salesys",
+                    "url": "/api-reference#hur-du-enklast-hamtar-id-n-pa-entiteter-i-salesys",
                     "newTab": true,
                     "linkType": "custom"
                   },
@@ -4411,13 +4474,92 @@
               "textStyle": ""
             },
             {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
               "children": [
                 {
                   "detail": 0,
-                  "format": 1,
+                  "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Sätt metod, URL,  headers, query och body",
+                  "text": "Öppna din API-klient och anropa ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "GET /api/orders/after-order-work-v1/<orderWorkId>",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " där ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "<orderWorkId>",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " är ID:t på ditt orderarbete. Mer information om denna endpoint finns på ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "sidan om endpointen i API-referens",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "url": "/api-reference/orders#get-api-orders-after-order-work-v1-orderworkid",
+                    "newTab": true,
+                    "linkType": "custom"
+                  },
+                  "id": "6ae9bd2c414363e84447db9a"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ". Kopiera responset och lägg in det i body. Det ska se ut såhär:",
                   "type": "text",
                   "version": 1
                 }
@@ -4427,8 +4569,254 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 1,
+              "textFormat": 0,
               "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6ae9bd9e414363e84447db9d",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6ae9bd9ee9c7e04a762de3cf"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Skrolla ner till ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "\"toDo\"",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " , där ser du följande properties:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "method: HTTP-metod (krävs).",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "url: endpoint att anropa (krävs).",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "headers: headers att inkludera i anropet (krävs).",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "query: queryparametrar att inkludera i anropet.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "body: en body att skicka med i anropet.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 5
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ändra dessa värden så att de har de värden som endpointen du kommer anropa förväntar sig. I exemplet nedan anropar jag webhook.site, en api-testningstjänst där man kan se responset på sina anrop.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6ae9bf6b414363e84447dba0",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6ae9bf6be9c7e04a762de665"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "I bilden ovan gör jag en request till ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "type": "autolink",
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "https://webhook.site/3ede936b-ac48-4fa6-ab3a-69551b658a9c?isTest=true&userId=123",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "fields": {
+                    "linkType": "custom",
+                    "url": "https://webhook.site/3ede936b-ac48-4fa6-ab3a-69551b658a9c?isTest=true&userId=123"
+                  },
+                  "format": "",
+                  "indent": 0,
+                  "version": 2
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " med följande headers:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6ae9c717afe5b86487dd5a63",
+                "code": "Content-Type: application/json\r\nAuthorization: Bearer exampletoken",
+                "language": "plaintext",
+                "blockName": "",
+                "blockType": "Code"
+              }
             },
             {
               "children": [],
@@ -4437,8 +4825,69 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 1,
+              "textFormat": 0,
               "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Samt följande body:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6ae9c6deafe5b86487dd5a62",
+                "code": "{\r\n  \"firstName\": \"Test\",\r\n  \"surName\": \"Testsson\"\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om jag triggar arbetet manuellt på en order så kan jag sedan gå in på webhook.site och se responset från min request:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6ae9c6b8414363e84447dba3",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6ae9c6b8e9c7e04a762de958"
             },
             {
               "children": [],
@@ -4447,7 +4896,7 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 1,
+              "textFormat": 0,
               "textStyle": ""
             }
           ],
@@ -7955,6 +8404,30 @@
       "order": 0,
       "__v": 0,
       "url": "/api-reference/contacts#post-api-contacts-fields-v1"
+    },
+    {
+      "_id": {
+        "$oid": "6ae9bb32e9c7e04a762de106"
+      },
+      "createdAt": {
+        "$date": "2026-11-03T10:45:06.577Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-03T10:45:19.476Z"
+      },
+      "method": "GET",
+      "path": "/api/orders/after-order-work-v1/<orderWorkId>",
+      "summary": "Hämta ett orderarbete via ID",
+      "parameters": [],
+      "responseStatus": 200,
+      "responseExample": "{\r\n  \"id\": \"6ae9bafd32a20901f92d5418\",\r\n  \"name\": \"Integration\",\r\n  \"organizationId\": \"6862579b2cb8d0a855888243\",\r\n  \"isEnabled\": true,\r\n  \"isAutomatic\": false,\r\n  \"conditions\": {\r\n    \"ids\": [],\r\n    \"count\": 50,\r\n    \"offset\": 0,\r\n    \"userIds\": [],\r\n    \"teamIds\": [],\r\n    \"allTagIds\": [],\r\n    \"anyTagId\": [],\r\n    \"notAnyTagId\": [],\r\n    \"notAllTagIds\": [],\r\n    \"anyProductCategoryId\": [],\r\n    \"allProductCategoryIds\": [],\r\n    \"notAnyProductCategoryId\": [],\r\n    \"notAllProductCategoryIds\": [],\r\n    \"allProductIds\": [],\r\n    \"anyProductId\": [],\r\n    \"notAnyProductId\": [],\r\n    \"notAllProductIds\": [],\r\n    \"allFileNames\": [],\r\n    \"anyFileName\": [],\r\n    \"notAnyFileName\": [],\r\n    \"notAllFileNames\": [],\r\n    \"allFieldIds\": [],\r\n    \"anyFieldId\": [],\r\n    \"notAnyFieldId\": [],\r\n    \"notAllFieldIds\": [],\r\n    \"isTest\": \"false\",\r\n    \"isDeleted\": \"false\",\r\n    \"projectIds\": null,\r\n    \"phoneNumbers\": []\r\n  },\r\n  \"dateStrategy\": \"dateOnly\",\r\n  \"maxLag\": {\r\n    \"days\": 2\r\n  },\r\n  \"toDo\": {\r\n    \"http\": {\r\n      \"method\": \"GET\",\r\n      \"url\": {},\r\n      \"headers\": {\r\n        \"content-type\": \"application/json\"\r\n      },\r\n      \"query\": {},\r\n      \"body\": {},\r\n      \"isResponseBodyAlwaysAvailable\": false\r\n    }\r\n  },\r\n  \"instructions\": null,\r\n  \"access\": [],\r\n  \"presentation\": null,\r\n  \"maxExecutions\": 1,\r\n  \"executeAgainConditions\": [],\r\n  \"resultPresentation\": null\r\n}",
+      "service": {
+        "$oid": "6adf656b8107051a9a733c4d"
+      },
+      "group": "After order work",
+      "order": 0,
+      "url": "/api-reference/orders#get-api-orders-after-order-work-v1-orderworkid",
+      "__v": 0
     }
   ],
   "questions": [

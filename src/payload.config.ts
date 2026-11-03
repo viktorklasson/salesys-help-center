@@ -11,6 +11,7 @@ import { QuestionCategories } from './collections/QuestionCategories';
 import { Questions } from './collections/Questions';
 import { Endpoints } from './collections/Endpoints';
 import { Services } from './collections/Services';
+import { codeBlockFeature } from './fields/codeBlockFeature';
 import { linkFeature } from './fields/linkFeature';
 import { ApiReferencePage } from './globals/ApiReferencePage';
 import { CommonQuestionsPage } from './globals/CommonQuestionsPage';
@@ -35,6 +36,7 @@ export default buildConfig({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures.filter((feature) => feature.key !== 'link'),
       linkFeature(),
+      codeBlockFeature(),
     ],
   }),
   secret: process.env.PAYLOAD_SECRET || '',
