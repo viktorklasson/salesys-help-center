@@ -145,12 +145,18 @@ export interface User {
   id: string;
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
+  hasAPIKey?: boolean | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
   salt?: string | null;
   hash?: string | null;
   resetPasswordRequestedAt?: string | null;
+  _verified?: boolean | null;
+  _verificationToken?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
   sessions?:
@@ -302,8 +308,6 @@ export interface Endpoint {
         id?: string | null;
       }[]
     | null;
-  responseStatus?: number | null;
-  responseDescription?: string | null;
   responseExample?: string | null;
   service: string | Service;
   /**
@@ -470,12 +474,18 @@ export interface PayloadMigration {
 export interface UsersSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
+  hasAPIKey?: T;
   email?: T;
   resetPasswordToken?: T;
   resetPasswordExpiration?: T;
   salt?: T;
   hash?: T;
   resetPasswordRequestedAt?: T;
+  _verified?: T;
+  _verificationToken?: T;
   loginAttempts?: T;
   lockUntil?: T;
   sessions?:
@@ -541,8 +551,6 @@ export interface EndpointsSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
-  responseStatus?: T;
-  responseDescription?: T;
   responseExample?: T;
   service?: T;
   group?: T;
@@ -641,19 +649,6 @@ export interface HomePage {
     };
     [k: string]: unknown;
   };
-  taskColumns?:
-    | {
-        title: string;
-        links?:
-          | {
-              label: string;
-              service: string | Service;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   helpLinks?:
     | {
         title: string;
@@ -838,19 +833,6 @@ export interface SiteSetting {
  */
 export interface HomePageSelect<T extends boolean = true> {
   lead?: T;
-  taskColumns?:
-    | T
-    | {
-        title?: T;
-        links?:
-          | T
-          | {
-              label?: T;
-              service?: T;
-              id?: T;
-            };
-        id?: T;
-      };
   helpLinks?:
     | T
     | {

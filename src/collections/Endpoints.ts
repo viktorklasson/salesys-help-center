@@ -135,24 +135,6 @@ export const Endpoints: CollectionConfig = {
       ],
     },
     {
-      type: 'row',
-      fields: [
-        {
-          name: 'responseStatus',
-          label: 'Svarskod',
-          type: 'number',
-          defaultValue: 200,
-          admin: { width: '20%' },
-        },
-        {
-          name: 'responseDescription',
-          label: 'Beskrivning av svaret',
-          type: 'text',
-          admin: { width: '80%' },
-        },
-      ],
-    },
-    {
       name: 'responseExample',
       label: 'Exempel på svar (JSON)',
       type: 'code',

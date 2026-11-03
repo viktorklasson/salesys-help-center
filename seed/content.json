@@ -4981,8 +4981,6 @@
           "id": "6ae1c4e007666e3c1cfcf61a"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med användare",
       "responseExample": "[\n  {\n    \"id\": \"6ae20bb9d2f1ee4eadc0d5a4\",\n    \"type\": \"standard\",\n    \"organizationId\": \"6ae20bf560de111470842aee\",\n    \"rights\": [\n      \"orders.getOwn\",\n      \"orders.getGetByOwnTeam\",\n      \"orders.getFieldData\",\n      \"offers.getGetByOwnTeam\",\n      \"offers.openDistributed\"\n    ],\n    \"superRights\": [],\n    \"teamId\": \"6ae20bfce95a47c0918c331f\",\n    \"supervisedTeamIds\": [],\n    \"roleIds\": [],\n    \"fullName\": \"Test Testsson\",\n    \"username\": \"test-testsson\",\n    \"alias\": null,\n    \"createdByUserId\": \"6ae20c03e90c02a80d6009e1\",\n    \"updatedAt\": \"2026-08-26T09:32:04.982Z\",\n    \"passwordResets\": [],\n    \"email\": \"example@example.com\",\n    \"phone\": null,\n    \"active\": true,\n    \"mfa\": {\n      \"enabled\": false,\n      \"smsRecipient\": null\n    },\n    \"preferences\": {},\n    \"activeSince\": null,\n    \"heartbeatAt\": \"2026-10-28T14:31:35.539Z\",\n    \"reference\": {},\n    \"confidentialReference\": {},\n    \"createdAt\": \"2026-10-12T12:30:04.000Z\"\n  }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
@@ -5015,8 +5013,6 @@
           "id": "6ae1c4e007666e3c1cfcf61b"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Användare med behörigheter",
       "responseExample": "{\n\t\"id\": \"6ae20bb9d2f1ee4eadc0d5a4\",\n\t\"type\": \"standard\",\n\t\"organizationId\": \"6ae20bf560de111470842aee\",\n\t\"rights\": [\n\t\t\"orders.getOwn\",\n\t\t\"orders.getGetByOwnTeam\",\n\t\t\"orders.getFieldData\",\n\t\t\"offers.getGetByOwnTeam\",\n\t\t\"offers.openDistributed\"\n\t],\n\t\"superRights\": [],\n\t\"teamId\": \"6ae20bfce95a47c0918c331f\",\n\t\"supervisedTeamIds\": [],\n\t\"roleIds\": [],\n\t\"fullName\": \"Test Testsson\",\n\t\"username\": \"test-testsson\",\n\t\"alias\": null,\n\t\"createdByUserId\": \"6ae20c03e90c02a80d6009e1\",\n\t\"updatedAt\": \"2026-08-26T09:32:04.982Z\",\n\t\"passwordResets\": [],\n\t\"email\": \"example@example.com\",\n\t\"phone\": null,\n\t\"active\": true,\n\t\"mfa\": {\n\t\t\"enabled\": false,\n\t\t\"smsRecipient\": null\n\t},\n\t\"preferences\": {},\n\t\"activeSince\": null,\n\t\"heartbeatAt\": \"2026-10-28T14:31:35.539Z\",\n\t\"reference\": {},\n\t\"confidentialReference\": {},\n\t\"createdAt\": \"2026-10-12T12:30:04.000Z\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
@@ -5177,8 +5173,6 @@
           "id": "6ae2f73f1177805f7c1b92c7"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
       "responseExample": "{\n  \"recordId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
@@ -5212,8 +5206,6 @@
           "id": "6ae1c4e007666e3c1cfcf61d"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Användaren har tagits bort",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
       },
@@ -5283,8 +5275,6 @@
           "id": "6ae1c4e007666e3c1cfcf622"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med team",
       "responseExample": "[\n    {\n        \"id\": \"673342dac6044f74d569ae3e\",\n        \"name\": \"Säljare Göteborg\",\n        \"color\": \"default\",\n        \"rights\": [\n            \"products.update\",\n            \"offers.getAll\",\n            \"orders.getOwn\",\n            \"orders.update\",\n            \"orders.getAll\",\n            \"orders.getFieldData\"\n        ],\n        \"isLocked\": false,\n        \"calendarAccess\": [],\n        \"reference\": {}\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
@@ -5324,8 +5314,6 @@
           "id": "6ae1c4e007666e3c1cfcf626"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med projekt",
       "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"iconName\": \"string\",\n    \"teamIds\": [\n      \"64a1b2c3d4e5f6a7b8c9d0e1\"\n    ],\n    \"organizationId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"themeId\": \"string\",\n    \"defaultOrderProductIds\": [\n      \"64a1b2c3d4e5f6a7b8c9d0e1\"\n    ],\n    \"reference\": {}\n  }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
@@ -5358,8 +5346,6 @@
           "id": "6ae1c4e007666e3c1cfcf629"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med roller",
       "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"name\": \"string\",\n    \"rights\": [\n      \"string\"\n    ],\n    \"calendarAccess\": [\n      {\n        \"teamId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n        \"readOnly\": false\n      }\n    ],\n    \"features\": [\n      \"string\"\n    ]\n  }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
@@ -5392,8 +5378,6 @@
           "id": "6ae1c4e007666e3c1cfcf62a"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
       },
@@ -5475,8 +5459,6 @@
           "id": "6ae1c4e007666e3c1cfcf63b"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med kontakter",
       "responseExample": "[\n    {\n        \"id\": \"6ad2117d4e6dc665d1f30d28\",\n        \"organizationId\": \"6862579b2cb8d0a855888243\",\n        \"userId\": \"6862579b2cb8d0a855888245\",\n        \"serialId\": 11788,\n        \"fields\": [\n            {\n                \"fieldId\": \"6ac629ad407fb781d998357a\",\n                \"value\": \"Test\"\n            },\n            {\n                \"fieldId\": \"6ac629ad407fb781d998357b\",\n                \"value\": \"Testsson\"\n            },\n            {\n                \"fieldId\": \"6ac629ad407fb781d998357c\",\n                \"value\": \"980319247\"\n            },\n            {\n                \"fieldId\": \"6ac629ad407fb781d998357d\",\n                \"value\": \"Testgatan 1\"\n            },\n            {\n                \"fieldId\": \"6ac629ad407fb781d998357e\",\n                \"value\": \"example@example.com\"\n            },\n            {\n                \"fieldId\": \"6ac629ad407fb781d998357f\",\n                \"value\": \"44444\"\n            },\n            {\n                \"fieldId\": \"6ac629ad407fb781d9983580\",\n                \"value\": \"Teststad\"\n            },\n            {\n                \"fieldId\": \"6ac629ad407fb781d9983581\",\n                \"value\": \"Testbolag\"\n            },\n            {\n                \"fieldId\": \"6ac62063c1af3cef5af3f6a5\",\n                \"value\": \"https://example.com/\"\n            }\n        ],\n        \"tagIds\": [],\n        \"comments\": [],\n        \"importDate\": null,\n        \"importTaskId\": \"6ad211671dcbe6eafc016a9a\",\n        \"dialGroupIds\": [\n            \"6ad2116f4f740fa1539d4712\"\n        ],\n        \"date\": \"2026-10-16T11:58:53.000Z\"\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c4b"
@@ -5501,8 +5483,6 @@
       "path": "/api/contacts/contacts-v1",
       "summary": "Skapa en kontakt",
       "parameters": [],
-      "responseStatus": 201,
-      "responseDescription": "Kontakten har skapats",
       "responseExample": "{\n  \"contactId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"serialId\": 664\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4b"
@@ -5536,8 +5516,6 @@
           "id": "6ae1c4e007666e3c1cfcf640"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Kontakt",
       "responseExample": "{\n\t\"id\": \"6ad2117d4e6dc665d1f30d28\",\n\t\"organizationId\": \"6862579b2cb8d0a855888243\",\n\t\"userId\": \"6862579b2cb8d0a855888245\",\n\t\"serialId\": 11788,\n\t\"fields\": [\n\t\t{\n\t\t\t\"fieldId\": \"6ac629ad407fb781d998357a\",\n\t\t\t\"value\": \"Test\"\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ac629ad407fb781d998357b\",\n\t\t\t\"value\": \"Testsson\"\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ac629ad407fb781d998357c\",\n\t\t\t\"value\": \"980319247\"\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ac629ad407fb781d998357d\",\n\t\t\t\"value\": \"Testgatan 1\"\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ac629ad407fb781d998357e\",\n\t\t\t\"value\": \"example@example.com\"\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ac629ad407fb781d998357f\",\n\t\t\t\"value\": \"44444\"\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ac629ad407fb781d9983580\",\n\t\t\t\"value\": \"Teststad\"\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ac629ad407fb781d9983581\",\n\t\t\t\"value\": \"Testbolag\"\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ac62063c1af3cef5af3f6a5\",\n\t\t\t\"value\": \"https://example.com/\"\n\t\t}\n\t],\n\t\"tagIds\": [],\n\t\"comments\": [],\n\t\"importDate\": null,\n\t\"importTaskId\": \"6ad211671dcbe6eafc016a9a\",\n\t\"dialGroupIds\": [\n\t\t\"6ad2116f4f740fa1539d4712\"\n\t],\n\t\"date\": \"2026-10-16T11:58:53.000Z\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4b"
@@ -5583,8 +5561,6 @@
           "id": "6ae3528bd17e345f9af41648"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Kontaktfält",
       "responseExample": "{\n    \"fields\": [\n        {\n            \"id\": \"69300c547fc185404b74251e\",\n            \"label\": \"Fullständigt namn\",\n            \"type\": \"plain\",\n            \"orderFields\": [],\n            \"projectIds\": null,\n            \"isDefaultInput\": false,\n            \"dialGroupIds\": [\n                \"6a1958ae898faa320b632336\"\n            ],\n            \"date\": \"2025-12-03T10:09:24.000Z\"\n        }\n\t]\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4b"
@@ -5694,8 +5670,6 @@
           "id": "6ae1c4e107666e3c1cfcf66b"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med ordrar",
       "responseExample": "[\n    {\n        \"id\": \"6ae061c42e5bfe486b65521c\",\n        \"organizationId\": \"6862579b2cb8d0a855888243\",\n        \"date\": \"2026-10-27T08:33:08.549Z\",\n        \"updatedAt\": \"2026-10-27T08:33:22.812Z\",\n        \"updatedOrCreatedAt\": \"2026-10-27T08:33:22.812Z\",\n        \"contactId\": \"6ae06185ea56d6cc3da583d2\",\n        \"serialId\": 125,\n        \"tagIds\": [\n            \"6a99177fa95e57afe54a7879\"\n        ],\n        \"fields\": [\n            {\n                \"fieldId\": \"686259d90005846351586218\",\n                \"value\": \"Test\",\n                \"valueAsNumber\": null\n            },\n            {\n                \"fieldId\": \"686259e40005846351586219\",\n                \"value\": \"Testsson\",\n                \"valueAsNumber\": null\n            },\n            {\n                \"fieldId\": \"686259f15f31f8107d087c55\",\n                \"value\": \"0980319247\",\n                \"valueAsNumber\": 980319247\n            },\n            {\n                \"fieldId\": \"6862678d5f31f8107d087e24\",\n                \"value\": \"Testgatan 2, Testort\",\n                \"valueAsNumber\": null\n            },\n            {\n                \"fieldId\": \"6862673400058463515863a5\",\n                \"value\": \"Testföretaget AB\",\n                \"valueAsNumber\": null\n            },\n            {\n                \"fieldId\": \"69ba7ffcb8e08f18198f0fa2\",\n                \"value\": \"44444\",\n                \"valueAsNumber\": 44444\n            }\n        ],\n        \"products\": [],\n        \"comments\": [],\n        \"files\": [],\n        \"externalEvents\": [],\n        \"businessDate\": \"2026-10-29T08:00:00.000Z\",\n        \"userId\": \"6862579b2cb8d0a855888245\",\n        \"isTest\": false,\n        \"isDeleted\": false,\n        \"fullyDeleteAfter\": null,\n        \"afterOrderWorkExecutions\": null,\n        \"projectId\": \"689af0f8e9c43cf65bce4423\",\n        \"calendarEventIds\": [\n            \"6ae061c43e05b29ae789d086\"\n        ],\n        \"parts\": [],\n        \"callId\": \"6ac6147f59054cc04355a793\",\n        \"dialGroupId\": \"6ac4a9a630ad8e4cc7b949c5\",\n        \"shuffleDialGroupId\": null,\n        \"createdAt\": \"2026-10-27T08:33:08.549Z\"\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
@@ -5728,8 +5702,6 @@
           "id": "6ae1c4e107666e3c1cfcf66c"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Order",
       "responseExample": "{\n\t\"id\": \"6ae061c42e5bfe486b65521c\",\n\t\"organizationId\": \"6862579b2cb8d0a855888243\",\n\t\"date\": \"2026-10-27T08:33:08.549Z\",\n\t\"updatedAt\": \"2026-10-27T08:33:22.812Z\",\n\t\"updatedOrCreatedAt\": \"2026-10-27T08:33:22.812Z\",\n\t\"contactId\": \"6ae06185ea56d6cc3da583d2\",\n\t\"serialId\": 125,\n\t\"tagIds\": [\n\t\t\"6a99177fa95e57afe54a7879\"\n\t],\n\t\"fields\": [\n\t\t{\n\t\t\t\"fieldId\": \"686259d90005846351586218\",\n\t\t\t\"value\": \"Test\",\n\t\t\t\"valueAsNumber\": null\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"686259e40005846351586219\",\n\t\t\t\"value\": \"Testsson\",\n\t\t\t\"valueAsNumber\": null\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"686259f15f31f8107d087c55\",\n\t\t\t\"value\": \"0980319247\",\n\t\t\t\"valueAsNumber\": 980319247\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6862678d5f31f8107d087e24\",\n\t\t\t\"value\": \"Testgatan 2, Testort\",\n\t\t\t\"valueAsNumber\": null\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6862673400058463515863a5\",\n\t\t\t\"value\": \"Testföretaget AB\",\n\t\t\t\"valueAsNumber\": null\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"69ba7ffcb8e08f18198f0fa2\",\n\t\t\t\"value\": \"44444\",\n\t\t\t\"valueAsNumber\": 44444\n\t\t}\n\t],\n\t\"products\": [],\n\t\"comments\": [],\n\t\"files\": [],\n\t\"externalEvents\": [],\n\t\"businessDate\": \"2026-10-29T08:00:00.000Z\",\n\t\"userId\": \"6862579b2cb8d0a855888245\",\n\t\"isTest\": false,\n\t\"isDeleted\": false,\n\t\"fullyDeleteAfter\": null,\n\t\"afterOrderWorkExecutions\": null,\n\t\"projectId\": \"689af0f8e9c43cf65bce4423\",\n\t\"calendarEventIds\": [\n\t\t\"6ae061c43e05b29ae789d086\"\n\t],\n\t\"parts\": [],\n\t\"callId\": \"6ac6147f59054cc04355a793\",\n\t\"dialGroupId\": \"6ac4a9a630ad8e4cc7b949c5\",\n\t\"shuffleDialGroupId\": null,\n\t\"createdAt\": \"2026-10-27T08:33:08.549Z\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
@@ -5754,8 +5726,6 @@
       "path": "/api/orders/orders-v2",
       "summary": "Skapa en order",
       "parameters": [],
-      "responseStatus": 201,
-      "responseDescription": "Ordern har skapats",
       "responseExample": "{\n  \"orderId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"serialId\": 6,\n  \"fileToken\": \"string\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
@@ -5810,8 +5780,6 @@
           "id": "6ae1c4e107666e3c1cfcf673"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Antal ordrar (totalt eller grupperat)",
       "responseExample": "{\n  \"count\": 0\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
@@ -5844,8 +5812,6 @@
           "id": "6ae1c4e107666e3c1cfcf679"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
       },
@@ -5927,8 +5893,6 @@
           "id": "6ae1c4e107666e3c1cfcf68b"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med avtal",
       "responseExample": "[\n    {\n        \"id\": \"6ae31f5d78ac69c6259e92c3\",\n        \"templateId\": \"6ae31f61ff25f543c6424111\",\n        \"templateVersion\": 1,\n        \"serialId\": 124,\n        \"date\": \"2026-10-08T11:38:57.734Z\",\n        \"userId\": \"6ae31f6464276c585611f2dd\",\n        \"createdByUserId\": \"6ae31f675e024ee8dfcb2340\",\n        \"inserts\": [],\n        \"templateInserts\": [],\n        \"recipient\": {\n            \"name\": null,\n            \"email\": \"example@example.com\",\n            \"sms\": null\n        },\n        \"recipients\": [],\n        \"issuer\": {\n            \"name\": \"Testbolag AB\",\n            \"website\": null,\n            \"phone\": \"0980319247\",\n            \"email\": \"example@example.com\",\n            \"replyToEmail\": null,\n            \"identityNumber\": \"123456781234\",\n            \"logo\": {\n                \"uri\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6862579b2cb8d0a855882363/logos/6862579b2cb8d0a855123243\"\n            }\n        },\n        \"products\": [],\n        \"autoFill\": null,\n        \"fields\": [],\n        \"parts\": [],\n        \"signature\": null,\n        \"unsignedDocument\": {\n            \"documentId\": null,\n            \"key\": null,\n            \"url\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6862579b2cb8d0a855888243/offer-templates/6aaa9a349c888d3b4aa105de/external_document.pdf\",\n            \"pageCount\": 2,\n            \"status\": \"ready\"\n        },\n        \"unsignedDocumentWithInserts\": null,\n        \"isTest\": false,\n        \"publicId\": \"ABCDEFGH525\",\n        \"status\": \"distributed\",\n        \"statusUpdatedAt\": \"2026-10-08T11:39:18.767Z\",\n        \"comments\": [],\n        \"files\": [],\n        \"distributions\": [\n            {\n                \"id\": \"6ae31ff07f3ddfab0aedac9e\",\n                \"smsRecipient\": null,\n                \"smsUserMessageLength\": null,\n                \"emailRecipient\": \"example@example.com\",\n                \"distributedAt\": \"2026-10-08T11:39:18.767Z\",\n                \"twoWaySms\": null\n            },\n            {\n                \"id\": \"6ae32002c110d0c34f955f03\",\n                \"smsRecipient\": null,\n                \"smsUserMessageLength\": null,\n                \"emailRecipient\": \"example@example.com\",\n                \"distributedAt\": \"2026-10-08T11:39:59.666Z\",\n                \"twoWaySms\": null\n            },\n            {\n                \"id\": \"6ae3200538cab0c8edecb6c7\",\n                \"smsRecipient\": null,\n                \"smsUserMessageLength\": null,\n                \"emailRecipient\": \"example@example.com\",\n                \"distributedAt\": \"2026-10-08T11:41:08.434Z\",\n                \"twoWaySms\": null\n            }\n        ],\n        \"signatureToken\": null,\n        \"declineToken\": null,\n        \"read\": null,\n        \"decline\": null,\n        \"cancellation\": null,\n        \"reviewPending\": null,\n        \"expireAt\": \"2026-11-07T23:00:00.000Z\",\n        \"documentId\": null,\n        \"printToken\": null,\n        \"events\": [\n            {\n                \"type\": \"distributed\",\n                \"sessionId\": null,\n                \"begunAt\": null,\n                \"doneAt\": \"2026-10-08T11:39:18.782Z\",\n                \"page\": null,\n                \"ip\": null,\n                \"userAgent\": null,\n                \"error\": null,\n                \"nextStep\": null,\n                \"insertNumber\": null,\n                \"signLocationType\": null,\n                \"distributionMethod\": \"email\"\n            },\n            {\n                \"type\": \"distributed\",\n                \"sessionId\": null,\n                \"begunAt\": null,\n                \"doneAt\": \"2026-10-08T11:39:59.685Z\",\n                \"page\": null,\n                \"ip\": null,\n                \"userAgent\": null,\n                \"error\": null,\n                \"nextStep\": null,\n                \"insertNumber\": null,\n                \"signLocationType\": null,\n                \"distributionMethod\": \"email\"\n            },\n            {\n                \"type\": \"distributed\",\n                \"sessionId\": null,\n                \"begunAt\": null,\n                \"doneAt\": \"2026-10-08T11:41:08.446Z\",\n                \"page\": null,\n                \"ip\": null,\n                \"userAgent\": null,\n                \"error\": null,\n                \"nextStep\": null,\n                \"insertNumber\": null,\n                \"signLocationType\": null,\n                \"distributionMethod\": \"email\"\n            }\n        ],\n        \"bankIdSession\": null,\n        \"orderIds\": [],\n        \"contactId\": null,\n        \"organizationId\": \"6ae3200993294328897149af\",\n        \"createdFrom\": null,\n        \"webhookId\": null,\n        \"statusLinks\": null,\n        \"signMethod\": null,\n        \"country\": \"se\",\n        \"distributeNow\": null,\n        \"projectId\": null,\n        \"additionalPages\": null,\n        \"tags\": [],\n        \"signaturePlace\": null,\n        \"formId\": null,\n        \"orderConfiguration\": null,\n        \"reviews\": [],\n        \"callId\": null,\n        \"dialGroupId\": null,\n        \"shuffleDialGroupId\": null,\n        \"chatToken\": null,\n        \"chatSessionId\": null,\n        \"parentId\": null,\n        \"deletedAt\": null,\n        \"supplementaryFormId\": null,\n        \"updatedViaFormAt\": null,\n        \"bankIdSignArgsUrl\": null,\n        \"createUnsignedDocumentOn\": null,\n        \"isDeleted\": false,\n        \"fullyDeleteAfter\": null\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c4f"
@@ -5953,8 +5917,6 @@
       "path": "/api/offers/offers-v2",
       "summary": "Skapa ett avtal",
       "parameters": [],
-      "responseStatus": 201,
-      "responseDescription": "Avtalet har skapats",
       "responseExample": "{\n  \"offerId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"serialId\": 0,\n  \"publicId\": \"string\",\n  \"linkId\": \"string\",\n  \"linkUrl\": \"string\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4f"
@@ -5988,8 +5950,6 @@
           "id": "6ae1c4e107666e3c1cfcf68c"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Avtal",
       "responseExample": "{\n\t\"id\": \"6ae31f5d78ac69c6259e92c3\",\n\t\"templateId\": \"6ae31f61ff25f543c6424111\",\n\t\"templateVersion\": 1,\n\t\"serialId\": 124,\n\t\"date\": \"2026-10-08T11:38:57.734Z\",\n\t\"userId\": \"6ae31f6464276c585611f2dd\",\n\t\"createdByUserId\": \"6ae31f675e024ee8dfcb2340\",\n\t\"inserts\": [],\n\t\"templateInserts\": [],\n\t\"recipient\": {\n\t\t\"name\": null,\n\t\t\"email\": \"example@example.com\",\n\t\t\"sms\": null\n\t},\n\t\"recipients\": [],\n\t\"issuer\": {\n\t\t\"name\": \"Testbolag AB\",\n\t\t\"website\": null,\n\t\t\"phone\": \"0980319247\",\n\t\t\"email\": \"example@example.com\",\n\t\t\"replyToEmail\": null,\n\t\t\"identityNumber\": \"123456781234\",\n\t\t\"logo\": {\n\t\t\t\"uri\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6862579b2cb8d0a855882363/logos/6862579b2cb8d0a855123243\"\n\t\t}\n\t},\n\t\"products\": [],\n\t\"autoFill\": null,\n\t\"fields\": [],\n\t\"parts\": [],\n\t\"signature\": null,\n\t\"unsignedDocument\": {\n\t\t\"documentId\": null,\n\t\t\"key\": null,\n\t\t\"url\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6862579b2cb8d0a855888243/offer-templates/6aaa9a349c888d3b4aa105de/external_document.pdf\",\n\t\t\"pageCount\": 2,\n\t\t\"status\": \"ready\"\n\t},\n\t\"unsignedDocumentWithInserts\": null,\n\t\"isTest\": false,\n\t\"publicId\": \"ABCDEFGH525\",\n\t\"status\": \"distributed\",\n\t\"statusUpdatedAt\": \"2026-10-08T11:39:18.767Z\",\n\t\"comments\": [],\n\t\"files\": [],\n\t\"distributions\": [\n\t\t{\n\t\t\t\"id\": \"6ae31ff07f3ddfab0aedac9e\",\n\t\t\t\"smsRecipient\": null,\n\t\t\t\"smsUserMessageLength\": null,\n\t\t\t\"emailRecipient\": \"example@example.com\",\n\t\t\t\"distributedAt\": \"2026-10-08T11:39:18.767Z\",\n\t\t\t\"twoWaySms\": null\n\t\t},\n\t\t{\n\t\t\t\"id\": \"6ae32002c110d0c34f955f03\",\n\t\t\t\"smsRecipient\": null,\n\t\t\t\"smsUserMessageLength\": null,\n\t\t\t\"emailRecipient\": \"example@example.com\",\n\t\t\t\"distributedAt\": \"2026-10-08T11:39:59.666Z\",\n\t\t\t\"twoWaySms\": null\n\t\t},\n\t\t{\n\t\t\t\"id\": \"6ae3200538cab0c8edecb6c7\",\n\t\t\t\"smsRecipient\": null,\n\t\t\t\"smsUserMessageLength\": null,\n\t\t\t\"emailRecipient\": \"example@example.com\",\n\t\t\t\"distributedAt\": \"2026-10-08T11:41:08.434Z\",\n\t\t\t\"twoWaySms\": null\n\t\t}\n\t],\n\t\"signatureToken\": null,\n\t\"declineToken\": null,\n\t\"read\": null,\n\t\"decline\": null,\n\t\"cancellation\": null,\n\t\"reviewPending\": null,\n\t\"expireAt\": \"2026-11-07T23:00:00.000Z\",\n\t\"documentId\": null,\n\t\"printToken\": null,\n\t\"events\": [\n\t\t{\n\t\t\t\"type\": \"distributed\",\n\t\t\t\"sessionId\": null,\n\t\t\t\"begunAt\": null,\n\t\t\t\"doneAt\": \"2026-10-08T11:39:18.782Z\",\n\t\t\t\"page\": null,\n\t\t\t\"ip\": null,\n\t\t\t\"userAgent\": null,\n\t\t\t\"error\": null,\n\t\t\t\"nextStep\": null,\n\t\t\t\"insertNumber\": null,\n\t\t\t\"signLocationType\": null,\n\t\t\t\"distributionMethod\": \"email\"\n\t\t},\n\t\t{\n\t\t\t\"type\": \"distributed\",\n\t\t\t\"sessionId\": null,\n\t\t\t\"begunAt\": null,\n\t\t\t\"doneAt\": \"2026-10-08T11:39:59.685Z\",\n\t\t\t\"page\": null,\n\t\t\t\"ip\": null,\n\t\t\t\"userAgent\": null,\n\t\t\t\"error\": null,\n\t\t\t\"nextStep\": null,\n\t\t\t\"insertNumber\": null,\n\t\t\t\"signLocationType\": null,\n\t\t\t\"distributionMethod\": \"email\"\n\t\t},\n\t\t{\n\t\t\t\"type\": \"distributed\",\n\t\t\t\"sessionId\": null,\n\t\t\t\"begunAt\": null,\n\t\t\t\"doneAt\": \"2026-10-08T11:41:08.446Z\",\n\t\t\t\"page\": null,\n\t\t\t\"ip\": null,\n\t\t\t\"userAgent\": null,\n\t\t\t\"error\": null,\n\t\t\t\"nextStep\": null,\n\t\t\t\"insertNumber\": null,\n\t\t\t\"signLocationType\": null,\n\t\t\t\"distributionMethod\": \"email\"\n\t\t}\n\t],\n\t\"bankIdSession\": null,\n\t\"orderIds\": [],\n\t\"contactId\": null,\n\t\"organizationId\": \"6ae3200993294328897149af\",\n\t\"createdFrom\": null,\n\t\"webhookId\": null,\n\t\"statusLinks\": null,\n\t\"signMethod\": null,\n\t\"country\": \"se\",\n\t\"distributeNow\": null,\n\t\"projectId\": null,\n\t\"additionalPages\": null,\n\t\"tags\": [],\n\t\"signaturePlace\": null,\n\t\"formId\": null,\n\t\"orderConfiguration\": null,\n\t\"reviews\": [],\n\t\"callId\": null,\n\t\"dialGroupId\": null,\n\t\"shuffleDialGroupId\": null,\n\t\"chatToken\": null,\n\t\"chatSessionId\": null,\n\t\"parentId\": null,\n\t\"deletedAt\": null,\n\t\"supplementaryFormId\": null,\n\t\"updatedViaFormAt\": null,\n\t\"bankIdSignArgsUrl\": null,\n\t\"createUnsignedDocumentOn\": null,\n\t\"isDeleted\": false,\n\t\"fullyDeleteAfter\": null\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4f"
@@ -6043,8 +6003,6 @@
           "id": "6ae1c4e107666e3c1cfcf690"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Antal avtal",
       "responseExample": "{\n  \"count\": 6\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4f"
@@ -6098,8 +6056,6 @@
           "id": "6ae1c4e107666e3c1cfcf69d"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med produkter",
       "responseExample": "[\n    {\n        \"id\": \"6ae31cc110d5c535493acaec\",\n        \"categoryId\": \"6ae31cc450249c52dda52928\",\n        \"name\": \"Mobilabonnemang 2GB\",\n        \"price\": 0,\n        \"priceOptions\": [],\n        \"salaryBasis\": null,\n        \"salaryBasisType\": \"fixed\",\n        \"salaryBasisProductFieldIds\": [],\n        \"vat\": 25,\n        \"fields\": [\n            {\n                \"fieldId\": \"6ae31ce92f86b61f7098bdd5\",\n                \"value\": \"2GB\",\n                \"predefinedValues\": []\n            },\n            {\n                \"fieldId\": \"6ae31cedb9848b275f570e60\",\n                \"value\": \"Bra för små hushåll.\",\n                \"predefinedValues\": []\n            }\n        ],\n        \"image\": {\n            \"uri\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6ae31d0df22a967263127df0/products/689052f7cd76677613fe83b1-175538887104\",\n            \"mimetype\": \"image/jpeg\",\n            \"key\": \"6ae31d0df22a967263127df0/products/689052f7cd76677613fe83b1-175538887104\"\n        },\n        \"inputType\": \"none\",\n        \"isVisibleInExpressFlows\": true,\n        \"isVisibleInWebForms\": true,\n        \"deletedAt\": null,\n        \"calendarEventDuration\": {\n            \"_value\": null\n        },\n        \"reference\": {},\n        \"configs\": []\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c51"
@@ -6132,8 +6088,6 @@
           "id": "6ae1c4e107666e3c1cfcf69e"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Produkt",
       "responseExample": "{\n\t\"id\": \"6ae31cc110d5c535493acaec\",\n\t\"categoryId\": \"6ae31cc450249c52dda52928\",\n\t\"name\": \"Mobilabonnemang 2GB\",\n\t\"price\": 0,\n\t\"priceOptions\": [],\n\t\"salaryBasis\": null,\n\t\"salaryBasisType\": \"fixed\",\n\t\"salaryBasisProductFieldIds\": [],\n\t\"vat\": 25,\n\t\"fields\": [\n\t\t{\n\t\t\t\"fieldId\": \"6ae31ce92f86b61f7098bdd5\",\n\t\t\t\"value\": \"2GB\",\n\t\t\t\"predefinedValues\": []\n\t\t},\n\t\t{\n\t\t\t\"fieldId\": \"6ae31cedb9848b275f570e60\",\n\t\t\t\"value\": \"Bra för små hushåll.\",\n\t\t\t\"predefinedValues\": []\n\t\t}\n\t],\n\t\"image\": {\n\t\t\"uri\": \"https://salesys-prod-1mn0w2.s3.eu-west-1.amazonaws.com/6ae31d0df22a967263127df0/products/689052f7cd76677613fe83b1-175538887104\",\n\t\t\"mimetype\": \"image/jpeg\",\n\t\t\"key\": \"6ae31d0df22a967263127df0/products/689052f7cd76677613fe83b1-175538887104\"\n\t},\n\t\"inputType\": \"none\",\n\t\"isVisibleInExpressFlows\": true,\n\t\"isVisibleInWebForms\": true,\n\t\"deletedAt\": null,\n\t\"calendarEventDuration\": {\n\t\t\"_value\": null\n\t},\n\t\"reference\": {},\n\t\"configs\": []\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c51"
@@ -6201,8 +6155,6 @@
           "id": "6ae1c4e107666e3c1cfcf6a7"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med kalenderhändelser",
       "responseExample": "[\n    {\n        \"id\": \"6ae31c0d82dcfa3fded87e05\",\n        \"from\": \"2026-10-13T12:30:00.000Z\",\n        \"to\": \"2026-10-13T13:00:00.000Z\",\n        \"title\": \"Teamträff\",\n        \"organizationId\": \"6ae31c004e9c84dfb76b5343\",\n        \"userId\": \"6ae31bfd7fe3e162fb6b8014\",\n        \"createdByUserId\": \"6ae31bf7da635b57b2e3429d\",\n        \"note\": \"<p>To be explained</p><p>Scheduled with <a target=\\\"_blank\\\" rel=\\\"noopener noreferrer nofollow\\\" href=\\\"https://www.usemotion.com/referral?ref=calendar\\\">Motion</a></p>\",\n        \"files\": [],\n        \"orderIds\": [],\n        \"externalId\": \"evt_external_69b6634KS7G37f2501b35645\",\n        \"externalCalendarId\": \"cal_aJrwxCHD8Dt7A6d_LqJO7oC20NQwR1WqzDJRvg\",\n        \"sync\": [\n            {\n                \"calendarId\": \"cal_aJrwxCHD8Dt7A6d_LqJO7oC20NQwR1WqzDJRvg\",\n                \"date\": \"2026-03-31T13:02:09.559Z\"\n            }\n        ],\n        \"attendees\": [\n            {\n                \"email\": \"example@example.com\",\n                \"name\": null,\n                \"status\": \"accepted\"\n            },\n            {\n                \"email\": \"example2@example.com\",\n                \"name\": null,\n                \"status\": \"needsAction\"\n            },\n        ],\n        \"isPrivate\": false,\n        \"startOfDay\": \"2026-10-12T22:00:00.000Z\"\n    }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c53"
@@ -6277,8 +6229,6 @@
           "id": "6ae1c4e107666e3c1cfcf6c2"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Lista med händelser",
       "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"date\": \"2026-01-01T12:00:00.000Z\",\n    \"name\": \"string\",\n    \"topic\": \"string\",\n    \"data\": {}\n  }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c59"
@@ -6303,8 +6253,6 @@
       "path": "/api/events/webhooks-v1",
       "summary": "Lista webhooks (endast admin)",
       "parameters": [],
-      "responseStatus": 200,
-      "responseDescription": "Lista med webhooks",
       "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"url\": \"https://exempel.se\",\n    \"events\": [\n      {\n        \"name\": \"calendar-event-updated-v1\"\n      }\n    ],\n    \"description\": \"string\"\n  }\n]",
       "service": {
         "$oid": "6adf656b8107051a9a733c59"
@@ -6434,8 +6382,6 @@
         }
       },
       "parameters": [],
-      "responseStatus": 200,
-      "responseDescription": "Webhooken har skapats",
       "responseExample": "{\n  \"webhookId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c59"
@@ -6468,8 +6414,6 @@
           "id": "6ae1c4e107666e3c1cfcf6c3"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Webhook",
       "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"url\": \"https://exempel.se\",\n  \"events\": [\n    {\n      \"name\": \"calendar-event-updated-v1\"\n    }\n  ],\n  \"description\": \"string\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c59"
@@ -6502,8 +6446,6 @@
           "id": "6ae1c4e107666e3c1cfcf6c4"
         }
       ],
-      "responseStatus": 200,
-      "responseDescription": "Uppdaterad",
       "service": {
         "$oid": "6adf656b8107051a9a733c59"
       },
@@ -6527,7 +6469,6 @@
       "path": "/api/dial/call-actions-v1",
       "summary": "Skapa ett samtalsarbete",
       "parameters": [],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -6582,7 +6523,6 @@
       "path": "/api/dial/call-information-v1/operators",
       "summary": "Testa samtals-operatorer",
       "parameters": [],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -6646,7 +6586,6 @@
           "id": "6ae1c885597b815580b92a15"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -6972,7 +6911,6 @@
           "id": "6ae47802d5f2b840f0dc88fa"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -7277,7 +7215,6 @@
           "id": "6ae47b2af7fa9963f48189ff"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -7316,7 +7253,6 @@
           "id": "6ae1c885597b815580b92a1b"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -7429,7 +7365,6 @@
           "id": "6ae4814918c2907b2407ffd5"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -7461,7 +7396,6 @@
           "id": "6ae1c885597b815580b92a1d"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -7485,7 +7419,6 @@
       "path": "/api/dial/dial-groups-v1",
       "summary": "Skapa en ringlista",
       "parameters": [],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -7517,7 +7450,6 @@
           "id": "6ae1c885597b815580b92a1e"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c41"
       },
@@ -7570,7 +7502,6 @@
           "id": "6ae1c885597b815580b92a25"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c57"
       },
@@ -7593,7 +7524,6 @@
       "path": "/api/events/webhooks-v1/events",
       "summary": "Hämta webhook-händelser",
       "parameters": [],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c59"
       },
@@ -7624,7 +7554,6 @@
           "id": "6ae1c885597b815580b92a2a"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c4f"
       },
@@ -7687,7 +7616,6 @@
           "id": "6ae1c885597b815580b92a2e"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c4f"
       },
@@ -7719,7 +7647,6 @@
           "id": "6ae1c885597b815580b92a33"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
       },
@@ -7782,7 +7709,6 @@
           "id": "6ae1c885597b815580b92a37"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
       },
@@ -7855,7 +7781,6 @@
       "path": "/api/orders/fields-v1",
       "summary": "Skapa ett orderfält",
       "parameters": [],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
       },
@@ -7901,7 +7826,6 @@
       "path": "/api/orders/fields-v1",
       "summary": "Hämta orderfält",
       "parameters": [],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
       },
@@ -7924,7 +7848,6 @@
       "path": "/api/orders/order-information-v1/operators",
       "summary": "Testa order-operatorer",
       "parameters": [],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
       },
@@ -7980,14 +7903,12 @@
       "path": "/api/products/product-categories-v1",
       "summary": "Hämta produktkategorier",
       "parameters": [],
-      "responseStatus": 200,
       "service": {
         "$oid": "6adf656b8107051a9a733c51"
       },
       "group": "Product categories",
       "order": 1580,
       "__v": 0,
-      "responseDescription": "Produktkategorier",
       "responseExample": "[\r\n\t{\r\n        \"id\": \"6aaa9a3493cdb8d52374ea02\",\r\n        \"name\": \"Mobilabonnemang\",\r\n        \"deletedAt\": null,\r\n        \"reference\": {},\r\n        \"fields\": []\r\n    }\r\n]",
       "url": "/api-reference/products#get-api-products-product-categories-v1"
     },
@@ -8005,7 +7926,6 @@
       "path": "/api/products/product-fields-v1",
       "summary": "Hämta produktfält",
       "parameters": [],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c51"
       },
@@ -8037,7 +7957,6 @@
           "id": "6ae1c885597b815580b92a38"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
       },
@@ -8166,7 +8085,6 @@
       "path": "/api/users/user-messages-v1",
       "summary": "Skicka en notis",
       "parameters": [],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
       },
@@ -8240,7 +8158,6 @@
           "id": "6ae31593279fe04254bfe20d"
         }
       ],
-      "responseStatus": null,
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
       },
@@ -8316,7 +8233,6 @@
         }
       },
       "requestBody": "{\n  // Obligatoriskt. Vyns namn.\n  \"name\": \"Min vy\",\n\n  // Obligatoriskt. Vyns HTML/Handlebars.\n  \"html\": \"<div>Koden för vyn</div>\",\n\n  // Obligatoriskt. Var man kommer åt vyn.\n  \"locations\": [\n    {\n      // settings, navigation, widgets eller widgetsLeft.\n      \"type\": \"settings\",\n\n      // Valfritt. Position i listan. För navigation: -1 = egen sektion till vänster, högre än 4 = egen sektion till höger om Inställningar.\n      \"position\": 0,\n\n      // Valfritt. Namnet i navigationsmenyn.\n      \"label\": \"Vyn\"\n    }\n  ],\n\n  // Obligatoriskt. Egna rättigheter som visas under användarinställningar.\n  \"rights\": [\n    {\n      // Rättighetens ID, används i koden.\n      \"right\": \"createAnything\",\n\n      // Namnet som visas i inställningar.\n      \"name\": \"Skapa allt\",\n\n      // Valfritt. En beskrivning.\n      \"description\": \"Tillåter användaren att skapa allt\"\n    }\n  ],\n\n  // Valfritt. Team som ser vyn. Tom lista = bara admin.\n  \"teamIds\": [],\n\n  // Valfritt. Roller som ser vyn, utöver teamen.\n  \"roleIds\": [],\n\n  // Valfritt. Projekt där vyn syns. null = alla projekt.\n  \"projectIds\": [],\n\n  // Valfritt. Ikon från FontAwesome v5 (icke-pro).\n  \"iconName\": \"user-ninja\",\n\n  // Valfritt. Ikonens färg.\n  \"iconColor\": \"#1565c0\"\n}",
-      "responseStatus": 200,
       "responseExample": "{\n  \"viewId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
@@ -8371,7 +8287,6 @@
           "id": "6ae31593279fe04254bfe20e"
         }
       ],
-      "responseStatus": 200,
       "service": {
         "$oid": "6adf656b8107051a9a733c55"
       },
@@ -8395,7 +8310,6 @@
       "summary": "Skapa ett kontaktfält",
       "requestBody": "{\r\n  \"label\": \"Namn\",\r\n  \"type\": \"plain\"\r\n}",
       "parameters": [],
-      "responseStatus": 200,
       "responseExample": "{\r\n  \"fieldId\": \"6ae3535ab827073c0ff5dd78\"\r\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4b"
@@ -8419,7 +8333,6 @@
       "path": "/api/orders/after-order-work-v1/<orderWorkId>",
       "summary": "Hämta ett orderarbete via ID",
       "parameters": [],
-      "responseStatus": 200,
       "responseExample": "{\r\n  \"id\": \"6ae9bafd32a20901f92d5418\",\r\n  \"name\": \"Integration\",\r\n  \"organizationId\": \"6862579b2cb8d0a855888243\",\r\n  \"isEnabled\": true,\r\n  \"isAutomatic\": false,\r\n  \"conditions\": {\r\n    \"ids\": [],\r\n    \"count\": 50,\r\n    \"offset\": 0,\r\n    \"userIds\": [],\r\n    \"teamIds\": [],\r\n    \"allTagIds\": [],\r\n    \"anyTagId\": [],\r\n    \"notAnyTagId\": [],\r\n    \"notAllTagIds\": [],\r\n    \"anyProductCategoryId\": [],\r\n    \"allProductCategoryIds\": [],\r\n    \"notAnyProductCategoryId\": [],\r\n    \"notAllProductCategoryIds\": [],\r\n    \"allProductIds\": [],\r\n    \"anyProductId\": [],\r\n    \"notAnyProductId\": [],\r\n    \"notAllProductIds\": [],\r\n    \"allFileNames\": [],\r\n    \"anyFileName\": [],\r\n    \"notAnyFileName\": [],\r\n    \"notAllFileNames\": [],\r\n    \"allFieldIds\": [],\r\n    \"anyFieldId\": [],\r\n    \"notAnyFieldId\": [],\r\n    \"notAllFieldIds\": [],\r\n    \"isTest\": \"false\",\r\n    \"isDeleted\": \"false\",\r\n    \"projectIds\": null,\r\n    \"phoneNumbers\": []\r\n  },\r\n  \"dateStrategy\": \"dateOnly\",\r\n  \"maxLag\": {\r\n    \"days\": 2\r\n  },\r\n  \"toDo\": {\r\n    \"http\": {\r\n      \"method\": \"GET\",\r\n      \"url\": {},\r\n      \"headers\": {\r\n        \"content-type\": \"application/json\"\r\n      },\r\n      \"query\": {},\r\n      \"body\": {},\r\n      \"isResponseBodyAlwaysAvailable\": false\r\n    }\r\n  },\r\n  \"instructions\": null,\r\n  \"access\": [],\r\n  \"presentation\": null,\r\n  \"maxExecutions\": 1,\r\n  \"executeAgainConditions\": [],\r\n  \"resultPresentation\": null\r\n}",
       "service": {
         "$oid": "6adf656b8107051a9a733c4d"
@@ -9224,89 +9137,6 @@
       "getStartedService": {
         "$oid": "6adf656b8107051a9a733c41"
       },
-      "taskColumns": [
-        {
-          "title": "Sälja",
-          "links": [
-            {
-              "label": "Ring din ringlista",
-              "service": {
-                "$oid": "6adf656b8107051a9a733c41"
-              },
-              "id": "6adf656b4a70a654ac5e6994"
-            },
-            {
-              "label": "Skicka ett avtal för signering",
-              "service": {
-                "$oid": "6adf656b8107051a9a733c4f"
-              },
-              "id": "6adf656b4a70a654ac5e6995"
-            },
-            {
-              "label": "Registrera en order",
-              "service": {
-                "$oid": "6adf656b8107051a9a733c4d"
-              },
-              "id": "6adf656b4a70a654ac5e6996"
-            }
-          ],
-          "id": "6adf656b4a70a654ac5e6997"
-        },
-        {
-          "title": "Kunder & möten",
-          "links": [
-            {
-              "label": "Importera kontakter",
-              "service": {
-                "$oid": "6adf656b8107051a9a733c4b"
-              },
-              "id": "6adf656b4a70a654ac5e6998"
-            },
-            {
-              "label": "Boka ett möte",
-              "service": {
-                "$oid": "6adf656b8107051a9a733c53"
-              },
-              "id": "6adf656b4a70a654ac5e6999"
-            },
-            {
-              "label": "Bifoga filer till en order",
-              "service": {
-                "$oid": "6adf656b8107051a9a733c57"
-              },
-              "id": "6adf656b4a70a654ac5e699a"
-            }
-          ],
-          "id": "6adf656b4a70a654ac5e699b"
-        },
-        {
-          "title": "Administrera",
-          "links": [
-            {
-              "label": "Lägg till en ny säljare",
-              "service": {
-                "$oid": "6adf656b8107051a9a733c55"
-              },
-              "id": "6adf656b4a70a654ac5e699c"
-            },
-            {
-              "label": "Lägg upp produkter och priser",
-              "service": {
-                "$oid": "6adf656b8107051a9a733c51"
-              },
-              "id": "6adf656b4a70a654ac5e699d"
-            },
-            {
-              "label": "Koppla SaleSys till andra system",
-              "service": {
-                "$oid": "6adf656b8107051a9a733c59"
-              },
-              "id": "6adf656b4a70a654ac5e699e"
-            }
-          ],
-          "id": "6adf656b4a70a654ac5e699f"
-        }
-      ],
       "helpLinks": [
         {
           "title": "Vanliga frågor",

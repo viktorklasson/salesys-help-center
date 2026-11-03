@@ -19,37 +19,6 @@ export const HomePage: GlobalConfig = {
       required: true,
     }),
     {
-      name: 'taskColumns',
-      label: 'Populära uppgifter',
-      type: 'array',
-      labels: { singular: 'Kolumn', plural: 'Kolumner' },
-      maxRows: 3,
-      fields: [
-        { name: 'title', label: 'Rubrik', type: 'text', required: true },
-        {
-          name: 'links',
-          label: 'Länkar',
-          type: 'array',
-          labels: { singular: 'Länk', plural: 'Länkar' },
-          fields: [
-            {
-              type: 'row',
-              fields: [
-                { name: 'label', label: 'Text', type: 'text', required: true },
-                {
-                  name: 'service',
-                  label: 'Leder till',
-                  type: 'relationship',
-                  relationTo: 'services',
-                  required: true,
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
       name: 'helpLinks',
       label: 'Hjälplänkar längst ner',
       type: 'array',
