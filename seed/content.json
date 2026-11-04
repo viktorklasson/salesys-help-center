@@ -8346,15 +8346,15 @@
   "questions": [
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422d6"
+        "$oid": "6aeb08534eb8182638acd027"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.874Z"
+        "$date": "2026-11-04T10:26:27.189Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.874Z"
+        "$date": "2026-11-04T10:26:27.189Z"
       },
-      "question": "Hur loggar jag in?",
+      "question": "När blir sista dagen för SaleSys och när kommer sista fakturan?",
       "answer": {
         "root": {
           "type": "root",
@@ -8373,7 +8373,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Gå till app.salesys.se och logga in med uppgifterna du har fått av din administratör. Har du inte fått några? Be din administratör skicka en aktiveringslänk.",
+                  "text": "Sista dagen räknas från datumet då uppsägningen tas emot, plus uppsägningstiden i avtalet. Tjänsten fungerar och faktureras till sista dagen, och sista fakturan skickas i början av månaden efter eftersom faktureringen sker i efterskott.",
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
@@ -8387,22 +8387,22 @@
       },
       "link": {},
       "category": {
-        "$oid": "6adf5541073072b485d422d4"
+        "$oid": "6aeb08534eb8182638acd025"
       },
-      "order": 10,
+      "order": 98,
       "__v": 0
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422d9"
+        "$oid": "6aeb08534eb8182638acd02a"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.895Z"
+        "$date": "2026-11-04T10:26:27.199Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.895Z"
+        "$date": "2026-11-04T10:26:27.199Z"
       },
-      "question": "Varför ser jag inte en funktion?",
+      "question": "Vilken dag förfaller fakturan?",
       "answer": {
         "root": {
           "type": "root",
@@ -8421,58 +8421,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Funktionen kan vara avstängd för din organisation, eller så saknar du behörighet. Be din administratör aktivera den under Inställningar → Funktioner eller ge dig rätt roll.",
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "link": {
-        "label": "Läs om roller och behörigheter",
-        "href": "/reference/users"
-      },
-      "category": {
-        "$oid": "6adf5541073072b485d422d4"
-      },
-      "order": 20,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf5541073072b485d422dc"
-      },
-      "createdAt": {
-        "$date": "2026-10-26T13:27:29.903Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-26T13:27:29.903Z"
-      },
-      "question": "Hur skyddar jag mitt konto med tvåstegsverifiering?",
-      "answer": {
-        "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "textFormat": 0,
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Gå till Mitt konto och slå på tvåstegsverifiering. Du väljer om koden ska skickas via mejl eller SMS.",
+                  "text": "Fakturor förfaller normalt runt den 16:e i månaden.",
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
@@ -8486,22 +8435,1855 @@
       },
       "link": {},
       "category": {
-        "$oid": "6adf5541073072b485d422d4"
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "order": 94,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd02d"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.205Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.205Z"
+      },
+      "question": "Hur byter jag ut PDF-dokumentet i en avtalsmall?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Du behöver inte skapa en ny avtalsmall. Öppna den befintliga avtalsmallen via Inställningar → Avtal, välj Redigera mall och gå till Alternativ → Ändra dokument för att byta grunddokumentet.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 93,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd030"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.211Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.211Z"
+      },
+      "question": "Hur skapar jag en kontakt via SaleSys API?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Använd POST /api/contacts/contacts-v1 med obligatoriska fields och lägg vid behov kontakten i en ringgrupp via POST /api/dial/dial-group-contacts-v1/<dialGroupId>.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd023"
+      },
+      "order": 92,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd033"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.216Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.216Z"
+      },
+      "question": "Var hittar jag kunden om den inte går att hitta under Avtal?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Sök på personnumret under Ordrar. Där hittar du kundens uppgifter, inklusive avtalet, även när personnumret saknas i avtalets eget fält.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 90,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd036"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.221Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.221Z"
+      },
+      "question": "Hur ställer jag in mötesbekräftelser och SMS-påminnelser?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Inställningar → Möten → Verktyg för att skapa bekräftelser via SMS och mejl samt SMS-påminnelser. Du kan använda dynamiska fält i mötestitel och mötesbeskrivning.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01d"
+      },
+      "order": 89,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd039"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.235Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.235Z"
+      },
+      "question": "Kan SaleSys skicka order- och samtalsinformation till mitt system?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ja, SaleSys kan skicka information när en order skapas eller ett samtal har skett. Du kan filtrera vilka händelser och värden som ska skickas.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd023"
+      },
+      "order": 88,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd03c"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.240Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.240Z"
+      },
+      "question": "Hur bör jag bygga ett eget verktyg mot SaleSys API?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Cacha svar, slå ihop anrop och undvik funktioner som skapar många anrop samtidigt. SaleSys har en gräns för hur många anrop externa verktyg bör göra.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd023"
+      },
+      "order": 91,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd03f"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.247Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.247Z"
+      },
+      "question": "När ändras antalet licenser på fakturan?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Tar kunden bort en användare minskar fakturan nästa månad. Lägger kunden till en användare ökar fakturan nästa månad.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "order": 81,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd042"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.253Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.253Z"
+      },
+      "question": "Hur ändrar jag utfäraren på ett avtal?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ange en egen utfärdare på avtalsmallen. Namnet visas på avtalet vid utskick och signering.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 80,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd045"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.258Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.258Z"
+      },
+      "question": "Hur spärrar jag en användare?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Välj Inställningar → Användare, öppna användaren och klicka på Ta bort. Användaren loggas ut och kan inte logga in igen, medan statistik och tidrapporter finns kvar.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd021"
+      },
+      "order": 79,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd048"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.263Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.263Z"
+      },
+      "question": "Hur beräknas antalet fakturerade licenser?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Faktureringen baseras på antalet aktiva användarkonton som är uppsatta i systemet, inte på hur många som är inloggade samtidigt.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "order": 76,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd04b"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.268Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.268Z"
+      },
+      "question": "Hur lång uppsägningstid har SaleSys?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Uppsägningstiden är som standard sex månader.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "order": 75,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd04e"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.273Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.273Z"
+      },
+      "question": "Hur ställer jag in påminnelser för möten?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Mötespåminnelser kan skickas dagen före och efter mötesinbjudan om kunden inte har accepterat. Du ställer in påminnelsens text, kanal (SMS eller mejl) och tid under Inställningar → Automation → Möte.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01d"
+      },
+      "order": 74,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd051"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.277Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.277Z"
+      },
+      "question": "Vad krävs för e-postutskick från kundens egen domän?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Kunden behöver lägga in DKIM- och CNAME-poster hos sin domänleverantör. Vid problem kan posterna läggas in på nytt med låg TTL och sedan verifieras.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd023"
+      },
+      "order": 67,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd054"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.282Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.282Z"
+      },
+      "question": "Kan ett utländskt bolag använda svenska telefonnummer?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ja, ett utländskt bolag kan använda svenska nummer. Om kunden ringer med utländska nummer gäller en annan taxa; samtal med svenska nummer har ordinarie pris.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 66,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd057"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.287Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.287Z"
+      },
+      "question": "Kan man ha SaleSys på engelska?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ja, du kan använda SaleSys på engelska. Byt språk under Inställningar → Mitt konto → App språk / language.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 65,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd05c"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.296Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.296Z"
+      },
+      "question": "Varför syns inte kunden bland operatörerna på bredband.se?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "link",
+                  "version": 3,
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "id": "6aeb08534eb8182638acd05a",
+                  "fields": {
+                    "linkType": "custom",
+                    "url": "http://bredband.se/",
+                    "newTab": true
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "bredband.se",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " är en extern tjänst utan koppling till SaleSys. Om en adress inte syns där fungerar SaleSys adresskörning ändå, och kunden ska kontakta ",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                },
+                {
+                  "type": "link",
+                  "version": 3,
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "id": "6aeb08534eb8182638acd05b",
+                  "fields": {
+                    "linkType": "custom",
+                    "url": "http://bredband.se/",
+                    "newTab": true
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "bredband.se",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " direkt.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 64,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd05f"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.301Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.301Z"
+      },
+      "question": "Kan order- och produktfält anpassas per projekt?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ja, order- och produktfält kan anpassas per projekt. Fält kan till exempel vara fritext, kryssrutor eller en rullgardin med fasta belopp för pris.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01b"
+      },
+      "order": 59,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd062"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.306Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.306Z"
+      },
+      "question": "Skapar en samtalstagg automatiskt en order?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "En samtalstagg som “Ja tack” eller “Affär” skapar inte en order automatiskt. Klicka på Skapa order; därefter kan en automation, om ni vill, sätta en samtalstagg när en order har skapats på kunden.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01b"
+      },
+      "order": 57,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd065"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.310Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.310Z"
+      },
+      "question": "Hur ställer jag in automatiska SMS och mejl vid samtalsutfall?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Inställningar → Samtal → Verktyg och skapa ett samtalsarbete “Skicka sms” eller “Skicka mail”. Under Filtrering väljer du ex. vilket samtalsutfall som ska utlösa SMS:et eller mejlet.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01b"
+      },
+      "order": 56,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd068"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.315Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.315Z"
+      },
+      "question": "Vad kostar ett specialnummer?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ett beställt specialnummer till supporten kan exempelvis kosta 160 kr per månad för ett 076-nummer.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 54,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd06b"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.320Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.320Z"
+      },
+      "question": "Vad kostar ett SMS i SaleSys?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "En SMS-del kostar 1 kr.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "order": 55,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd06e"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.325Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.325Z"
+      },
+      "question": "Vad kostar en SaleSys-licens?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "En SaleSys-licens kostar 850 kr per licens och månad.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "order": 53,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd071"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.329Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.329Z"
+      },
+      "question": "Hur kopplar jag min kalender?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Kalender → Koppla kalender och koppla din externa kalender, exempelvis Google Kalender eller Outlook. Varje användare gör detta själv på sitt konto.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01d"
+      },
+      "order": 47,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd074"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.333Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.333Z"
+      },
+      "question": "Hur kopplar jag kalendern för någon som inte använder SaleSys?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Aktivera registreringslänkar under Inställningar → Funktioner, skapa en länk under Inställningar → Användare → Länkar och skicka den till personen. Passar t.ex. säljare som ni bokar möten åt.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01d"
+      },
+      "order": 48,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd077"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.338Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.338Z"
+      },
+      "question": "Hur tar jag ut och räknar fakturerad samtalstid?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Fakturerad samtalstid gäller bara besvarade samtal. Rörligt pris är 0,29 kr per samtalsminut, medan samtalspaket kostar 350 kr per licens och månad och innehåller 2 500 samtalsminuter. Inkommande samtal kostar ingenting.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "order": 46,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd07a"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.342Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.342Z"
+      },
+      "question": "Hur skapar jag en statistikvy?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Statistik, klicka på \"Skapa vy +\" och namnge vyn. Lägg sedan till block med \"Skapa block +\". Vyn kan filtreras på tidsperiod, användare, team och samtalstagg.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01f"
+      },
+      "order": 43,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd07d"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.347Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.347Z"
+      },
+      "question": "Vilka statistikvyer rekommenderas?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Två vyer: en Topplista (antal bokade möten/Ja tack/ordrar och hitrate, rankad per användare) och en Dashboard (ringda samtal, svarade samtal, andel svarade samtal och resultat). Innehållet skiljer sig lite mellan mötesbokning och telefonförsäljning.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01f"
+      },
+      "order": 44,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd080"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.351Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.351Z"
+      },
+      "question": "Hur räknas \"Aktiv tid i systemet\"?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Under Statistik → Aktiv tid ser du aktiv tid med filter på datum och användare. Standardgränsen är 30 sekunders inaktivitet, men SaleSys kan höja gränsen per konto på begäran.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01f"
+      },
+      "order": 45,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd083"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.357Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.357Z"
+      },
+      "question": "Hur fungerar roller och rättigheter?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Rättigheterna sitter på rollen, inte på den enskilda användaren. Roller skapas efter era behov – en vanlig uppsättning är Teamleader och Säljare/Mötesbokare. Ändras under Inställningar → Rättigheter.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd021"
+      },
+      "order": 27,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd086"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.363Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.363Z"
+      },
+      "question": "SMS-utskicket för avtal fungerar inte på en viss ringlista – varför?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Utskicket styrs av avtalsmallen, inte av ringlistan. Troligen används olika avtalsmallar på olika listor, och mallen som inte fungerar saknar rätt utskicksmall. Koppla samma utskicksmall som på den fungerande mallen.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 38,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd089"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.368Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.368Z"
+      },
+      "question": "Hur fungerar signering via SMS-svar?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Mottagaren svarar \"Ja\" eller \"OK\" på SMS:et och avtalet signeras. Metoden väljs inte i avtalsmallens meny – den sätts upp via en utskicksmall. När man skapar utskicksmallen väljer man “Metod: SMS-svar”.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 35,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd08c"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.373Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.373Z"
+      },
+      "question": "Hur aktiverar jag signering med BankID?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "För att aktivera BankID-signering behöver ni ett eget avtal med BankID och kundens IDkollen-credentials: access key och secret key. Lägg in uppgifterna när du redigerar avtalsmallen.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 34,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd08f"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.379Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.379Z"
+      },
+      "question": "Vad är orderarbeten och vad kan de göra?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Orderarbeten är åtgärder som körs i samband med en order, automatiskt eller manuellt – t.ex. skicka SMS eller mejl, skapa kalenderinbjudan, kreditupplysning, lägga i spärrlista eller skicka notifikation.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01b"
+      },
+      "order": 39,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd092"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.384Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.384Z"
+      },
+      "question": "Hur ser jag ordrar per användare och flyttar ett avtal till en annan säljare?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ordrar → avmarkera alla projekt → Filtrera → Användare. För att flytta: Åtgärder → Redigera order och ändra fältet Säljare. Att flytta kräver administratörsbehörighet.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01b"
+      },
+      "order": 41,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd095"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.388Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.388Z"
+      },
+      "question": "Hur stänger jag av tvåstegsverifiering vid inloggning?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Logga in och gå till Inställningar → Mitt konto. Där kan du själv slå av tvåstegsverifieringen.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd021"
+      },
+      "order": 31,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd098"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.393Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.393Z"
+      },
+      "question": "Hur lägger jag till en ny användare?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Inställningar → Användare → Lägg till. Fyll i e-post och namn, välj team och roll. Licenserna uppdateras automatiskt.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd021"
+      },
+      "order": 26,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd09b"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.398Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.398Z"
+      },
+      "question": "Jag kan inte se kundkort eller kontaktinformation – vad gör jag?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Det beror nästan alltid på rättigheter. Kontrollera vilken roll användaren har och att rollen har \"Se kontaktinfo\" ikryssat under Inställningar → Rättigheter. Ladda sedan om sidan.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd021"
       },
       "order": 30,
       "__v": 0
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422e1"
+        "$oid": "6aeb08534eb8182638acd09e"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.911Z"
+        "$date": "2026-11-04T10:26:27.402Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.912Z"
+        "$date": "2026-11-04T10:26:27.403Z"
       },
-      "question": "Hur skapar jag en ringlista?",
+      "question": "Vad är samtalsarbeten och vad kan de göra?",
       "answer": {
         "root": {
           "type": "root",
@@ -8520,58 +10302,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Gå till Samtal → Ringlistor och klicka på Lägg till. Ge listan ett namn, välj vilka team som ska ha åtkomst och importera dina kontakter från en CSV-fil.",
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "link": {
-        "label": "Läs mer om Ringning",
-        "href": "/reference/dial"
-      },
-      "category": {
-        "$oid": "6adf5541073072b485d422df"
-      },
-      "order": 10,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf5541073072b485d422e4"
-      },
-      "createdAt": {
-        "$date": "2026-10-26T13:27:29.918Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-26T13:27:29.918Z"
-      },
-      "question": "Vad betyder det att en kontakt är i karantän?",
-      "answer": {
-        "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "textFormat": 0,
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Kontakten ska ringas upp igen senare. Hur länge den ligger i karantän styrs av samtalstaggen du valde efter samtalet.",
+                  "text": "Samtalsarbeten är automatiska åtgärder som körs i samband med ett samtal – t.ex. skicka SMS eller mejl, transkribera samtalet, lägga i spärrlista eller avsluta prediktivt läge. Flera kan kedjas ihop i en serie.",
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
@@ -8585,121 +10316,22 @@
       },
       "link": {},
       "category": {
-        "$oid": "6adf5541073072b485d422df"
-      },
-      "order": 20,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf5541073072b485d422e7"
-      },
-      "createdAt": {
-        "$date": "2026-10-26T13:27:29.925Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-26T13:27:29.925Z"
-      },
-      "question": "Hur slipper vi ringa personer som inte vill bli kontaktade?",
-      "answer": {
-        "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "textFormat": 0,
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Lägg dem i en spärrlista under Inställningar → Kontakter → Spärrlistor och koppla spärrlistan till dina ringlistor.",
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "link": {},
-      "category": {
-        "$oid": "6adf5541073072b485d422df"
-      },
-      "order": 30,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf5541073072b485d422ea"
-      },
-      "createdAt": {
-        "$date": "2026-10-26T13:27:29.932Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-26T13:27:29.932Z"
-      },
-      "question": "Vad händer med dubbletter när jag importerar kontakter?",
-      "answer": {
-        "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "textFormat": 0,
-              "children": [
-                {
-                  "type": "text",
-                  "text": "SaleSys hittar dubbletterna automatiskt. Du väljer själv om de ska uppdateras, skapas som nya eller hoppas över.",
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "link": {
-        "label": "Läs mer om Kontakter",
-        "href": "/reference/contacts"
-      },
-      "category": {
-        "$oid": "6adf5541073072b485d422df"
+        "$oid": "6aeb08534eb8182638acd01b"
       },
       "order": 40,
       "__v": 0
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422ef"
+        "$oid": "6aeb08534eb8182638acd0a1"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.941Z"
+        "$date": "2026-11-04T10:26:27.407Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.941Z"
+        "$date": "2026-11-04T10:26:27.407Z"
       },
-      "question": "Hur kan kunden signera ett avtal?",
+      "question": "Hur kopplar jag utskicksmallar till en avtalsmall?",
       "answer": {
         "root": {
           "type": "root",
@@ -8718,58 +10350,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Med BankID, genom att rita sin signatur, med ett klick eller genom att svara på ett SMS.",
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "link": {
-        "label": "Läs mer om Avtal",
-        "href": "/reference/offers"
-      },
-      "category": {
-        "$oid": "6adf5541073072b485d422ed"
-      },
-      "order": 10,
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf5541073072b485d422f2"
-      },
-      "createdAt": {
-        "$date": "2026-10-26T13:27:29.946Z"
-      },
-      "updatedAt": {
-        "$date": "2026-10-26T13:27:29.946Z"
-      },
-      "question": "Hur vet jag om kunden har läst avtalet?",
-      "answer": {
-        "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "textFormat": 0,
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Du ser statusen direkt på avtalet: Skickat, Läst, Signerat – eller Nekat, Utgånget eller Avbrutet.",
+                  "text": "Öppna avtalsmallen, klicka på de tre prickarna uppe till höger och välj \"Välj utskick\". Markera vilka utskicksmallar som ska gå att använda med just den avtalsmallen. Om agenterna ska kunna välja mellan flera olika utskicksmallar så kan man ha flera mallar valda. Klicka därefter på Stäng → Spara mall",
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
@@ -8783,22 +10364,454 @@
       },
       "link": {},
       "category": {
-        "$oid": "6adf5541073072b485d422ed"
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 37,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0a4"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.411Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.411Z"
+      },
+      "question": "Hur gör vi någon annan till administratör?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Administratör är ingen valbar roll – som standard är det personen som skapade kontot. Kontakta SaleSys support så lägger vi till eller byter administratör åt er.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd021"
+      },
+      "order": 28,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0a7"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.416Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.417Z"
+      },
+      "question": "Hur skapar jag en avtalsmall?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ladda upp en PDF, markera de fält som ska fyllas i (t.ex. namn, produkt och pris) och markera en signeringsruta. Utan signeringsruta går mallen inte att spara.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 32,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0aa"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.421Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.421Z"
+      },
+      "question": "Hur sätter jag upp utskicksmallar för avtal?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Inställningar → Avtal → Utskick. Skapa mallar för avtalsutskick och avtalskopior via SMS och mejl. Osignerade avtal kan också få ett automatiskt påminnelse-SMS efter en vald tid.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 36,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0ad"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.427Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.428Z"
+      },
+      "question": "Vilka signeringsmetoder finns för avtal?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Fyra: BankID, signera med ett klick (click-to-sign), rita sin signatur och SMS-svar. Alla är juridiskt bindande. Företaget som skickar avtalet väljer metod.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd019"
+      },
+      "order": 33,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0b0"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.432Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.432Z"
+      },
+      "question": "Vad innebär inställningen \"Låser order\" på en ordertagg?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "En ordertagg med \"Låser order\" låser ordern när taggen sätts. Vill ni kunna kommentera på ordern efteråt ska taggen inte låsa ordern.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01b"
+      },
+      "order": 42,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0b3"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.438Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.438Z"
+      },
+      "question": "Hur skapar jag samtalstaggar?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Inställningar → Samtalstaggar → Skapa samtalstagg. Skapa de utfall ni behöver och ge dem olika färger, t.ex. grön för Ja tack och röd för Nej tack.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 13,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0b6"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.443Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.443Z"
+      },
+      "question": "Hur grupperar jag samtalstaggar?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Klicka på Skapa under Samtalstaggar och välj Ny grupp. En grupp samlar flera taggar under en rubrik, t.ex. \"Bortfall\", så att listan blir mindre plottrig för säljaren.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 15,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0b9"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.448Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.448Z"
+      },
+      "question": "Finns det API-dokumentation för SaleSys?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Du kan skapa en integrationsanvändare och kopiera API-nyckeln själv under Inställningar → Användare. Ge användaren bara de rättigheter integrationen behöver och dela nyckeln säkert.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd023"
+      },
+      "order": 24,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0bc"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.454Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.455Z"
+      },
+      "question": "Hur återställer jag en ringlista?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Redigera ringlistan (pennan uppe till höger), scrolla längst ner och klicka på Återställ. Välj vilka kontakter som ska återställas, förhandsgranska och bekräfta. Oftast kan bara administratörer göra detta.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd017"
       },
       "order": 20,
       "__v": 0
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422f5"
+        "$oid": "6aeb08534eb8182638acd0bf"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.952Z"
+        "$date": "2026-11-04T10:26:27.459Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.952Z"
+        "$date": "2026-11-04T10:26:27.459Z"
       },
-      "question": "Kan en order skapas automatiskt när kunden har signerat?",
+      "question": "Vad händer med en kontakt efter att jag satt en tagg?",
       "answer": {
         "root": {
           "type": "root",
@@ -8817,7 +10830,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Ja. När avtalet är signerat kan en order skapas automatiskt.",
+                  "text": "Det styrs av taggens inställningar. Personlig återkoppling gör att bara samma säljare ringer igen vid vald tid. Taggar som Konkurs eller Nedlagt tar som standard bort kontakten ur ringandet. Okonfigurerade taggar kan bete sig olika – kontrollera alltid inställningen.",
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
@@ -8831,22 +10844,22 @@
       },
       "link": {},
       "category": {
-        "$oid": "6adf5541073072b485d422ed"
+        "$oid": "6aeb08534eb8182638acd015"
       },
-      "order": 30,
+      "order": 17,
       "__v": 0
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422f8"
+        "$oid": "6aeb08534eb8182638acd0c2"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.957Z"
+        "$date": "2026-11-04T10:26:27.465Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.957Z"
+        "$date": "2026-11-04T10:26:27.465Z"
       },
-      "question": "Påverkas gamla ordrar om jag ändrar priset på en produkt?",
+      "question": "Kan nya leads skickas in i en ringlista automatiskt?",
       "answer": {
         "root": {
           "type": "root",
@@ -8865,7 +10878,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Nej. Varje order sparar produkten som den såg ut när ordern skapades, så gamla ordrar ändras aldrig.",
+                  "text": "Ja. Kontakter kan skickas in via SaleSys API, t.ex. från ett externt leadsföretag direkt in i en ringlista.",
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
@@ -8877,27 +10890,24 @@
           ]
         }
       },
-      "link": {
-        "label": "Läs mer om Produkter",
-        "href": "/reference/products"
-      },
+      "link": {},
       "category": {
-        "$oid": "6adf5541073072b485d422ed"
+        "$oid": "6aeb08534eb8182638acd023"
       },
-      "order": 40,
+      "order": 23,
       "__v": 0
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422fd"
+        "$oid": "6aeb08534eb8182638acd0c5"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.964Z"
+        "$date": "2026-11-04T10:26:27.471Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.964Z"
+        "$date": "2026-11-04T10:26:27.471Z"
       },
-      "question": "Kan jag synka med Google Kalender eller Outlook?",
+      "question": "Vad är en slinga och hur slår jag ihop ringlistor?",
       "answer": {
         "root": {
           "type": "root",
@@ -8916,7 +10926,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Ja. Dina externa möten dyker upp i SaleSys, och dina SaleSys-möten i din vanliga kalender.",
+                  "text": "En slinga slår ihop flera ringlistor till en, så att säljaren kan stanna i samma lista och ändå få nytt material. Listorna kan viktas, t.ex. 80 % från lista 1 och 20 % från lista 2.",
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
@@ -8928,27 +10938,360 @@
           ]
         }
       },
-      "link": {
-        "label": "Läs mer om Kalender",
-        "href": "/reference/calendar"
-      },
+      "link": {},
       "category": {
-        "$oid": "6adf5541073072b485d422fb"
+        "$oid": "6aeb08534eb8182638acd017"
+      },
+      "order": 21,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0c8"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.481Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.481Z"
+      },
+      "question": "Hur importerar jag en ringlista?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Ringlistor → Skapa ringlista → Importera. Välj vilka fält som ska med, vilket team som ska ha listan och hur dubbletter ska hanteras. De valda fälten läggs på kundkortet, och systemet känner av fälten automatiskt när de är korrekt ifyllda.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd017"
+      },
+      "order": 18,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0cb"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.487Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.487Z"
+      },
+      "question": "Vilka samtalstaggar rekommenderas för mötesbokning och telefonförsäljning?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Mötesbokning: Bokat möte, Nej tack, Ej svar, Återkoppling och För många ringförsök. Telefonförsäljning: Ja tack, Nej tack, Ej svar och För många ringförsök.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 14,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0ce"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.492Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.492Z"
+      },
+      "question": "Hur bygger jag ett ej svar-flöde?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Bestäm hur många gånger och med vilka intervall en kontakt som inte svarar ska ringas igen. Avsluta alltid flödet med en tagg utan återuppringning, t.ex. För många ringförsök – annars rings kontakten i all oändlighet.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 16,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0d1"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.497Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.497Z"
+      },
+      "question": "Hur fungerar spärrlistor, och varför rings ett spärrat nummer fortfarande upp?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "En global spärrlista gäller alla ringlistor. En icke-global gäller bara vissa listor och är ofta ett medvetet val. Rings ett nummer ändå – kontrollera om spärrlistan är global och om kontakten finns som dubblett.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd017"
+      },
+      "order": 22,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0d4"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.502Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.502Z"
+      },
+      "question": "Hur fungerar dubbletthantering när jag importerar en ringlista?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Systemet letar automatiskt efter dubbletter när det redan finns minst en ringlista på kontot. Du väljer sedan om dubbletterna ska importeras eller inte.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd017"
+      },
+      "order": 19,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0d7"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.506Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.506Z"
+      },
+      "question": "Mitt headset eller min mikrofon hittas inte – vad gör jag?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Inställningar → Samtal och kontrollera att rätt headset är valt. Systemet väljer ofta datorns inbyggda mikrofon av misstag, särskilt med extern skärm.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 11,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0da"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.510Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.510Z"
+      },
+      "question": "Hur ringer jag ett nummer direkt från en webbsida (click-to-call)?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Installera Chrome-tillägget SaleSys Click-to-call. Då visas en blå telefonikon vid alla telefonnummer i webbläsaren – klicka på den så ringer SaleSys upp numret.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
       },
       "order": 10,
       "__v": 0
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d42300"
+        "$oid": "6aeb08534eb8182638acd0dd"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.969Z"
+        "$date": "2026-11-04T10:26:27.514Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.969Z"
+        "$date": "2026-11-04T10:26:27.514Z"
       },
-      "question": "Kan mina kollegor se mina privata möten?",
+      "question": "Hur lång tid tar det innan ett nytt telefonnummer går att ringa med?",
       "answer": {
         "root": {
           "type": "root",
@@ -8967,7 +11310,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Nej. Privata möten visas bara som ”Upptagen” för andra.",
+                  "text": "Första numret på ett nytt konto tar upp till 30 minuter. Ytterligare nummer tar cirka 10–15 minuter.",
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
@@ -8981,22 +11324,463 @@
       },
       "link": {},
       "category": {
-        "$oid": "6adf5541073072b485d422fb"
+        "$oid": "6aeb08534eb8182638acd015"
       },
-      "order": 20,
+      "order": 4,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0e0"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.519Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.519Z"
+      },
+      "question": "Vilka steg ingår när man sätter upp ett nytt SaleSys-konto?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Åtta steg i ordning: aktivera telefonnummer, skapa samtalstaggar, sätt roller och rättigheter, lägg till användare, importera ringlista, välj ej svar-flöde om ni ska använda prediktiv uppringning, koppla kalender och bygg statistikvyer.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd013"
+      },
+      "order": 1,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0e3"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.523Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.523Z"
+      },
+      "question": "Hur sätter jag upp ett nummer för inkommande samtal?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Sätt upp ett dedikerat nummer där utgående samtal är avstängda och inkommande samtal påslagna. Användaren som ska svara måste vara aktiv, ha inkommande samtal påslaget på numret och ha rättigheten \"svara samtal\".",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 7,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0e6"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.526Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.526Z"
+      },
+      "question": "Ska vi ringa en-efter-en eller prediktivt?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "En-efter-en passar kvalitativa samtal och mötesbokning – säljaren ser kundkortet innan samtalet. Prediktivt ringer flera nummer samtidigt och ger fler samtal, men med risk för tysta samtal (tapp).",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 8,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0e9"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.530Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.530Z"
+      },
+      "question": "Hur ställer jag in aggressiviteten för prediktiv uppringning?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gå till Ringlistor, klicka till höger om listan på den lilla pennan “Gör ändringar”, välj Prediktiv uppringning och dra reglaget. Högre aggressivitet ger fler samtal men större risk för tysta samtal.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 9,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0ee"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.535Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.535Z"
+      },
+      "question": "Varför har mitt telefonnummer ett dåligt betyg på 180.se?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "link",
+                  "version": 3,
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "id": "6aeb08534eb8182638acd0ec",
+                  "fields": {
+                    "linkType": "custom",
+                    "url": "http://180.se/",
+                    "newTab": true
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "180.se",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " är en extern tjänst som bygger betyg på användarrapporter, ibland flera år gamla. SaleSys har ingen koppling till ",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                },
+                {
+                  "type": "link",
+                  "version": 3,
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "id": "6aeb08534eb8182638acd0ed",
+                  "fields": {
+                    "linkType": "custom",
+                    "url": "http://180.se/",
+                    "newTab": true
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "180.se",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": ", men nummer man kan köpa i SaleSys har legat i karantän (ingen har använt numret) i minst 6 månader, oftast 2 år.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 6,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0f1"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.540Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.540Z"
+      },
+      "question": "Vad är skillnaden mellan att förnya och reservera ett telefonnummer?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Förnya byter ut ett befintligt nummer och behåller antalet. Reservera lägger till ett nytt nummer och ökar antalet. Förnya rekommenderas för att undvika avbrott.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 3,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0f4"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.544Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.544Z"
+      },
+      "question": "Vad gäller för bindningstid och fakturering av telefonnummer?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ett telefonnummer kostar 40 kr per månad och har 3 månaders bindningstid. Nummerfakturan kan omfatta alla nummer som varit aktiva de senaste tre månaderna, inte bara månadens nummerköp; kostnaden fortsätter tills numret raderas aktivt.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 5,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd0f7"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.547Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.547Z"
+      },
+      "question": "Vilken webbläsare ska jag använda för SaleSys?",
+      "answer": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Google Chrome. Dialern fungerar bäst i Chrome, och många problem löses genom att byta till Chrome, logga ut och in och ladda om sidan.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd013"
+      },
+      "order": 2,
       "__v": 0
     }
   ],
   "question-categories": [
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422d4"
+        "$oid": "6aeb08534eb8182638acd013"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.867Z"
+        "$date": "2026-11-04T10:26:27.149Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.867Z"
+        "$date": "2026-11-04T10:26:27.149Z"
       },
       "title": "Kom igång",
       "order": 10,
@@ -9004,44 +11788,128 @@
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422df"
+        "$oid": "6aeb08534eb8182638acd015"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.909Z"
+        "$date": "2026-11-04T10:26:27.164Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.909Z"
+        "$date": "2026-11-04T10:26:27.164Z"
       },
-      "title": "Ringning & kontakter",
+      "title": "Samtal",
       "order": 20,
       "__v": 0
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422ed"
+        "$oid": "6aeb08534eb8182638acd017"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.938Z"
+        "$date": "2026-11-04T10:26:27.168Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.938Z"
+        "$date": "2026-11-04T10:26:27.168Z"
       },
-      "title": "Ordrar & avtal",
+      "title": "Ringlistor",
       "order": 30,
       "__v": 0
     },
     {
       "_id": {
-        "$oid": "6adf5541073072b485d422fb"
+        "$oid": "6aeb08534eb8182638acd019"
       },
       "createdAt": {
-        "$date": "2026-10-26T13:27:29.962Z"
+        "$date": "2026-11-04T10:26:27.170Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.962Z"
+        "$date": "2026-11-04T10:26:27.170Z"
       },
-      "title": "Kalender",
+      "title": "Avtal",
       "order": 40,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd01b"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.173Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.173Z"
+      },
+      "title": "Ordrar & automation",
+      "order": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd01d"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.175Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.175Z"
+      },
+      "title": "Kalender / Mötesbokning",
+      "order": 60,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd01f"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.177Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.177Z"
+      },
+      "title": "Statistik",
+      "order": 70,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd021"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.179Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.179Z"
+      },
+      "title": "Användare & behörigheter",
+      "order": 80,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd023"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.181Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.181Z"
+      },
+      "title": "Integrationer & API",
+      "order": 90,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "createdAt": {
+        "$date": "2026-11-04T10:26:27.185Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-04T10:26:27.185Z"
+      },
+      "title": "Fakturering",
+      "order": 100,
       "__v": 0
     }
   ],
