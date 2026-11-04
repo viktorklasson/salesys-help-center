@@ -56,8 +56,25 @@
   .faq-answer {
     p + p,
     ul,
-    ol {
+    ol,
+    ul + p,
+    ol + p {
       margin-top: 12px;
+    }
+
+    ul,
+    ol {
+      margin-bottom: 0;
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 4px;
+    }
+
+    /* An answer that starts with a list lines up with one that starts with text */
+    > :first-child {
+      margin-top: 0;
     }
 
     a {
