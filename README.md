@@ -25,11 +25,27 @@ After changing collections, globals or fields, run `npm run generate:types`.
 
 ## Production
 
-The app runs with Docker Compose: the app (built from the `Dockerfile`), MongoDB and Caddy, which serves HTTPS for the domain in `Caddyfile`.
+The app runs with Docker Compose: the app (built from the `Dockerfile`) and MongoDB. The app listens on
+`127.0.0.1:3000`; nginx on the server proxies `docs.salesys.io` to it and handles HTTPS (certbot).
+
+The server has too little memory to build the app, so build the image on your own machine and copy it over.
+
+### Build and copy the image
+
+On your machine (PowerShell, Docker Desktop running):
+
+```powershell
+docker compose build app
+docker save -o app.tar salesys-help-center-app
+scp -i $HOME\.ssh\adam.pem app.tar ubuntu@adam.salesys.se:~/app.tar
+Remove-Item app.tar
+```
+
+On the server: `docker load -i ~/app.tar && rm ~/app.tar`
 
 ### First deploy
 
-1. Point the domain's DNS to the server and open ports 80 and 443.
+1. Point the domain's DNS to the server.
 2. Clone the repo on the server and create `.env.production`:
 
    ```sh
@@ -37,9 +53,11 @@ The app runs with Docker Compose: the app (built from the `Dockerfile`), MongoDB
    PAYLOAD_SECRET=<output of: openssl rand -hex 32>
    ```
 
-3. Start everything: `docker compose up -d --build`
+3. Build and copy the image (above), then start everything: `docker compose up -d --no-build`
 4. Load the content: `docker compose run --rm seed`
-5. Open https://docs.salesys.io/admin and create the first admin user.
+5. Add an nginx site for `docs.salesys.io` that proxies to `http://127.0.0.1:3000`
+   (with `client_max_body_size 50m` for uploads), then `sudo certbot --nginx -d docs.salesys.io`.
+6. Open https://docs.salesys.io/admin and create the first admin user.
 
 ### Admin users
 
@@ -49,9 +67,11 @@ To reset a forgotten password, open the user in the admin panel and set a new on
 
 ### Updating
 
+Build and copy a new image (above), then on the server:
+
 ```sh
 git pull
-docker compose up -d --build
+docker compose up -d --no-build
 ```
 
 To replace the live content with `seed/content.json` (this overwrites edits made in the live admin panel):
@@ -66,7 +86,6 @@ Docker volumes hold the data that must survive redeploys:
 
 - `data`: the MongoDB database
 - `media`: uploaded files
-- `caddy_data`: HTTPS certificates
 
 Back up the database with:
 
