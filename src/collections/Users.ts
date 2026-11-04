@@ -1,4 +1,7 @@
 import type { CollectionConfig } from 'payload';
+import { email } from 'payload/shared';
+
+const ALLOWED_EMAIL_DOMAIN = '@salesys.se';
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -7,13 +10,22 @@ export const Users: CollectionConfig = {
   },
   auth: {
     tokenExpiration: 7200, // 2 hours
-    verify: true,
+    // No email verification: there's no email adapter, admins add users manually in the admin panel
     maxLoginAttempts: 5,
     lockTime: 600000, // 10 minutes
     useAPIKey: true,
   },
   fields: [
-    // Email added by default
-    // Add more fields as needed
+    // Merged with Payload's built-in email field: only SaleSys addresses can get an account
+    {
+      name: 'email',
+      type: 'email',
+      validate: (value, options) => {
+        if (value && !value.trim().toLowerCase().endsWith(ALLOWED_EMAIL_DOMAIN)) {
+          return `Endast e-postadresser som slutar på ${ALLOWED_EMAIL_DOMAIN} är tillåtna.`;
+        }
+        return email(value, options);
+      },
+    },
   ],
 };

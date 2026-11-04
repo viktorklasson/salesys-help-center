@@ -1,0 +1,5 @@
+// No email is sent (passwords are reset by an admin), so hide "Forgot password?" on the login page.
+// Payload has no option for this link, so target it by its address.
+.login__form a[href$='/forgot'] {
+  display: none;
+}

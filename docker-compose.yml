@@ -1,41 +1,76 @@
-services:
-  payload:
-    image: node:22.23.4-alpine
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
-    depends_on:
-      - mongo
-    env_file:
-      - .env.production
+# Production stack: app + MongoDB + Caddy (HTTPS).
+#   docker compose up -d --build
+# Variables come from .env.production (see .env.example). DATABASE_URL must use the host `mongo`.
 
-  # Ensure your DATABASE_URL uses 'mongo' as the hostname ie. mongodb://mongo/my-db-name
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: 10m
+    max-file: '3'
+
+services:
+  app:
+    build:
+      context: .
+      target: runner
+    restart: unless-stopped
+    env_file: .env.production
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      # Uploaded files from the Media collection
+      - media:/app/media
+    logging: *logging
+
   mongo:
-    image: mongo:latest
+    # Pinned major version: existing data was created by 9.x, and mongod can't open data from a newer major
+    image: mongo:9
+    restart: unless-stopped
+    # Only reachable from this machine (e.g. `npm run dev` locally, or an SSH tunnel), never publicly
     ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
+      - '127.0.0.1:27017:27017'
     volumes:
       - data:/data/db
-    logging:
-      driver: none
+    healthcheck:
+      test: ['CMD', 'mongosh', '--quiet', '--eval', "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging: *logging
 
   caddy:
-      image: caddy:2
-      restart: unless-stopped
-      ports:
-        - '80:80'
-        - '443:443'
-      volumes:
-        - ./Caddyfile:/etc/caddy/Caddyfile
-        - caddy_data:/data
-      
+    image: caddy:2
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    logging: *logging
+
+  # One-off: load seed/content.json + seed/media into the database.
+  #   docker compose run --rm seed                      (only into an empty database)
+  #   docker compose run --rm -e SEED_FORCE=true seed   (replace all content)
+  seed:
+    profiles: [tools]
+    build:
+      context: .
+      target: seed
+    env_file: .env.production
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      - media:/app/media
+
 volumes:
   data:
-  node_modules:
+  media:
   caddy_data:
+  caddy_config:

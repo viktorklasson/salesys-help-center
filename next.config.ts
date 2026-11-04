@@ -8,6 +8,10 @@ const dirname = path.dirname(__filename);
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  // No email is sent, so the "forgot password" page can't work; passwords are reset by an admin
+  async redirects() {
+    return [{ source: '/admin/forgot', destination: '/admin/login', permanent: false }];
+  },
   images: {
     localPatterns: [
       {

@@ -1,67 +1,81 @@
-# Payload Blank Template
+# SaleSys Help Center
 
-This template comes configured with the bare minimum to get started on anything you need.
+The SaleSys help center (docs.salesys.io), built with Next.js and Payload CMS on MongoDB.
 
-## Quick start
+- Public site: `src/app/(frontend)`
+- Admin panel: `/admin` (`src/app/(payload)`)
+- CMS schema: `src/payload.config.ts`, `src/collections`, `src/globals`, `src/fields`
 
-This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
+## Local development
 
-## Quick Start - local setup
+1. `cp .env.example .env` and set `PAYLOAD_SECRET`.
+2. Start MongoDB, either installed locally or with `docker compose up -d mongo`.
+3. `npm install && npm run dev`, then open http://localhost:3000.
+4. Load the content backup into an empty database: `npm run content:seed`.
 
-To spin up this template locally, follow these steps:
+After changing collections, globals or fields, run `npm run generate:types`.
 
-### Clone
+### Content backup
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+`seed/content.json` and `seed/media` hold all CMS content.
 
-### Development
+- `npm run content:export` writes the current database to the backup.
+- `npm run content:seed` loads the backup into an empty database.
+- `npm run content:seed:force` replaces all content with the backup.
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
+## Production
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+The app runs with Docker Compose: the app (built from the `Dockerfile`), MongoDB and Caddy, which serves HTTPS for the domain in `Caddyfile`.
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+### First deploy
 
-#### Docker (Optional)
+1. Point the domain's DNS to the server and open ports 80 and 443.
+2. Clone the repo on the server and create `.env.production`:
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+   ```sh
+   DATABASE_URL=mongodb://mongo/salesys-help-center
+   PAYLOAD_SECRET=<output of: openssl rand -hex 32>
+   ```
 
-To do so, follow these steps:
+3. Start everything: `docker compose up -d --build`
+4. Load the content: `docker compose run --rm seed`
+5. Open https://docs.salesys.io/admin and create the first admin user.
 
-- Modify the `MONGODB_URL` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URL` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+### Admin users
 
-## How it works
+There is no email sending. Add users in the admin panel under Users, with an email and password,
+and share the password with them. Only addresses ending in `@salesys.se` are allowed.
+To reset a forgotten password, open the user in the admin panel and set a new one.
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+### Updating
 
-### Collections
+```sh
+git pull
+docker compose up -d --build
+```
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+To replace the live content with `seed/content.json` (this overwrites edits made in the live admin panel):
 
-- #### Users (Authentication)
+```sh
+docker compose run --rm --build -e SEED_FORCE=true seed
+```
 
-  Users are auth-enabled collections that have access to the admin panel.
+### Data
 
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/3.x/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
+Docker volumes hold the data that must survive redeploys:
 
-- #### Media
+- `data`: the MongoDB database
+- `media`: uploaded files
+- `caddy_data`: HTTPS certificates
 
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
+Back up the database with:
 
-### Docker
+```sh
+docker compose exec mongo mongodump --archive --gzip > backup-$(date +%F).gz
+```
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
+MongoDB is only reachable from the server itself (`127.0.0.1:27017`), never publicly.
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+## Tests
 
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+`npm test` runs the integration (Vitest) and end-to-end (Playwright) tests.
