@@ -248,6 +248,7 @@ export interface Service {
         | 'shopping-cart'
         | 'users'
         | 'webhook'
+        | 'wrench'
       )
     | null;
   /**
@@ -664,6 +665,7 @@ export interface HomePage {
               | 'shopping-cart'
               | 'users'
               | 'webhook'
+              | 'wrench'
             )
           | null;
         id?: string | null;

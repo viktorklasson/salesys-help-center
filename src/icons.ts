@@ -12,6 +12,7 @@ import {
   ShoppingCart,
   Users,
   Webhook,
+  Wrench,
 } from 'lucide-react';
 
 // Icons that editors can pick in the CMS
@@ -28,6 +29,7 @@ export const icons = {
   'shopping-cart': { label: 'Kundvagn', icon: ShoppingCart },
   users: { label: 'Användare', icon: Users },
   webhook: { label: 'Webhook', icon: Webhook },
+  wrench: { label: 'Skiftnyckel', icon: Wrench },
 } satisfies Record<string, { label: string; icon: LucideIcon }>;
 
 export type IconName = keyof typeof icons;

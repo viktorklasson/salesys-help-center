@@ -2113,7 +2113,7 @@
         "$date": "2026-11-02T12:54:35.238Z"
       },
       "updatedAt": {
-        "$date": "2026-11-03T11:37:41.836Z"
+        "$date": "2026-11-06T08:33:22.544Z"
       },
       "name": "Orderarbeten",
       "slug": "order-work",
@@ -2149,7 +2149,7 @@
           "version": 1
         }
       },
-      "icon": "webhook",
+      "icon": "wrench",
       "order": 0,
       "isAdvanced": true,
       "__v": 0,
@@ -4928,6 +4928,104 @@
           "version": 1
         }
       }
+    },
+    {
+      "_id": {
+        "$oid": "6aed8f74033d94c325df7bf0"
+      },
+      "createdAt": {
+        "$date": "2026-11-06T08:27:32.229Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-06T08:31:33.281Z"
+      },
+      "name": "Samtalsarbeten",
+      "slug": "call-actions",
+      "tagline": "Välj vad som ska hända med ett samtal efter det läggs på.",
+      "intro": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Samtalsarbeten",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "icon": "phone-call",
+      "order": 1,
+      "isAdvanced": true,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6aed8f9c033d94c325df7c13"
+      },
+      "createdAt": {
+        "$date": "2026-11-06T08:28:12.941Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-06T08:34:50.162Z"
+      },
+      "name": "Webhooks",
+      "slug": "webhooks",
+      "tagline": "Webhooks",
+      "intro": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Webhooks",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "icon": "webhook",
+      "order": 2,
+      "isAdvanced": true,
+      "__v": 0
     }
   ],
   "endpoints": [
