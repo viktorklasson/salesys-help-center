@@ -41,8 +41,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const navLinks = (
     <>
       <NavLink href="/service">Funktioner</NavLink>
-      <NavLink href="/common-questions">Vanliga frågor</NavLink>
       <NavLink href="/api-reference">API-referens</NavLink>
+      <NavLink href="/common-questions">Vanliga frågor</NavLink>
     </>
   );
 

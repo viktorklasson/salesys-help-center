@@ -62,28 +62,6 @@ export default async function HomePage() {
           </aside>
         )}
       </section>
-
-      {!!page.helpLinks?.length && (
-        <section className="container home-help">
-          {page.helpLinks.map((item) => {
-            const Icon = getIcon(item.icon);
-            const isExternal = /^https?:\/\//.test(item.url);
-            return (
-              <Link
-                href={item.url}
-                key={item.id}
-                {...(isExternal && { rel: 'noopener noreferrer', target: '_blank' })}
-              >
-                <Icon size={20} />
-                <span>
-                  <strong>{item.title}</strong>
-                  {item.description && <span>{item.description}</span>}
-                </span>
-              </Link>
-            );
-          })}
-        </section>
-      )}
     </div>
   );
 }

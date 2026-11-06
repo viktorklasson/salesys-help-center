@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     services: Service;
     endpoints: Endpoint;
+    articles: Article;
     questions: Question;
     'question-categories': QuestionCategory;
     'payload-kv': PayloadKv;
@@ -84,6 +85,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     endpoints: EndpointsSelect<false> | EndpointsSelect<true>;
+    articles: ArticlesSelect<false> | ArticlesSelect<true>;
     questions: QuestionsSelect<false> | QuestionsSelect<true>;
     'question-categories': QuestionCategoriesSelect<false> | QuestionCategoriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -327,6 +329,63 @@ export interface Endpoint {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles".
+ */
+export interface Article {
+  id: string;
+  title: string;
+  /**
+   * Visas i adressen: /api-reference/artiklar/<adress>
+   */
+  slug: string;
+  /**
+   * En mening som visas i listan och under rubriken.
+   */
+  description: string;
+  /**
+   * Rubriker, listor, länkar, kodblock, bilder och filer.
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  icon?:
+    | (
+        | 'calendar-days'
+        | 'circle-help'
+        | 'contact'
+        | 'file-text'
+        | 'log-in'
+        | 'message-circle'
+        | 'package'
+        | 'pen-line'
+        | 'phone-call'
+        | 'shopping-cart'
+        | 'users'
+        | 'webhook'
+        | 'wrench'
+      )
+    | null;
+  /**
+   * Lägre nummer visas först.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "questions".
  */
 export interface Question {
@@ -415,6 +474,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'endpoints';
         value: string | Endpoint;
+      } | null)
+    | ({
+        relationTo: 'articles';
+        value: string | Article;
       } | null)
     | ({
         relationTo: 'questions';
@@ -554,6 +617,20 @@ export interface EndpointsSelect<T extends boolean = true> {
   deprecated?: T;
   order?: T;
   url?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles_select".
+ */
+export interface ArticlesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  content?: T;
+  icon?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }

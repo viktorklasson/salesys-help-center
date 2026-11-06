@@ -8462,6 +8462,642 @@
       "__v": 0
     }
   ],
+  "articles": [
+    {
+      "_id": {
+        "$oid": "6aed9fe0e1a6bb0d0719c9ef"
+      },
+      "createdAt": {
+        "$date": "2026-11-06T09:37:36.639Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-06T10:00:32.718Z"
+      },
+      "title": "Hur du skapar en enkel ringlistintegration",
+      "slug": "dial-group-integration",
+      "description": "En kort guide på hur du kan skapa en integration för att lägga in kontakter i ringlistor automatiskt.",
+      "content": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Processen sker i tre olika steg, skapa först ringlistan, skapa en kontakt, och lägg in kontakten i ringlistan.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Skapa en ringlista, detta behöver du bara göra en gång. Anropa ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "POST /api/dial/dial-groups-v1",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " med en body där ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "name",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " är namnet på din ringlista och ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "projectId",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " är projektet som ringlistan ska ligga i. Nedan finns ett exempel där vi skapar en ringlista vid namn \"Min testlista\" på ett exempelprojekt. Mer info om denna endpoint hittar du i ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 0,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "API-referens-avsnittet om endpointen",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 3,
+                      "fields": {
+                        "doc": {
+                          "relationTo": "endpoints",
+                          "value": "6ae1c885649571a981ca4177"
+                        },
+                        "newTab": true,
+                        "linkType": "internal"
+                      },
+                      "id": "6aeda4ad6f9dbe648edbc71e"
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ".",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 1,
+              "tag": "ol"
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aeda3436f9dbe648edbc717",
+                "code": "curl --request POST \\\r\n  --url https://app.salesys.se/api/dial/dial-groups-v1 \\\r\n  --header 'Authorization: Bearer <token>' \\\r\n  --header 'Content-Type: application/json' \\\r\n  --data '{\r\n  \"name\": \"Min testlista\",\r\n  \"projectIds\": [\r\n    \"6899a4b0619580e6bb54adcb\"\r\n  ]\r\n}'",
+                "language": "shell",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "type": "linebreak",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Du får tillbaka följande body. Spara ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "dialGroupId",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " . Värdena nedan är exempelvärden.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aeda36d6f9dbe648edbc718",
+                "code": "{\r\n  \"dialGroupId\": \"6ad9fb15df64f2dd0e3fbfe7\",\r\n  \"serialId\": 952\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Skapa en ny kontakt. Anropa ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "POST /api/contacts/contacts-v1",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " med en body som innehåller en ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "fields",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " array som innehåller de kontaktfält som kontakten ska ha. Nedan finns ett exempel där vi skapar en kontakt med kontaktfälten \"Förnamn\" och \"Efternamn\". Mer info om denna endpoint hittar du i ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 0,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "API-referens-avsnittet om endpointen",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 3,
+                      "fields": {
+                        "doc": {
+                          "label": "Skapa en kontakt",
+                          "relationTo": "endpoints",
+                          "value": "6ae1c4e0bab63cbf762bc799"
+                        },
+                        "newTab": true,
+                        "linkType": "internal"
+                      },
+                      "id": "6aeda5116f9dbe648edbc71f"
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ".",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 2,
+              "tag": "ol"
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aeda3bc6f9dbe648edbc71a",
+                "code": "curl --request POST \\\r\n  --url https://app.salesys.se/api/contacts/contacts-v1 \\\r\n  --header 'Authorization: Bearer <token>' \\\r\n  --header 'Content-Type: application/json' \\\r\n  --data '{\r\n  \"fields\": [\r\n    {\r\n      \"fieldId\": \"67e2d7e7994792d2dae41b21\",\r\n      \"value\": \"Test\"\r\n    },\r\n    {\r\n      \"fieldId\": \"67e2d7e7994792d2dae41b22\",\r\n      \"value\": \"Testsson\"\r\n    }\r\n  ]\r\n}'",
+                "language": "shell",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "type": "linebreak",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Du får tillbaka följande body. Spara ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "contactId",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " . Värdena nedan är exempelvärden.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aeda3d56f9dbe648edbc71b",
+                "code": "{\r\n  \"contactId\": \"6ad9fc4328e3f6ff4829bf92\",\r\n  \"serialId\": 6636366\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Lägg till kontakten i ringlistan. Anropa ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "POST ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 16,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "https://app.salesys.se/api/dial/dial-group-contacts-v1/",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 3,
+                      "fields": {
+                        "linkType": "custom",
+                        "newTab": true,
+                        "url": "https://app.salesys.se/api/dial/dial-group-contacts-v1/"
+                      },
+                      "id": "6aeda28d6f9dbe648edbc715"
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "<dialGroupId>",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " . ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "<dialgroupid>",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " är id:t på ringlistan du skapade i steg 1. Bodyn ska innehålla en ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "contactIds",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " array med id:n på kontakter du vill lägga till. Nedan finns ett exempel där vi lägger till en kontakt i en ringlista, byt ut ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "<contactId>",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " mot id:t på en kontakt. Mer info om denna endpoint hittar du i ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 0,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "API-referens-avsnittet om endpointen",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 3,
+                      "fields": {
+                        "doc": {
+                          "label": "Lägg till kontakter i en ringlista",
+                          "relationTo": "endpoints",
+                          "value": "6ae1c885649571a981ca4174"
+                        },
+                        "newTab": true,
+                        "anchor": "",
+                        "linkType": "internal"
+                      },
+                      "id": "6aeda5256f9dbe648edbc721"
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ".",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "type": "linebreak",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 9,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "OBS: För att kunna lägga till en kontakt via API så måste din systemanvändares team vara valt på ringlistan.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 3,
+              "tag": "ol"
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aeda4126f9dbe648edbc71d",
+                "code": "curl --request POST \\\r\n  --url https://app.salesys.se/api/dial/dial-group-contacts-v1/<dialGroupId> \\\r\n  --header 'Authorization: Bearer <token>' \\\r\n  --header 'Content-Type: application/json' \\\r\n  --data '{\r\n  \"contactIds\": [\r\n    \"<contactId>\"\r\n  ]\r\n}'",
+                "language": "shell",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "icon": "file-text",
+      "order": 0,
+      "__v": 0
+    }
+  ],
   "questions": [
     {
       "_id": {

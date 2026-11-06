@@ -24,7 +24,7 @@ const textOf = (node: { text?: string; children?: unknown[] }): string =>
 
 /**
  * The address of something picked with the CMS link button: a function, FAQ question,
- * FAQ category or endpoint. The optional "Avsnitt på sidan" field adds #<section>.
+ * FAQ category, endpoint or article. The optional "Avsnitt på sidan" field adds #<section>.
  */
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { relationTo, value } = linkNode.fields.doc ?? {};
@@ -46,6 +46,8 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
     case 'endpoints':
       // Stored on the endpoint when it's saved, e.g. /api-reference/dial#get-api-dial-calls-v1
       return withAnchor(String(value.url ?? '/api-reference'));
+    case 'articles':
+      return withAnchor(`/api-reference/artiklar/${value.slug}`);
     default:
       return '#';
   }

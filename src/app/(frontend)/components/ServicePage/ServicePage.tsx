@@ -36,7 +36,7 @@ export function ServicePage({
           <FormattedText className="lead" data={service.intro} />
         </header>
 
-        <FormattedText className="service-content" data={service.content} />
+        <FormattedText className="long-text" data={service.content} />
 
         {developerNote && !service.isAdvanced && (
           <section className="developer">

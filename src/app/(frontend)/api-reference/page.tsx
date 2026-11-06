@@ -19,7 +19,7 @@ export const metadata = {
 
 export default async function ApiReferencePage() {
   const payload = await getPayload({ config });
-  const [page, services] = await Promise.all([
+  const [page, services, articles] = await Promise.all([
     payload.findGlobal({ slug: 'api-reference-page' }),
     // Advanced functions aren't part of the API reference
     payload.find({
@@ -27,6 +27,14 @@ export default async function ApiReferencePage() {
       where: { isAdvanced: { not_equals: true } },
       sort: 'order',
       limit: 0,
+    }),
+    payload.find({
+      collection: 'articles',
+      sort: 'order',
+      limit: 0,
+      depth: 0,
+      // Only what the list shows, not the article text
+      select: { title: true, slug: true, description: true, icon: true },
     }),
   ]);
 
@@ -105,6 +113,28 @@ export default async function ApiReferencePage() {
               })}
             </ul>
           </div>
+          {articles.docs.length > 0 && (
+            <div className="articles">
+              <SectionHeading id="artiklar">Artiklar</SectionHeading>
+              <ul className="endpoint-list">
+                {articles.docs.map((article) => {
+                  const Icon = getIcon(article.icon);
+                  return (
+                    <li key={article.id}>
+                      <Link href={`/api-reference/artiklar/${article.slug}`}>
+                        <Icon className="endpoint-icon" size={20} strokeWidth={1.7} />
+                        <span className="endpoint-name">
+                          <strong>{article.title}</strong>
+                          <span>{article.description}</span>
+                        </span>
+                        <ChevronRight className="endpoint-arrow" size={18} />
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
         </section>
       </div>
     </div>

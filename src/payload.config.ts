@@ -11,6 +11,7 @@ import { QuestionCategories } from './collections/QuestionCategories';
 import { Questions } from './collections/Questions';
 import { Endpoints } from './collections/Endpoints';
 import { Services } from './collections/Services';
+import { Articles } from './collections/Articles';
 import { codeBlockFeature } from './fields/codeBlockFeature';
 import { linkFeature } from './fields/linkFeature';
 import { ApiReferencePage } from './globals/ApiReferencePage';
@@ -28,8 +29,11 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    meta: {
+      robots: "noindex, nofollow"
+    }
   },
-  collections: [Users, Media, Services, Endpoints, Questions, QuestionCategories],
+  collections: [Users, Media, Services, Endpoints, Articles, Questions, QuestionCategories],
   globals: [HomePage, ServicesPage, ApiReferencePage, CommonQuestionsPage, SiteSettings],
   // Default editor (e.g. FAQ answers), with the same link options as every other text field
   editor: lexicalEditor({
