@@ -13,10 +13,6 @@ import './page.css';
 // Always render with the latest content from the CMS
 export const dynamic = 'force-dynamic';
 
-// Relationships come back as full documents at depth 1, or as IDs if the service was deleted
-const serviceHref = (service: Service | string | null | undefined) =>
-  typeof service === 'object' && service ? `/service/${service.slug}` : null;
-
 export default async function HomePage() {
   const payload = await getPayload({ config });
   const [page, services, categories, questions] = await Promise.all([

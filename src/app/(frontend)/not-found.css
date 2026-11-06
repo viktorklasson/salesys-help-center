@@ -1,0 +1,40 @@
+/* Tall enough for the background glow, which would otherwise be cut off with a hard edge */
+.not-found {
+  min-height: 640px;
+}
+
+.not-found-code {
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 36px;
+}
+
+.not-found-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--heading);
+
+  svg {
+    color: var(--blue);
+    transition: transform 0.2s var(--ease);
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+.subheading {
+  margin-top: 0;
+}

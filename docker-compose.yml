@@ -10,9 +10,7 @@ x-logging: &logging
 
 services:
   app:
-    build:
-      context: .
-      target: runner
+    image: adamsalesys/salesys-help-center-app:latest
     restart: unless-stopped
     env_file: .env.production
     # Only reachable from this machine; nginx in front of it handles public traffic
