@@ -9153,7 +9153,7 @@
         "$date": "2026-11-06T11:50:50.110Z"
       },
       "updatedAt": {
-        "$date": "2026-11-06T12:15:36.927Z"
+        "$date": "2026-11-06T14:53:33.343Z"
       },
       "title": "JSONPath och operatorer",
       "slug": "jsonpath-och-operatorer",
@@ -9414,7 +9414,7 @@
                     "newTab": true,
                     "url": "https://jsonpath.com/"
                   },
-                  "id": "6aedc0ca4148880e865065ca"
+                  "id": "6aede4c7f19e5b0985ff4f6a"
                 },
                 {
                   "detail": 0,
@@ -9441,7 +9441,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Tänk dig att en order ser ut ungefär så här:",
+                  "text": "Tänk dig följande struktur:",
                   "type": "text",
                   "version": 1
                 }
@@ -9459,7 +9459,7 @@
               "version": 2,
               "format": "",
               "fields": {
-                "id": "6aedc0e84148880e865065cd",
+                "id": "6aede9def19e5b0985ff4f81",
                 "code": "{\r\n  \"serialId\": 617,\r\n  \"products\": [\r\n    { \"productName\": \"Mobil Liten\", \"price\": 30 },\r\n    { \"productName\": \"Mobil Stor\", \"price\": 50 },\r\n    { \"productName\": \"El Liten\", \"price\": 20 }\r\n  ]\r\n}",
                 "language": "json",
                 "blockName": "",
@@ -9473,25 +9473,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Du kan med hjälp av JSONPath läsa dessa värden med hjälp av olika ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 2,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "uttryck",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ". Nedan finns några exempel:",
+                  "text": "Du kan med hjälp av JSONPath läsa dessa värden med hjälp av olika uttryck. Nedan finns några exempel:",
                   "type": "text",
                   "version": 1
                 }
@@ -9522,7 +9504,7 @@
                       "format": 0,
                       "mode": "normal",
                       "style": "",
-                      "text": ": Hela ordern (roten)",
+                      "text": ": Hela objektet (roten)",
                       "type": "text",
                       "version": 1
                     }
@@ -9550,25 +9532,7 @@
                       "format": 0,
                       "mode": "normal",
                       "style": "",
-                      "text": ": Propertyn ",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 2,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "serialId",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": " (ordernumret)",
+                      "text": ": Propertyn serialId (ordernumret)",
                       "type": "text",
                       "version": 1
                     }
@@ -9707,15 +9671,6 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": " ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
@@ -9756,7 +9711,7 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 0,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
@@ -9895,7 +9850,7 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 17,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_field",
@@ -9917,7 +9872,7 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
@@ -9938,16 +9893,6 @@
               "type": "paragraph",
               "version": 1,
               "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
               "textStyle": ""
             },
             {
@@ -9980,15 +9925,6 @@
                   "text": "{ \"firstName\": \"John\" }",
                   "type": "text",
                   "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ".",
-                  "type": "text",
-                  "version": 1
                 }
               ],
               "direction": null,
@@ -10006,7 +9942,7 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 0,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
@@ -10032,7 +9968,7 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 17,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_path",
@@ -10044,7 +9980,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " tar ett JSONPath-uttryck och returnerar den första träffen som inte är null.",
+                  "text": " tar ett JSONPath-uttryck och returnerar den första träffen som inte är null. Uttrycket nedan...",
                   "type": "text",
                   "version": 1
                 }
@@ -10054,7 +9990,7 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
@@ -10064,7 +10000,46 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Följande uttryck",
+                  "text": "{",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "type": "linebreak",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "  \"orderNumber\": { \"_path\": \"$.serialId\" },",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "type": "linebreak",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "  \"orderProduct\": { \"_path\": \"$.products[0].productName\" }",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "type": "linebreak",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "}",
                   "type": "text",
                   "version": 1
                 }
@@ -10078,25 +10053,13 @@
               "textStyle": ""
             },
             {
-              "type": "block",
-              "version": 2,
-              "format": "",
-              "fields": {
-                "id": "6aedc2e14148880e865065ce",
-                "code": "{\r\n  \"orderNumber\": { \"_path\": \"$.serialId\" },\r\n  \"orderProduct\": { \"_path\": \"$.products[0].productName\" }\r\n}",
-                "language": "json",
-                "blockName": "",
-                "blockType": "Code"
-              }
-            },
-            {
               "children": [
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "returnerar följande värden:",
+                  "text": "...returnerar följande värden:",
                   "type": "text",
                   "version": 1
                 }
@@ -10110,16 +10073,24 @@
               "textStyle": ""
             },
             {
-              "type": "block",
-              "version": 2,
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "{ \"orderNumber\": 617, \"orderProduct\": \"Mobil Liten\" }",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
               "format": "",
-              "fields": {
-                "id": "6aedc2ff4148880e865065cf",
-                "code": "{ \"orderNumber\": 617, \"orderProduct\": \"Mobil Liten\" }",
-                "language": "json",
-                "blockName": "",
-                "blockType": "Code"
-              }
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
             },
             {
               "children": [],
@@ -10128,14 +10099,33 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
               "children": [
                 {
                   "detail": 0,
-                  "format": 17,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_pathAll",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_pathAll",
@@ -10147,7 +10137,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " returnerar alltid en lista med alla träffar, även om det bara finns en.",
+                  "text": " returnerar alltid en lista med alla träffar, även om det bara finns en. Om vi exempelvis har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -10157,7 +10147,7 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
@@ -10187,25 +10177,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Blir ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "{ \"orderProducts\": [\"Mobil Liten\", \"Mobil Stor\", \"El Liten\"] }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ".",
+                  "text": "Så returneras detta:",
                   "type": "text",
                   "version": 1
                 }
@@ -10216,6 +10188,36 @@
               "type": "paragraph",
               "version": 1,
               "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "{ \"orderProducts\": [\"Mobil Liten\", \"Mobil Stor\", \"El Liten\"] }",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
@@ -10244,7 +10246,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Datumoperatorer måste alltid utgå från ett datum: dagens datum (",
+                  "text": "Dessa operatorer används för att hämta och räkna med datum. De måste alltid utgå från ett datum: dagens datum (",
                   "type": "text",
                   "version": 1
                 },
@@ -10312,17 +10314,7 @@
               "textStyle": ""
             },
             {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Operator",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -10338,7 +10330,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Gör",
+                  "text": "_currentDate",
                   "type": "text",
                   "version": 1
                 }
@@ -10346,50 +10338,9 @@
               "direction": null,
               "format": "",
               "indent": 0,
-              "type": "paragraph",
+              "type": "heading",
               "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Exempelvärde",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Resultat",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
+              "tag": "h3"
             },
             {
               "children": [
@@ -10401,6 +10352,35 @@
                   "text": "_currentDate",
                   "type": "text",
                   "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " hämtar dagens datum och tid. Om vi exempelvis har följande uttryck:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "{ \"date\": { \"_currentDate\": true } }",
+                  "type": "text",
+                  "version": 1
                 }
               ],
               "direction": null,
@@ -10418,7 +10398,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Dagens datum och tid",
+                  "text": "Så returneras detta:",
                   "type": "text",
                   "version": 1
                 }
@@ -10438,7 +10418,7 @@
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "true",
+                  "text": "{ \"date\": \"2023-04-28T10:51:51.517Z\" }",
                   "type": "text",
                   "version": 1
                 }
@@ -10452,17 +10432,7 @@
               "textStyle": ""
             },
             {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "\"2023-04-28T10:51:51.517Z\"",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -10470,6 +10440,25 @@
               "version": 1,
               "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_addDays",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
             },
             {
               "children": [
@@ -10481,8 +10470,71 @@
                   "text": "_addDays",
                   "type": "text",
                   "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " lägger till ett antal dagar på ett datum. Om vi exempelvis har följande uttryck:",
+                  "type": "text",
+                  "version": 1
                 }
               ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede9c3f19e5b0985ff4f7f",
+                "code": "{\r\n  \"todayDate\": { \"_currentDate\": true },\r\n  \"activationDate\": { \"_currentDate\": true, \"_addDays\": 2 }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Så returneras detta:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede9ccf19e5b0985ff4f80",
+                "code": "{\r\n  \"todayDate\": \"2023-04-28T10:51:51.517Z\",\r\n  \"activationDate\": \"2023-04-30T10:51:51.517Z\"\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -10498,7 +10550,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Lägger till dagar",
+                  "text": "_addWeekdays",
                   "type": "text",
                   "version": 1
                 }
@@ -10506,50 +10558,9 @@
               "direction": null,
               "format": "",
               "indent": 0,
-              "type": "paragraph",
+              "type": "heading",
               "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "2",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "28 april → 30 april",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
+              "tag": "h3"
             },
             {
               "children": [
@@ -10561,6 +10572,53 @@
                   "text": "_addWeekdays",
                   "type": "text",
                   "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " fungerar som ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_addDays",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " men räknar bara vardagar (mån–fre). Om vi exempelvis har följande uttryck:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "{ \"activationDate\": { \"_currentDate\": true, \"_addWeekdays\": 3 } }",
+                  "type": "text",
+                  "version": 1
                 }
               ],
               "direction": null,
@@ -10578,7 +10636,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Lägger till vardagar (mån–fre)",
+                  "text": "Så returneras detta (fredag 28 april blir onsdag 3 maj):",
                   "type": "text",
                   "version": 1
                 }
@@ -10598,11 +10656,21 @@
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "3",
+                  "text": "{ \"activationDate\": \"2023-05-03T10:51:51.517Z\" }",
                   "type": "text",
                   "version": 1
                 }
               ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -10618,7 +10686,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Fre 28 april → ons 3 maj",
+                  "text": "_formatDate",
                   "type": "text",
                   "version": 1
                 }
@@ -10626,10 +10694,9 @@
               "direction": null,
               "format": "",
               "indent": 0,
-              "type": "paragraph",
+              "type": "heading",
               "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
+              "tag": "h3"
             },
             {
               "children": [
@@ -10641,24 +10708,13 @@
                   "text": "_formatDate",
                   "type": "text",
                   "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
+                },
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Formaterar datumet (",
+                  "text": " formaterar ett datum enligt ett mönster (",
                   "type": "text",
                   "version": 1
                 },
@@ -10684,34 +10740,14 @@
                     "newTab": true,
                     "url": "https://devhints.io/moment"
                   },
-                  "id": "6aedc0ca4148880e865065cb"
+                  "id": "6aede4c7f19e5b0985ff4f6b"
                 },
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": ")",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "\"YYYY-MM-DD\"",
+                  "text": "). Om vi exempelvis har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -10731,7 +10767,7 @@
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "\"2023-04-28\"",
+                  "text": "{ \"today\": { \"_currentDate\": true, \"_formatDate\": \"YYYY-MM-DD\" } }",
                   "type": "text",
                   "version": 1
                 }
@@ -10751,7 +10787,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Exempel: aktiveringsdatum tre vardagar efter ett datum i ett orderfält, formaterat som år-månad-dag.",
+                  "text": "Så returneras detta:",
                   "type": "text",
                   "version": 1
                 }
@@ -10768,88 +10804,30 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "{",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"activationDate\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_field\": \"644bac0ef7b4cf7ec5fc91de\",",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_addWeekdays\": 3,",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_formatDate\": \"YYYY-MM-DD\"",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "}",
+                  "text": "{ \"today\": \"2023-04-28\" }",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Datumoperatorerna går att kombinera. Uttrycket nedan tar ett datum från ett orderfält, lägger till tre vardagar och formaterar resultatet:",
                   "type": "text",
                   "version": 1
                 }
@@ -10860,6 +10838,28 @@
               "type": "paragraph",
               "version": 1,
               "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede992f19e5b0985ff4f7e",
+                "code": "{\r\n  \"activationDate\": {\r\n    \"_field\": \"644bac0ef7b4cf7ec5fc91de\",\r\n    \"_addWeekdays\": 3,\r\n    \"_formatDate\": \"YYYY-MM-DD\"\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
@@ -10888,11 +10888,21 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "De här operatorerna städar upp värden så att mottagande system får rätt format.",
+                  "text": "Dessa operatorer används för att städa upp och sätta ihop värden så att mottagande system får rätt format.",
                   "type": "text",
                   "version": 1
                 }
               ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -10908,7 +10918,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Operator",
+                  "text": "_normalizePhoneNumber",
                   "type": "text",
                   "version": 1
                 }
@@ -10916,70 +10926,9 @@
               "direction": null,
               "format": "",
               "indent": 0,
-              "type": "paragraph",
+              "type": "heading",
               "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Alternativ",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Indata",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Resultat",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
+              "tag": "h3"
             },
             {
               "children": [
@@ -10991,42 +10940,13 @@
                   "text": "_normalizePhoneNumber",
                   "type": "text",
                   "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "noSpecialCharacters",
-                  "type": "text",
-                  "version": 1
                 },
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": ", ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "countryCodeNoSpecialCharacters",
+                  "text": " normaliserar ett telefonnummer. Alternativ:",
                   "type": "text",
                   "version": 1
                 }
@@ -11042,40 +10962,132 @@
             {
               "children": [
                 {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "72 15 21 129",
-                  "type": "text",
-                  "version": 1
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "noSpecialCharacters",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Utan mellanslag och specialtecken",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "countryCodeNoSpecialCharacters",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Med landskod, utan mellanslag och specialtecken",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
                 }
               ],
               "direction": null,
               "format": "",
               "indent": 0,
-              "type": "paragraph",
+              "type": "list",
               "version": 1,
               "textFormat": 16,
-              "textStyle": ""
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
             },
             {
               "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "+46721521129",
-                  "type": "text",
-                  "version": 1
-                },
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " (med landskod)",
+                  "text": "Om fältet innehåller \"72 15 21 129\" och vi har följande uttryck:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede986f19e5b0985ff4f7d",
+                "code": "{\r\n  \"contactPhone\": {\r\n    \"_field\": \"644ba6f3f7b4cf7ec5fc91d9\",\r\n    \"_normalizePhoneNumber\": \"countryCodeNoSpecialCharacters\"\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Så returneras detta:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "{ \"contactPhone\": \"+46721521129\" }",
                   "type": "text",
                   "version": 1
                 }
@@ -11087,6 +11099,35 @@
               "version": 1,
               "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_normalizeIdentityNumber",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
             },
             {
               "children": [
@@ -11098,78 +11139,13 @@
                   "text": "_normalizeIdentityNumber",
                   "type": "text",
                   "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "tenDigits",
-                  "type": "text",
-                  "version": 1
                 },
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": ", ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "tenDigitsDash",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ", ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "twelveDigits",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ", ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "twelveDigitsDash",
+                  "text": " normaliserar ett personnummer. Alternativ, med \"9906077392\" som exempel:",
                   "type": "text",
                   "version": 1
                 }
@@ -11185,11 +11161,188 @@
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "tenDigits",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": 9906077392",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "tenDigitsDash",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": 990607-7392",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "twelveDigits",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": 199906077392",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "twelveDigitsDash",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": 19990607-7392",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "textFormat": 16,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om vi exempelvis har följande uttryck:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede979f19e5b0985ff4f7c",
+                "code": "{\r\n  \"identityNumber\": {\r\n    \"_field\": \"644ba76ef7b4cf7ec5fc91da\",\r\n    \"_normalizeIdentityNumber\": \"twelveDigitsDash\"\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Så returneras detta:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
                   "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "9906077392",
+                  "text": "{ \"identityNumber\": \"20260105-2398\" }",
                   "type": "text",
                   "version": 1
                 }
@@ -11203,26 +11356,7 @@
               "textStyle": ""
             },
             {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "19990607-7392",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": " (twelveDigitsDash)",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -11230,6 +11364,25 @@
               "version": 1,
               "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_normalizeString",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
             },
             {
               "children": [
@@ -11241,96 +11394,13 @@
                   "text": "_normalizeString",
                   "type": "text",
                   "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "capFirstLetterOfEachWord",
-                  "type": "text",
-                  "version": 1
                 },
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": ", ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "capFirstLetter",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ", ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "allUpperCase",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ", ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "allLowerCase",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ", ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "noSpaces",
+                  "text": " normaliserar en sträng. Alternativ, med \"VIKTOR klasson\" som exempel:",
                   "type": "text",
                   "version": 1
                 }
@@ -11346,11 +11416,226 @@
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "capFirstLetterOfEachWord",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Viktor Klasson",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "capFirstLetter",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Viktor klasson",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "allUpperCase",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": VIKTOR KLASSON",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "allLowerCase",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": viktor klasson",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "noSpaces",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Tar bort alla mellanslag",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 5
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "textFormat": 16,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om vi exempelvis har följande uttryck:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede942f19e5b0985ff4f7b",
+                "code": "{\r\n  \"contactName\": {\r\n    \"_field\": \"644ba7e2f7b4cf7ec5fc91db\",\r\n    \"_normalizeString\": \"capFirstLetterOfEachWord\"\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Så returneras detta:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
                   "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "VIKTOR klasson",
+                  "text": "{ \"contactName\": \"Test Testsson\" }",
                   "type": "text",
                   "version": 1
                 }
@@ -11364,26 +11649,7 @@
               "textStyle": ""
             },
             {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Viktor Klasson",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": " (capFirstLetterOfEachWord)",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -11391,6 +11657,25 @@
               "version": 1,
               "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_toString",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
             },
             {
               "children": [
@@ -11402,53 +11687,13 @@
                   "text": "_toString",
                   "type": "text",
                   "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "true",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "833",
-                  "type": "text",
-                  "version": 1
                 },
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " (nummer)",
+                  "text": " omvandlar ett värde till text och används främst för nummer. Om vi exempelvis har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -11468,16 +11713,7 @@
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "\"833\"",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": " (text)",
+                  "text": "{ \"orderNumber\": { \"_path\": \"$.serialId\", \"_toString\": true } }",
                   "type": "text",
                   "version": 1
                 }
@@ -11497,72 +11733,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "{",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"contactPhone\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_field\": \"644ba6f3f7b4cf7ec5fc91d9\",",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_normalizePhoneNumber\": \"countryCodeNoSpecialCharacters\"",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
+                  "text": "Så returneras detta:",
                   "type": "text",
                   "version": 1
                 }
@@ -11579,7 +11750,56 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 17,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "{ \"orderNumber\": \"833\" }",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_concat",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_concat",
@@ -11591,7 +11811,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " slår ihop text och andra operatorer till en sträng, till exempel en länk:",
+                  "text": " slår ihop text och andra operatorer till en sträng, till exempel en länk. Om fältet innehåller \"123\" och vi har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -11601,8 +11821,20 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede8bff19e5b0985ff4f7a",
+                "code": "{\r\n  \"link\": {\r\n    \"_concat\": [\r\n      \"https://my-cool-crm.se/customer/\",\r\n      { \"_field\": \"644ba8b8f7b4cf7ec5fc91dc\" },\r\n      \"/invoices\"\r\n    ]\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
             },
             {
               "children": [
@@ -11611,111 +11843,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "{",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"link\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_concat\": [",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      \"https://my-cool-crm.se/customer/\",",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      { \"_field\": \"644ba8b8f7b4cf7ec5fc91dc\" },",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      \"/invoices\"",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    ]",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
+                  "text": "Så returneras detta:",
                   "type": "text",
                   "version": 1
                 }
@@ -11732,28 +11860,10 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Blir ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "\"https://my-cool-crm.se/customer/123/invoices\"",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": " om fältet innehåller 123.",
+                  "text": "{ \"link\": \"https://my-cool-crm.se/customer/123/invoices\" }",
                   "type": "text",
                   "version": 1
                 }
@@ -11763,14 +11873,43 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 0,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
               "children": [
                 {
                   "detail": 0,
-                  "format": 17,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_firstNonNull",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_firstNonNull",
@@ -11782,7 +11921,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " tar det första värdet i listan som inte är false, null eller tom sträng. Bra för reservvärden:",
+                  "text": " tar det första värdet i listan som inte är false, null eller en tom sträng. Bra för reservvärden. Om vi exempelvis har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -11792,8 +11931,20 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede8adf19e5b0985ff4f79",
+                "code": "{\r\n  \"phoneNumber\": {\r\n    \"_firstNonNull\": [\r\n      { \"_field\": \"644ba932f7b4cf7ec5fc91dd\" },\r\n      \"+46712345678\"\r\n    ]\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
             },
             {
               "children": [
@@ -11802,98 +11953,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "{",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"phoneNumber\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_firstNonNull\": [",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      { \"_field\": \"644ba932f7b4cf7ec5fc91dd\" },",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      \"+46712345678\"",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    ]",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
+                  "text": "Så returneras detta om fältet innehåller \"+46720000000\":",
                   "type": "text",
                   "version": 1
                 }
@@ -11910,28 +11970,30 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Är fältet ifyllt används det, annars ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "+46712345678",
+                  "text": "{ \"phoneNumber\": \"+46720000000\" }",
                   "type": "text",
                   "version": 1
-                },
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": ".",
+                  "text": "Och detta om fältet är tomt:",
                   "type": "text",
                   "version": 1
                 }
@@ -11942,6 +12004,36 @@
               "type": "paragraph",
               "version": 1,
               "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "{ \"phoneNumber\": \"+46712345678\" }",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
@@ -11967,7 +12059,56 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 17,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Dessa operatorer används för att bygga om listor och räkna med nummer.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_map",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_map",
@@ -12015,7 +12156,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " beskriver hur varje nytt element ska se ut, och ",
+                  "text": " beskriver hur varje nytt element ska se ut och ",
                   "type": "text",
                   "version": 1
                 },
@@ -12033,7 +12174,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " hämtar ett värde från det aktuella elementet.",
+                  "text": " hämtar ett värde från det aktuella elementet. Om ordern har två produkter, \"Mobil Liten\" och \"Mobil Stor\", och vi har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -12043,7 +12184,61 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede872f19e5b0985ff4f78",
+                "code": "{\r\n  \"mina_abonnemang\": {\r\n    \"_list\": \"$.products\",\r\n    \"_toElement\": {\r\n      \"abonnemang_typ\": \"Mobil\",\r\n      \"abonnemang_namn\": { \"_elementPath\": \"$.productName\" }\r\n    }\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Så returneras detta:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede6dcf19e5b0985ff4f77",
+                "code": "{\r\n  \"mina_abonnemang\": [\r\n    { \"abonnemang_typ\": \"Mobil\", \"abonnemang_namn\": \"Mobil Liten\" },\r\n    { \"abonnemang_typ\": \"Mobil\", \"abonnemang_namn\": \"Mobil Stor\" }\r\n  ]\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
@@ -12053,233 +12248,23 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "{",
+                  "text": "_sum",
                   "type": "text",
                   "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"mina_abonnemang\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_list\": \"$.products\",",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_toElement\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      \"abonnemang_typ\": \"Mobil\",",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      \"abonnemang_namn\": { \"_elementPath\": \"$.productName\" }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
                 {
                   "detail": 0,
                   "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Blir:",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "{",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"mina_abonnemang\": [",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    { \"abonnemang_typ\": \"Mobil\", \"abonnemang_namn\": \"Mobil Liten\" },",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    { \"abonnemang_typ\": \"Mobil\", \"abonnemang_namn\": \"Mobil Stor\" }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  ]",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 17,
                   "mode": "normal",
                   "style": "",
                   "text": "_sum",
@@ -12345,7 +12330,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " sällan pekar på en färdig lista i SaleSys.",
+                  "text": " sällan pekar på en färdig lista i SaleSys. Om vi exempelvis har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -12355,14 +12340,103 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
               "children": [
                 {
                   "detail": 0,
-                  "format": 17,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "{ \"orderTotal\": { \"_sum\": { \"_pathAll\": \"$.products[:].price\" } } }",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Så returneras detta:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "{ \"orderTotal\": 100 }",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_multiply",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_multiply",
@@ -12374,7 +12448,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " multiplicerar talen i en lista. Exempel: ordersumma i öre.",
+                  "text": " multiplicerar talen i en lista med varandra, till exempel för att räkna om ordersumman till öre. Om vi exempelvis har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -12384,8 +12458,20 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede6bdf19e5b0985ff4f76",
+                "code": "{\r\n  \"orderTotalInOre\": {\r\n    \"_multiply\": [\r\n      { \"_sum\": { \"_pathAll\": \"$.products[:].price\" } },\r\n      100\r\n    ]\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
             },
             {
               "children": [
@@ -12394,98 +12480,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "{",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"orderTotalInOre\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_multiply\": [",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      { \"_sum\": { \"_pathAll\": \"$.products[:].price\" } },",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      100",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    ]",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
+                  "text": "Så returneras detta:",
                   "type": "text",
                   "version": 1
                 }
@@ -12502,32 +12497,24 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Om produkterna kostar 100 kr totalt blir resultatet ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "10000",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ".",
+                  "text": "{ \"orderTotalInOre\": 10000 }",
                   "type": "text",
                   "version": 1
                 }
               ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -12543,7 +12530,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Efterarbeten: _confidential och _required",
+                  "text": "_confidential",
                   "type": "text",
                   "version": 1
                 }
@@ -12553,33 +12540,13 @@
               "indent": 0,
               "type": "heading",
               "version": 1,
-              "tag": "h2"
+              "tag": "h3"
             },
             {
               "children": [
                 {
                   "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Båda används när du skapar eller uppdaterar ett http-efterarbete.",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 17,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_confidential",
@@ -12591,7 +12558,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " krypterar en hemlig sträng, till exempel en API-nyckel. Den sparas krypterad i databasen och dekrypteras först när efterarbetet körs. Använd den alltid för nycklar och lösenord.",
+                  "text": " krypterar en hemlig sträng, till exempel en API-nyckel. Använd den alltid för nycklar och lösenord som inte får läcka. Om vi exempelvis har följande uttryck i efterarbetets body:",
                   "type": "text",
                   "version": 1
                 }
@@ -12601,8 +12568,20 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede671f19e5b0985ff4f75",
+                "code": "{\r\n\t\"headers\": {\r\n\t\"Authorization\": { \"_confidential\": \"Bearer mintestnykel\" }\r\n\t}\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
             },
             {
               "children": [
@@ -12611,33 +12590,39 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "\"body\": {",
+                  "text": "Så sparas det krypterat i databasen:",
                   "type": "text",
                   "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede624f19e5b0985ff4f74",
+                "code": "{\r\n\t\"headers\": {\r\n\t\"Authorization\": { \"_confidential\": \"U2FsdGVkX1+iX5Ey7GqLND5UFUoV0b7rUJ2eEvHkYqA=\" }\r\n\t}\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "  \"apiKey\": { \"_confidential\": \"hejhopp\" }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
+                  "text": "Och när orderarbetet körs skickas detta:",
                   "type": "text",
                   "version": 1
                 }
@@ -12654,28 +12639,10 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "När efterarbetet körs skickas ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "\"apiKey\": \"hejhopp\"",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ".",
+                  "text": "{ \"apiKey\": \"hejhopp\" }",
                   "type": "text",
                   "version": 1
                 }
@@ -12685,14 +12652,43 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 0,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
               "textStyle": ""
             },
             {
               "children": [
                 {
                   "detail": 0,
-                  "format": 17,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_required",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_required",
@@ -12704,7 +12700,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " används med ",
+                  "text": " används tillsammans med ",
                   "type": "text",
                   "version": 1
                 },
@@ -12722,7 +12718,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " och gör fältet obligatoriskt. Kör någon efterarbetet manuellt utan att fältet är ifyllt får de en notis.",
+                  "text": " och gör fältet obligatoriskt. Kör någon efterarbetet manuellt utan att fältet är ifyllt får de en notis. Om vi exempelvis har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -12732,8 +12728,20 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede60bf19e5b0985ff4f73",
+                "code": "\"body\": {\r\n  \"personnummer\": { \"_field\": \"644bb94bf7b4cf7ec5fc91df\", \"_required\": true },\r\n  \"stad\": { \"_field\": \"644bb9b4f7b4cf7ec5fc91e0\" }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
             },
             {
               "children": [
@@ -12742,50 +12750,21 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "\"body\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"personnummer\": { \"_field\": \"644bb94bf7b4cf7ec5fc91df\", \"_required\": true },",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"stad\": { \"_field\": \"644bb9b4f7b4cf7ec5fc91e0\" }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
+                  "text": "Så måste personnummer vara ifyllt, medan stad är frivilligt.",
                   "type": "text",
                   "version": 1
                 }
               ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -12801,7 +12780,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Villkor: _if och _switch",
+                  "text": "Villkor",
                   "type": "text",
                   "version": 1
                 }
@@ -12820,7 +12799,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Använd ",
+                  "text": "Dessa operatorer används för att returnera olika värden beroende på vad ordern innehåller. Använd ",
                   "type": "text",
                   "version": 1
                 },
@@ -12870,10 +12849,39 @@
               "textStyle": ""
             },
             {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
               "children": [
                 {
                   "detail": 0,
-                  "format": 17,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "_if",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "_if",
@@ -12885,7 +12893,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": " tar en lista med tre delar: ett villkor, värdet om villkoret är sant och värdet om det är falskt.",
+                  "text": " tar en lista med tre delar: ett villkor, värdet om villkoret är sant och värdet om det är falskt. Följande villkor finns:",
                   "type": "text",
                   "version": 1
                 }
@@ -12895,8 +12903,301 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_eq",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Lika med",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_ne",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Inte lika med",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_gt",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Större än",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_gte",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Större än eller lika med",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_lt",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Mindre än",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 5
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_lte",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Mindre än eller lika med",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 6
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_in",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Finns i lista",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 7
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_and",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Alla villkor är sanna",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 8
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_or",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Minst ett villkor är sant",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 9
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "_fieldIsSet",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ": Fältet med angivet ID är ifyllt",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 10
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "textFormat": 16,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
             },
             {
               "children": [
@@ -12905,111 +13206,39 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "{",
+                  "text": "Om vi exempelvis har följande uttryck:",
                   "type": "text",
                   "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede5dbf19e5b0985ff4f72",
+                "code": "{\r\n  \"deliveryMethod\": {\r\n    \"_if\": [\r\n      { \"_gt\": [{ \"_path\": \"$.orderAmount\" }, 1000] },\r\n      \"Express\",\r\n      \"Standard\"\r\n    ]\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "  \"deliveryMethod\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_if\": [",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      { \"_gt\": [{ \"_path\": \"$.orderAmount\" }, 1000] },",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      \"Express\",",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      \"Standard\"",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    ]",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
+                  "text": "Så returneras detta om orderAmount är större än 1000:",
                   "type": "text",
                   "version": 1
                 }
@@ -13026,28 +13255,30 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Om orderAmount är större än 1000 blir resultatet ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
-                  "text": "\"Express\"",
+                  "text": "{ \"deliveryMethod\": \"Express\" }",
                   "type": "text",
                   "version": 1
-                },
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [
                 {
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": ", annars ",
+                  "text": "Annars returneras ",
                   "type": "text",
                   "version": 1
                 },
@@ -13079,17 +13310,7 @@
               "textStyle": ""
             },
             {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Villkor",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -13105,7 +13326,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Betyder",
+                  "text": "_switch",
                   "type": "text",
                   "version": 1
                 }
@@ -13113,416 +13334,15 @@
               "direction": null,
               "format": "",
               "indent": 0,
-              "type": "paragraph",
+              "type": "heading",
               "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
+              "tag": "h3"
             },
             {
               "children": [
                 {
                   "detail": 0,
                   "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_eq",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Lika med",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_ne",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Inte lika med",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_gt",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Större än",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_gte",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Större än eller lika med",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_lt",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Mindre än",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_lte",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Mindre än eller lika med",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_in",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Finns i lista",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_and",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Alla villkor är sanna",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_or",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Minst ett villkor är sant",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "_fieldIsSet",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Fältet med angivet ID är ifyllt",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 17,
                   "mode": "normal",
                   "style": "",
                   "text": "_switch",
@@ -13624,7 +13444,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": ".",
+                  "text": ". Om vi exempelvis har följande uttryck:",
                   "type": "text",
                   "version": 1
                 }
@@ -13634,8 +13454,20 @@
               "indent": 0,
               "type": "paragraph",
               "version": 1,
-              "textFormat": 17,
+              "textFormat": 16,
               "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6aede5bdf19e5b0985ff4f71",
+                "code": "{\r\n  \"shippingCost\": {\r\n    \"_switch\": {\r\n      \"_path\": \"$.countryCode\",\r\n      \"_cases\": [\r\n        { \"_eq\": \"SE\", \"_return\": 50 },\r\n        { \"_eq\": \"NO\", \"_return\": 100 },\r\n        { \"_eq\": \"DK\", \"_return\": 75 }\r\n      ]\r\n    }\r\n  }\r\n}",
+                "language": "json",
+                "blockName": "",
+                "blockType": "Code"
+              }
             },
             {
               "children": [
@@ -13644,150 +13476,7 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "{",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"shippingCost\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"_switch\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      \"_path\": \"$.countryCode\",",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      \"_cases\": [",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "        { \"_eq\": \"SE\", \"_return\": 50 },",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "        { \"_eq\": \"NO\", \"_return\": 100 },",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "        { \"_eq\": \"DK\", \"_return\": 75 }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "      ]",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
+                  "text": "Så returneras detta om countryCode är \"SE\":",
                   "type": "text",
                   "version": 1
                 }
@@ -13804,50 +13493,24 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Om countryCode är ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "\"SE\"",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": " blir resultatet ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
                   "format": 16,
                   "mode": "normal",
                   "style": "",
                   "text": "{ \"shippingCost\": 50 }",
                   "type": "text",
                   "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ".",
-                  "type": "text",
-                  "version": 1
                 }
               ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 16,
+              "textStyle": ""
+            },
+            {
+              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -13882,7 +13545,81 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Du kan testa operatorer mot en riktig order utan att köra orderarbetet eller samtalsarbetet. Använd en token som har tillgång till ordern.",
+                  "text": "Du kan testa operatorer mot en riktig order eller ett riktigt samtal utan att köra orderarbetet eller samtalsarbetet. Information om detta finns i avsnitten om ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "ordrar",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Testa order-operatorer",
+                      "relationTo": "endpoints",
+                      "value": "6ae1c885649571a981ca41e0"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6aede584f19e5b0985ff4f70"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " och ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "samtal",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Testa samtals-operatorer",
+                      "relationTo": "endpoints",
+                      "value": "6ae1c885649571a981ca4156"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6aede576f19e5b0985ff4f6f"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
                   "type": "text",
                   "version": 1
                 }
@@ -13894,367 +13631,6 @@
               "version": 1,
               "textFormat": 0,
               "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "POST https://app.salesys.se/api/orders/order-information-v1/operators?ids=<order-id>",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 16,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Skicka valfritt objekt under nyckeln ",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "object",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": ":",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "{",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  \"object\": {",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "    \"price\": { \"_path\": \"$.products[0].price\" }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "  }",
-                  "type": "text",
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
-                  "version": 1
-                },
-                {
-                  "detail": 0,
-                  "format": 16,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "}",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "text": "Tips när något inte blir som du tänkt:",
-                  "type": "text",
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "Prova JSONPath-uttrycket på ",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "children": [
-                        {
-                          "detail": 0,
-                          "format": 0,
-                          "mode": "normal",
-                          "style": "",
-                          "text": "jsonpath.com",
-                          "type": "text",
-                          "version": 1
-                        }
-                      ],
-                      "direction": null,
-                      "format": "",
-                      "indent": 0,
-                      "type": "link",
-                      "version": 3,
-                      "fields": {
-                        "linkType": "custom",
-                        "newTab": true,
-                        "url": "https://jsonpath.com/"
-                      },
-                      "id": "6aedc0ca4148880e865065cc"
-                    },
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": " med en exempelorder.",
-                      "type": "text",
-                      "version": 1
-                    }
-                  ],
-                  "direction": null,
-                  "format": "",
-                  "indent": 0,
-                  "type": "listitem",
-                  "version": 1,
-                  "value": 1
-                },
-                {
-                  "children": [
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "Får du bara ett värde men ville ha alla? Byt ",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 16,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "_path",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": " mot ",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 16,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "_pathAll",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": ".",
-                      "type": "text",
-                      "version": 1
-                    }
-                  ],
-                  "direction": null,
-                  "format": "",
-                  "indent": 0,
-                  "type": "listitem",
-                  "version": 1,
-                  "value": 2
-                },
-                {
-                  "children": [
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "Är svaret ett nummer men mottagaren vill ha text? Lägg till ",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 16,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "\"_toString\": true",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": ".",
-                      "type": "text",
-                      "version": 1
-                    }
-                  ],
-                  "direction": null,
-                  "format": "",
-                  "indent": 0,
-                  "type": "listitem",
-                  "version": 1,
-                  "value": 3
-                },
-                {
-                  "children": [
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "Kan fältet vara tomt? Lägg det i ",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 16,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "_firstNonNull",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": " med ett reservvärde, eller markera det med ",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 16,
-                      "mode": "normal",
-                      "style": "",
-                      "text": "_required",
-                      "type": "text",
-                      "version": 1
-                    },
-                    {
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "text": ".",
-                      "type": "text",
-                      "version": 1
-                    }
-                  ],
-                  "direction": null,
-                  "format": "",
-                  "indent": 0,
-                  "type": "listitem",
-                  "version": 1,
-                  "value": 4
-                }
-              ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "list",
-              "version": 1,
-              "listType": "number",
-              "start": 1,
-              "tag": "ol"
             }
           ],
           "direction": null,
