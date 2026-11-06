@@ -55,6 +55,24 @@ services:
     volumes:
       - media:/app/media
 
+  # One-off: write the database and uploads to seed/ in this folder.
+  #   docker compose run --rm export
+  export:
+    profiles: [tools]
+    build:
+      context: .
+      target: seed
+    # The server user (ubuntu), so it can write to ./seed
+    user: '1000:1000'
+    env_file: .env.production
+    command: ['node_modules/.bin/payload', 'run', 'src/scripts/export-content.ts']
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      - media:/app/media
+      - ./seed:/app/seed
+
 volumes:
   data:
   media:
