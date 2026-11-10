@@ -40,8 +40,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   // Shown in the header on large screens and in the hamburger menu on small ones
   const navLinks = (
     <>
-      <NavLink href="/service">Funktioner</NavLink>
       <NavLink href="/api-reference">API-referens</NavLink>
+      <NavLink href="/service">Funktioner</NavLink>
+      <NavLink href="/guides">Guider</NavLink>
       <NavLink href="/common-questions">Vanliga frågor</NavLink>
     </>
   );

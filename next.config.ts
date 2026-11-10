@@ -10,7 +10,20 @@ const nextConfig: NextConfig = {
   output: "standalone",
   // No email is sent, so the "forgot password" page can't work; passwords are reset by an admin
   async redirects() {
-    return [{ source: '/admin/forgot', destination: '/admin/login', permanent: false }];
+    return [
+      { source: '/admin/forgot', destination: '/admin/login', permanent: false },
+      // These advanced functions became guides
+      ...['order-work', 'call-actions', 'webhooks'].map((slug) => ({
+        source: `/service/${slug}`,
+        destination: `/guides/${slug}`,
+        permanent: true,
+      })),
+      // Guides' earlier addresses
+      ...['/guider', '/api-reference/artiklar', '/api-reference/guider'].flatMap((path) => [
+        { source: path, destination: '/guides', permanent: true },
+        { source: `${path}/:slug`, destination: '/guides/:slug', permanent: true },
+      ]),
+    ];
   },
   images: {
     localPatterns: [

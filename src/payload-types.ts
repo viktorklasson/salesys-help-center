@@ -257,10 +257,6 @@ export interface Service {
    * Lägre nummer visas först.
    */
   order?: number | null;
-  /**
-   * Visas under ”Avancerade funktioner” på sidan Alla funktioner.
-   */
-  isAdvanced?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -335,7 +331,7 @@ export interface Article {
   id: string;
   title: string;
   /**
-   * Visas i adressen: /api-reference/artiklar/<adress>
+   * Visas i adressen: /guides/<adress>
    */
   slug: string;
   /**
@@ -586,7 +582,6 @@ export interface ServicesSelect<T extends boolean = true> {
   content?: T;
   icon?: T;
   order?: T;
-  isAdvanced?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -723,31 +718,6 @@ export interface HomePage {
     };
     [k: string]: unknown;
   };
-  helpLinks?:
-    | {
-        title: string;
-        description?: string | null;
-        url: string;
-        icon?:
-          | (
-              | 'calendar-days'
-              | 'circle-help'
-              | 'contact'
-              | 'file-text'
-              | 'log-in'
-              | 'message-circle'
-              | 'package'
-              | 'pen-line'
-              | 'phone-call'
-              | 'shopping-cart'
-              | 'users'
-              | 'webhook'
-              | 'wrench'
-            )
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -908,15 +878,6 @@ export interface SiteSetting {
  */
 export interface HomePageSelect<T extends boolean = true> {
   lead?: T;
-  helpLinks?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        url?: T;
-        icon?: T;
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -38,7 +38,7 @@ export function ServicePage({
 
         <FormattedText className="long-text" data={service.content} />
 
-        {developerNote && !service.isAdvanced && (
+        {developerNote && (
           <section className="developer">
             <Code2 size={20} />
             <div>

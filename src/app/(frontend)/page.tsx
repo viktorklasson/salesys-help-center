@@ -4,8 +4,6 @@ import { getPayload } from 'payload';
 import React from 'react';
 import Image from 'next/image';
 
-import { getIcon } from '@/icons';
-import type { Service } from '@/payload-types';
 import config from '@/payload.config';
 import { FormattedText } from './components/FormattedText/FormattedText';
 import './page.css';
@@ -15,9 +13,8 @@ export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   const payload = await getPayload({ config });
-  const [page, services, categories, questions] = await Promise.all([
+  const [page, categories, questions] = await Promise.all([
     payload.findGlobal({ slug: 'home-page', depth: 1 }),
-    payload.find({ collection: 'services', sort: 'order', limit: 0 }),
     payload.find({ collection: 'question-categories', sort: 'order', limit: 0, depth: 0 }),
     payload.find({ collection: 'questions', sort: 'order', limit: 0, depth: 0 }),
   ]);

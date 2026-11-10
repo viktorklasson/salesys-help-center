@@ -92,16 +92,5 @@ export const Services: CollectionConfig = {
         position: 'sidebar',
       },
     },
-    {
-      name: 'isAdvanced',
-      label: 'Avancerad funktion',
-      type: 'checkbox',
-      defaultValue: false,
-      index: true,
-      admin: {
-        description: 'Visas under ”Avancerade funktioner” på sidan Alla funktioner.',
-        position: 'sidebar',
-      },
-    },
   ],
 };

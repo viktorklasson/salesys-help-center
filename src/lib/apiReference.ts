@@ -69,8 +69,7 @@ export const getService = async (slug: string) => {
   const payload = await getPayload({ config });
   const { docs } = await payload.find({
     collection: 'services',
-    // Advanced functions aren't part of the API reference, so their page is a 404
-    where: { slug: { equals: slug }, isAdvanced: { not_equals: true } },
+    where: { slug: { equals: slug } },
     limit: 1,
   });
   return docs[0];

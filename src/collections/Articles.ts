@@ -3,12 +3,12 @@ import type { CollectionConfig } from 'payload';
 import { richContent } from '../fields/richContent';
 import { iconOptions } from '../icons';
 
-/** Longer guides for developers, listed under "Artiklar" on the API reference page */
+/** Guides, listed on /guides. Called "articles" internally (database, API). */
 export const Articles: CollectionConfig = {
   slug: 'articles',
   labels: {
-    singular: 'Artikel',
-    plural: 'Artiklar',
+    singular: 'Guide',
+    plural: 'Guider',
   },
   admin: {
     group: 'API-referens',
@@ -31,7 +31,7 @@ export const Articles: CollectionConfig = {
           required: true,
           unique: true,
           index: true,
-          admin: { description: 'Visas i adressen: /api-reference/artiklar/<adress>' },
+          admin: { description: 'Visas i adressen: /guides/<adress>' },
         },
       ],
     },

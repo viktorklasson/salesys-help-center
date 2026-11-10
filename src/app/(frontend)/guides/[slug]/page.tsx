@@ -6,14 +6,14 @@ import { getPayload } from 'payload';
 import React from 'react';
 
 import config from '@/payload.config';
-import { FormattedText } from '../../../components/FormattedText/FormattedText';
+import { FormattedText } from '../../components/FormattedText/FormattedText';
 
 // Always render with the latest content from the CMS
 export const dynamic = 'force-dynamic';
 
 type Props = { params: Promise<{ slug: string }> };
 
-const getArticle = async (slug: string) => {
+const getGuide = async (slug: string) => {
   const payload = await getPayload({ config });
   const { docs } = await payload.find({
     collection: 'articles',
@@ -26,30 +26,30 @@ const getArticle = async (slug: string) => {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = await getArticle((await params).slug);
-  return article
-    ? { title: `${article.title} | SaleSys Docs`, description: article.description }
+  const guide = await getGuide((await params).slug);
+  return guide
+    ? { title: `${guide.title} | SaleSys Docs`, description: guide.description }
     : { title: 'SaleSys Docs' };
 }
 
-export default async function ArticlePage({ params }: Props) {
-  const article = await getArticle((await params).slug);
-  if (!article) notFound();
+export default async function GuidePage({ params }: Props) {
+  const guide = await getGuide((await params).slug);
+  if (!guide) notFound();
 
   return (
     <article className="page">
       <div className="glow" />
       <div className="container">
-        <Link className="back" href="/api-reference#artiklar">
-          <ArrowLeft size={16} /> API-referens
+        <Link className="back" href="/guides">
+          <ArrowLeft size={16} /> Alla guider
         </Link>
 
         <header className="page-header">
-          <h1>{article.title}</h1>
-          <p className="lead">{article.description}</p>
+          <h1>{guide.title}</h1>
+          <p className="lead">{guide.description}</p>
         </header>
 
-        <FormattedText className="long-text" data={article.content} />
+        <FormattedText className="long-text" data={guide.content} />
       </div>
     </article>
   );

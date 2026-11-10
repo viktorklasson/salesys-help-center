@@ -3,7 +3,6 @@ import React from 'react';
 
 import config from '@/payload.config';
 import { FormattedText } from '../components/FormattedText/FormattedText';
-import { SectionHeading } from '../components/SectionHeading/SectionHeading';
 import { ServiceCard } from '../components/ServiceCard/ServiceCard';
 
 // Always render with the latest content from the CMS
@@ -20,10 +19,6 @@ export default async function ReferencePage() {
     payload.find({ collection: 'services', sort: 'order', limit: 0 }),
   ]);
 
-  // Functions marked "Avancerad funktion" in the CMS get their own list below the main one
-  const basicDocs = services.docs.filter((service) => !service.isAdvanced);
-  const advancedDocs = services.docs.filter((service) => service.isAdvanced);
-
   return (
     <div className="page">
       <div className="glow" />
@@ -35,23 +30,10 @@ export default async function ReferencePage() {
           <FormattedText className="lead" data={page.lead} />
         </header>
         <div className="grid">
-          {basicDocs.map((service) => (
+          {services.docs.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
         </div>
-
-        {advancedDocs.length > 0 && (
-          <section>
-            <SectionHeading id="avancerade-funktioner">
-              Avancerade <b>funktioner</b>.
-            </SectionHeading>
-            <div className="grid">
-              {advancedDocs.map((service) => (
-                <ServiceCard key={service.id} service={service} />
-              ))}
-            </div>
-          </section>
-        )}
       </div>
     </div>
   );
