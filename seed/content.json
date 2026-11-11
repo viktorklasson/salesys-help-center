@@ -482,6 +482,90 @@
       "focalX": 50,
       "focalY": 50,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6af30b6de1a44ac56ac24eb1"
+      },
+      "createdAt": {
+        "$date": "2026-11-10T12:17:49.402Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-10T12:17:49.403Z"
+      },
+      "alt": "Exempel på menyn som visas när man skapar ett nytt webbformulär",
+      "url": "/api/media/file/skapa-webbformular-meny-example.png",
+      "filename": "skapa-webbformular-meny-example.png",
+      "mimeType": "image/png",
+      "filesize": 12392,
+      "width": 218,
+      "height": 235,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6af30de0e1a44ac56ac25057"
+      },
+      "createdAt": {
+        "$date": "2026-11-10T12:28:16.673Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-10T12:28:16.673Z"
+      },
+      "alt": "Exempel på modalen som visas när man ska skapa ett webbformulär",
+      "url": "/api/media/file/skapa-webbformular-modal-example.png",
+      "filename": "skapa-webbformular-modal-example.png",
+      "mimeType": "image/png",
+      "filesize": 66187,
+      "width": 770,
+      "height": 785,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6af31327e1a44ac56ac253db"
+      },
+      "createdAt": {
+        "$date": "2026-11-10T12:50:47.979Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-10T12:50:47.979Z"
+      },
+      "alt": "Exempel på hur man lägger till egen kod i ett webbformulär",
+      "url": "/api/media/file/lagg-till-egen-kod-example.gif",
+      "filename": "lagg-till-egen-kod-example.gif",
+      "mimeType": "image/gif",
+      "filesize": 1210705,
+      "width": 960,
+      "height": 821,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6af47a9ee1a44ac56ac25a0f"
+      },
+      "createdAt": {
+        "$date": "2026-11-11T14:24:30.730Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-11T14:24:30.730Z"
+      },
+      "alt": "Exempel på hur man väljer kontext i DevTools för webbformulär",
+      "url": "/api/media/file/valj-kontext-webbformular-example.png",
+      "filename": "valj-kontext-webbformular-example.png",
+      "mimeType": "image/png",
+      "filesize": 34531,
+      "width": 458,
+      "height": 390,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
     }
   ],
   "services": [
@@ -6068,7 +6152,7 @@
         "$date": "2026-11-06T11:04:41.929Z"
       },
       "updatedAt": {
-        "$date": "2026-11-06T11:51:01.789Z"
+        "$date": "2026-11-11T15:10:31.438Z"
       },
       "title": "Allt om webbformulär",
       "slug": "allt-om-webbformular",
@@ -6083,7 +6167,586 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "aaa",
+                  "text": "Ditt första webbformulär",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Börja med att öppna SaleSys och gå till ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Inställningar",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " > ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Avtal",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " > ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Webbformulär",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " > Tryck på knappen ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Skapa",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ". Nu ser du en meny där du kan skapa ett nytt webbformulär, eller kopiera ett befintligt. Tryck på ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Skapa nytt",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ", följt av ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "På en hemsida eller av säljare",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " och till sist ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Skapa nytt",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ".",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 1,
+              "tag": "ol"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6af30b6e2f8fbb1e13adecf8",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6af30b6de1a44ac56ac24eb1"
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Ge sedan formuläret ett namn, exempelvis \"Beställning webb\", välj sedan en avtalsmall och tryck på ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Spara",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ".",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 2,
+              "tag": "ol"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6af30de22f8fbb1e13adecfb",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6af30de0e1a44ac56ac25057"
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Om du sedan klickar på formuläret igen och väljer ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Testa fornuläret",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " så ser du hur formuläret ser ut just nu för användaren. Gå tillbaka till formuläret och testa att redigera de olika texterna. Inspektera sedan formuläret igen via ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Testa formuläret",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " och se hur det ändrar sig.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Just nu använder formuläret fördefinierade element, som exempelvis rubriker, paragrafer och checkboxar. De allra bästa formulären använder något annat: HTML med handlebars. Börja med att ta bort alla element i formuläret, tryck på punkterna till höger om elementen och välj ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Radera",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ". ",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Välj sedan ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Annat",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " följt av ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Egen kod. ",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 5
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 3,
+              "tag": "ol"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6af313382f8fbb1e13adecff",
+              "fields": null,
+              "relationTo": "media",
+              "value": "6af31327e1a44ac56ac253db"
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "I detta kodblock kan du skriva HTML och handlebars. Vi rekommenderar dock att du skriver koden i en kodeditor som VSCode, Cursor, osv. och sedan klistrar in koden i kodblocket. ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 0,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "Här",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 3,
+                      "fields": {
+                        "url": "https://salesys.se/api/examples/exempelsida-webbformular.html",
+                        "newTab": true,
+                        "linkType": "custom"
+                      },
+                      "id": "6af31b8e2f8fbb1e13aded03"
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " finns ett exempel på ett kodsnippet du kan lägga in.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 6
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 6,
+              "tag": "ol"
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "window.form",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Allt som har med formuläret att göra kan du komma åt via ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "window.form",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "-objektet, se först till att du är i rätt kontext: antingen ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "salesys.se",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " eller ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "skaffa.salesys.se",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
                   "type": "text",
                   "version": 1
                 }
@@ -6095,6 +6758,597 @@
               "version": 1,
               "textFormat": 0,
               "textStyle": ""
+            },
+            {
+              "children": [],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "I ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "window.form",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " har du tillgång till en mängd olika saker, här kommer några exempel:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Alla fält, produkter, osv. som är satta i formuläret: ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "window.form.input",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " ",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "detail": 0,
+                              "format": 0,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "Produkter: ",
+                              "type": "text",
+                              "version": 1
+                            },
+                            {
+                              "detail": 0,
+                              "format": 16,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "window.form.input.products",
+                              "type": "text",
+                              "version": 1
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 1,
+                          "type": "listitem",
+                          "version": 1,
+                          "value": 1
+                        },
+                        {
+                          "children": [
+                            {
+                              "detail": 0,
+                              "format": 0,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "Orderfält: ",
+                              "type": "text",
+                              "version": 1
+                            },
+                            {
+                              "detail": 0,
+                              "format": 16,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "window.form.input.fields",
+                              "type": "text",
+                              "version": 1
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 1,
+                          "type": "listitem",
+                          "version": 1,
+                          "value": 2
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "list",
+                      "version": 1,
+                      "listType": "bullet",
+                      "start": 1,
+                      "tag": "ul"
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Visa en notifikation: ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "window.form.notify(\"<text>\")",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Sätt en användare på det skapade avtalet (OBS: ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "allowUserId",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " måste vara ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "true",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ", mer info finns ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 0,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "här",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 3,
+                      "fields": {
+                        "doc": {
+                          "label": "Uppdatera ett webbformulär",
+                          "relationTo": "endpoints",
+                          "value": "6ae1c885649571a981ca41c2"
+                        },
+                        "newTab": true,
+                        "linkType": "internal"
+                      },
+                      "id": "6af47d390cc24710e34fb376"
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "): ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "type": "linebreak",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "window.form.setUser(\"<userId>\")",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Göm/visa den inbyggda \"Gå vidare\"-knappen:  ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "window.form.hideNavigateNext",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " och ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "window.form.showNavigateNext()",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Validera...",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 5
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "detail": 0,
+                              "format": 0,
+                              "mode": "normal",
+                              "style": "",
+                              "text": " ett telefonnummer: ",
+                              "type": "text",
+                              "version": 1
+                            },
+                            {
+                              "detail": 0,
+                              "format": 16,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "window.form.isValidPhoneNumber(\"<phoneNumber>\")",
+                              "type": "text",
+                              "version": 1
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 1,
+                          "type": "listitem",
+                          "version": 1,
+                          "value": 1
+                        },
+                        {
+                          "children": [
+                            {
+                              "detail": 0,
+                              "format": 0,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "ett personnummer: ",
+                              "type": "text",
+                              "version": 1
+                            },
+                            {
+                              "detail": 0,
+                              "format": 16,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "window.form.isValidPersonnummer(\"<personnummer>\")",
+                              "type": "text",
+                              "version": 1
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 1,
+                          "type": "listitem",
+                          "version": 1,
+                          "value": 2
+                        },
+                        {
+                          "children": [
+                            {
+                              "detail": 0,
+                              "format": 0,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "en e-postadress: ",
+                              "type": "text",
+                              "version": 1
+                            },
+                            {
+                              "detail": 0,
+                              "format": 16,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "window.form.isValidEmail(\"<email>\")",
+                              "type": "text",
+                              "version": 1
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 1,
+                          "type": "listitem",
+                          "version": 1,
+                          "value": 3
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "list",
+                      "version": 1,
+                      "listType": "bullet",
+                      "start": 1,
+                      "tag": "ul"
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 6
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Gå till nästa sida i formuläret: ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "window.form.next()",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 6
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Gå till föregående sida i formuläret: ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "window.form.previous()",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 7
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Skicka in formuläret: ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "window.form.internal.submit()",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 8
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Normalisera ett personnummer: ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "window.form.normalizeIdentityNumber(\"<personnummer>\", \"<option>\")",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 9
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
             }
           ],
           "direction": null,
@@ -6116,7 +7370,7 @@
         "$date": "2026-11-06T11:50:50.110Z"
       },
       "updatedAt": {
-        "$date": "2026-11-06T14:53:33.343Z"
+        "$date": "2026-11-10T12:13:24.611Z"
       },
       "title": "JSONPath och operatorer",
       "slug": "jsonpath-och-operatorer",
@@ -6305,18 +7559,12 @@
                   "text": ").",
                   "type": "text",
                   "version": 1
+                },
+                {
+                  "type": "linebreak",
+                  "version": 1
                 }
               ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
