@@ -5,8 +5,11 @@ import { notFound } from 'next/navigation';
 import { getPayload } from 'payload';
 import React from 'react';
 
+import { getHeadings } from '@/lib/headings';
 import config from '@/payload.config';
 import { FormattedText } from '../../components/FormattedText/FormattedText';
+import { TableOfContents } from '../../components/TableOfContents/TableOfContents';
+import './page.css';
 
 // Always render with the latest content from the CMS
 export const dynamic = 'force-dynamic';
@@ -36,6 +39,10 @@ export default async function GuidePage({ params }: Props) {
   const guide = await getGuide((await params).slug);
   if (!guide) notFound();
 
+  // On unless turned off in the CMS (guides from before the option have no value), and only worth it with 2+ headings
+  const headings = guide.tableOfContents !== false ? getHeadings(guide.content) : [];
+  const showToc = headings.length >= 2;
+
   return (
     <article className="page">
       <div className="glow" />
@@ -49,7 +56,14 @@ export default async function GuidePage({ params }: Props) {
           <p className="lead">{guide.description}</p>
         </header>
 
-        <FormattedText className="long-text" data={guide.content} />
+        <div className={showToc ? 'guide-body has-toc' : 'guide-body'}>
+          <FormattedText className="long-text" data={guide.content} />
+          {showToc && (
+            <aside className="guide-toc">
+              <TableOfContents headings={headings} />
+            </aside>
+          )}
+        </div>
       </div>
     </article>
   );

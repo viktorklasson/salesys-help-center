@@ -190,6 +190,11 @@ code {
   scroll-margin-top: 90px;
 }
 
+/* Set briefly by HashTarget: a #link opens its <details> at full height at once, so the page
+   is long enough to scroll to it (the opening animation would still be growing) */
+html[data-instant-open] details::details-content {
+  transition: none !important;
+}
 .page {
   position: relative;
   /* clip (not hidden) so position: sticky still works inside */

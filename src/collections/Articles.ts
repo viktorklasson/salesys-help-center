@@ -51,6 +51,16 @@ export const Articles: CollectionConfig = {
       },
     }),
     {
+      name: 'tableOfContents',
+      label: 'Visa innehållsförteckning',
+      type: 'checkbox',
+      defaultValue: true,
+      admin: {
+        description: 'Rubrikerna i texten, bredvid guiden. Visas när guiden har minst två rubriker.',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'icon',
       label: 'Ikon',
       type: 'select',

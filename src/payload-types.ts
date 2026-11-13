@@ -356,6 +356,10 @@ export interface Article {
     };
     [k: string]: unknown;
   };
+  /**
+   * Rubrikerna i texten, bredvid guiden. Visas när guiden har minst två rubriker.
+   */
+  tableOfContents?: boolean | null;
   icon?:
     | (
         | 'calendar-days'
@@ -624,6 +628,7 @@ export interface ArticlesSelect<T extends boolean = true> {
   slug?: T;
   description?: T;
   content?: T;
+  tableOfContents?: T;
   icon?: T;
   order?: T;
   updatedAt?: T;

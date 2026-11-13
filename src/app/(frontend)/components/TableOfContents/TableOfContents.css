@@ -1,0 +1,51 @@
+.toc {
+  font-size: 15px;
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-left: 1px solid var(--border);
+  }
+
+  li a {
+    display: block;
+    /* Overlaps the list's border, so the active link's border replaces it */
+    margin-left: -1px;
+    padding: 5px 0 5px 14px;
+    line-height: 1.35;
+    color: var(--muted);
+    border-left: 2px solid transparent;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+
+    &:hover {
+      color: var(--heading);
+    }
+
+    &[aria-current] {
+      color: var(--blue);
+      border-left-color: var(--blue);
+    }
+  }
+
+  .toc-level-3 a {
+    padding-left: 28px;
+    font-size: 14px;
+  }
+
+  .toc-level-4 a {
+    padding-left: 42px;
+    font-size: 14px;
+  }
+}
+
+.toc-title {
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--heading);
+}

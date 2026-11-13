@@ -13,14 +13,11 @@ import { Paperclip } from 'lucide-react';
 import React from 'react';
 
 import type { Media } from '@/payload-types';
+import { createHeadingIds, textOf } from '@/lib/headings';
 import { slugify } from '@/lib/slugify';
 import { CodeBlock } from '../CodeBlock/CodeBlock';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import './FormattedText.css';
-
-/** All text inside a node, e.g. a heading with bold parts */
-const textOf = (node: { text?: string; children?: unknown[] }): string =>
-  node.text ?? (node.children ?? []).map((child) => textOf(child as typeof node)).join('');
 
 /**
  * The address of something picked with the CMS link button: a function, FAQ question,
@@ -69,21 +66,19 @@ type Props = {
 const createConverters =
   (): JSXConvertersFunction<DefaultNodeTypes> =>
   ({ defaultConverters }) => {
-    const usedIds = new Map<string, number>();
+    // Shared with the table of contents (lib/headings), so its links match these ids
+    const idFor = createHeadingIds();
 
     return {
       ...defaultConverters,
       ...LinkJSXConverter({ internalDocToHref }),
       heading: ({ node, nodesToJSX }) => {
         const heading = node as SerializedHeadingNode;
-        const base = slugify(textOf(heading)) || 'avsnitt';
-        const count = (usedIds.get(base) ?? 0) + 1;
-        usedIds.set(base, count);
 
         return (
           <SectionHeading
             as={heading.tag === 'h1' ? 'h2' : heading.tag}
-            id={count > 1 ? `${base}-${count}` : base}
+            id={idFor(textOf(heading))}
           >
             {nodesToJSX({ nodes: heading.children })}
           </SectionHeading>
