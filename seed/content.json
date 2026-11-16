@@ -608,6 +608,48 @@
       "focalX": 50,
       "focalY": 50,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afab254e31c5607e5c7ac66"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T07:35:48.772Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T07:35:48.772Z"
+      },
+      "alt": "Exempel på ett samtalsarbete",
+      "url": "/api/media/file/skapa-samtalarbete-example.png",
+      "filename": "skapa-samtalarbete-example.png",
+      "mimeType": "image/png",
+      "filesize": 60599,
+      "width": 459,
+      "height": 772,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afab4d8e31c5607e5c7af22"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T07:46:32.892Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T07:46:32.892Z"
+      },
+      "alt": "Exempel på hur man väljer källa till e-post i samtalsarbeten",
+      "url": "/api/media/file/valj-epostadress-kalla-example.gif",
+      "filename": "valj-epostadress-kalla-example.gif",
+      "mimeType": "image/gif",
+      "filesize": 675230,
+      "width": 466,
+      "height": 772,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
     }
   ],
   "services": [
@@ -3375,296 +3417,6 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc874"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.276Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.364Z"
-      },
-      "method": "GET",
-      "path": "/api/events/events-v1",
-      "summary": "Lista systemhändelser (endast admin)",
-      "parameters": [
-        {
-          "name": "search",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6bc"
-        },
-        {
-          "name": "namePrefixes",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6bd"
-        },
-        {
-          "name": "from",
-          "in": "query",
-          "type": "string (date-time)",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6be"
-        },
-        {
-          "name": "to",
-          "in": "query",
-          "type": "string (date-time)",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6bf"
-        },
-        {
-          "name": "count",
-          "in": "query",
-          "type": "integer",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6c0"
-        },
-        {
-          "name": "offset",
-          "in": "query",
-          "type": "integer",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6c1"
-        },
-        {
-          "name": "sortOrder",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6c2"
-        }
-      ],
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"date\": \"2026-01-01T12:00:00.000Z\",\n    \"name\": \"string\",\n    \"topic\": \"string\",\n    \"data\": {}\n  }\n]",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c59"
-      },
-      "group": "Events",
-      "deprecated": false,
-      "order": 1210,
-      "__v": 0,
-      "url": null
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc877"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.281Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.373Z"
-      },
-      "method": "GET",
-      "path": "/api/events/webhooks-v1",
-      "summary": "Lista webhooks (endast admin)",
-      "parameters": [],
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"url\": \"https://exempel.se\",\n    \"events\": [\n      {\n        \"name\": \"calendar-event-updated-v1\"\n      }\n    ],\n    \"description\": \"string\"\n  }\n]",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c59"
-      },
-      "group": "Webhooks",
-      "deprecated": false,
-      "order": 1220,
-      "__v": 0,
-      "url": null
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc87a"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.286Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.383Z"
-      },
-      "method": "POST",
-      "path": "/api/events/webhooks-v1",
-      "summary": "Skapa en webhook (endast admin)",
-      "description": {
-        "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": "",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Skapar en ny utgående webhook. Händelser som stöds är ",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": "calendar-event-updated-v1",
-                  "format": 16,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": ", ",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": "order-created-v1",
-                  "format": 16,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": " och ",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": "order-updated-v1",
-                  "format": 16,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": ".",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": "",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "En URL kan bara registreras en gång per organisation.",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "parameters": [],
-      "responseExample": "{\n  \"webhookId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c59"
-      },
-      "group": "Webhooks",
-      "deprecated": false,
-      "order": 1230,
-      "__v": 0,
-      "url": null
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc87d"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.290Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.392Z"
-      },
-      "method": "GET",
-      "path": "/api/events/webhooks-v1/<webhookId>",
-      "summary": "Hämta en webhook via ID (endast admin)",
-      "parameters": [
-        {
-          "name": "webhookId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6c3"
-        }
-      ],
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"url\": \"https://exempel.se\",\n  \"events\": [\n    {\n      \"name\": \"calendar-event-updated-v1\"\n    }\n  ],\n  \"description\": \"string\"\n}",
-      "service": {
-        "$oid": "6adf656b8107051a9a733c59"
-      },
-      "group": "Webhooks",
-      "deprecated": false,
-      "order": 1240,
-      "__v": 0,
-      "url": null
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc880"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.296Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.407Z"
-      },
-      "method": "PUT",
-      "path": "/api/events/webhooks-v1/<webhookId>",
-      "summary": "Uppdatera en webhook (endast admin)",
-      "parameters": [
-        {
-          "name": "webhookId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6c4"
-        }
-      ],
-      "service": {
-        "$oid": "6adf656b8107051a9a733c59"
-      },
-      "group": "Webhooks",
-      "deprecated": false,
-      "order": 1250,
-      "__v": 0,
-      "url": null
-    },
-    {
-      "_id": {
         "$oid": "6ae1c885649571a981ca4150"
       },
       "createdAt": {
@@ -4687,58 +4439,6 @@
       },
       "responseExample": "{\r\n  \"id\": \"6ae0638e5b68bd6289f59009\",\r\n  \"name\": \"Testlista\",\r\n  \"serialId\": 57,\r\n  \"userId\": \"6862579b2cb8d0a855888245\",\r\n  \"organizationId\": \"6862579b2cb8d0a855888243\",\r\n  \"accessTeamIds\": [],\r\n  \"accessRoleIds\": [],\r\n  \"skipCalledBackContacts\": true,\r\n  \"repositionQuarantinedContacts\": true,\r\n  \"defaultQuarantineDestination\": false,\r\n  \"unroutedContactFlow\": null,\r\n  \"isShuffle\": false,\r\n  \"country\": \"se\",\r\n  \"predictiveDialAggression\": 50,\r\n  \"predictiveDialUsers\": [],\r\n  \"predictiveDialRingingTimeout\": 24,\r\n  \"voicemailHangUpThresholdId\": 1,\r\n  \"importTask\": {\r\n    \"taskId\": \"6ae0638b8556501f838028ef\",\r\n    \"status\": \"finished\",\r\n    \"needsConflictResolution\": null\r\n  },\r\n  \"excludeListIds\": [],\r\n  \"projectIds\": [\r\n    \"689af0f8e9c43cf65bce4423\"\r\n  ],\r\n  \"contactSummaryCache\": {\r\n    \"contactCount\": 0,\r\n    \"reservedContactCount\": 0,\r\n    \"skippedContactCount\": 0,\r\n    \"quarantinedContactCount\": 0,\r\n    \"isLatest\": true,\r\n    \"shuffleConfigurationId\": null\r\n  },\r\n  \"isCallback\": false,\r\n  \"predictiveVersion\": 2,\r\n  \"predictiveWaitForEvaluation\": false,\r\n  \"deletedAt\": null,\r\n  \"ownerTeamIds\": [],\r\n  \"date\": \"2026-10-27T08:40:46.000Z\"\r\n}",
       "url": "/api-reference/dial#get-api-dial-dial-groups-v2-dialgroupid"
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca419e"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.392Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.539Z"
-      },
-      "method": "GET",
-      "path": "/api/documents/export-v1/<id>",
-      "summary": "Hämta en export",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a25"
-        }
-      ],
-      "service": {
-        "$oid": "6adf656b8107051a9a733c57"
-      },
-      "group": "Export",
-      "order": 1420,
-      "__v": 0,
-      "url": null
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41a1"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.398Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.417Z"
-      },
-      "method": "GET",
-      "path": "/api/events/webhooks-v1/events",
-      "summary": "Hämta webhook-händelser",
-      "parameters": [],
-      "service": {
-        "$oid": "6adf656b8107051a9a733c59"
-      },
-      "group": "Webhooks",
-      "order": 1250.01,
-      "__v": 0,
-      "url": null
     },
     {
       "_id": {
@@ -6296,7 +5996,7 @@
         "$date": "2026-11-06T11:04:41.929Z"
       },
       "updatedAt": {
-        "$date": "2026-11-13T10:16:42.515Z"
+        "$date": "2026-11-16T07:24:58.541Z"
       },
       "title": "Allt om webbformulär",
       "slug": "allt-om-webbformular",
@@ -8409,6 +8109,438 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
+                  "text": "HTML med Handlebars",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Handlebars är tekniken som producerar HTML i egen kod. Det går att jämföra med ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "conditional rendering",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "url": "https://react.dev/learn/conditional-rendering",
+                    "newTab": true,
+                    "linkType": "custom"
+                  },
+                  "id": "6afaac170443590aa3eece47"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " i React. Nedan kommer ett exempel på Handlebars i HTML:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6afaac4f0443590aa3eece48",
+                "code": "<div>\r\n\t{{#if custom.isOn}}\r\n\tIt's on!\r\n\t{{else}}\r\n\tIt's off...\r\n\t{{/if}}\r\n\r\n\t{{#ifEq input.fields.68245f2adb0a4bb03e319bb7 \"Johan\"}}\r\n\tJag känner igen dig.\r\n\t{{/ifEq}}\r\n\r\n\t{{#either custom.isOn custom.isAlwaysOn custom.iDontCareIfItsOn}}\r\n\tIt's on either way!\r\n\t{{/either}}\r\n\r\n\t{{#ifLt custom.age custom.minAge}}\r\n\tWay too young...\r\n\t{{/ifLt}}\r\n\r\n\t{{#ifGt custom.age custom.maxAge}}\r\n\tWay too old.\r\n\t{{/ifGt}}\r\n\r\n\t{{#ifNot custom.approved}}\r\n\tTry again later.\r\n\t{{/ifNot}}\r\n\r\n\t{{#ifIncludes custom.allowedAges custom.age}}\r\n\tVälkommen in.\r\n\t{{else}}\r\n\tStå utanför i kylan.\r\n\t{{/ifIncludes}}\r\n</div>",
+                "language": "html",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Visa och formatera värden",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6afaad460443590aa3eece4a",
+                "code": "<div>\r\n\t<div>Hej {{input.fields.68245f2adb0a4bb03e319bb7}}</div>\r\n\r\n\t<div>\r\n\tNästa år är du {{math input.fields.682467abdb0a4bb03e319bbe \"+\" 1}} år gammal.\r\n\t</div>\r\n\r\n\t<div>Du börjar {{formatDate custom.startDate \"DD/MM/YYYY\"}}</div>\r\n</div>",
+                "language": "html",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Loopa igenom produkter och hämta produktfält",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6afaacb50443590aa3eece49",
+                "code": "<div>\r\n\t{{#each custom.products}}\r\n\t{{#with (lookup ../input.products id)}}\r\n\t\tNummer att portera är {{fields.67eaa47489dab34a5d532546}}\r\n\t{{/with}}\r\n\t{{/each}}\r\n</div>",
+                "language": "html",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "each",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " loopar en lista och byter kontext till det aktuella elementet.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "with",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " byter kontext på samma sätt, till det objekt du anger.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "lookup",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " hämtar en egenskap ur en variabel: ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "{{lookup obj property}}",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " motsvarar ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "obj[property]",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ".",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "../",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " backar ut ur loopens kontext. ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "input",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " ligger utanför loopen, medan ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 16,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "id",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " kommer från listans element.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "textFormat": 16,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "I JavaScript motsvarar exemplet ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "input.products[custom.products[i].id].fields.67eaa47489dab34a5d532546",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ", där ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "i",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " är loopens aktuella index. Du kan läsa mer om Handlebars i deras ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "officiella dokumentation",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "url": "https://handlebarsjs.com/guide/",
+                    "newTab": true,
+                    "linkType": "custom"
+                  },
+                  "id": "6afaafb20443590aa3eece52"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
                   "text": "Hooks",
                   "type": "text",
                   "version": 1
@@ -8508,6 +8640,181 @@
                 "blockName": "",
                 "blockType": "Code"
               }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Justerbara texter",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Med verktyget uttrycket ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "[[text \"exempel\"]]",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " kan andra ändra texter i formuläret själva, utan att röra koden. Du anger en nyckel som identifierar texten:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6afaaddd0443590aa3eece4b",
+                "code": "[[text 'Fullständigt namn']]\r\n[[text \"Personnummer\"]]",
+                "language": "javascript",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Text-blocken ersätts med den riktiga texten precis innan HTML:en evalueras. Det fungerar därför även inuti ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "<script>",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ":",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6afaae1c0443590aa3eece4c",
+                "code": "<script>\r\n  window.form.addHook('validate', () => {\r\n    let message = \"\";\r\n\r\n    if (!window.form.custom.isValid) {\r\n      message = \"[[text 'Kontrollera indata i formuläret']]\";\r\n    }\r\n\r\n    if (window.form.custom.message !== message) {\r\n      window.form.setState({ message });\r\n    }\r\n  });\r\n</script>",
+                "language": "html",
+                "blockName": "",
+                "blockType": "Code"
+              }
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om texten för nyckeln är satt till \"Jeg snakker ikke norsk\" blir raden i slutändan ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "message = \"Jeg snakker ikke norsk\";",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ". Det gör ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "text",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " särskilt användbart för formulär på flera språk.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
             },
             {
               "children": [
@@ -8804,6 +9111,75 @@
               "fields": {},
               "relationTo": "media",
               "value": "6af6d2a9e1a44ac56ac27495"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Styra formuläret från webbsidan",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Objektet som ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "createWebForm",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " returnerar låter dig sätta produkt och fält direkt från webbsidan, till exempel utifrån vilken sida kunden kom från.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "block",
+              "version": 2,
+              "format": "",
+              "fields": {
+                "id": "6afaab400443590aa3eece46",
+                "code": "// Välj produkt (setProductId är ett alias)\r\nwindow.myForm.setProduct('68245f2adb0a4bb03e319bb7');\r\nwindow.myForm.setProductId('68245f2adb0a4bb03e319bb7');\r\n\r\n// Ändra specifika fält. Tidigare fält behålls,\r\n// men kan skrivas över med en tom sträng.\r\nwindow.myForm.setFields([\r\n  { fieldId: \"68245f89db0a4bb03e319bb8\", value: \"32.8\" },\r\n  { fieldId: \"68245faadb0a4bb03e319bb9\", value: \"Karlskrona\" },\r\n]);",
+                "language": "typescript",
+                "blockName": "",
+                "blockType": "Code"
+              }
             },
             {
               "children": [
@@ -9391,7 +9767,8 @@
       },
       "icon": "file-text",
       "order": 0,
-      "__v": 0
+      "__v": 0,
+      "tableOfContents": true
     },
     {
       "_id": {
@@ -13573,7 +13950,7 @@
         "$date": "2026-11-10T10:52:03.922Z"
       },
       "updatedAt": {
-        "$date": "2026-11-10T10:52:03.922Z"
+        "$date": "2026-11-16T08:04:59.255Z"
       },
       "title": "Orderarbeten",
       "slug": "order-work",
@@ -13605,7 +13982,7 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 1,
+                  "format": 0,
                   "mode": "normal",
                   "style": "",
                   "text": "Ditt första orderarbete",
@@ -14256,7 +14633,7 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 1,
+                  "format": 0,
                   "mode": "normal",
                   "style": "",
                   "text": "Automatiska orderarbeten",
@@ -14658,7 +15035,7 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 1,
+                  "format": 0,
                   "mode": "normal",
                   "style": "",
                   "text": "Mer om filter",
@@ -15445,7 +15822,7 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 1,
+                  "format": 0,
                   "mode": "normal",
                   "style": "",
                   "text": "Skicka SMS",
@@ -15631,7 +16008,7 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 1,
+                  "format": 0,
                   "mode": "normal",
                   "style": "",
                   "text": "Skicka E-post",
@@ -15929,18 +16306,12 @@
                   "text": ".",
                   "type": "text",
                   "version": 1
+                },
+                {
+                  "type": "linebreak",
+                  "version": 1
                 }
               ],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
-              "children": [],
               "direction": null,
               "format": "",
               "indent": 0,
@@ -16285,16 +16656,6 @@
               }
             },
             {
-              "children": [],
-              "direction": null,
-              "format": "",
-              "indent": 0,
-              "type": "paragraph",
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": ""
-            },
-            {
               "children": [
                 {
                   "detail": 0,
@@ -16375,7 +16736,8 @@
       },
       "icon": "wrench",
       "order": 10,
-      "__v": 0
+      "__v": 0,
+      "tableOfContents": true
     },
     {
       "_id": {
@@ -16385,7 +16747,7 @@
         "$date": "2026-11-10T10:52:03.979Z"
       },
       "updatedAt": {
-        "$date": "2026-11-10T10:52:03.979Z"
+        "$date": "2026-11-16T07:48:35.228Z"
       },
       "title": "Samtalsarbeten",
       "slug": "call-actions",
@@ -16400,7 +16762,44 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Samtalsarbeten",
+                  "text": "Samtalsarbeten kör på samtal. Antingen under tiden du är i samtalet, eller efter samtalet läggs på. De är väldigt lika orderarbeten, och mycket av det som gäller orderarbeten gäller också samtalsarbeten. Vi rekommenderar därför att du först läser på om ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "orderarbeten",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Orderarbeten",
+                      "relationTo": "articles",
+                      "value": "6af2f753aa73d91cea121237"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6afab0690443590aa3eece55"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
                   "type": "text",
                   "version": 1
                 }
@@ -16412,6 +16811,246 @@
               "version": 1,
               "textFormat": 0,
               "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ditt första samtalsarbete",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Precis som för orderarbeten så är det enklaste sättet att lära sig samtalsarbeten att göra det själv.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Navigera till Inställningar > Samtal > Verktyg, tryck på Skapa > Skapa nytt > Skicka epost.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 1,
+              "tag": "ol"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6afab2550443590aa3eece58",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6afab254e31c5607e5c7ac66"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Ge samtalsarbetet ett namn, exempelvis \"Skicka e-postbekräftelse\", skriv ett avsändarnamn, ett ämne och ett meddelande. Välj slutligen en mottagare i ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Till epostadress",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ". Här kan du antingen skriva en e-postadress eller kan du välja en dynamiskt, exempelvis från ett kontaktfält. Tryck då pilen och välj ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Kontaktinformation",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ", sök sedan efter \"E-post\" och välj kontaktfältet. Tryck sedan på ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Spara",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ".",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 2,
+              "tag": "ol"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6afab4d90443590aa3eece5b",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6afab4d8e31c5607e5c7af22"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Nu är samtalsarbetet redo att testa. För att testa det: sätt det först till aktivt och välj ett samtal under samtalsfliken (",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Samtal",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "). Samtalet behöver vara till en kontakt som har kontaktfältet ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "E-post",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " satt.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 3,
+              "tag": "ol"
             }
           ],
           "direction": null,
@@ -16423,7 +17062,8 @@
       },
       "icon": "phone-call",
       "order": 20,
-      "__v": 0
+      "__v": 0,
+      "tableOfContents": true
     },
     {
       "_id": {
