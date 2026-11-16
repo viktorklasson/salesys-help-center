@@ -20009,144 +20009,202 @@
         "$date": "2026-11-04T10:26:27.379Z"
       },
       "updatedAt": {
-        "$date": "2026-11-04T11:47:40.572Z"
+        "$date": "2026-11-16T09:53:42.951Z"
       },
       "question": "Vad är orderarbeten?",
       "answer": {
         "root": {
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "type": "root",
           "children": [
             {
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "type": "paragraph",
-              "textFormat": 0,
               "children": [
                 {
-                  "type": "text",
-                  "text": "Orderarbeten är åtgärder som körs i samband med en order, automatiskt eller manuellt. De kan till exempel:",
                   "detail": 0,
                   "format": 0,
                   "mode": "normal",
                   "style": "",
+                  "text": "Orderarbeten är åtgärder som körs i samband med en order, automatiskt eller manuellt. De kan till exempel:",
+                  "type": "text",
                   "version": 1
                 }
-              ]
-            },
-            {
+              ],
               "direction": "ltr",
               "format": "",
               "indent": 0,
+              "type": "paragraph",
               "version": 1,
-              "type": "list",
-              "listType": "bullet",
-              "start": 1,
-              "tag": "ul",
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
               "children": [
                 {
-                  "direction": "ltr",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "type": "listitem",
-                  "value": 1,
                   "children": [
                     {
-                      "type": "text",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
                       "text": "skicka SMS eller mejl",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
                       "detail": 0,
                       "format": 0,
                       "mode": "normal",
                       "style": "",
-                      "version": 1
-                    }
-                  ]
-                },
-                {
-                  "direction": "ltr",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "type": "listitem",
-                  "value": 2,
-                  "children": [
-                    {
-                      "type": "text",
                       "text": "skapa en kalenderinbjudan",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
                       "detail": 0,
                       "format": 0,
                       "mode": "normal",
                       "style": "",
-                      "version": 1
-                    }
-                  ]
-                },
-                {
-                  "direction": "ltr",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "type": "listitem",
-                  "value": 3,
-                  "children": [
-                    {
-                      "type": "text",
                       "text": "göra en kreditupplysning",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
                       "detail": 0,
                       "format": 0,
                       "mode": "normal",
                       "style": "",
-                      "version": 1
-                    }
-                  ]
-                },
-                {
-                  "direction": "ltr",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "type": "listitem",
-                  "value": 4,
-                  "children": [
-                    {
-                      "type": "text",
                       "text": "lägga kontakten i en spärrlista",
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
+                      "type": "text",
                       "version": 1
                     }
-                  ]
-                },
-                {
+                  ],
                   "direction": "ltr",
                   "format": "",
                   "indent": 0,
-                  "version": 1,
                   "type": "listitem",
-                  "value": 5,
+                  "version": 1,
+                  "value": 4
+                },
+                {
                   "children": [
                     {
-                      "type": "text",
-                      "text": "skicka en notifikation.",
                       "detail": 0,
                       "format": 0,
                       "mode": "normal",
                       "style": "",
+                      "text": "skicka en notifikation.",
+                      "type": "text",
                       "version": 1
                     }
-                  ]
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 5
                 }
-              ]
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Du kan läsa mer om orderarbeten ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "i guiden om dem",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Orderarbeten",
+                      "relationTo": "articles",
+                      "value": "6af2f753aa73d91cea121237"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6afad29bee0056b8a51844d6"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
             }
-          ]
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
         }
       },
       "link": {},
@@ -20651,144 +20709,183 @@
         "$date": "2026-11-04T10:26:27.402Z"
       },
       "updatedAt": {
-        "$date": "2026-11-04T11:47:40.580Z"
+        "$date": "2026-11-16T09:54:19.871Z"
       },
       "question": "Vad är samtalsarbeten?",
       "answer": {
         "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Samtalsarbeten är automatiska åtgärder som körs i samband med ett samtal. De kan till exempel:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "skicka SMS eller mejl",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "transkribera samtalet",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "lägga kontakten i en spärrlista",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "avsluta prediktivt läge.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Flera samtalsarbeten kan kedjas ihop i en serie. Du kan läsa mer om samtalsarbeten i ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "guiden om dem",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Samtalsarbeten",
+                      "relationTo": "articles",
+                      "value": "6af2f753aa73d91cea121244"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6afad2beee0056b8a51844d7"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
           "direction": "ltr",
           "format": "",
           "indent": 0,
-          "version": 1,
           "type": "root",
-          "children": [
-            {
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "type": "paragraph",
-              "textFormat": 0,
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Samtalsarbeten är automatiska åtgärder som körs i samband med ett samtal. De kan till exempel:",
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            },
-            {
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "type": "list",
-              "listType": "bullet",
-              "start": 1,
-              "tag": "ul",
-              "children": [
-                {
-                  "direction": "ltr",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "type": "listitem",
-                  "value": 1,
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "skicka SMS eller mejl",
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "version": 1
-                    }
-                  ]
-                },
-                {
-                  "direction": "ltr",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "type": "listitem",
-                  "value": 2,
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "transkribera samtalet",
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "version": 1
-                    }
-                  ]
-                },
-                {
-                  "direction": "ltr",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "type": "listitem",
-                  "value": 3,
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "lägga kontakten i en spärrlista",
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "version": 1
-                    }
-                  ]
-                },
-                {
-                  "direction": "ltr",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "type": "listitem",
-                  "value": 4,
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "avsluta prediktivt läge.",
-                      "detail": 0,
-                      "format": 0,
-                      "mode": "normal",
-                      "style": "",
-                      "version": 1
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "type": "paragraph",
-              "textFormat": 0,
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Flera samtalsarbeten kan kedjas ihop i en serie.",
-                  "detail": 0,
-                  "format": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            }
-          ]
+          "version": 1
         }
       },
       "link": {},
@@ -23343,6 +23440,55 @@
         "$oid": "6aeb08534eb8182638acd013"
       },
       "order": 2,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad248e31c5607e5c7b451"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T09:52:08.904Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T09:52:08.904Z"
+      },
+      "question": "Varför är det fördröjning i samtalen?",
+      "answer": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om det tar några sekunder innan den andra parten hör det som sagts beror det troligtvis på nätverket. Kontrollera uppkopplingen med Bredbandskollen och eftersträva minst 250 Mbit/s i både upp- och nedladdning för en stabil dialeruppkoppling.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 0,
       "__v": 0
     }
   ],
