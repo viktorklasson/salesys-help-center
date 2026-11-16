@@ -5,7 +5,12 @@ const ALLOWED_EMAIL_DOMAIN = '@salesys.se';
 
 export const Users: CollectionConfig = {
   slug: 'users',
+  labels: {
+    singular: 'Användare',
+    plural: 'Användare',
+  },
   admin: {
+    group: 'Webbplats',
     useAsTitle: 'email',
   },
   auth: {

@@ -11,7 +11,7 @@ export const Articles: CollectionConfig = {
     plural: 'Guider',
   },
   admin: {
-    group: 'API-referens',
+    group: 'Guider',
     useAsTitle: 'title',
     defaultColumns: ['title', 'description', 'order'],
   },

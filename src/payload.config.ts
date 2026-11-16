@@ -33,8 +33,10 @@ export default buildConfig({
       robots: "noindex, nofollow"
     }
   },
-  collections: [Users, Media, Services, Endpoints, Articles, Questions, QuestionCategories],
-  globals: [HomePage, ServicesPage, ApiReferencePage, CommonQuestionsPage, SiteSettings],
+  // Grouped in the admin panel by the page they belong to (admin.group). Groups appear in the order
+  // they're first used here, collections before globals, so this follows the site's menu.
+  collections: [Endpoints, Services, Articles, Questions, QuestionCategories, Media, Users],
+  globals: [HomePage, ApiReferencePage, ServicesPage, CommonQuestionsPage, SiteSettings],
   // Default editor (e.g. FAQ answers), with the same link options as every other text field
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [

@@ -4,9 +4,9 @@ import { formattedText } from '../fields/formattedText';
 
 export const HomePage: GlobalConfig = {
   slug: 'home-page',
-  label: 'Startsida',
+  label: 'Sidinställningar',
   admin: {
-    group: 'Sidor',
+    group: 'Startsida',
   },
   access: {
     read: () => true,

@@ -4,9 +4,9 @@ import { formattedText } from '../fields/formattedText';
 
 export const ApiReferencePage: GlobalConfig = {
   slug: 'api-reference-page',
-  label: 'API-referens',
+  label: 'Sidinställningar',
   admin: {
-    group: 'Sidor',
+    group: 'API-referens',
   },
   access: {
     read: () => true,

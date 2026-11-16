@@ -67,13 +67,13 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    users: User;
-    media: Media;
-    services: Service;
     endpoints: Endpoint;
+    services: Service;
     articles: Article;
     questions: Question;
     'question-categories': QuestionCategory;
+    media: Media;
+    users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -81,13 +81,13 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
-    services: ServicesSelect<false> | ServicesSelect<true>;
     endpoints: EndpointsSelect<false> | EndpointsSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
     questions: QuestionsSelect<false> | QuestionsSelect<true>;
     'question-categories': QuestionCategoriesSelect<false> | QuestionCategoriesSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -99,15 +99,15 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'home-page': HomePage;
-    'services-page': ServicesPage;
     'api-reference-page': ApiReferencePage;
+    'services-page': ServicesPage;
     'common-questions-page': CommonQuestionsPage;
     'site-settings': SiteSetting;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
-    'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'api-reference-page': ApiReferencePageSelect<false> | ApiReferencePageSelect<true>;
+    'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'common-questions-page': CommonQuestionsPageSelect<false> | CommonQuestionsPageSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
@@ -141,52 +141,66 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "endpoints".
  */
-export interface User {
+export interface Endpoint {
   id: string;
-  updatedAt: string;
-  createdAt: string;
-  enableAPIKey?: boolean | null;
-  apiKey?: string | null;
-  apiKeyIndex?: string | null;
-  hasAPIKey?: boolean | null;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  resetPasswordRequestedAt?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  /**
+   * Skriv parametrar inom <>, t.ex. <userId>.
+   */
+  path: string;
+  summary: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Kommentarer med // visas på sidan, men tas bort i cURL-exemplet så att det skickar giltig JSON.
+   */
+  requestBody?: string | null;
+  /**
+   * Valfritt. Lämna tomt för att skapa kommandot automatiskt från metod, sökväg och body. Fyll i för att visa ditt eget kommando i stället.
+   */
+  curlExample?: string | null;
+  parameters?:
     | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
+        name: string;
+        in: 'path' | 'query' | 'header' | 'body';
+        type?: string | null;
+        required?: boolean | null;
+        description?: string | null;
+        id?: string | null;
       }[]
     | null;
-  password?: string | null;
-  collection: 'users';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: string;
-  alt: string;
+  responseExample?: string | null;
+  service: string | Service;
+  /**
+   * Endpoints med samma avsnitt visas tillsammans, t.ex. ”Teams”.
+   */
+  group?: string | null;
+  /**
+   * Visas nedtonad med en varning.
+   */
+  deprecated?: boolean | null;
+  order?: number | null;
+  /**
+   * Fylls i automatiskt när endpointen sparas.
+   */
+  url?: string | null;
   updatedAt: string;
   createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -257,69 +271,6 @@ export interface Service {
    * Lägre nummer visas först.
    */
   order?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "endpoints".
- */
-export interface Endpoint {
-  id: string;
-  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
-  /**
-   * Skriv parametrar inom <>, t.ex. <userId>.
-   */
-  path: string;
-  summary: string;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  /**
-   * Kommentarer med // visas på sidan, men tas bort i cURL-exemplet så att det skickar giltig JSON.
-   */
-  requestBody?: string | null;
-  /**
-   * Valfritt. Lämna tomt för att skapa kommandot automatiskt från metod, sökväg och body. Fyll i för att visa ditt eget kommando i stället.
-   */
-  curlExample?: string | null;
-  parameters?:
-    | {
-        name: string;
-        in: 'path' | 'query' | 'header' | 'body';
-        type?: string | null;
-        required?: boolean | null;
-        description?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  responseExample?: string | null;
-  service: string | Service;
-  /**
-   * Endpoints med samma avsnitt visas tillsammans, t.ex. ”Teams”.
-   */
-  group?: string | null;
-  /**
-   * Visas nedtonad med en varning.
-   */
-  deprecated?: boolean | null;
-  order?: number | null;
-  /**
-   * Fylls i automatiskt när endpointen sparas.
-   */
-  url?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -437,6 +388,55 @@ export interface QuestionCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: string;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: string;
+  updatedAt: string;
+  createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
+  hasAPIKey?: boolean | null;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  resetPasswordRequestedAt?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+  collection: 'users';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -460,20 +460,12 @@ export interface PayloadLockedDocument {
   id: string;
   document?:
     | ({
-        relationTo: 'users';
-        value: string | User;
-      } | null)
-    | ({
-        relationTo: 'media';
-        value: string | Media;
+        relationTo: 'endpoints';
+        value: string | Endpoint;
       } | null)
     | ({
         relationTo: 'services';
         value: string | Service;
-      } | null)
-    | ({
-        relationTo: 'endpoints';
-        value: string | Endpoint;
       } | null)
     | ({
         relationTo: 'articles';
@@ -486,6 +478,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'question-categories';
         value: string | QuestionCategory;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: string | User;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -531,66 +531,6 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
- */
-export interface UsersSelect<T extends boolean = true> {
-  updatedAt?: T;
-  createdAt?: T;
-  enableAPIKey?: T;
-  apiKey?: T;
-  apiKeyIndex?: T;
-  hasAPIKey?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  resetPasswordRequestedAt?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
-  sessions?:
-    | T
-    | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
-      };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
- */
-export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services_select".
- */
-export interface ServicesSelect<T extends boolean = true> {
-  name?: T;
-  slug?: T;
-  tagline?: T;
-  intro?: T;
-  content?: T;
-  icon?: T;
-  order?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "endpoints_select".
  */
 export interface EndpointsSelect<T extends boolean = true> {
@@ -616,6 +556,21 @@ export interface EndpointsSelect<T extends boolean = true> {
   deprecated?: T;
   order?: T;
   url?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  tagline?: T;
+  intro?: T;
+  content?: T;
+  icon?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -661,6 +616,51 @@ export interface QuestionCategoriesSelect<T extends boolean = true> {
   order?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
+  hasAPIKey?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  resetPasswordRequestedAt?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -723,48 +723,6 @@ export interface HomePage {
     };
     [k: string]: unknown;
   };
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services-page".
- */
-export interface ServicesPage {
-  id: string;
-  lead: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Visas på varje funktionssida, följd av funktionens API-adress.
-   */
-  developerNote?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -839,6 +797,48 @@ export interface ApiReferencePage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services-page".
+ */
+export interface ServicesPage {
+  id: string;
+  lead: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Visas på varje funktionssida, följd av funktionens API-adress.
+   */
+  developerNote?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "common-questions-page".
  */
 export interface CommonQuestionsPage {
@@ -889,17 +889,6 @@ export interface HomePageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services-page_select".
- */
-export interface ServicesPageSelect<T extends boolean = true> {
-  lead?: T;
-  developerNote?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "api-reference-page_select".
  */
 export interface ApiReferencePageSelect<T extends boolean = true> {
@@ -918,6 +907,17 @@ export interface ApiReferencePageSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services-page_select".
+ */
+export interface ServicesPageSelect<T extends boolean = true> {
+  lead?: T;
+  developerNote?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

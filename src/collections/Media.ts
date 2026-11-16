@@ -2,6 +2,13 @@ import type { CollectionConfig } from 'payload';
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  labels: {
+    singular: 'Fil',
+    plural: 'Media',
+  },
+  admin: {
+    group: 'Webbplats',
+  },
   access: {
     read: () => true,
   },

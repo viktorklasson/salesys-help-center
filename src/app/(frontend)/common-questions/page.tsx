@@ -6,8 +6,20 @@ import React from 'react';
 import config from '@/payload.config';
 import { FormattedText } from '../components/FormattedText/FormattedText';
 import { SectionHeading } from '../components/SectionHeading/SectionHeading';
+import { normalize } from '@/lib/search';
 import { slugify } from '@/lib/slugify';
+import { FaqSearch } from './FaqSearch';
 import './page.css';
+
+type TextNode = { text?: string; children?: TextNode[] };
+
+/** All text in a rich text answer, with a space between paragraphs and list items */
+const plainText = (node: TextNode | undefined): string =>
+  node?.text ?? (node?.children ?? []).map(plainText).join(' ');
+
+/** What the search box matches against: the question and its answer, lowercase */
+const searchText = (question: string, answer: unknown) =>
+  normalize(`${question} ${plainText((answer as { root?: TextNode } | null)?.root)}`);
 
 // Always render with the latest content from the CMS
 export const dynamic = 'force-dynamic';
@@ -48,33 +60,35 @@ export default async function CommonQuestionsPage() {
           <FormattedText className="lead" data={page.lead} />
         </header>
 
-        {groups.map((group) => (
-          <section key={group.id}>
-            <SectionHeading id={slugify(group.title)}>{group.title}</SectionHeading>
-            <div className="faq">
-              {group.questions.map(({ answer, id, link, question }) => (
-                <details id={`q-${id}`} key={id}>
-                  <summary>
-                    <span>
-                      {question}
-                      {/* Clicking a link inside <summary> follows it instead of toggling the question */}
-                      <a aria-label="Länk till frågan" className="anchor-link" href={`#q-${id}`}>
-                        #
-                      </a>
-                    </span>
-                    <Plus size={20} />
-                  </summary>
-                  <FormattedText className="faq-answer" data={answer} />
-                  {link?.href && (
-                    <Link className="card-more" href={link.href}>
-                      {link.label || 'Läs mer'} <ArrowRight size={14} />
-                    </Link>
-                  )}
-                </details>
-              ))}
-            </div>
-          </section>
-        ))}
+        <FaqSearch>
+          {groups.map((group) => (
+            <section key={group.id}>
+              <SectionHeading id={slugify(group.title)}>{group.title}</SectionHeading>
+              <div className="faq">
+                {group.questions.map(({ answer, id, link, question }) => (
+                  <details data-search={searchText(question, answer)} id={`q-${id}`} key={id}>
+                    <summary>
+                      <span>
+                        {question}
+                        {/* Clicking a link inside <summary> follows it instead of toggling the question */}
+                        <a aria-label="Länk till frågan" className="anchor-link" href={`#q-${id}`}>
+                          #
+                        </a>
+                      </span>
+                      <Plus size={20} />
+                    </summary>
+                    <FormattedText className="faq-answer" data={answer} />
+                    {link?.href && (
+                      <Link className="card-more" href={link.href}>
+                        {link.label || 'Läs mer'} <ArrowRight size={14} />
+                      </Link>
+                    )}
+                  </details>
+                ))}
+              </div>
+            </section>
+          ))}
+        </FaqSearch>
       </div>
     </div>
   );

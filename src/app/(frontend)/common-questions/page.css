@@ -3,14 +3,95 @@
   font-size: 28px;
 }
 
+/* Search box above the questions (FaqSearch) */
+.faq-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+    padding: 16px 48px;
+    font: inherit;
+    color: var(--heading);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
+    &::placeholder {
+      color: var(--muted);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px var(--blue-tint);
+    }
+
+    /* Our own clear button instead of the browser's */
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+}
+
+.faq-search-icon {
+  position: absolute;
+  left: 18px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.faq-search-clear {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  padding: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+
+  &:hover {
+    color: var(--heading);
+    background: var(--divider);
+  }
+}
+
+.faq-search-result {
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
 .faq {
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 18px;
   box-shadow: var(--shadow);
+  interpolate-size: allow-keywords;
 
-  details + details {
+  /* A line between questions; also correct when the search hides some */
+  details:not([hidden]) ~ details {
     border-top: 1px solid var(--divider);
+  }
+
+  /* Smooth open/close where supported (Chrome/Edge), instant elsewhere. Same as the API pages. */
+  details::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.3s var(--ease),
+      content-visibility 0.3s allow-discrete;
+  }
+
+  details[open]::details-content {
+    height: auto;
   }
 
   summary {

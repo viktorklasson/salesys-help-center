@@ -4,9 +4,9 @@ import { formattedText } from '../fields/formattedText';
 
 export const ServicesPage: GlobalConfig = {
   slug: 'services-page',
-  label: 'Funktionssidor',
+  label: 'Sidinställningar',
   admin: {
-    group: 'Sidor',
+    group: 'Funktioner',
   },
   access: {
     read: () => true,

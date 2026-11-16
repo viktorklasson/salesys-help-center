@@ -23490,6 +23490,947 @@
       },
       "order": 0,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad583ba1d1d59ed5cdc3f"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T10:05:55.237Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T10:05:55.237Z"
+      },
+      "question": "Varför uppstår störningar i samtal, och hur hör jag när kunden svarar?",
+      "answer": {
+        "root": {
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "type": "root",
+          "children": [
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Störningar beror oftast på något av det här:",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "list",
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul",
+              "children": [
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "uppkopplingen hos den du ringer",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "säljarens wifi",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "telenätet.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Du kan också slå på ett kort ljud som hörs när kunden svarar, under Inställningar > Samtal.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 113,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad583ba1d1d59ed5cdc42"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T10:05:55.267Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T10:05:55.267Z"
+      },
+      "question": "Hur många SMS-delar blir ett utskick?",
+      "answer": {
+        "root": {
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "type": "root",
+          "children": [
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Det beror på hur lång texten är och vilka tecken den innehåller, enligt SMS-standarden. Vissa tecken och emojis räknas som mer än ett tecken och kan dela upp texten i fler SMS-delar.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Varje SMS-del kostar 1 kr.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "order": 112,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad583ba1d1d59ed5cdc45"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T10:05:55.274Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T10:05:55.274Z"
+      },
+      "question": "Hur aktiverar jag AI-transkribering och spelar upp inspelningar snabbare?",
+      "answer": {
+        "root": {
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "type": "root",
+          "children": [
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Så aktiverar du AI-transkribering:",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "list",
+              "listType": "number",
+              "start": 1,
+              "tag": "ol",
+              "children": [
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Gå till Inställningar > Samtal > Verktyg.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Välj Skapa > Skapa nytt.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Välj Transkribera.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "SaleSys mediaspelare kan spela upp inspelningar i upp till 5x hastighet.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd015"
+      },
+      "order": 110,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad583ba1d1d59ed5cdc48"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T10:05:55.281Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T10:05:55.281Z"
+      },
+      "question": "Hur undviker jag att ringa samma personer igen efter en ny import?",
+      "answer": {
+        "root": {
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "type": "root",
+          "children": [
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Om du behöver importera en ringlista igen efter att samtal har påbörjats, ta först bort kontakter som redan har fått en order eller blivit uppringda. Importera sedan filen på nytt.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd017"
+      },
+      "order": 109,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad583ba1d1d59ed5cdc4b"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T10:05:55.288Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T10:05:55.288Z"
+      },
+      "question": "Hur exporterar jag order, samtalsdata och ringlistor?",
+      "answer": {
+        "root": {
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "type": "root",
+          "children": [
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "list",
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul",
+              "children": [
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Order: under Ordrar. Exporten innehåller bara kontakter som har en order.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Samtalsdata: från samtalshistoriken.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Ringlistor: från vyn Ringlistexport.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "I samtals- och ringlistexporten väljer du själv vilka kontakter som ska ingå.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01f"
+      },
+      "order": 107,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad583ba1d1d59ed5cdc4e"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T10:05:55.295Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T10:05:55.295Z"
+      },
+      "question": "Varför visas en varningstriangel vid en betald vy?",
+      "answer": {
+        "root": {
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "type": "root",
+          "children": [
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Varningstriangeln kan betyda att:",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "list",
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul",
+              "children": [
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "betalningsvillkoren har ändrats",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "abonnemanget har spärrats av kundservice",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "provperioden snart är slut.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Om betalningsvillkoren har ändrats behöver du godkänna eller avböja dem. Gör du inget val inaktiveras abonnemanget och vyn efter 7 dagar.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd01f"
+      },
+      "order": 106,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad583ba1d1d59ed5cdc51"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T10:05:55.301Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T10:05:55.301Z"
+      },
+      "question": "Vad kostar SaleSys?",
+      "answer": {
+        "root": {
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "type": "root",
+          "children": [
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "list",
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul",
+              "children": [
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Licens: 850 kr per användare och månad.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Samtal: antingen 0,29 kr per minut eller 350 kr per användare och månad med 2 500 minuter inkluderade.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Alla priser är exklusive moms.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd025"
+      },
+      "order": 104,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad583ba1d1d59ed5cdc54"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T10:05:55.308Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T10:05:55.308Z"
+      },
+      "question": "Vilka telefonnummer kan jag importera i en ringlista?",
+      "answer": {
+        "root": {
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "type": "root",
+          "children": [
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Du kan importera:",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "list",
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul",
+              "children": [
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "svenska mobilnummer",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "svenska geografiska nummer",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                },
+                {
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "type": "listitem",
+                  "value": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "010-nummer.",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "version": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Numren kan skrivas med eller utan internationell landskod.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd017"
+      },
+      "order": 101,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6afad583ba1d1d59ed5cdc57"
+      },
+      "createdAt": {
+        "$date": "2026-11-16T10:05:55.316Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-16T10:05:55.316Z"
+      },
+      "question": "Hur fungerar projekt, team och åtkomst i SaleSys?",
+      "answer": {
+        "root": {
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "type": "root",
+          "children": [
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ett konto kan ha flera projekt, med egna mallar, produkter och statistik. Du får åtkomst till ett projekt genom ett team.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "type": "paragraph",
+              "textFormat": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ingår du i team som är kopplade till flera projekt kan du byta projekt uppe till vänster.",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "link": {},
+      "category": {
+        "$oid": "6aeb08534eb8182638acd021"
+      },
+      "order": 100,
+      "__v": 0
     }
   ],
   "question-categories": [
