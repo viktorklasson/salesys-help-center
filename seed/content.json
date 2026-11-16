@@ -13950,7 +13950,7 @@
         "$date": "2026-11-10T10:52:03.922Z"
       },
       "updatedAt": {
-        "$date": "2026-11-16T08:04:59.255Z"
+        "$date": "2026-11-16T08:10:31.777Z"
       },
       "title": "Orderarbeten",
       "slug": "order-work",
@@ -15687,7 +15687,7 @@
               "children": [
                 {
                   "detail": 0,
-                  "format": 1,
+                  "format": 0,
                   "mode": "normal",
                   "style": "",
                   "text": "Typer av orderarbeten",
@@ -16747,7 +16747,7 @@
         "$date": "2026-11-10T10:52:03.979Z"
       },
       "updatedAt": {
-        "$date": "2026-11-16T07:48:35.228Z"
+        "$date": "2026-11-16T08:09:24.463Z"
       },
       "title": "Samtalsarbeten",
       "slug": "call-actions",
@@ -17051,6 +17051,158 @@
               "listType": "number",
               "start": 3,
               "tag": "ol"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Automatiska samtalsarbeten",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Se samma avsnitt i ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "guiden om orderarbeten",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "relationTo": "articles",
+                      "value": "6af2f753aa73d91cea121237"
+                    },
+                    "newTab": true,
+                    "anchor": "automatiska-orderarbeten",
+                    "linkType": "internal"
+                  },
+                  "id": "6afab9c50443590aa3eece5f"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " det fungerar samma här.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Typer av samtalsarbeten",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Se samma avsnitt i ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "guiden om orderarbeten",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "relationTo": "articles",
+                      "value": "6af2f753aa73d91cea121237"
+                    },
+                    "newTab": true,
+                    "anchor": "typer-av-orderarbeten",
+                    "linkType": "internal"
+                  },
+                  "id": "6afaba110443590aa3eece60"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " det fungerar samma här.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
             }
           ],
           "direction": null,
