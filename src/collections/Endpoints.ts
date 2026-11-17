@@ -14,7 +14,7 @@ export const Endpoints: CollectionConfig = {
   admin: {
     group: 'API-referens',
     useAsTitle: 'summary',
-    defaultColumns: ['method', 'path', 'summary', 'service'],
+    defaultColumns: ['method', 'path', 'summary', 'category'],
     listSearchableFields: ['path', 'summary'],
   },
   defaultSort: 'order',
@@ -23,24 +23,24 @@ export const Endpoints: CollectionConfig = {
   },
   hooks: {
     // Store the endpoint's address on its API page, so links to it from text work
-    // even when the endpoint is loaded without its function (e.g. as a link target)
+    // even when the endpoint is loaded without its category (e.g. as a link target)
     beforeChange: [
       async ({ data, originalDoc, req }) => {
         const method = data.method ?? originalDoc?.method;
         const path = data.path ?? originalDoc?.path;
-        const serviceRef = data.service ?? originalDoc?.service;
-        const serviceId = typeof serviceRef === 'object' ? serviceRef?.id : serviceRef;
+        const categoryRef = data.category ?? originalDoc?.category;
+        const categoryId = typeof categoryRef === 'object' ? categoryRef?.id : categoryRef;
 
-        if (method && path && serviceId) {
-          // disableErrors: an endpoint whose function was removed can still be saved
-          const service = await req.payload.findByID({
-            collection: 'services',
-            id: serviceId,
+        if (method && path && categoryId) {
+          // disableErrors: an endpoint whose category was removed can still be saved
+          const category = await req.payload.findByID({
+            collection: 'api-categories',
+            id: categoryId,
             depth: 0,
             disableErrors: true,
             req,
           });
-          data.url = service ? `/api-reference/${service.slug}#${endpointAnchor(method, path)}` : null;
+          data.url = category ? `/api-reference/${category.slug}#${endpointAnchor(method, path)}` : null;
         }
         return data;
       },
@@ -141,10 +141,10 @@ export const Endpoints: CollectionConfig = {
       admin: { language: 'json' },
     },
     {
-      name: 'service',
-      label: 'Funktion',
+      name: 'category',
+      label: 'Kategori',
       type: 'relationship',
-      relationTo: 'services',
+      relationTo: 'api-categories',
       required: true,
       index: true,
       admin: { position: 'sidebar' },

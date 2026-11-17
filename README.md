@@ -11,17 +11,25 @@ The SaleSys help center (docs.salesys.io), built with Next.js and Payload CMS on
 1. `cp .env.example .env` and set `PAYLOAD_SECRET`.
 2. Start MongoDB, either installed locally or with `docker compose up -d mongo`.
 3. `npm install && npm run dev`, then open http://localhost:3000.
-4. Load the content backup into an empty database: `npm run content:seed`.
+4. Load the content backup: `npm run content:seed`.
 
 After changing collections, globals or fields, run `npm run generate:types`.
 
 ### Content backup
 
-`seed/content.json` and `seed/media` hold all CMS content.
+`seed/content.json` and `seed/media` hold all CMS content: every collection and page setting, and the
+uploaded files. Admin users are never part of it.
 
-- `npm run content:export` writes the current database to the backup.
-- `npm run content:seed` loads the backup into an empty database.
-- `npm run content:seed:force` replaces all content with the backup.
+| | Locally | On the server |
+|---|---|---|
+| Export: write everything to `seed/` | `npm run content:export` | `docker compose run --rm --build export` |
+| Seed: replace everything with `seed/` | `npm run content:seed` | `docker compose run --rm --build seed` |
+
+Seeding replaces all content, including edits made since the last export, so export first if in doubt.
+
+When the schema changes in a way that affects stored content, the update is written in
+`src/lib/contentMigrations.ts`. It runs by itself when the app starts and after every seed (so older
+backups are upgraded too); there is no separate command.
 
 ## Production
 
@@ -54,7 +62,7 @@ On the server: `docker load -i ~/app.tar && rm ~/app.tar`
    ```
 
 3. Build and copy the image (above), then start everything: `docker compose up -d --no-build`
-4. Load the content: `docker compose run --rm seed`
+4. Load the content: `docker compose run --rm --build seed`
 5. Add an nginx site for `docs.salesys.io` that proxies to `http://127.0.0.1:3000`
    (with `client_max_body_size 50m` for uploads), then `sudo certbot --nginx -d docs.salesys.io`.
 6. Open https://docs.salesys.io/admin and create the first admin user.
@@ -74,11 +82,8 @@ git pull
 docker compose up -d --no-build
 ```
 
-To replace the live content with `seed/content.json` (this overwrites edits made in the live admin panel):
-
-```sh
-docker compose run --rm --build -e SEED_FORCE=true seed
-```
+Content migrations run by themselves when the app starts. To export or replace the live content, see
+[Content backup](#content-backup).
 
 ### Data
 

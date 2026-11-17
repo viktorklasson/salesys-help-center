@@ -40,9 +40,8 @@ services:
       retries: 5
     logging: *logging
 
-  # One-off: load seed/content.json + seed/media into the database.
-  #   docker compose run --rm seed                      (only into an empty database)
-  #   docker compose run --rm -e SEED_FORCE=true seed   (replace all content)
+  # One-off: replace all content (and uploads) with the backup in seed/ in this folder.
+  #   docker compose run --rm --build seed
   seed:
     profiles: [tools]
     build:
@@ -54,9 +53,11 @@ services:
         condition: service_healthy
     volumes:
       - media:/app/media
+      # The current backup, not the one copied into the image when it was built
+      - ./seed:/app/seed:ro
 
-  # One-off: write the database and uploads to seed/ in this folder.
-  #   docker compose run --rm export
+  # One-off: write all content (and uploads) to seed/ in this folder.
+  #   docker compose run --rm --build export
   export:
     profiles: [tools]
     build:

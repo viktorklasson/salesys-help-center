@@ -21,7 +21,7 @@ import './FormattedText.css';
 
 /**
  * The address of something picked with the CMS link button: a function, FAQ question,
- * FAQ category, endpoint or guide. The optional "Avsnitt på sidan" field adds #<section>.
+ * FAQ category, endpoint, API category or guide. The optional "Avsnitt på sidan" field adds #<section>.
  */
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { relationTo, value } = linkNode.fields.doc ?? {};
@@ -43,6 +43,8 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
     case 'endpoints':
       // Stored on the endpoint when it's saved, e.g. /api-reference/dial#get-api-dial-calls-v1
       return withAnchor(String(value.url ?? '/api-reference'));
+    case 'api-categories':
+      return withAnchor(`/api-reference/${value.slug}`);
     case 'articles':
       return withAnchor(`/guides/${value.slug}`);
     default:

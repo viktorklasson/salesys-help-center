@@ -68,6 +68,7 @@ export interface Config {
   blocks: {};
   collections: {
     endpoints: Endpoint;
+    'api-categories': ApiCategory;
     services: Service;
     articles: Article;
     questions: Question;
@@ -82,6 +83,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     endpoints: EndpointsSelect<false> | EndpointsSelect<true>;
+    'api-categories': ApiCategoriesSelect<false> | ApiCategoriesSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
     questions: QuestionsSelect<false> | QuestionsSelect<true>;
@@ -185,7 +187,7 @@ export interface Endpoint {
       }[]
     | null;
   responseExample?: string | null;
-  service: string | Service;
+  category: string | ApiCategory;
   /**
    * Endpoints med samma avsnitt visas tillsammans, t.ex. ”Teams”.
    */
@@ -199,6 +201,45 @@ export interface Endpoint {
    * Fylls i automatiskt när endpointen sparas.
    */
   url?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "api-categories".
+ */
+export interface ApiCategory {
+  id: string;
+  name: string;
+  /**
+   * Visas i adressen: /api-reference/<adress>, och som /api/<adress>.
+   */
+  slug: string;
+  /**
+   * En mening som visas i listan och under rubriken.
+   */
+  description: string;
+  icon?:
+    | (
+        | 'calendar-days'
+        | 'circle-help'
+        | 'contact'
+        | 'file-text'
+        | 'log-in'
+        | 'message-circle'
+        | 'package'
+        | 'pen-line'
+        | 'phone-call'
+        | 'shopping-cart'
+        | 'users'
+        | 'webhook'
+        | 'wrench'
+      )
+    | null;
+  /**
+   * Lägre nummer visas först.
+   */
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -464,6 +505,10 @@ export interface PayloadLockedDocument {
         value: string | Endpoint;
       } | null)
     | ({
+        relationTo: 'api-categories';
+        value: string | ApiCategory;
+      } | null)
+    | ({
         relationTo: 'services';
         value: string | Service;
       } | null)
@@ -551,11 +596,24 @@ export interface EndpointsSelect<T extends boolean = true> {
         id?: T;
       };
   responseExample?: T;
-  service?: T;
+  category?: T;
   group?: T;
   deprecated?: T;
   order?: T;
   url?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "api-categories_select".
+ */
+export interface ApiCategoriesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  description?: T;
+  icon?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }

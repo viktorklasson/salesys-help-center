@@ -12,7 +12,7 @@ import { CodeBlock } from '../../components/CodeBlock/CodeBlock';
 import { FormattedText } from '../../components/FormattedText/FormattedText';
 import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
 import {
-  getService,
+  getApiCategory,
   groupEndpoints,
   hasComments,
   splitComment,
@@ -147,24 +147,24 @@ const Method = ({ method }: { method: Endpoint['method'] }) => (
 );
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = await getService((await params).slug);
-  return { title: service ? `${service.name} – API | SaleSys Docs` : 'SaleSys Docs' };
+  const category = await getApiCategory((await params).slug);
+  return { title: category ? `${category.name} – API | SaleSys Docs` : 'SaleSys Docs' };
 }
 
 export default async function Page({ params }: Props) {
-  const service = await getService((await params).slug);
-  if (!service) notFound();
+  const category = await getApiCategory((await params).slug);
+  if (!category) notFound();
 
   const payload = await getPayload({ config });
   const { docs: endpoints } = await payload.find({
     collection: 'endpoints',
-    where: { service: { equals: service.id } },
+    where: { category: { equals: category.id } },
     sort: 'order',
     limit: 0,
     // 1 so images and files in descriptions come with their URL
     depth: 1,
   });
-  const Icon = getIcon(service.icon);
+  const Icon = getIcon(category.icon);
 
   return (
     <div className="page">
@@ -177,18 +177,18 @@ export default async function Page({ params }: Props) {
         <header className="page-header api-service-header">
           <div className="page-title-container">
             <Icon className="api-service-icon" size={48} strokeWidth={1.5} />
-            <h1>{service.name}</h1>
+            <h1>{category.name}</h1>
           </div>
-          <p className="lead">{service.tagline}</p>
+          <p className="lead">{category.description}</p>
           <p className="api-service-meta">
-            <code>/api/{service.slug}</code>
+            <code>/api/{category.slug}</code>
             <span>{endpoints.length} endpoints</span>
           </p>
         </header>
 
         {endpoints.length === 0 ? (
           <p className="api-empty">
-            Det finns ingen API-dokumentation för den här funktionen ännu.
+            Det finns ingen API-dokumentation i den här kategorin ännu.
           </p>
         ) : (
           groupEndpoints(endpoints).map(([group, items]) => (

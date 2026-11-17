@@ -10,6 +10,8 @@ import { Media } from './collections/Media';
 import { QuestionCategories } from './collections/QuestionCategories';
 import { Questions } from './collections/Questions';
 import { Endpoints } from './collections/Endpoints';
+import { ApiCategories } from './collections/ApiCategories';
+import { runContentMigrations } from './lib/contentMigrations';
 import { Services } from './collections/Services';
 import { Articles } from './collections/Articles';
 import { codeBlockFeature } from './fields/codeBlockFeature';
@@ -35,7 +37,16 @@ export default buildConfig({
   },
   // Grouped in the admin panel by the page they belong to (admin.group). Groups appear in the order
   // they're first used here, collections before globals, so this follows the site's menu.
-  collections: [Endpoints, Services, Articles, Questions, QuestionCategories, Media, Users],
+  collections: [
+    Endpoints,
+    ApiCategories,
+    Services,
+    Articles,
+    Questions,
+    QuestionCategories,
+    Media,
+    Users,
+  ],
   globals: [HomePage, ApiReferencePage, ServicesPage, CommonQuestionsPage, SiteSettings],
   // Default editor (e.g. FAQ answers), with the same link options as every other text field
   editor: lexicalEditor({
@@ -54,4 +65,6 @@ export default buildConfig({
   }),
   sharp,
   plugins: [],
+  // Bring existing content up to date with schema changes (lib/contentMigrations); no-op when done
+  onInit: runContentMigrations,
 });

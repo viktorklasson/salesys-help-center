@@ -52,7 +52,7 @@ export default async function CommonQuestionsPage() {
   return (
     <div className="page">
       <div className="glow" />
-      <div className="container container--narrow">
+      <div className="container">
         <header className="page-header">
           <h1>
             {page.title} {page.highlightedTitle && <b>{page.highlightedTitle}</b>}.

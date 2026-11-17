@@ -19,26 +19,6 @@ export const Services: CollectionConfig = {
   access: {
     read: () => true,
   },
-  hooks: {
-    // Endpoints store their address (/api-reference/<slug>#…); re-save them when the slug changes
-    afterChange: [
-      async ({ doc, previousDoc, operation, req }) => {
-        if (operation !== 'update' || doc.slug === previousDoc?.slug) return doc;
-
-        const { docs: endpoints } = await req.payload.find({
-          collection: 'endpoints',
-          where: { service: { equals: doc.id } },
-          limit: 0,
-          depth: 0,
-          req,
-        });
-        for (const endpoint of endpoints) {
-          await req.payload.update({ collection: 'endpoints', id: endpoint.id, data: {}, req });
-        }
-        return doc;
-      },
-    ],
-  },
   fields: [
     {
       type: 'row',

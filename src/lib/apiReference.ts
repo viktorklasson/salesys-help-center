@@ -65,12 +65,14 @@ export const toCurl = (endpoint: Endpoint) => {
   return lines.join(' \\\n');
 };
 
-export const getService = async (slug: string) => {
+/** An API reference category by its address, e.g. "dial" for /api-reference/dial */
+export const getApiCategory = async (slug: string) => {
   const payload = await getPayload({ config });
   const { docs } = await payload.find({
-    collection: 'services',
+    collection: 'api-categories',
     where: { slug: { equals: slug } },
     limit: 1,
+    depth: 0,
   });
   return docs[0];
 };

@@ -19,9 +19,9 @@ export const metadata = {
 
 export default async function ApiReferencePage() {
   const payload = await getPayload({ config });
-  const [page, services] = await Promise.all([
+  const [page, categories] = await Promise.all([
     payload.findGlobal({ slug: 'api-reference-page' }),
-    payload.find({ collection: 'services', sort: 'order', limit: 0 }),
+    payload.find({ collection: 'api-categories', sort: 'order', limit: 0, depth: 0 }),
   ]);
 
   return (
@@ -81,17 +81,17 @@ export default async function ApiReferencePage() {
           <div>
             <SectionHeading id="tjanster">Tjänster</SectionHeading>
             <ul className="endpoint-list">
-              {services.docs.map((service) => {
-                const Icon = getIcon(service.icon);
+              {categories.docs.map((category) => {
+                const Icon = getIcon(category.icon);
                 return (
-                  <li key={service.id}>
-                    <Link href={`/api-reference/${service.slug}`}>
+                  <li key={category.id}>
+                    <Link href={`/api-reference/${category.slug}`}>
                       <Icon className="endpoint-icon" size={20} strokeWidth={1.7} />
                       <span className="endpoint-name">
-                        <strong>{service.name}</strong>
-                        <span>{service.tagline}</span>
+                        <strong>{category.name}</strong>
+                        <span>{category.description}</span>
                       </span>
-                      <code className="endpoint-path">/{service.slug}</code>
+                      <code className="endpoint-path">/{category.slug}</code>
                       <ChevronRight className="endpoint-arrow" size={18} />
                     </Link>
                   </li>
