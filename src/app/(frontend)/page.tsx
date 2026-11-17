@@ -34,9 +34,6 @@ export default async function HomePage() {
           </div>
           <FormattedText className="lead" data={page.lead} />
           <div className="home-actions">
-            <Link className="text-link" href="/service">
-              Utforska alla funktioner <ArrowRight size={16} />
-            </Link>
             <Link className="text-link" href="/api-reference">
               Se API-referens <ArrowRight size={16} />
             </Link>

@@ -69,7 +69,6 @@ export interface Config {
   collections: {
     endpoints: Endpoint;
     'api-categories': ApiCategory;
-    services: Service;
     articles: Article;
     questions: Question;
     'question-categories': QuestionCategory;
@@ -84,7 +83,6 @@ export interface Config {
   collectionsSelect: {
     endpoints: EndpointsSelect<false> | EndpointsSelect<true>;
     'api-categories': ApiCategoriesSelect<false> | ApiCategoriesSelect<true>;
-    services: ServicesSelect<false> | ServicesSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
     questions: QuestionsSelect<false> | QuestionsSelect<true>;
     'question-categories': QuestionCategoriesSelect<false> | QuestionCategoriesSelect<true>;
@@ -102,14 +100,12 @@ export interface Config {
   globals: {
     'home-page': HomePage;
     'api-reference-page': ApiReferencePage;
-    'services-page': ServicesPage;
     'common-questions-page': CommonQuestionsPage;
     'site-settings': SiteSetting;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'api-reference-page': ApiReferencePageSelect<false> | ApiReferencePageSelect<true>;
-    'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'common-questions-page': CommonQuestionsPageSelect<false> | CommonQuestionsPageSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
@@ -219,78 +215,6 @@ export interface ApiCategory {
    * En mening som visas i listan och under rubriken.
    */
   description: string;
-  icon?:
-    | (
-        | 'calendar-days'
-        | 'circle-help'
-        | 'contact'
-        | 'file-text'
-        | 'log-in'
-        | 'message-circle'
-        | 'package'
-        | 'pen-line'
-        | 'phone-call'
-        | 'shopping-cart'
-        | 'users'
-        | 'webhook'
-        | 'wrench'
-      )
-    | null;
-  /**
-   * Lägre nummer visas först.
-   */
-  order?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services".
- */
-export interface Service {
-  id: string;
-  name: string;
-  /**
-   * Visas i adressen: /service/<adress>
-   */
-  slug: string;
-  /**
-   * En mening som visas på korten.
-   */
-  tagline: string;
-  intro: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Visas under introduktionen. Rubriker, listor, länkar, bilder och filer.
-   */
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   icon?:
     | (
         | 'calendar-days'
@@ -509,10 +433,6 @@ export interface PayloadLockedDocument {
         value: string | ApiCategory;
       } | null)
     | ({
-        relationTo: 'services';
-        value: string | Service;
-      } | null)
-    | ({
         relationTo: 'articles';
         value: string | Article;
       } | null)
@@ -612,21 +532,6 @@ export interface ApiCategoriesSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   description?: T;
-  icon?: T;
-  order?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services_select".
- */
-export interface ServicesSelect<T extends boolean = true> {
-  name?: T;
-  slug?: T;
-  tagline?: T;
-  intro?: T;
-  content?: T;
   icon?: T;
   order?: T;
   updatedAt?: T;
@@ -855,48 +760,6 @@ export interface ApiReferencePage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services-page".
- */
-export interface ServicesPage {
-  id: string;
-  lead: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Visas på varje funktionssida, följd av funktionens API-adress.
-   */
-  developerNote?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "common-questions-page".
  */
 export interface CommonQuestionsPage {
@@ -965,17 +828,6 @@ export interface ApiReferencePageSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services-page_select".
- */
-export interface ServicesPageSelect<T extends boolean = true> {
-  lead?: T;
-  developerNote?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

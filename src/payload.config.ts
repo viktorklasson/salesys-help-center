@@ -12,14 +12,12 @@ import { Questions } from './collections/Questions';
 import { Endpoints } from './collections/Endpoints';
 import { ApiCategories } from './collections/ApiCategories';
 import { runContentMigrations } from './lib/contentMigrations';
-import { Services } from './collections/Services';
 import { Articles } from './collections/Articles';
 import { codeBlockFeature } from './fields/codeBlockFeature';
 import { linkFeature } from './fields/linkFeature';
 import { ApiReferencePage } from './globals/ApiReferencePage';
 import { CommonQuestionsPage } from './globals/CommonQuestionsPage';
 import { HomePage } from './globals/HomePage';
-import { ServicesPage } from './globals/ServicesPage';
 import { SiteSettings } from './globals/SiteSettings';
 
 const filename = fileURLToPath(import.meta.url);
@@ -40,14 +38,13 @@ export default buildConfig({
   collections: [
     Endpoints,
     ApiCategories,
-    Services,
     Articles,
     Questions,
     QuestionCategories,
     Media,
     Users,
   ],
-  globals: [HomePage, ApiReferencePage, ServicesPage, CommonQuestionsPage, SiteSettings],
+  globals: [HomePage, ApiReferencePage,CommonQuestionsPage, SiteSettings],
   // Default editor (e.g. FAQ answers), with the same link options as every other text field
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [

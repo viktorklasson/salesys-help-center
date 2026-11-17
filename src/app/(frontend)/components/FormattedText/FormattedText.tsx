@@ -20,8 +20,8 @@ import { SectionHeading } from '../SectionHeading/SectionHeading';
 import './FormattedText.css';
 
 /**
- * The address of something picked with the CMS link button: a function, FAQ question,
- * FAQ category, endpoint, API category or guide. The optional "Avsnitt på sidan" field adds #<section>.
+ * The address of something picked with the CMS link button: a FAQ question, FAQ category,
+ * endpoint, API category or guide. The optional "Avsnitt på sidan" field adds #<section>.
  */
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { relationTo, value } = linkNode.fields.doc ?? {};
@@ -34,8 +34,6 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const withAnchor = (href: string) => (anchor ? `${href.split('#')[0]}#${anchor}` : href);
 
   switch (relationTo) {
-    case 'services':
-      return withAnchor(`/service/${value.slug}`);
     case 'questions':
       return withAnchor(`/common-questions#q-${value.id}`);
     case 'question-categories':

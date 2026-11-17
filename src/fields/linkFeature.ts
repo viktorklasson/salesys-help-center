@@ -2,13 +2,12 @@ import { LinkFeature } from '@payloadcms/richtext-lexical';
 
 /**
  * The link button used by every text field in the CMS. Besides other websites and typed addresses,
- * you can pick a function, FAQ question, FAQ category, API endpoint, API category or guide, and optionally a section on
+ * you can pick a FAQ question, FAQ category, API endpoint, API category or guide, and optionally a section on
  * that page. Picked items are turned into addresses in components/FormattedText (internalDocToHref).
  */
 export const linkFeature = () =>
   LinkFeature({
     enabledCollections: [
-      'services',
       'questions',
       'question-categories',
       'endpoints',

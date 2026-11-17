@@ -174,13 +174,13 @@ export default async function Page({ params }: Props) {
           <ArrowLeft size={16} /> API-referens
         </Link>
 
-        <header className="page-header api-service-header">
+        <header className="page-header api-category-header">
           <div className="page-title-container">
-            <Icon className="api-service-icon" size={48} strokeWidth={1.5} />
+            <Icon className="api-category-icon" size={48} strokeWidth={1.5} />
             <h1>{category.name}</h1>
           </div>
           <p className="lead">{category.description}</p>
-          <p className="api-service-meta">
+          <p className="api-category-meta">
             <code>/api/{category.slug}</code>
             <span>{endpoints.length} endpoints</span>
           </p>

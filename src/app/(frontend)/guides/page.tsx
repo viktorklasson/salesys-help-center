@@ -5,7 +5,7 @@ import React from 'react';
 
 import { getIcon } from '@/icons';
 import config from '@/payload.config';
-// Same list style as the services on the API reference page
+// Same list style as the categories on the API reference page
 import '../api-reference/page.css';
 
 // Always render with the latest content from the CMS (and not at build time, which has no PAYLOAD_SECRET)

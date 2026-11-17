@@ -1,11 +1,11 @@
 /* Header */
 
-.api-service-icon {
+.api-category-icon {
   margin-bottom: 20px;
   color: var(--blue);
 }
 
-.api-service-meta {
+.api-category-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
