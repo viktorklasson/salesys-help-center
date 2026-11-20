@@ -1,0 +1,104 @@
+/* One pill split in two: copy as text, and an arrow for the menu */
+.copy-page {
+  position: relative;
+  display: inline-flex;
+  font-size: 14px;
+  color: #2b3440;
+  background: #fff;
+  border: 1px solid #e4e9ef;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(20, 60, 120, 0.05);
+
+  > button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transition:
+      color 0.2s,
+      background 0.2s;
+
+    svg {
+      color: var(--blue);
+    }
+
+    &:hover {
+      color: var(--blue);
+      background: var(--blue-tint);
+    }
+  }
+}
+
+/* Wide enough for the menu option, which is exactly as wide as the button */
+.copy-page > .copy-page-main {
+  flex: 1;
+  justify-content: center;
+  min-width: 168px;
+  border-radius: 999px 0 0 999px;
+}
+
+.copy-page > .copy-page-toggle {
+  padding-inline: 10px;
+  border-left: 1px solid #e4e9ef;
+  border-radius: 0 999px 999px 0;
+
+  svg {
+    transition: transform 0.2s;
+  }
+
+  &[aria-expanded='true'] svg {
+    transform: rotate(180deg);
+  }
+}
+
+.copy-page-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  /* Same width as the button above */
+  left: -1px;
+  right: -1px;
+  z-index: 20;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+
+  button,
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 10px;
+    font: inherit;
+    text-align: left;
+    white-space: nowrap;
+    color: inherit;
+    background: none;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+
+    svg {
+      flex-shrink: 0;
+      color: var(--blue);
+    }
+
+    /* Opens in a new tab */
+    .copy-page-external {
+      margin-left: auto;
+      color: var(--muted);
+    }
+
+    &:hover {
+      color: var(--blue);
+      background: var(--blue-tint);
+    }
+  }
+}

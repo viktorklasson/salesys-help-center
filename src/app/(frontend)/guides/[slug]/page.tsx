@@ -6,7 +6,9 @@ import { getPayload } from 'payload';
 import React from 'react';
 
 import { getHeadings } from '@/lib/headings';
+import { richTextToMarkdown, richTextToPlainText } from '@/lib/richTextToText';
 import config from '@/payload.config';
+import { CopyPageButton } from '../../components/CopyPageButton/CopyPageButton';
 import { FormattedText } from '../../components/FormattedText/FormattedText';
 import { TableOfContents } from '../../components/TableOfContents/TableOfContents';
 import './page.css';
@@ -51,9 +53,15 @@ export default async function GuidePage({ params }: Props) {
           <ArrowLeft size={16} /> Alla guider
         </Link>
 
-        <header className="page-header">
-          <h1>{guide.title}</h1>
-          <p className="lead">{guide.description}</p>
+        <header className="page-header guide-header">
+          <div>
+            <h1>{guide.title}</h1>
+            <p className="lead">{guide.description}</p>
+          </div>
+          <CopyPageButton
+            markdown={`# ${guide.title}\n\n${guide.description}\n\n${richTextToMarkdown(guide.content)}\n`}
+            text={`${guide.title}\n\n${guide.description}\n\n${richTextToPlainText(guide.content)}\n`}
+          />
         </header>
 
         <div className={showToc ? 'guide-body has-toc' : 'guide-body'}>
