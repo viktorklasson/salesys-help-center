@@ -37,6 +37,9 @@ export default async function HomePage() {
             <Link className="text-link" href="/api-reference">
               Se API-referens <ArrowRight size={16} />
             </Link>
+            <Link className="text-link" href="/guides">
+              Läs guider <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
 
