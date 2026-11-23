@@ -18804,6 +18804,55 @@
       "icon": "phone-call",
       "order": 0,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b002d125a91e70db6f458e5"
+      },
+      "createdAt": {
+        "$date": "2026-11-20T11:20:50.759Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-20T11:33:06.099Z"
+      },
+      "title": "Hur du sätter upp en avtalsmall",
+      "slug": "hur-du-satter-upp-en-avtalsmall",
+      "description": "En guide om hur du sätter upp en avtalsmall från noll",
+      "content": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Allra först behöver du ha en PDF som du vill använda som avta",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "tableOfContents": true,
+      "icon": "file-text",
+      "order": 0,
+      "__v": 0
     }
   ],
   "questions": [
