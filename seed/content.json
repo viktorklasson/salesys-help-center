@@ -944,6 +944,27 @@
       "focalX": 50,
       "focalY": 50,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b08071c5a91e70db6f49237"
+      },
+      "createdAt": {
+        "$date": "2026-11-26T10:17:00.913Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-26T10:17:00.913Z"
+      },
+      "alt": "Exempel på hur man ställer in en egen utfärdare på en avtalsmall",
+      "url": "/api/media/file/egen-utfardare-example.png",
+      "filename": "egen-utfardare-example.png",
+      "mimeType": "image/png",
+      "filesize": 37317,
+      "width": 393,
+      "height": 729,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
     }
   ],
   "services": [
@@ -2575,7 +2596,7 @@
         "$date": "2026-10-28T09:48:16.680Z"
       },
       "updatedAt": {
-        "$date": "2026-11-03T09:44:21.089Z"
+        "$date": "2026-11-26T09:33:26.120Z"
       },
       "method": "PUT",
       "path": "/api/users/users-v1/<userId>",
@@ -2593,7 +2614,7 @@
           "in": "body",
           "type": "string",
           "required": false,
-          "description": "Fullständigt namn. Minst 2 tecken.",
+          "description": "Fullständigt namn.",
           "id": "6ae2f73f1177805f7c1b92b8"
         },
         {
@@ -2637,14 +2658,6 @@
           "id": "6ae2f73f1177805f7c1b92bd"
         },
         {
-          "name": "mfa",
-          "in": "body",
-          "type": "object",
-          "required": false,
-          "description": "Inställningar för tvåstegsverifiering.",
-          "id": "6ae2f73f1177805f7c1b92be"
-        },
-        {
           "name": "teamId",
           "in": "body",
           "type": "ObjectId",
@@ -2653,68 +2666,12 @@
           "id": "6ae2f73f1177805f7c1b92bf"
         },
         {
-          "name": "supervisedTeamIds",
-          "in": "body",
-          "type": "ObjectId[]",
-          "required": false,
-          "description": "Team som användaren är arbetsledare för.",
-          "id": "6ae2f73f1177805f7c1b92c0"
-        },
-        {
           "name": "roleIds",
           "in": "body",
           "type": "ObjectId[]",
           "required": false,
           "description": "Användarens roller.",
           "id": "6ae2f73f1177805f7c1b92c1"
-        },
-        {
-          "name": "preferences",
-          "in": "body",
-          "type": "object",
-          "required": false,
-          "description": "Användarens inställningar.",
-          "id": "6ae2f73f1177805f7c1b92c2"
-        },
-        {
-          "name": "language",
-          "in": "body",
-          "type": "string",
-          "required": false,
-          "description": "Språkkod med exakt 2 bokstäver, t.ex. sv. Kan vara null.",
-          "id": "6ae2f73f1177805f7c1b92c3"
-        },
-        {
-          "name": "reference",
-          "in": "body",
-          "type": "object",
-          "required": false,
-          "description": "Egen data, t.ex. ett ID från ert system.",
-          "id": "6ae2f73f1177805f7c1b92c4"
-        },
-        {
-          "name": "replaceReference",
-          "in": "body",
-          "type": "boolean",
-          "required": false,
-          "description": "Ersätt hela reference i stället för att uppdatera den.",
-          "id": "6ae2f73f1177805f7c1b92c5"
-        },
-        {
-          "name": "confidentialReference",
-          "in": "body",
-          "type": "object",
-          "required": false,
-          "description": "Fungerar som reference, men för konfidentiell data.",
-          "id": "6ae2f73f1177805f7c1b92c6"
-        },
-        {
-          "name": "replaceConfidentialReference",
-          "in": "body",
-          "type": "boolean",
-          "required": false,
-          "description": "Ersätt hela confidentialReference i stället för att uppdatera den.",
-          "id": "6ae2f73f1177805f7c1b92c7"
         }
       ],
       "responseExample": "{\n  \"recordId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
@@ -3289,7 +3246,7 @@
         "$date": "2026-10-28T09:48:17.062Z"
       },
       "updatedAt": {
-        "$date": "2026-11-03T09:44:21.265Z"
+        "$date": "2026-11-26T09:45:45.909Z"
       },
       "method": "GET",
       "path": "/api/orders/orders-v2/count",
@@ -3324,7 +3281,7 @@
           "id": "6ae1c4e107666e3c1cfcf673"
         }
       ],
-      "responseExample": "{\n  \"count\": 0\n}",
+      "responseExample": "{\n  \"count\": 75\n}",
       "group": "Orders",
       "deprecated": false,
       "order": 830,
@@ -3342,7 +3299,7 @@
         "$date": "2026-10-28T09:48:17.077Z"
       },
       "updatedAt": {
-        "$date": "2026-11-03T09:44:21.275Z"
+        "$date": "2026-11-26T09:45:18.046Z"
       },
       "method": "PUT",
       "path": "/api/orders/orders-v2/<orderId>",
@@ -3360,7 +3317,7 @@
       "deprecated": false,
       "order": 860,
       "__v": 0,
-      "requestBody": "{\n  // Alla fält är valfria - skicka ett, några eller alla.\n\n  // Ersätter alla taggar på ordern\n  \"tagIds\": [\n\t\"6ae32f1c93ffe8dfeb426af2\",\n\t\"6ae32f22e22e8364fce57da4\"\n  ],\n\n  // Lista över tagg-ID:n att lägga till (behåller befintliga taggar)\n  \"addTagIds\": [\n    \"6643a1b8c2d4e5f607182960\",\n    \"6643a1b8c2d4e5f607182961\"\n  ],\n\n  // Lista över tagg-ID:n som ska tas bort från ordern\n  \"removeTagIds\": [\n    \"6643a1b8c2d4e5f607182962\"\n  ],\n\n  // Ersätter orderns fält\n  \"replaceFields\": [\n    {\n      \"fieldId\": \"6643a1b8c2d4e5f607182963\",\n      \"value\": \"Ja\"\n    },\n    {\n      \"fieldId\": \"6643a1b8c2d4e5f607182964\",\n      \"value\": \"Anna Lindgren\"\n    }\n  ],\n\n  // Ersätter alla produkter på ordern\n  \"products\": [\n    {\n      \"productId\": \"6643a1b8c2d4e5f607182965\",\n      \"quantity\": \"3\",\n      \"price\": \"3490.00\",\n      \"salaryBasis\": \"300.00\",\n      \"vat\": \"25\"\n    }\n  ],\n\n  // Ytterligare produkter som läggs till utöver de befintliga\n  \"addProducts\": [\n    {\n      \"productId\": \"6643a1b8c2d4e5f607182966\",\n      \"quantity\": \"1\",\n      \"price\": \"1290.00\",\n      \"salaryBasis\": \"150.00\",\n      \"vat\": \"25\"\n    }\n  ],\n\n  // Lista över produkt-ID:n som ska tas bort från ordern\n  \"removeProductIds\": [\n    \"6643a1b8c2d4e5f607182967\"\n  ],\n\n  \"businessDate\": \"2026-10-29T12:00:00.000Z\",\n\n  \"userId\": \"6643a1b8c2d4e5f607182968\",\n\n  \"projectId\": \"6643a1b8c2d4e5f607182969\"\n}",
+      "requestBody": "{\n  // Alla fält är valfria - skicka ett, några eller alla.\n\n  // Ersätter alla taggar på ordern\n  \"tagIds\": [\n\t\"6ae32f1c93ffe8dfeb426af2\",\n\t\"6ae32f22e22e8364fce57da4\"\n  ],\n\n  // Lista över tagg-ID:n att lägga till (behåller befintliga taggar)\n  \"addTagIds\": [\n    \"6643a1b8c2d4e5f607182960\",\n    \"6643a1b8c2d4e5f607182961\"\n  ],\n\n  // Lista över tagg-ID:n som ska tas bort från ordern\n  \"removeTagIds\": [\n    \"6643a1b8c2d4e5f607182962\"\n  ],\n\n  // Ersätter orderns fält\n  \"replaceFields\": [\n    {\n      \"fieldId\": \"6643a1b8c2d4e5f607182963\",\n      \"value\": \"Ja\"\n    },\n    {\n      \"fieldId\": \"6643a1b8c2d4e5f607182964\",\n      \"value\": \"Anna Lindgren\"\n    }\n  ],\n\n  // Ersätter alla produkter på ordern\n  \"products\": [\n    {\n      \"productId\": \"6643a1b8c2d4e5f607182965\",\n      \"quantity\": \"3\",\n      \"price\": \"3490.00\",\n      \"salaryBasis\": \"300.00\",\n      \"vat\": \"25\"\n    }\n  ],\n\n  // Ytterligare produkter som läggs till utöver de befintliga\n  \"addProducts\": [\n    {\n      \"productId\": \"6643a1b8c2d4e5f607182966\",\n      \"quantity\": \"1\",\n      \"price\": \"1290.00\",\n      \"salaryBasis\": \"150.00\",\n      \"vat\": \"25\"\n    }\n  ],\n\n  // Lista över produkt-ID:n som ska tas bort från ordern\n  \"removeProductIds\": [\n    \"6643a1b8c2d4e5f607182967\"\n  ],\n  \n  // Användare som står på ordern.\n  \"userId\": \"6643a1b8c2d4e5f607182968\",\n\n  // Projekt för ordern.\n  \"projectId\": \"6643a1b8c2d4e5f607182969\"\n}",
       "url": "/api-reference/orders#put-api-orders-orders-v2-orderid",
       "category": {
         "$oid": "6adf656b8107051a9a733c4d"
@@ -3707,296 +3664,6 @@
       "url": "/api-reference/calendar#get-api-calendar-calendar-events-v2",
       "category": {
         "$oid": "6adf656b8107051a9a733c53"
-      }
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc874"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.276Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.364Z"
-      },
-      "method": "GET",
-      "path": "/api/events/events-v1",
-      "summary": "Lista systemhändelser (endast admin)",
-      "parameters": [
-        {
-          "name": "search",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6bc"
-        },
-        {
-          "name": "namePrefixes",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6bd"
-        },
-        {
-          "name": "from",
-          "in": "query",
-          "type": "string (date-time)",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6be"
-        },
-        {
-          "name": "to",
-          "in": "query",
-          "type": "string (date-time)",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6bf"
-        },
-        {
-          "name": "count",
-          "in": "query",
-          "type": "integer",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6c0"
-        },
-        {
-          "name": "offset",
-          "in": "query",
-          "type": "integer",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6c1"
-        },
-        {
-          "name": "sortOrder",
-          "in": "query",
-          "type": "string",
-          "required": false,
-          "id": "6ae1c4e107666e3c1cfcf6c2"
-        }
-      ],
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"date\": \"2026-01-01T12:00:00.000Z\",\n    \"name\": \"string\",\n    \"topic\": \"string\",\n    \"data\": {}\n  }\n]",
-      "group": "Events",
-      "deprecated": false,
-      "order": 1210,
-      "__v": 0,
-      "url": null,
-      "category": {
-        "$oid": "6adf656b8107051a9a733c59"
-      }
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc877"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.281Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.373Z"
-      },
-      "method": "GET",
-      "path": "/api/events/webhooks-v1",
-      "summary": "Lista webhooks (endast admin)",
-      "parameters": [],
-      "responseExample": "[\n  {\n    \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n    \"url\": \"https://exempel.se\",\n    \"events\": [\n      {\n        \"name\": \"calendar-event-updated-v1\"\n      }\n    ],\n    \"description\": \"string\"\n  }\n]",
-      "group": "Webhooks",
-      "deprecated": false,
-      "order": 1220,
-      "__v": 0,
-      "url": null,
-      "category": {
-        "$oid": "6adf656b8107051a9a733c59"
-      }
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc87a"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.286Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.383Z"
-      },
-      "method": "POST",
-      "path": "/api/events/webhooks-v1",
-      "summary": "Skapa en webhook (endast admin)",
-      "description": {
-        "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": "",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Skapar en ny utgående webhook. Händelser som stöds är ",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": "calendar-event-updated-v1",
-                  "format": 16,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": ", ",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": "order-created-v1",
-                  "format": 16,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": " och ",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": "order-updated-v1",
-                  "format": 16,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                },
-                {
-                  "type": "text",
-                  "text": ".",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "direction": "ltr",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "textFormat": 0,
-              "textStyle": "",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "En URL kan bara registreras en gång per organisation.",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "parameters": [],
-      "responseExample": "{\n  \"webhookId\": \"64a1b2c3d4e5f6a7b8c9d0e1\"\n}",
-      "group": "Webhooks",
-      "deprecated": false,
-      "order": 1230,
-      "__v": 0,
-      "url": null,
-      "category": {
-        "$oid": "6adf656b8107051a9a733c59"
-      }
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc87d"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.290Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.392Z"
-      },
-      "method": "GET",
-      "path": "/api/events/webhooks-v1/<webhookId>",
-      "summary": "Hämta en webhook via ID (endast admin)",
-      "parameters": [
-        {
-          "name": "webhookId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6c3"
-        }
-      ],
-      "responseExample": "{\n  \"id\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n  \"url\": \"https://exempel.se\",\n  \"events\": [\n    {\n      \"name\": \"calendar-event-updated-v1\"\n    }\n  ],\n  \"description\": \"string\"\n}",
-      "group": "Webhooks",
-      "deprecated": false,
-      "order": 1240,
-      "__v": 0,
-      "url": null,
-      "category": {
-        "$oid": "6adf656b8107051a9a733c59"
-      }
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c4e1bab63cbf762bc880"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T09:48:17.296Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.407Z"
-      },
-      "method": "PUT",
-      "path": "/api/events/webhooks-v1/<webhookId>",
-      "summary": "Uppdatera en webhook (endast admin)",
-      "parameters": [
-        {
-          "name": "webhookId",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c4e107666e3c1cfcf6c4"
-        }
-      ],
-      "group": "Webhooks",
-      "deprecated": false,
-      "order": 1250,
-      "__v": 0,
-      "url": null,
-      "category": {
-        "$oid": "6adf656b8107051a9a733c59"
       }
     },
     {
@@ -5026,69 +4693,17 @@
     },
     {
       "_id": {
-        "$oid": "6ae1c885649571a981ca419e"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.392Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.539Z"
-      },
-      "method": "GET",
-      "path": "/api/documents/export-v1/<id>",
-      "summary": "Hämta en export",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "type": "ObjectId",
-          "required": true,
-          "id": "6ae1c885597b815580b92a25"
-        }
-      ],
-      "group": "Export",
-      "order": 1420,
-      "__v": 0,
-      "url": null,
-      "category": {
-        "$oid": "6adf656b8107051a9a733c57"
-      }
-    },
-    {
-      "_id": {
-        "$oid": "6ae1c885649571a981ca41a1"
-      },
-      "createdAt": {
-        "$date": "2026-10-28T10:03:49.398Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-03T09:44:21.417Z"
-      },
-      "method": "GET",
-      "path": "/api/events/webhooks-v1/events",
-      "summary": "Hämta webhook-händelser",
-      "parameters": [],
-      "group": "Webhooks",
-      "order": 1250.01,
-      "__v": 0,
-      "url": null,
-      "category": {
-        "$oid": "6adf656b8107051a9a733c59"
-      }
-    },
-    {
-      "_id": {
         "$oid": "6ae1c885649571a981ca41b3"
       },
       "createdAt": {
         "$date": "2026-10-28T10:03:49.428Z"
       },
       "updatedAt": {
-        "$date": "2026-11-03T09:44:21.548Z"
+        "$date": "2026-11-26T09:40:37.841Z"
       },
       "method": "GET",
       "path": "/api/offers/offer-information-v1/unsigned-documents-with-inserts",
-      "summary": "Hämta osignerat dokument med ifyllda fält",
+      "summary": "Hämta osignerat dokument med fält",
       "parameters": [
         {
           "name": "offerIds",
@@ -5111,7 +4726,62 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Hämta ett avtal innan det har skickats ut för signering. Kan exempelvis användas i webbformulär för att visa kunden en förhandsgranskning på hur avtalet kommer att se ut.",
+                  "text": "Hämta ett avtal innan det har skickats ut för signering. Kan exempelvis användas i webbformulär för att visa kunden en förhandsgranskning på hur avtalet kommer att se ut. För att hämta PDF:en anropar du ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "files-endpointen",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Hämta ett dokument",
+                      "relationTo": "endpoints",
+                      "value": "6ae1c885649571a981ca41ec"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6b07fe86dea89d35f5bfba92"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " på propertyn ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "key",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
                   "type": "text",
                   "version": 1
                 }
@@ -5146,7 +4816,7 @@
         "$date": "2026-10-28T10:03:49.454Z"
       },
       "updatedAt": {
-        "$date": "2026-11-03T09:44:21.559Z"
+        "$date": "2026-11-26T09:43:21.510Z"
       },
       "method": "PUT",
       "path": "/api/offers/web-forms-v1/<webFormId>",
@@ -5163,10 +4833,78 @@
       "group": "Web forms",
       "order": 1500,
       "__v": 0,
-      "requestBody": "{\n  // Alla fält är valfria – skicka bara de du vill ändra.\n\n  // Webbformulärets namn.\n  \"name\": \"Elavtal 2026\",\n\n  // Säljaren som avtalen kopplas till. OBS: allowUserId måste vara true.\n  \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n\n  // Dit kunden skickas efteråt. Måste vara en giltig URL.\n  \"returnUrl\": \"https://exempel.se/tack\",\n\n  // Avtalsmallar som formuläret använder.\n  \"templateIds\": [\"64a1b2c3d4e5f6a7b8c9d0e2\"],\n\n  // Skicka avtalet via SMS.\n  \"isSmsEnabled\": true,\n\n  // SMS-mall för utskicket.\n  \"smsMessageTemplateId\": \"64a1b2c3d4e5f6a7b8c9d0e3\",\n\n  // Skicka avtalet via e-post.\n  \"isEmailEnabled\": true,\n\n  // Mejlmall för utskicket.\n  \"emailMessageTemplateId\": \"64a1b2c3d4e5f6a7b8c9d0e4\",\n\n  // Adresser för testutskick.\n  \"testEmails\": [\"namn@exempel.se\"],\n\n  // Ort som anges vid signeringen.\n  \"signaturePlace\": \"Stockholm\",\n\n  // Projektet formuläret hör till.\n  \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e5\",\n\n  // Tillåt att en säljare anges i formuläret.\n  \"allowUserId\": true,\n\n  // Team vars säljare kan anges.\n  \"allowUserTeamIds\": [\"64a1b2c3d4e5f6a7b8c9d0e6\"],\n\n  // Team som har åtkomst till formuläret.\n  \"accessTeamIds\": [\"64a1b2c3d4e5f6a7b8c9d0e6\"],\n\n  // Projekt som har åtkomst till formuläret.\n  \"accessProjectIds\": [\"64a1b2c3d4e5f6a7b8c9d0e5\"],\n\n  // Visa formuläret som en avtalsvy.\n  \"isOfferView\": false,\n\n  // Aktivera förhandssignering.\n  \"isPresignEnabled\": false,\n\n  // URL för BankID-signeringens argument.\n  \"bankIdSignArgsUrl\": \"https://exempel.se/bankid\",\n\n  // Meddelande till utvecklare.\n  \"developerMessage\": \"Kontakta IT vid frågor om formuläret.\",\n\n  // Ytterligare meddelandemallar.\n  \"supplementaryMessageTemplateIds\": [],\n\n  // Ytterligare avtalsmallar.\n  \"supplementaryOfferTemplateIds\": [],\n\n  // true tar bort formuläret.\n  \"isRemoved\": false\n}",
+      "requestBody": "{\n  // Alla fält är valfria – skicka bara de du vill ändra.\n\n  // Webbformulärets namn.\n  \"name\": \"Elavtal 2026\",\n\n  // Säljaren som avtalen kopplas till. OBS: allowUserId måste vara true.\n  \"userId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\n\n  // Dit kunden skickas efteråt. Måste vara en giltig URL.\n  \"returnUrl\": \"https://exempel.se/tack\",\n\n  // Avtalsmallar som formuläret använder.\n  \"templateIds\": [\"64a1b2c3d4e5f6a7b8c9d0e2\"],\n\n  // Skicka avtalet via SMS.\n  \"isSmsEnabled\": true,\n\n  // SMS-mall för utskicket.\n  \"smsMessageTemplateId\": \"64a1b2c3d4e5f6a7b8c9d0e3\",\n\n  // Skicka avtalet via e-post.\n  \"isEmailEnabled\": true,\n\n  // E-post-mall för utskicket.\n  \"emailMessageTemplateId\": \"64a1b2c3d4e5f6a7b8c9d0e4\",\n\n  // Adresser för testutskick.\n  \"testEmails\": [\"namn@exempel.se\"],\n\n  // Ort som anges vid signeringen.\n  \"signaturePlace\": \"Stockholm\",\n\n  // Projektet formuläret hör till.\n  \"projectId\": \"64a1b2c3d4e5f6a7b8c9d0e5\",\n\n  // Tillåt att en säljare anges i formuläret.\n  \"allowUserId\": true,\n\n  // Team som har åtkomst till formuläret.\n  \"accessTeamIds\": [\"64a1b2c3d4e5f6a7b8c9d0e6\"],\n\n  // Projekt som har åtkomst till formuläret.\n  \"accessProjectIds\": [\"64a1b2c3d4e5f6a7b8c9d0e5\"],\n\n  // Visa formuläret som en standardvy.\n  \"isOfferView\": false,\n\n  // Aktivera förhandssignering.\n  \"isPresignEnabled\": false,\n\n  // URL för BankID-signeringen.\n  \"bankIdSignArgsUrl\": \"https://exempel.se/bankid\",\n\n  // Meddelande till utvecklare.\n  \"developerMessage\": \"Kontakta IT vid frågor om formuläret.\",\n\n  // Ytterligare utskicksmallar.\n  \"supplementaryMessageTemplateIds\": [],\n\n  // Ytterligare avtalsmallar.\n  \"supplementaryOfferTemplateIds\": [],\n\n  // true tar bort formuläret.\n  \"isRemoved\": false\n}",
       "url": "/api-reference/offers#put-api-offers-web-forms-v1-webformid",
       "category": {
         "$oid": "6adf656b8107051a9a733c4f"
+      },
+      "description": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "För mer information om webbformulär, se ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "guiden om dem",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Allt om webbformulär",
+                      "relationTo": "articles",
+                      "value": "6aedb449dee21484a5ff76ae"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6b07fedbdea89d35f5bfba93"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
       }
     },
     {
@@ -5177,7 +4915,7 @@
         "$date": "2026-10-28T10:03:49.474Z"
       },
       "updatedAt": {
-        "$date": "2026-11-03T09:44:21.569Z"
+        "$date": "2026-11-26T09:46:27.656Z"
       },
       "method": "POST",
       "path": "/api/orders/after-order-work-v1",
@@ -5205,7 +4943,44 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "I SaleSys skapas en order automatiskt vid signerat avtal. Ett orderarbete utför någonting löpande på ordrar. Läs mer på sidan om orderarbeten.",
+                  "text": "I SaleSys skapas en order automatiskt vid signerat avtal. Ett orderarbete utför någonting löpande på ordrar. Läs mer i ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "guiden om orderarbeten",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Grunderna i orderarbeten",
+                      "relationTo": "articles",
+                      "value": "6af2f753aa73d91cea121237"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6b07ffe8dea89d35f5bfba94"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
                   "type": "text",
                   "version": 1
                 }
@@ -5623,7 +5398,7 @@
         "$date": "2026-10-28T10:03:49.548Z"
       },
       "updatedAt": {
-        "$date": "2026-11-13T10:54:50.329Z"
+        "$date": "2026-11-26T09:35:16.018Z"
       },
       "method": "POST",
       "path": "/api/users/user-messages-v1",
@@ -5672,7 +5447,7 @@
           "version": 1
         }
       },
-      "requestBody": "{\n  // Vilka användare som ska få meddelandet.\n  \"target\": {\n    // Alla användare i dessa team. \n    \"teamIds\": [\"64a1b2c3d4e5f6a7b8c9d0e1\"],\n\t\n    // eller\n\t\n    // Specifika användare.\n    \"userIds\": [\"64a1b2c3d4e5f6a7b8c9d0e2\"],\n  },\n\n  // Notisen som visas.\n  \"notification\": {\n    // Ikonens namn. Vi stöder alla icke-pro FontAwesome v5-ikoner.\n    \"iconName\": \"envelope\",\n\n    // Rubrik.\n    \"title\": \"Nytt säljmål\",\n\n    // Meddelandet.\n    \"text\": \"Veckans mål är uppdaterat.\",\n\n    // Sökväg i SaleSys eller en fullständig URL.\n    \"link\": \"/orders?orderId=64a1b2c3d4e5f6a7b8c9d0e3\",\n\n    // Visa konfetti. Standard: false.\n    \"confetti\": false,\n  }\n}",
+      "requestBody": "{\n  // Vilka användare som ska få meddelandet.\n  \"target\": {\n    // Alla användare i dessa team. \n    \"teamIds\": [\"64a1b2c3d4e5f6a7b8c9d0e1\"],\n\t\n    // eller\n\t\n    // Specifika användare.\n    \"userIds\": [\"64a1b2c3d4e5f6a7b8c9d0e2\"],\n  },\n\n  // Notisen som visas.\n  \"notification\": {\n    // Ikonens namn. Vi stöder alla icke-pro FontAwesome v5-ikoner.\n    \"iconName\": \"envelope\",\n\n    // Rubrik.\n    \"title\": \"Nytt säljmål\",\n\n    // Meddelandet.\n    \"text\": \"Veckans mål är uppdaterat.\",\n\n    // Sökväg i SaleSys eller en fullständig URL. Kan utelämnas.\n    \"link\": \"/orders?orderId=64a1b2c3d4e5f6a7b8c9d0e3\",\n\n    // Visa konfetti. Standard: false.\n    \"confetti\": false,\n  }\n}",
       "responseExample": "{\r\n  \"messageId\": \"6ae8784eca9bda71a08b7c7b\"\r\n}",
       "url": "/api-reference/users#post-api-users-user-messages-v1",
       "curlExample": "curl -X POST \"https://app.salesys.se/api/users/user-messages-v1\" \\\r\n  -H \"Authorization: Bearer <token>\" \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"target\": {\r\n      \"userIds\": [\"64a1b2c3d4e5f6a7b8c9d0e2\"],\r\n    },\r\n    \"notification\": {\r\n      \"iconName\": \"envelope\",\r\n      \"title\": \"Nytt säljmål\",\r\n      \"text\": \"Veckans mål är uppdaterat.\",\r\n      \"link\": \"/orders?orderId=64a1b2c3d4e5f6a7b8c9d0e3\",\r\n      \"confetti\": false,\r\n    }\r\n  }'",
@@ -5895,7 +5670,7 @@
         "$date": "2026-11-13T10:44:43.079Z"
       },
       "updatedAt": {
-        "$date": "2026-11-13T10:44:43.079Z"
+        "$date": "2026-11-26T09:48:59.168Z"
       },
       "method": "POST",
       "path": "/api/dial/email-v1",
@@ -5910,7 +5685,81 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Skicka ett mejl till en eller flera mejladresser.",
+                  "text": "Skicka ett mejl till en eller flera mejladresser. Oftast räcker det att mejl skickas via ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "orderarbeten",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Grunderna i orderarbeten",
+                      "relationTo": "articles",
+                      "value": "6af2f753aa73d91cea121237"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6b080071dea89d35f5bfba95"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " och/eller ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "samtalsarbeten",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Grunderna i samtalsarbeten",
+                      "relationTo": "articles",
+                      "value": "6af2f753aa73d91cea121244"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6b080080dea89d35f5bfba96"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ", men om du exempelvis vill skicka mejl från en egen integration så passar det bättre att anropa denna endpoint direkt.",
                   "type": "text",
                   "version": 1
                 }
@@ -6120,7 +5969,7 @@
         "$date": "2026-11-17T11:14:40.323Z"
       },
       "updatedAt": {
-        "$date": "2026-11-17T11:14:40.323Z"
+        "$date": "2026-11-26T09:29:37.120Z"
       },
       "method": "PUT",
       "path": "/api/events/webhooks-v1/<webhookId>",
@@ -6133,7 +5982,8 @@
       "group": "Webhooks",
       "order": 0,
       "url": "/api-reference/events#put-api-events-webhooks-v1-webhookid",
-      "__v": 0
+      "__v": 0,
+      "responseExample": "{\r\n  \"recordId\": \"6b07fb8f4d3e258d746bae5c\"\r\n}"
     },
     {
       "_id": {
@@ -6197,12 +6047,12 @@
         "$date": "2026-11-24T12:17:11.999Z"
       },
       "updatedAt": {
-        "$date": "2026-11-24T12:40:25.692Z"
+        "$date": "2026-11-26T09:37:27.563Z"
       },
       "method": "PUT",
       "path": "/api/products/product-fields-v1/<productFieldId>",
       "summary": "Uppdatera ett produktfält",
-      "requestBody": "{\r\n  // Alla fält är valfria – skicka bara de du vill ändra.\r\n\r\n  // Fältets namn. Får inte vara tomt.\r\n  \"label\": \"Bindningstid\",\r\n\r\n  // Kategorier som fältet hör till.\r\n  \"categoryIds\": [\"64a1b2c3d4e5f6a7b8c9d0e1\", \"64a1b2c3d4e5f6a7b8c9d0e2\"],\r\n\r\n  // Kategorier där fältet används som inmatningsfält. Kan sättas till null.\r\n  \"inputCategoryIds\": [\"64a1b2c3d4e5f6a7b8c9d0e3\"],\r\n\r\n  // Fördefinierade värden som kan väljas i fältet.\r\n  \"predefinedValues\": [\r\n    { \"value\": \"12 månader\" },\r\n    { \"value\": \"24 månader\" },\r\n    { \"value\": \"36 månader\" }\r\n  ],\r\n\r\n  // Värde som fylls i som standard.\r\n  \"defaultValue\": \"24 månader\",\r\n\r\n  // Projekt som fältet är kopplat till. Kan sättas till null.\r\n  \"projectIds\": [\"64a1b2c3d4e5f6a7b8c9d0e5\"]\r\n}",
+      "requestBody": "{\r\n  // Alla fält är valfria – skicka bara de du vill ändra.\r\n\r\n  // Fältets namn. Får inte vara tomt.\r\n  \"label\": \"Bindningstid\",\r\n\r\n  // Kategorier som fältet hör till.\r\n  \"categoryIds\": [\"64a1b2c3d4e5f6a7b8c9d0e1\", \"64a1b2c3d4e5f6a7b8c9d0e2\"],\r\n\r\n  // Fördefinierade värden som kan väljas i fältet.\r\n  \"predefinedValues\": [\r\n    { \"value\": \"12 månader\" },\r\n    { \"value\": \"24 månader\" },\r\n    { \"value\": \"36 månader\" }\r\n  ],\r\n\r\n  // Värde som fylls i som standard.\r\n  \"defaultValue\": \"24 månader\",\r\n\r\n  // Projekt som fältet är kopplat till. Kan sättas till null.\r\n  \"projectIds\": [\"64a1b2c3d4e5f6a7b8c9d0e5\"]\r\n}",
       "parameters": [],
       "category": {
         "$oid": "6adf656b8107051a9a733c51"
@@ -19009,7 +18859,7 @@
         "$date": "2026-11-20T11:20:50.759Z"
       },
       "updatedAt": {
-        "$date": "2026-11-26T09:10:46.608Z"
+        "$date": "2026-11-26T10:20:37.744Z"
       },
       "title": "Hur du sätter upp en avtalsmall",
       "slug": "hur-du-satter-upp-en-avtalsmall",
@@ -20130,6 +19980,74 @@
               "type": "heading",
               "version": 1,
               "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "När du skickar ut ett avtal så kommer ditt företags namn att stå på verifikatet som skickas ut (om du har det aktiverat). Säg att du har flera projekt, och varje projekt är exempelvis en separat återförsäljare, då kan du i avtalsmallen ändra så att återförsäljaren står i verifikatet istället.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b08071da391b552bb442e05",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b08071c5a91e70db6f49237"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Använd web-chatt",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om du vill ha ett sätt för kunden att chatta med säljaren när kunden öppnar avtalet. Kunden ser då en chattruta som hen kan klicka på och meddelanden som skickas i chatten dyker automatiskt upp hos säljaren - direkt i SaleSys.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
             }
           ],
           "direction": null,
