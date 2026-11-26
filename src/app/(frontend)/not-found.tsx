@@ -16,7 +16,7 @@ export default function NotFound() {
       <div className="container container--narrow">
         <header className="page-header">
           <h1>
-            <b>Ojdå!</b>
+            Ojdå!
           </h1>
           <h2 className="subheading">Den sidan finns inte.</h2>
           <p className="lead">

@@ -1,16 +1,120 @@
+/* Colors. Light by default; dark when <html data-theme="dark">, set before the first paint by the
+   script in layout.tsx (lib/theme), from the header's theme button or else the system setting. */
 :root {
+  color-scheme: light;
   --blue: #1665c0;
   --blue-hover: #125aad;
   --blue-tint: #f2f8ff;
+  /* Text on a solid --blue background */
+  --on-blue: #fff;
+  /* Icons, e.g. in lists, the FAQ's + and arrows in links */
+  --icon: #1665c0;
   --heading: #111;
   --text: #39424f;
   --muted: #6b7480;
   --border: #e7ecf2;
   --divider: #f1f3f7;
+  /* The page, and panels on it (header, cards, menus, inputs) */
+  --bg: #fff;
+  --surface: #fff;
+  --header-bg: #fff;
+  /* Pill buttons such as .chip */
+  --control-text: #2b3440;
+  --control-border: #e4e9ef;
+  --success: #157347;
+  --success-tint: #e5f6ec;
+  --warning: #9a6400;
+  --warning-tint: #fff4dc;
+  --danger: #b42335;
+  --danger-tint: #fde8eb;
+  /* A shade deeper than --blue-tint, for labels on a hovered row */
+  --blue-tint-strong: #e3eefa;
+  --glow-inner: rgba(12, 74, 150, 0.14);
+  --glow-outer: rgba(12, 74, 150, 0.05);
+  /* Code panels (components/CodeBlock), dark in both themes */
+  --code-bg: #111b2f;
+  --code-bar: #111b2d;
+  --code-text: #fff;
+  --code-muted: #8d9aaf;
+  --code-comment: #a6aab1;
+  --code-border: transparent;
+  /* The "SaleSys" name in the header logo (layout.css), in the brand's colors */
+  --logo-sale: #282828;
+  --logo-sys: #1876bd;
+  --logo-weight: 200;
+  --logo-symbol-filter: none;
+  /* Header: menu links, the current or hovered link, and "Docs" beside the logo */
+  --nav-text: #39424f;
+  --nav-active: #1665c0;
+  --logo-suffix: #6b7480;
+  --shadow-xs: 0 1px 12px rgba(20, 60, 120, 0.04);
+  --shadow-sm: 0 6px 18px rgba(20, 60, 120, 0.05);
   --shadow: 0 18px 44px rgba(20, 60, 120, 0.07);
+  --shadow-menu: 0 18px 30px rgba(20, 60, 120, 0.08);
+  --shadow-lg: 0 20px 46px rgba(20, 60, 120, 0.12);
   --shadow-hover: 0 14px 30px rgba(22, 101, 192, 0.14);
+  --shadow-blue: 0 8px 24px rgba(22, 101, 192, 0.28);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --font-mono: ui-monospace, Menlo, monospace;
+}
+
+/* The SaleSys design system's dark mode: background, cards, inner surfaces, text, gray, accent and
+   status colors as in the brand guide */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --blue: #2f8cdb;
+  --blue-hover: #4a9fe6;
+  --blue-tint: rgba(47, 140, 219, 0.12);
+  --blue-tint-strong: rgba(47, 140, 219, 0.22);
+  --on-blue: #fff;
+  /* The brand's main blue, darker than the accent used for links and highlights */
+  --icon: #1876bd;
+  --heading: #f2f5f9;
+  /* A step softer than headings, so long text doesn't glare */
+  --text: #cfd7e1;
+  --muted: #8d9aaf;
+  /* Inner surfaces, e.g. inline code and lines between rows */
+  --divider: #25324a;
+  --border: #1f2e4a;
+  --bg: #0f1729;
+  /* Cards: a little lighter than the page, so they stand out from it */
+  --surface: #15213a;
+  /* See-through, so the background shows behind the blurred header */
+  --header-bg: rgba(10, 17, 31, 0.75);
+  --control-text: #f2f5f9;
+  --control-border: #22314d;
+  --success: #3dcb80;
+  --success-tint: rgba(61, 203, 128, 0.14);
+  --warning: #f5a524;
+  --warning-tint: rgba(245, 165, 36, 0.14);
+  --danger: #f0616d;
+  --danger-tint: rgba(240, 97, 109, 0.14);
+  /* The brand's main blue (#1876bd), a shade deeper than the accent */
+  --glow-inner: rgba(24, 118, 189, 0.12);
+  --glow-outer: rgba(24, 118, 189, 0.05);
+  /* Darker than the page and cards, as in light mode where the code is the darkest thing on the page */
+  --code-bg: #060b15;
+  --code-bar: #0b1322;
+  --code-border: #17233a;
+  /* White "Sale", as in the brand's dark logo, a lighter "Sys", and a little heavier, since thin
+     letters fade on a dark background */
+  --logo-sale: #f2f5f9;
+  --logo-sys: #4a9fe6;
+  --logo-weight: 300;
+  /* The symbol's blue, a little brighter */
+  --logo-symbol-filter: brightness(1.35);
+  /* Brighter than the page text and accent, since the header is see-through and the links are thin */
+  --nav-text: #f2f5f9;
+  --nav-active: #5aa9ec;
+  --logo-suffix: #cfd7e1;
+  /* Cards get a faint light edge along the top (the inset part), so they look raised */
+  --shadow-xs: 0 1px 12px rgba(0, 0, 0, 0.3);
+  --shadow-sm: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 6px 18px rgba(0, 0, 0, 0.3);
+  --shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 44px rgba(0, 0, 0, 0.4);
+  --shadow-menu: 0 18px 30px rgba(0, 0, 0, 0.45);
+  --shadow-lg: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 20px 46px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 14px 30px rgba(0, 0, 0, 0.45);
+  --shadow-blue: 0 8px 24px rgba(47, 140, 219, 0.25);
 }
 
 * {
@@ -30,7 +134,7 @@ body {
   font-size: 17px;
   line-height: 1.55;
   color: var(--text);
-  background: #fff;
+  background: var(--bg);
 }
 
 main {
@@ -53,11 +157,6 @@ h3 {
 h1,
 h2 {
   letter-spacing: -0.025em;
-
-  b {
-    font-weight: inherit;
-    color: var(--blue);
-  }
 }
 
 h1 {
@@ -109,21 +208,20 @@ code {
   max-width: 820px;
 }
 
+/* Soft blue light in the middle of the window, behind the content (.container is a layer above).
+   Fixed to the window, so it stays in view while the content scrolls over it. */
 .glow {
-  position: absolute;
-  top: -40px;
-  right: -8%;
-  width: 640px;
-  height: 640px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(1400px, 100%);
+  height: 960px;
+  transform: translate(-50%, -50%);
   pointer-events: none;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(22, 101, 192, 0.2),
-    rgba(40, 130, 230, 0.07) 42%,
-    transparent 68%
-  );
-  filter: blur(8px);
+  /* A gentle fade all the way out, instead of a bright center with an edge */
+  background: radial-gradient(ellipse, var(--glow-inner), var(--glow-outer) 55%, transparent 75%);
+  filter: blur(40px);
 }
 
 /* Buttons */
@@ -134,7 +232,7 @@ code {
   padding: 12px 24px;
   border-radius: 999px;
   font-weight: 600;
-  color: #fff;
+  color: var(--on-blue);
   background: var(--blue);
   transition:
     background 0.2s,
@@ -144,7 +242,7 @@ code {
   &:hover {
     background: var(--blue-hover);
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(22, 101, 192, 0.28);
+    box-shadow: var(--shadow-blue);
   }
 }
 
@@ -159,10 +257,10 @@ code {
   gap: 10px;
   padding: 14px 22px;
   border-radius: 999px;
-  color: #2b3440;
-  background: #fff;
-  border: 1px solid #e4e9ef;
-  box-shadow: 0 6px 18px rgba(20, 60, 120, 0.05);
+  color: var(--control-text);
+  background: var(--surface);
+  border: 1px solid var(--control-border);
+  box-shadow: var(--shadow-sm);
   transition:
     border-color 0.25s,
     color 0.25s,
@@ -171,7 +269,7 @@ code {
     box-shadow 0.35s var(--ease);
 
   svg {
-    color: var(--blue);
+    color: var(--icon);
   }
 
   &:hover {
@@ -188,6 +286,14 @@ code {
 /* Linked sections (#id) end up below the sticky header instead of under it */
 [id] {
   scroll-margin-top: 90px;
+}
+
+/* Switching theme (components/ThemeToggle) animates its own circle over a snapshot of the old page,
+   instead of the browser's default fade. It's the only view transition on the site. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 /* Set briefly by HashTarget: a #link opens its <details> at full height at once, so the page
@@ -283,7 +389,7 @@ html[data-instant-open] details::details-content {
   display: flex;
   flex-direction: column;
   padding: 30px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 26px;
   box-shadow: var(--shadow);

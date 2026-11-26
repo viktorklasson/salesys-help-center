@@ -31,7 +31,7 @@ export default async function ApiReferencePage() {
         <section className="api-hero">
           <div>
             <h1>
-              API-<b>referens</b>.
+              API-referens
             </h1>
             <FormattedText className="lead" data={page.lead} />
           </div>

@@ -25,18 +25,22 @@ export const toLines = (text: string) => text.split(/\r\n?|\n/);
 export const hasComments = (text: string | null | undefined) =>
   !!text && toLines(text).some((line) => splitComment(line)[1] !== null);
 
-/** Removes // comments so the body is valid JSON again, and tidies the formatting when possible */
-const stripComments = (text: string) => {
+/**
+ * Removes // comments, and commas before a closing } or ] (allowed in JavaScript, not in JSON), so the
+ * body is valid JSON again. Tidies the formatting when possible.
+ */
+export function stripComments(text: string) {
   const code = toLines(text)
     .map((line) => splitComment(line)[0].trimEnd())
     .filter((line) => line.trim())
-    .join('\n');
+    .join('\n')
+    .replace(/,(\s*[}\]])/g, '$1');
   try {
     return JSON.stringify(JSON.parse(code), null, 2);
   } catch {
     return code;
   }
-};
+}
 
 /** Builds a copy-pasteable curl command from the endpoint's method, path, required query params and body */
 export const toCurl = (endpoint: Endpoint) => {

@@ -40,7 +40,7 @@
   color: var(--heading);
 
   svg {
-    color: var(--blue);
+    color: var(--icon);
     transition: transform 0.2s var(--ease);
   }
 
@@ -51,10 +51,10 @@
 
 .home-card {
   padding: 28px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 18px;
-  box-shadow: 0 20px 46px rgba(20, 60, 120, 0.12);
+  box-shadow: var(--shadow-lg);
 
   h3 {
     margin-bottom: 12px;

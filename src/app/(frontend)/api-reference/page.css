@@ -28,7 +28,7 @@
 
   code {
     padding: 8px 14px;
-    background: #fff;
+    background: var(--surface);
   }
 }
 
@@ -73,17 +73,26 @@
   }
 }
 
+/* The "Börja här" steps, in one panel like the other lists */
 .prerequisites-list {
   margin: 0;
-  padding: 0;
+  padding: 12px 32px;
   list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
   counter-reset: step;
   interpolate-size: allow-keywords;
 
   /* Only the steps themselves, not items in a nested list */
   > li {
     counter-increment: step;
-    border-bottom: 1px solid var(--divider);
+  }
+
+  /* A line between steps; the panel's border closes off the last one */
+  > li + li {
+    border-top: 1px solid var(--divider);
   }
 
   summary {
@@ -111,7 +120,7 @@
       height: 32px;
       border-radius: 50%;
       font-size: 15px;
-      color: #fff;
+      color: var(--on-blue);
       background: var(--blue);
     }
 
@@ -121,7 +130,7 @@
       margin-left: auto;
       font-size: 22px;
       font-weight: 400;
-      color: var(--blue);
+      color: var(--icon);
       transition: transform 0.3s var(--ease);
     }
 
@@ -185,12 +194,18 @@
   }
 }
 
+/* A list of links in one panel: the API categories, and the guides (guides/page.tsx) */
 .endpoint-list {
   margin: 0;
   padding: 0;
   list-style: none;
+  /* The card color, so the list stands out from the page in dark mode (in light mode both are white) */
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 18px;
+  box-shadow: var(--shadow);
+  /* Keeps the rows' hover background inside the rounded corners */
+  overflow: hidden;
 
   li + li {
     border-top: 1px solid var(--divider);
@@ -207,7 +222,7 @@
       background: var(--blue-tint);
 
       .endpoint-arrow {
-        color: var(--blue);
+        color: var(--icon);
         transform: translateX(3px);
       }
     }
@@ -216,7 +231,7 @@
 
 .endpoint-icon {
   flex-shrink: 0;
-  color: var(--blue);
+  color: var(--icon);
 }
 
 .endpoint-name {

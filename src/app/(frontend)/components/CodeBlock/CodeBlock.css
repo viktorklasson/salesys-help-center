@@ -1,22 +1,30 @@
 .code-block {
+  position: relative;
   margin: 0;
   overflow: hidden;
-  background: #0a111f;
+  background: var(--code-bg);
+  /* Only visible in dark mode, a faint edge against the dark page */
+  border: 1px solid var(--code-border);
   border-radius: 14px;
 
   figcaption {
     padding: 10px 16px;
     font-size: 13px;
     font-weight: 600;
-    color: #8d9aaf;
-    background: #111b2d;
+    color: var(--code-muted);
+    background: var(--code-bar);
   }
 
   pre {
     max-height: 420px;
     margin: 0;
     padding: 16px;
-    overflow: auto;
+    /* Long lines wrap instead of scrolling sideways, also within long words such as URLs.
+       Only on screen: copying the code still gives the original lines. */
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    overflow-x: hidden;
+    overflow-y: auto;
     font-size: 13px;
     line-height: 1.55;
     /* Same as the admin's code editor; browsers default to 8, which misaligns pasted tab-indented code */
@@ -26,12 +34,27 @@
   code {
     padding: 0;
     font-size: inherit;
-    color: #f2f5f9;
+    color: var(--code-text);
     background: none;
+  }
+
+  /* The copy button, in the top right corner of the code (below the title bar, if any), left of
+     the code's scrollbar. CopyButton measures the scrollbar. */
+  .code-block-copy {
+    position: absolute;
+    right: calc(10px + var(--scrollbar-width, 0px));
+    z-index: 1;
+    margin-top: 10px;
+  }
+
+  /* Room for the copy button, so the first line of code doesn't run under it */
+  &.has-copy pre {
+    padding-right: 52px;
   }
 
   /* Comments inside the code, e.g. field descriptions */
   .code-comment {
-    color: #8d9aaf;
+    color: var(--code-comment);
+    font-style: italic;
   }
 }

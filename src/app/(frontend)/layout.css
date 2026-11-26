@@ -2,9 +2,11 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #fff;
+  background: var(--header-bg);
+  /* Only shows in dark mode, where the header is see-through */
+  backdrop-filter: blur(14px) saturate(140%);
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 12px rgba(20, 60, 120, 0.04);
+  box-shadow: var(--shadow-xs);
 }
 
 .site-header-inner {
@@ -17,7 +19,6 @@
   .site-nav {
     display: flex;
     gap: 32px;
-    margin-right: auto;
 
     /* Replaced by the hamburger menu (see MobileMenu) */
     @media (max-width: 640px) {
@@ -26,21 +27,46 @@
   }
 }
 
+/* The theme button and, on small screens, the hamburger menu, at the far right */
+.site-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
 
-  img {
-    width: auto;
-    height: 28px;
+  /* The image has empty space around the symbol, so it's a bit larger than the text to match */
+  .logo-symbol {
+    width: 32px;
+    height: 32px;
+    filter: var(--logo-symbol-filter);
+  }
+
+  /* "SaleSys" in Nunito, as in the brand's logo: "Sale" dark (white in dark mode), "Sys" blue */
+  .logo-name {
+    margin-left: -10px;
+    font-family: var(--font-heading), sans-serif;
+    font-size: 26px;
+    font-weight: var(--logo-weight);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--logo-sale);
+
+    span {
+      color: var(--logo-sys);
+    }
   }
 
   .logo-suffix {
     font-family: var(--font-heading), sans-serif;
     font-size: 18px;
     font-weight: 300;
-    color: var(--muted);
+    color: var(--logo-suffix);
   }
 }
 

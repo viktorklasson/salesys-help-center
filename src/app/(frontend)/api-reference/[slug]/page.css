@@ -2,7 +2,7 @@
 
 .api-category-icon {
   margin-bottom: 20px;
-  color: var(--blue);
+  color: var(--icon);
 }
 
 .api-category-meta {
@@ -32,6 +32,7 @@
 .api-empty {
   padding: 32px;
   color: var(--muted);
+  background: var(--surface);
   border: 1px dashed var(--border);
   border-radius: 18px;
 }
@@ -60,9 +61,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
+  box-shadow: var(--shadow);
   interpolate-size: allow-keywords;
 
   > li + li {
@@ -194,33 +196,33 @@
 }
 
 .method--get {
-  color: #157347;
-  background: #e5f6ec;
+  color: var(--success);
+  background: var(--success-tint);
 }
 
 .method--post {
   color: var(--blue);
   /* A shade deeper than the row hover, so it doesn't disappear */
-  background: #e3eefa;
+  background: var(--blue-tint-strong);
 }
 
 .method--put,
 .method--patch {
-  color: #9a6400;
-  background: #fff4dc;
+  color: var(--warning);
+  background: var(--warning-tint);
 }
 
 .method--delete {
-  color: #b42335;
-  background: #fde8eb;
+  color: var(--danger);
+  background: var(--danger-tint);
 }
 
 .badge {
   padding: 2px 8px;
   font-size: 12px;
   font-weight: 600;
-  color: #9a6400;
-  background: #fff4dc;
+  color: var(--warning);
+  background: var(--warning-tint);
   border-radius: 999px;
 }
 
@@ -270,7 +272,5 @@
 .param-required {
   font-size: 12px;
   font-weight: 600;
-  color: #b42335;
+  color: var(--danger);
 }
-
-

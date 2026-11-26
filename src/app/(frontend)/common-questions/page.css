@@ -14,7 +14,7 @@
     padding: 16px 48px;
     font: inherit;
     color: var(--heading);
-    background: #fff;
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 14px;
     box-shadow: var(--shadow);
@@ -70,7 +70,7 @@
 }
 
 .faq {
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 18px;
   box-shadow: var(--shadow);
@@ -115,7 +115,7 @@
 
     svg {
       flex-shrink: 0;
-      color: var(--blue);
+      color: var(--icon);
       transition: transform 0.3s var(--ease);
     }
   }

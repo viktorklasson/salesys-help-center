@@ -32,9 +32,9 @@ export default async function GuidesPage() {
       <div className="container">
         <header className="page-header">
           <h1>
-            Alla <b>guider</b>.
+            Guider
           </h1>
-          <p className="lead">Guider och fördjupningar om SaleSys.</p>
+          <p className="lead">Guider och fördjupningar om SaleSys</p>
         </header>
 
         {guides.docs.length === 0 ? (

@@ -16,6 +16,7 @@ import {
   groupEndpoints,
   hasComments,
   splitComment,
+  stripComments,
   toCurl,
   toLines,
 } from '@/lib/apiReference';
@@ -71,8 +72,10 @@ const placeholderFor = (type: string | null | undefined): string => {
 };
 
 /** Body fields as JSON, with each field's description as a comment beside it */
-const BodySchema = ({ params }: { params?: Parameter[] }) => {
-  if (!params?.length) return null;
+function BodySchema({ params }: { params?: Parameter[] }) {
+  if (!params?.length) {
+    return null;
+  }
 
   const lines = params.map((param, i) => ({
     code: `  "${param.name}": ${placeholderFor(param.type)}${i < params.length - 1 ? ',' : ''}`,
@@ -81,11 +84,11 @@ const BodySchema = ({ params }: { params?: Parameter[] }) => {
   const allOptional = params.every((param) => !param.required);
 
   // Same style as bodies written in the CMS: each comment on its own line above the field,
-  // with a blank line between commented fields
+  // with a blank line between commented fields. The copy button copies it without the comments.
   return (
     <div>
       <h3 className="details-heading">Body</h3>
-      <CodeBlock>
+      <CodeBlock copyText={`{\n${lines.map((line) => line.code).join('\n')}\n}`}>
         {'{\n'}
         {allOptional && (
           <span className="code-comment">
@@ -109,23 +112,25 @@ const BodySchema = ({ params }: { params?: Parameter[] }) => {
       </CodeBlock>
     </div>
   );
-};
+}
 
-/** JSON with // comments, the comments shown in grey */
-const CommentedJson = ({ text }: { text: string }) => (
-  <CodeBlock>
-    {toLines(text.trim()).map((line, i) => {
-      const [code, comment] = splitComment(line);
-      return (
-        <React.Fragment key={i}>
-          {i > 0 && '\n'}
-          {code}
-          {comment && <span className="code-comment">{comment}</span>}
-        </React.Fragment>
-      );
-    })}
-  </CodeBlock>
-);
+/** JSON with // comments, the comments shown in grey. The copy button copies it without them. */
+function CommentedJson({ text }: { text: string }) {
+  return (
+    <CodeBlock copyText={stripComments(text.trim())}>
+      {toLines(text.trim()).map((line, i) => {
+        const [code, comment] = splitComment(line);
+        return (
+          <React.Fragment key={i}>
+            {i > 0 && '\n'}
+            {code}
+            {comment && <span className="code-comment">{comment}</span>}
+          </React.Fragment>
+        );
+      })}
+    </CodeBlock>
+  );
+}
 
 /** Highlights <placeholders> in a path */
 const PathText = ({ path }: { path: string }) => (
@@ -187,83 +192,84 @@ export default async function Page({ params }: Props) {
         </header>
 
         {endpoints.length === 0 ? (
-          <p className="api-empty">
-            Det finns ingen API-dokumentation i den här kategorin ännu.
-          </p>
+          <p className="api-empty">Det finns ingen API-dokumentation i den här kategorin ännu.</p>
         ) : (
           groupEndpoints(endpoints).map(([group, items]) => (
             <section className="endpoint-group" key={group}>
               <SectionHeading id={slugify(group)}>{group}</SectionHeading>
               <ul className="endpoint-rows">
-                {items.map((endpoint) => (
-                  <li
-                    className={endpoint.deprecated ? 'is-deprecated' : undefined}
-                    // Readable and stable, e.g. "get-api-dial-calls-v1". Same as the endpoint's stored url.
-                    id={endpointAnchor(endpoint.method, endpoint.path)}
-                    key={endpoint.id}
-                  >
-                    <details>
-                      {/* One compact row; the details open on click */}
-                      <summary>
-                        <Method method={endpoint.method} />
-                        <span className="row-summary">
-                          {endpoint.summary}
-                          {endpoint.deprecated && <span className="badge">Utfasad</span>}
-                          {/* Clicking a link inside <summary> follows it instead of toggling the row */}
-                          <a
-                            aria-label="Länk till endpointen"
-                            className="anchor-link"
-                            href={`#${endpointAnchor(endpoint.method, endpoint.path)}`}
-                          >
-                            #
-                          </a>
-                        </span>
-                        <code className="row-path">
-                          <PathText path={endpoint.path} />
-                        </code>
-                        <ChevronDown className="row-chevron" size={18} />
-                      </summary>
+                {items.map((endpoint) => {
+                  // A command written in the CMS wins over the generated one
+                  const curl = endpoint.curlExample?.trim() || toCurl(endpoint);
+                  return (
+                    <li
+                      className={endpoint.deprecated ? 'is-deprecated' : undefined}
+                      // Readable and stable, e.g. "get-api-dial-calls-v1". Same as the endpoint's stored url.
+                      id={endpointAnchor(endpoint.method, endpoint.path)}
+                      key={endpoint.id}
+                    >
+                      <details>
+                        {/* One compact row; the details open on click */}
+                        <summary>
+                          <Method method={endpoint.method} />
+                          <span className="row-summary">
+                            {endpoint.summary}
+                            {endpoint.deprecated && <span className="badge">Utfasad</span>}
+                            {/* Clicking a link inside <summary> follows it instead of toggling the row */}
+                            <a
+                              aria-label="Länk till endpointen"
+                              className="anchor-link"
+                              href={`#${endpointAnchor(endpoint.method, endpoint.path)}`}
+                            >
+                              #
+                            </a>
+                          </span>
+                          <code className="row-path">
+                            <PathText path={endpoint.path} />
+                          </code>
+                          <ChevronDown className="row-chevron" size={18} />
+                        </summary>
 
-                      <div className="endpoint-details">
-                        <code className="details-path">
-                          <PathText path={endpoint.path} />
-                        </code>
-                        <FormattedText data={endpoint.description} />
+                        <div className="endpoint-details">
+                          <code className="details-path">
+                            <PathText path={endpoint.path} />
+                          </code>
+                          <FormattedText data={endpoint.description} />
 
-                        <ParameterList
-                          params={endpoint.parameters?.filter((param) => param.in !== 'body')}
-                        />
-                        {endpoint.parameters?.some((param) => param.in === 'body') ? (
-                          <BodySchema
-                            params={endpoint.parameters.filter((param) => param.in === 'body')}
+                          <ParameterList
+                            params={endpoint.parameters?.filter((param) => param.in !== 'body')}
                           />
-                        ) : (
-                          // A body written with comments in the CMS is shown as-is
-                          endpoint.method !== 'GET' &&
-                          hasComments(endpoint.requestBody) && (
-                            <div>
-                              <h3 className="details-heading">Body</h3>
-                              <CommentedJson text={endpoint.requestBody!} />
-                            </div>
-                          )
-                        )}
+                          {endpoint.parameters?.some((param) => param.in === 'body') ? (
+                            <BodySchema
+                              params={endpoint.parameters.filter((param) => param.in === 'body')}
+                            />
+                          ) : (
+                            // A body written with comments in the CMS is shown as-is
+                            endpoint.method !== 'GET' &&
+                            hasComments(endpoint.requestBody) && (
+                              <div>
+                                <h3 className="details-heading">Body</h3>
+                                <CommentedJson text={endpoint.requestBody!} />
+                              </div>
+                            )
+                          )}
 
-                        <div>
-                          <h3 className="details-heading">cURL-exempel</h3>
-                          {/* A command written in the CMS wins over the generated one */}
-                          <CodeBlock>{endpoint.curlExample?.trim() || toCurl(endpoint)}</CodeBlock>
-                        </div>
-                        {/* Only when something is known about the response */}
-                        {endpoint.responseExample && (
                           <div>
-                            <h3 className="details-heading">Exempelrespons</h3>
-                            <CodeBlock>{endpoint.responseExample}</CodeBlock>
+                            <h3 className="details-heading">cURL-exempel</h3>
+                            <CodeBlock copyText={curl}>{curl}</CodeBlock>
                           </div>
-                        )}
-                      </div>
-                    </details>
-                  </li>
-                ))}
+                          {/* Only when something is known about the response */}
+                          {endpoint.responseExample && (
+                            <div>
+                              <h3 className="details-heading">Exempelrespons</h3>
+                              <CodeBlock>{endpoint.responseExample}</CodeBlock>
+                            </div>
+                          )}
+                        </div>
+                      </details>
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           ))

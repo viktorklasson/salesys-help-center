@@ -1,0 +1,22 @@
+/* Made for the dark code panels (components/CodeBlock) */
+.copy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  color: #22304a;
+  background: #dbe9ff;
+  border: 1px solid #22304a;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+
+  &:hover {
+    color: black;
+    border-color: #3a4a66;
+  }
+}
