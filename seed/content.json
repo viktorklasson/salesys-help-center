@@ -797,6 +797,153 @@
       "focalX": 50,
       "focalY": 50,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b03eec75a91e70db6f4656d"
+      },
+      "createdAt": {
+        "$date": "2026-11-23T07:44:07.640Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-23T07:44:07.640Z"
+      },
+      "alt": "Exempel på hur man placerar en signeringsruta i en avtalsmall",
+      "url": "/api/media/file/placera-signeringsruta-example.gif",
+      "filename": "placera-signeringsruta-example.gif",
+      "mimeType": "image/gif",
+      "filesize": 1893228,
+      "width": 1908,
+      "height": 908,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b03f0845a91e70db6f4679d"
+      },
+      "createdAt": {
+        "$date": "2026-11-23T07:51:32.825Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-23T07:51:32.825Z"
+      },
+      "alt": "Exempel på hur man infogar ett fält i en avtalsmall",
+      "url": "/api/media/file/infoga-falt-example.png",
+      "filename": "infoga-falt-example.png",
+      "mimeType": "image/png",
+      "filesize": 30753,
+      "width": 394,
+      "height": 413,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b03f3855a91e70db6f469c5"
+      },
+      "createdAt": {
+        "$date": "2026-11-23T08:04:21.151Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-23T08:04:21.151Z"
+      },
+      "alt": "Exempel på hur man infogar text i en avtalsmall",
+      "url": "/api/media/file/infoga-text-example.png",
+      "filename": "infoga-text-example.png",
+      "mimeType": "image/png",
+      "filesize": 39076,
+      "width": 503,
+      "height": 578,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b07e5b75a91e70db6f47b26"
+      },
+      "createdAt": {
+        "$date": "2026-11-26T07:54:31.575Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-26T07:54:31.575Z"
+      },
+      "alt": "Exempel på hur man signerar ett avtal genom att rita",
+      "url": "/api/media/file/signera-rita-example.gif",
+      "filename": "signera-rita-example.gif",
+      "mimeType": "image/gif",
+      "filesize": 1242444,
+      "width": 960,
+      "height": 457,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b07e7e75a91e70db6f47c25"
+      },
+      "createdAt": {
+        "$date": "2026-11-26T08:03:51.016Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-26T08:03:51.016Z"
+      },
+      "alt": "Exempel på hur man signerar ett avtal med ett klick",
+      "url": "/api/media/file/signera-ett-klick-example.gif",
+      "filename": "signera-ett-klick-example.gif",
+      "mimeType": "image/gif",
+      "filesize": 914496,
+      "width": 960,
+      "height": 459,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b07ea1b5a91e70db6f47d10"
+      },
+      "createdAt": {
+        "$date": "2026-11-26T08:13:15.188Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-26T08:13:15.188Z"
+      },
+      "alt": "Exempel på hur man signerar ett avtal med BankID",
+      "url": "/api/media/file/signera-bankid-example.gif",
+      "filename": "signera-bankid-example.gif",
+      "mimeType": "image/gif",
+      "filesize": 1122848,
+      "width": 960,
+      "height": 457,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b07f5be5a91e70db6f486aa"
+      },
+      "createdAt": {
+        "$date": "2026-11-26T09:02:54.946Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-26T09:02:54.946Z"
+      },
+      "alt": "Exempel på en bifogad bilaga på ett avtal",
+      "url": "/api/media/file/bifoga-filer-pa-avtal-example.png",
+      "filename": "bifoga-filer-pa-avtal-example.png",
+      "mimeType": "image/png",
+      "filesize": 43245,
+      "width": 1694,
+      "height": 451,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
     }
   ],
   "services": [
@@ -6041,6 +6188,55 @@
       "order": 0,
       "url": "/api-reference/users#get-api-users-me-v1-identifiable",
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b0580475a91e70db6f46d70"
+      },
+      "createdAt": {
+        "$date": "2026-11-24T12:17:11.999Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-24T12:40:25.692Z"
+      },
+      "method": "PUT",
+      "path": "/api/products/product-fields-v1/<productFieldId>",
+      "summary": "Uppdatera ett produktfält",
+      "requestBody": "{\r\n  // Alla fält är valfria – skicka bara de du vill ändra.\r\n\r\n  // Fältets namn. Får inte vara tomt.\r\n  \"label\": \"Bindningstid\",\r\n\r\n  // Kategorier som fältet hör till.\r\n  \"categoryIds\": [\"64a1b2c3d4e5f6a7b8c9d0e1\", \"64a1b2c3d4e5f6a7b8c9d0e2\"],\r\n\r\n  // Kategorier där fältet används som inmatningsfält. Kan sättas till null.\r\n  \"inputCategoryIds\": [\"64a1b2c3d4e5f6a7b8c9d0e3\"],\r\n\r\n  // Fördefinierade värden som kan väljas i fältet.\r\n  \"predefinedValues\": [\r\n    { \"value\": \"12 månader\" },\r\n    { \"value\": \"24 månader\" },\r\n    { \"value\": \"36 månader\" }\r\n  ],\r\n\r\n  // Värde som fylls i som standard.\r\n  \"defaultValue\": \"24 månader\",\r\n\r\n  // Projekt som fältet är kopplat till. Kan sättas till null.\r\n  \"projectIds\": [\"64a1b2c3d4e5f6a7b8c9d0e5\"]\r\n}",
+      "parameters": [],
+      "category": {
+        "$oid": "6adf656b8107051a9a733c51"
+      },
+      "group": "Product fields",
+      "order": 0,
+      "url": "/api-reference/products#put-api-products-product-fields-v1-productfieldid",
+      "__v": 0,
+      "curlExample": "curl --request PUT \\\r\n  --url https://app.salesys.se/api/products/product-fields-v1/<productFieldId> \\\r\n  --header 'Authorization: Bearer <token>' \\\r\n  --header 'Content-Type: application/json' \\\r\n  --data '{\r\n  \"label\": \"Månadspris\"\r\n}'"
+    },
+    {
+      "_id": {
+        "$oid": "6b05822d5a91e70db6f46e88"
+      },
+      "createdAt": {
+        "$date": "2026-11-24T12:25:17.992Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-24T12:31:21.288Z"
+      },
+      "method": "PUT",
+      "path": "/api/products/products-v1/<productId>",
+      "summary": "Uppdatera en produkt",
+      "requestBody": "{\r\n  // Alla fält är valfria – skicka bara de du vill ändra.\r\n\r\n  // Kategorin som produkten hör till.\r\n  \"categoryId\": \"64a1b2c3d4e5f6a7b8c9d0e1\",\r\n\r\n  // Produktens namn.\r\n  \"name\": \"Fastpris 24 mån\",\r\n\r\n  // Pris. Minst 0.\r\n  \"price\": 499,\r\n\r\n  // Lägsta tillåtna pris. Kan sättas till null.\r\n  \"priceMin\": 399,\r\n\r\n  // Högsta tillåtna pris. Kan sättas till null.\r\n  \"priceMax\": 599,\r\n\r\n  // Prisalternativ som kan väljas.\r\n  \"priceOptions\": [399, 499, 599],\r\n\r\n  // Underlag för provision. Minst 0. Kan sättas till null.\r\n  \"salaryBasis\": 250,\r\n\r\n  // Moms i procent, heltal 0–100.\r\n  \"vat\": 25,\r\n\r\n  // Ersätter en delmängd av produktens fältkopplingar.\r\n  \"fields\": [\r\n    { \"fieldId\": \"64a1b2c3d4e5f6a7b8c9d0e2\", \"value\": \"24 månader\" }\r\n  ],\r\n\r\n  // Visa produkten i expressflöden.\r\n  \"isVisibleInExpressFlows\": true,\r\n\r\n  // Visa produkten i webbformulär.\r\n  \"isVisibleInWebForms\": true\r\n}",
+      "parameters": [],
+      "category": {
+        "$oid": "6adf656b8107051a9a733c51"
+      },
+      "group": "Products",
+      "order": 0,
+      "url": "/api-reference/products#put-api-products-products-v1-productid",
+      "__v": 0,
+      "curlExample": null,
+      "responseExample": "{\r\n  \"recordId\": \"6b05825bca5ef62729c1fdf3\"\r\n}"
     }
   ],
   "articles": [
@@ -18813,7 +19009,7 @@
         "$date": "2026-11-20T11:20:50.759Z"
       },
       "updatedAt": {
-        "$date": "2026-11-20T11:33:06.099Z"
+        "$date": "2026-11-26T09:10:46.608Z"
       },
       "title": "Hur du sätter upp en avtalsmall",
       "slug": "hur-du-satter-upp-en-avtalsmall",
@@ -18828,7 +19024,40 @@
                   "format": 0,
                   "mode": "normal",
                   "style": "",
-                  "text": "Allra först behöver du ha en PDF som du vill använda som avta",
+                  "text": "Allra först behöver du ha en PDF som du vill använda som avtalsmall, ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "här",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "url": "https://salesys.se/api/examples/avtalsmall-exempel.pdf",
+                    "newTab": true,
+                    "linkType": "custom"
+                  },
+                  "id": "6b03eaabb8805739065c2c98"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " finns ett exempel som du kan använda.",
                   "type": "text",
                   "version": 1
                 }
@@ -18840,6 +19069,1067 @@
               "version": 1,
               "textFormat": 0,
               "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Första stegen",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Börja med att navigera till Inställningar > Avtal > Avtalsmallar, och klicka på ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Skapa",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ". Välj PDF:en som du har skapat eller exempelpdf:en. Ge sedan mallen ett namn som beskriver den, exempelvis \"Elavtal\". Slutligen, infoga en eller flera platser för signatur, om du har flera signeringsställen i din PDF så placerar du en på varje ställe.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b03eec8b8805739065c2c9b",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b03eec75a91e70db6f4656d"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Nu kan du spara avtalsmallen, tryck på ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Spara.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Placera ut fält",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Nu är det dags att placera ut orderfält, produktfält och annan information som du vill ska synas i det skapade avtalet. Börja med att klicka på din skapade avtalsmall och välj sedan ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Redigera",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ". Likt hur du placerade ut signeringsrutan så klickar du på avtalsmallen, men nu väljer du ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Information",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ". Sök efter fältet du vill placera ut och klicka på det, positionera det sedan så att det täcker platsen du reserverat för det.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b03f085b8805739065c2c9e",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b03f0845a91e70db6f4679d"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Du kan också placera ut annan information som inte är orderfält eller produktfält, exempelvis dagens datum, signaturort och speciell text. Om du vill infoga text så kan du välja ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Text",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ". Klicka sedan på den skapade texten och skriv något i fältet ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Text",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ". Du kan också infoga information här, som exempelvis orderfält, produktfält, säljarens namn, BankID-referens, m.m. Du kan också välja hur du vill centrera texten, om texten enbart ska vara synlig efter signering, samt vilken sida texten ska synas på. I exemplet nedan har jag placerat ut en fält som skriver ut säljarens namn på avtalet.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b03f385b8805739065c2ca1",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b03f3855a91e70db6f469c5"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ändra inställningar för avtalsmallen",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Nu kan du ändra mallens inställningar, klicka på avtalsmallen > Redigera mall > Klicka på de tre punkterna. Nedan går vi igenom de vanligaste:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ändra dokument",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Används för att byta grunddokument, alltså PDF:en som vi laddade upp. Du kan också lägga till extrasidor som ska visas i slutet av det skapade avtalet, exempelvis informationsblad eller ångerblanketter.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Signera med ett klick/Signera med BankID",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Här kan du välja vilka signeringsmetoder som avtalsmallen ska använda, du kan välja upp till två metoder: en huvudmetod och en alternativ metod. Huvudmetoden används i förstahand, alternativmetoden kan säljaren välja själv att använda istället för huvudmetoden. För att använda BankID behöver du ett avtal med ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Idkollen",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "url": "https://idkollen.se/",
+                    "newTab": true,
+                    "linkType": "custom"
+                  },
+                  "id": "6b07e2961de6b38fce54a127"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ", kontakta sedan oss så hjälper vi dig att sätta upp det. Nedan finns exempel på hur det ser ut när man signerar med varje metod.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ett klick",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h4"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b07e7e71de6b38fce54a12d",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b07e7e75a91e70db6f47c25"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Klicka på knappen ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Klicka för att godkänna ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "eller klicka på samma ruta i avtalet, om namn inte är satt sedan innan så behöver du skriva in det också.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Rita",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h4"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b07e5b81de6b38fce54a12a",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b07e5b75a91e70db6f47b26"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Klicka på knappen ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Klicka för att signera",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " eller klicka på samma ruta i avtalet, skriv sedan din signatur. Om namn inte är satt sedan innan så behöver du skriva in det också.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "BankID",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h4"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b07ea1b1de6b38fce54a130",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b07ea1b5a91e70db6f47d10"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Slutligen går det att signera via BankID. För att göra detta så behöver du ha ett avtal med ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Idkollen",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "url": "https://idkollen.se/",
+                    "newTab": true,
+                    "linkType": "custom"
+                  },
+                  "id": "6b07ea411de6b38fce54a131"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ", kontakta sedan oss så hjälper vi dig att sätta upp det. Användaren kan då klicka på knappen ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Klicka för att signera",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ", eller på samma ruta i avtalet. Sedan går det att signera på en annan enhet, eller på samma enhet. I videon ovan signerar jag avtalet på en annan enhet.",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "type": "linebreak",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Det finns också ytterligare inställningar för BankID, om du klickar på ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Visa avancerat",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " kan du ställa in följande:",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "BankID-signaturtyp: vad som ska visas i signeringsrutan efter signering, antingen texten \"Signerat med BankID\" eller en BankID-logotyp.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "BankID-sidfot: text som läggs in på varje sidas sidfot efter signering, exempelvis BankID-referensen, datum, och namn. Vi rekommenderar starkt att du lägger in detta. Klicka på plusset och välj sedan Standard mall, då kommer all information som behövs med.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Skapa verifikat",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om ett verifikat ska skapas efter signering, vi rekommenderar detta starkt då det styrker äktheten för avtalet.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Lägg order",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om en order ska läggas efter signering, samt om ordern som skapas ska få en eller fler taggar. Här kan du också välja orderfält som säljaren ska kunna fyllla i, men som nödvändigtvis inte finns på avtalet. Exempelvis en intern referens eller liknande. Välj isåfall fälten under ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ifyllbar information",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ändra synlighet",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Vilka projekt och team som ska kunna använda avtalsmallen, eller om den ska vara privat. Då kan den endast användas av admins.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Utskick",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Vilka utskicksmallar som ska användas med avtalsmallen, både för när avtalet skickas ut och när en avtalskopia skickas ut efter signering. Om du inte väljer en utskicksmall så används en standardmall.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Välj produkter",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Vilka produkter som ska kunna väljas på avtalet, eller om avtalet ska ha en eller flera förvalda produkter (produkter som alltid följer med).",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ändra länkar",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om användaren ska omdirigeras till en annan webbsida efter signering. Aktivera ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Omdirigera automatiskt ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "så skickas användaren till länken du bestämmer automatiskt.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Bilagor",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Om uppladdade bilagor via avtalets information i Inställningar > Avtal ska automatiskt infogas i avtalet. Notera att detta endast fungerar om bilagorna laddas upp ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "innan",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": " avtalet skickas.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b07f5bf1de6b38fce54a135",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b07f5be5a91e70db6f486aa"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Egen utfärdare",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
             }
           ],
           "direction": null,
