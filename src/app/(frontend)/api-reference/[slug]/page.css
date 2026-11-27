@@ -201,7 +201,7 @@
 }
 
 .method--post {
-  color: var(--blue);
+  color: var(--method-post);
   /* A shade deeper than the row hover, so it doesn't disappear */
   background: var(--blue-tint-strong);
 }
