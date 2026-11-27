@@ -965,6 +965,1618 @@
       "focalX": 50,
       "focalY": 50,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b09495e2e62ded3fb52abc5"
+      },
+      "createdAt": {
+        "$date": "2026-11-27T09:11:58.848Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-27T09:11:58.848Z"
+      },
+      "alt": "Exempel på hur man skapar en vy",
+      "url": "/api/media/file/skapa-vy-example.png",
+      "filename": "skapa-vy-example.png",
+      "mimeType": "image/png",
+      "filesize": 20071,
+      "width": 766,
+      "height": 672,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b095a612e62ded3fb52ae31"
+      },
+      "createdAt": {
+        "$date": "2026-11-27T10:24:33.428Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-27T10:24:33.429Z"
+      },
+      "alt": "Exempel på inställningar för vyer",
+      "url": "/api/media/file/vy-installningar-example.png",
+      "filename": "vy-installningar-example.png",
+      "mimeType": "image/png",
+      "filesize": 71368,
+      "width": 607,
+      "height": 900,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b095c0e2e62ded3fb52af88"
+      },
+      "createdAt": {
+        "$date": "2026-11-27T10:31:42.959Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-27T10:31:42.959Z"
+      },
+      "alt": "Exempel på en vy som visas i inställningsmenyn",
+      "url": "/api/media/file/vy-i-installningsmeny-example.png",
+      "filename": "vy-i-installningsmeny-example.png",
+      "mimeType": "image/png",
+      "filesize": 27341,
+      "width": 207,
+      "height": 708,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b095cb32e62ded3fb52b009"
+      },
+      "createdAt": {
+        "$date": "2026-11-27T10:34:27.427Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-27T10:34:27.427Z"
+      },
+      "alt": "Exempel på en vy som visas i navigationsmenyn",
+      "url": "/api/media/file/vy-i-navigationsvy-example.png",
+      "filename": "vy-i-navigationsvy-example.png",
+      "mimeType": "image/png",
+      "filesize": 13245,
+      "width": 605,
+      "height": 217,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b0963522e62ded3fb52b2bb"
+      },
+      "createdAt": {
+        "$date": "2026-11-27T11:02:42.617Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-27T11:02:42.617Z"
+      },
+      "alt": "Exempel på en vy som visas inuti flik",
+      "url": "/api/media/file/vy-i-flik-example.gif",
+      "filename": "vy-i-flik-example.gif",
+      "mimeType": "image/gif",
+      "filesize": 810186,
+      "width": 960,
+      "height": 457,
+      "focalX": 50,
+      "focalY": 50,
+      "__v": 0
+    }
+  ],
+  "services": [
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c41"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.530Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-02T13:07:21.281Z"
+      },
+      "name": "Samtal",
+      "slug": "dial",
+      "tagline": "Allt som har med samtal att göra - hur du ringer, hur ringlistor fungerar, osv.",
+      "intro": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Samtal är den viktigaste funktionen i SaleSys. Ring kontakt för kontakt, låt systemet ringa flera samtidigt med prediktiv dialer, eller ring en enskild kontakt direkt. Tagga samtalet när du är klar så vet alla vad som hände.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "icon": "phone-call",
+      "order": 10,
+      "__v": 0,
+      "content": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ringlistor",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Samla kontakter du vill ringa. Importera från CSV eller lägg till manuellt. Välj vilka personer som ska ha åtkomst, vad som händer när kontakter inte svarar, och så mycket mer.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Prediktiv dialer",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Systemet ringer flera kontakter samtidigt och kopplar dig när någon svarar.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Samtalstaggar",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Markera hur samtalet gick, t.ex. ”Ring tillbaka” eller ”Ej intresserad”. Taggen vad som ska hända med samtalet, exempelvis om det ska dyka upp i ringlistan igen.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Medlyssning",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Säljchefer kan lyssna på pågående samtal och viska tips till säljaren utan att kunden hör. Superbra för att coacha nya säljare i teamet.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c4b"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.572Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.572Z"
+      },
+      "name": "Kontakter",
+      "slug": "contacts",
+      "tagline": "Allt om dina kunder och prospekt på ett ställe.",
+      "intro": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Kontakter är dina kunder och prospekt. Varje kontakt har sina egna fält, taggar och kommentarer – plus hela historiken av samtal, ordrar och avtal. All kontaktdata lagras krypterat.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "icon": "contact",
+      "order": 20,
+      "__v": 0,
+      "content": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Egna fält",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Bestäm själv vilken information ni sparar: namn, telefon, e-post, personnummer, datum med mera.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Import från CSV",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ladda upp kontakter direkt till en ringlista. Dubbletter hittas automatiskt och du väljer vad som ska hända med dem.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Spärrlistor",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Se till att kontakter som inte vill bli uppringda aldrig hamnar i en ringlista.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Full historik",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Se alla samtal, ordrar och avtal som hör till kontakten.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c4d"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.595Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.595Z"
+      },
+      "name": "Ordrar",
+      "slug": "orders",
+      "tagline": "Registrera försäljning och håll koll på varje affär.",
+      "intro": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "En order är en genomförd försäljning – hjärtat i SaleSys. Du väljer produkter, fyller i orderfälten och lägger till taggar som visar var ordern befinner sig. Allt annat, som SMS och mejl till kunden, kan skötas automatiskt.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "icon": "shopping-cart",
+      "order": 30,
+      "__v": 0,
+      "content": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Orderfält",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Fält som ni själva bestämmer. De kan fyllas i automatiskt från kontakten så du slipper skriva samma sak två gånger.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Taggar",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Visa status på ordern. En tagg kan låsa ordern, markera en retur eller läggas till automatiskt.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Automatiseringar",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Skicka SMS, mejl eller data till andra system direkt när en order skapas.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Filer",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Bifoga filer till ordern, när den skapas eller i efterhand.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c4f"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.601Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.601Z"
+      },
+      "name": "Avtal",
+      "slug": "offers",
+      "tagline": "Skicka avtal som kunden signerar med BankID, SMS eller ett klick.",
+      "intro": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Med Avtal skickar du ett digitalt avtal till kunden via mejl eller SMS. Kunden signerar direkt i mobilen, och du ser hela tiden om avtalet är skickat, läst eller signerat. När kunden har signerat kan en order skapas automatiskt.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "icon": "pen-line",
+      "order": 40,
+      "__v": 0,
+      "content": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Flera sätt att signera",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "BankID, rita din signatur, ett klick eller svara på ett SMS.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Mallar",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Bestäm utseende, signeringsmetod och innehåll en gång – återanvänd för varje avtal.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Följ avtalet",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Se direkt när avtalet är skickat, läst, signerat eller nekat.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Webbformulär",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Låt kunder fylla i och signera avtal själva via ett formulär på er webbplats.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c51"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.605Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-29T10:14:04.125Z"
+      },
+      "name": "Produkter",
+      "slug": "products",
+      "tagline": "Det ni säljer - med priser, moms och kategorier.",
+      "intro": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Produkter är det ni säljer. De samlas i kategorier och väljs när du skapar en order eller ett avtal. Ändrar du en produkt i efterhand påverkas inte ordrar som redan är gjorda.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "icon": "package",
+      "order": 50,
+      "__v": 0,
+      "content": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Kategorier",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gruppera produkter och välj vilka team som ser dem och vilka orderfält som visas.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Priser per team",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Sätt olika priser för olika team när det behövs.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Produktfält",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Lägg till egen information på produkterna, fast eller ifylld av säljaren.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Snabbsök",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Tryck Shift två gånger för att hitta en produkt direkt.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c53"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.611Z"
+      },
+      "updatedAt": {
+        "$date": "2026-10-26T14:36:27.611Z"
+      },
+      "name": "Kalender",
+      "slug": "calendar",
+      "tagline": "Boka möten och se dina kollegors kalendrar.",
+      "intro": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Kalendern visar en vecka i taget med dina och dina kollegors bokningar. Klicka på en tid för att boka, koppla mötet till en kontakt eller order och få en påminnelse innan det börjar. Synka med Google Kalender eller Outlook så har du allt på ett ställe.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "icon": "calendar-days",
+      "order": 60,
+      "__v": 0,
+      "content": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Veckovy",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Se hela veckan på en gång och bläddra framåt och bakåt.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Påminnelser",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Få en notis en viss tid innan, eller vid en exakt tidpunkt.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Synk med Google & Outlook",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Dina externa möten dyker upp i SaleSys och tvärtom.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Kollegors kalendrar",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Se när kollegor är lediga. Privata möten visas bara som ”Upptagen”.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c55"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.615Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-03T11:30:48.246Z"
+      },
+      "name": "Användare",
+      "slug": "users",
+      "tagline": "Allt som berör användare, teams, roller, samt lite annat.",
+      "intro": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Här hanterar du alla som använder SaleSys. Lägg till användare, samla dem i team och ge dem roller som styr vad de får se och göra, samt lite annat.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "icon": "users",
+      "order": 70,
+      "__v": 0,
+      "content": {
+        "root": {
+          "type": "root",
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Team",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Gruppera säljare så att rätt personer ser rätt ringlistor, produkter och statistik.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Roller & behörigheter",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Bestäm vad varje roll får göra med ordrar, avtal, samtal, kontakter och mer.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Registreringslänkar",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Skicka en länk så att nya säljare kan skapa sitt konto själva.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "tag": "h3",
+              "version": 1,
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Tvåstegsverifiering",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Skydda kontot med en extra kod via mejl eller SMS.",
+                  "format": 0,
+                  "detail": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   ],
   "endpoints": [
@@ -4580,144 +6192,6 @@
       "__v": 0,
       "curlExample": null,
       "responseExample": "{\r\n  \"recordId\": \"6b05825bca5ef62729c1fdf3\"\r\n}"
-    }
-  ],
-  "api-categories": [
-    {
-      "_id": {
-        "$oid": "6adf656b8107051a9a733c41"
-      },
-      "name": "Samtal",
-      "slug": "dial",
-      "description": "Samtal, SMS, samtalsarbeten, ringlistor, och e-post",
-      "icon": "phone-call",
-      "order": 10,
-      "createdAt": {
-        "$date": "2026-11-17T10:42:44.756Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-17T11:02:06.104Z"
-      },
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf656b8107051a9a733c4b"
-      },
-      "name": "Kontakter",
-      "slug": "contacts",
-      "description": "Kontakter och kontaktfält",
-      "icon": "contact",
-      "order": 20,
-      "createdAt": {
-        "$date": "2026-11-17T10:42:44.756Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-17T11:02:09.817Z"
-      },
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf656b8107051a9a733c4d"
-      },
-      "name": "Ordrar",
-      "slug": "orders",
-      "description": "Ordrar, orderarbeten och orderfält",
-      "icon": "shopping-cart",
-      "order": 30,
-      "createdAt": {
-        "$date": "2026-11-17T10:42:44.756Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-17T11:02:13.910Z"
-      },
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf656b8107051a9a733c4f"
-      },
-      "name": "Avtal",
-      "slug": "offers",
-      "description": "Avtal och webbformulär",
-      "icon": "pen-line",
-      "order": 40,
-      "createdAt": {
-        "$date": "2026-11-17T10:42:44.756Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-17T11:02:17.839Z"
-      },
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf656b8107051a9a733c51"
-      },
-      "name": "Produkter",
-      "slug": "products",
-      "description": "Produkter, produktkategorier och produktfält",
-      "icon": "package",
-      "order": 50,
-      "createdAt": {
-        "$date": "2026-11-17T10:42:44.756Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-17T11:02:23.183Z"
-      },
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf656b8107051a9a733c53"
-      },
-      "name": "Kalender",
-      "slug": "calendar",
-      "description": "Kalenderhändelser",
-      "icon": "calendar-days",
-      "order": 60,
-      "createdAt": {
-        "$date": "2026-11-17T10:42:44.756Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-17T11:02:27.043Z"
-      },
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6adf656b8107051a9a733c55"
-      },
-      "name": "Användare",
-      "slug": "users",
-      "description": "Användare, teams, projekt, roller, filer, notiser och vyer",
-      "icon": "users",
-      "order": 70,
-      "createdAt": {
-        "$date": "2026-11-17T10:42:44.756Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-17T11:02:31.613Z"
-      },
-      "__v": 0
-    },
-    {
-      "_id": {
-        "$oid": "6afc32f23728e853af8f542d"
-      },
-      "createdAt": {
-        "$date": "2026-11-17T10:56:50.715Z"
-      },
-      "updatedAt": {
-        "$date": "2026-11-17T11:01:54.372Z"
-      },
-      "name": "Händelser",
-      "slug": "events",
-      "description": "Webhooks",
-      "icon": "webhook",
-      "order": 80,
-      "__v": 0
     }
   ],
   "articles": [
@@ -19025,6 +20499,792 @@
       "icon": "file-text",
       "order": 0,
       "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6b093cec2e62ded3fb52a3fa"
+      },
+      "createdAt": {
+        "$date": "2026-11-27T08:18:52.907Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-27T11:03:03.995Z"
+      },
+      "title": "Grunderna i vyer",
+      "slug": "grunderna-i-vyer",
+      "description": "Vyer är fristående HTML, CSS och JavaScript som du kan skapa och interagera med i SaleSys",
+      "content": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Innan du börjar med denna guide så rekommenderar vi att du läser guiden om ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "webbformulär",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "doc": {
+                      "label": "Allt om webbformulär",
+                      "relationTo": "articles",
+                      "value": "6aedb449dee21484a5ff76ae"
+                    },
+                    "newTab": true,
+                    "linkType": "internal"
+                  },
+                  "id": "6b093d9750e4d260f35270ee"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Introduktion",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Vyer är väldigt lika webbformulär i att de båda använder HTML, CSS och JavaScript för att visa ett gränssnitt med speciell logik. Båda använder också handlebars och ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 16,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "window.form",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ". Webbformulär skiljer sig dock gällande en aspekt: de används för att skapa avtal. Alla webbformulärs sista steg involverar skapade av ett avtal som sedan kunden kan signera. Vyer har inte detta syfte, de kan egentligen göra vad som helst.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Din första vy",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h2"
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "För att enklast förklara hur vyer fungerar så är det bästa om du själv skapar en vy.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Navigera till Inställningar > Vyer och klicka på ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Ny ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "följt av ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Skapa ny",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ".",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Ange sedan ett namn. När du har gjort det - navigera till ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Redigera",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ". Nu ser du ett kodblock, det är här som du klistrar in koden för din vy.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 1,
+              "tag": "ol"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b09495e50e4d260f35270f1",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b09495e2e62ded3fb52abc5"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Om du inte redan har kod så finns det en HTML-fil som du kan ladda ner ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 0,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "här",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 3,
+                      "fields": {
+                        "url": "https://salesys.se/api/examples/exempel-vy.html",
+                        "newTab": true,
+                        "linkType": "custom"
+                      },
+                      "id": "6b09598950e4d260f35270f3"
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ". Det är ett simpelt gränssnitt för en klocka som uppdateras i realtid.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Klistra in din kod och navigera sedan till ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Fler inställningar",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": ".",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 3,
+              "tag": "ol"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b095a6150e4d260f35270f6",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b095a612e62ded3fb52ae31"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Här kan du ändra flera olika saker med vyn:",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 5
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "number",
+              "start": 5,
+              "tag": "ol"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Vilka projekt som vyn ska finnas i",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Vilka team och roller som ska kunna se vyn",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 2
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Var man ska kunna öppna vyn",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 3
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "detail": 0,
+                              "format": 0,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "Inställningar: vyn kan visas i inställningsvyn",
+                              "type": "text",
+                              "version": 1
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 1,
+                          "type": "listitem",
+                          "version": 1,
+                          "value": 1
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "list",
+                      "version": 1,
+                      "listType": "bullet",
+                      "start": 1,
+                      "tag": "ul"
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 4
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b095c0f50e4d260f35270fb",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b095c0e2e62ded3fb52af88"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "detail": 0,
+                              "format": 0,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "Navigationsmeny: vyn kan visas i navigationsmenyn högst upp, du kan anpassa detta ytterligare via ",
+                              "type": "text",
+                              "version": 1
+                            },
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "uppdatera-vy-endpointen",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": null,
+                              "format": "",
+                              "indent": 0,
+                              "type": "link",
+                              "version": 3,
+                              "fields": {
+                                "doc": {
+                                  "label": "Uppdatera en vy",
+                                  "relationTo": "endpoints",
+                                  "value": "6ae1c885649571a981ca41fb"
+                                },
+                                "newTab": true,
+                                "linkType": "internal"
+                              },
+                              "id": "6b095cd950e4d260f35270ff"
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 1,
+                          "type": "listitem",
+                          "version": 1,
+                          "value": 1
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "list",
+                      "version": 1,
+                      "listType": "bullet",
+                      "start": 1,
+                      "tag": "ul"
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b095cb350e4d260f35270fe",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b095cb32e62ded3fb52b009"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "detail": 0,
+                              "format": 0,
+                              "mode": "normal",
+                              "style": "",
+                              "text": "Bottenflikar/Bottenflikar vänster: vyn visas längst ner på skärmen, antingen i mitten eller till vänster. Dessa alternativ har några ytterligare inställningar:",
+                              "type": "text",
+                              "version": 1
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 1,
+                          "type": "listitem",
+                          "version": 1,
+                          "value": 1
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "detail": 0,
+                                      "format": 0,
+                                      "mode": "normal",
+                                      "style": "",
+                                      "text": "Navigera till vyn: visa vyn i helskärmsläge",
+                                      "type": "text",
+                                      "version": 1
+                                    }
+                                  ],
+                                  "direction": null,
+                                  "format": "",
+                                  "indent": 2,
+                                  "type": "listitem",
+                                  "version": 1,
+                                  "value": 1
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "detail": 0,
+                                      "format": 0,
+                                      "mode": "normal",
+                                      "style": "",
+                                      "text": "Öppna fönster med vyn: öppna vyn i ett popup-fönster",
+                                      "type": "text",
+                                      "version": 1
+                                    }
+                                  ],
+                                  "direction": null,
+                                  "format": "",
+                                  "indent": 2,
+                                  "type": "listitem",
+                                  "version": 1,
+                                  "value": 2
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "detail": 0,
+                                      "format": 0,
+                                      "mode": "normal",
+                                      "style": "",
+                                      "text": "Visa vyn inuti flik: öppna vyn direkt inuti fliken den nuvarande fliken",
+                                      "type": "text",
+                                      "version": 1
+                                    }
+                                  ],
+                                  "direction": null,
+                                  "format": "",
+                                  "indent": 2,
+                                  "type": "listitem",
+                                  "version": 1,
+                                  "value": 3
+                                }
+                              ],
+                              "direction": null,
+                              "format": "",
+                              "indent": 0,
+                              "type": "list",
+                              "version": 1,
+                              "listType": "bullet",
+                              "start": 1,
+                              "tag": "ul"
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 1,
+                          "type": "listitem",
+                          "version": 1,
+                          "value": 2
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "list",
+                      "version": 1,
+                      "listType": "bullet",
+                      "start": 1,
+                      "tag": "ul"
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "listitem",
+                  "version": 1,
+                  "value": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "list",
+              "version": 1,
+              "listType": "bullet",
+              "start": 1,
+              "tag": "ul"
+            },
+            {
+              "type": "upload",
+              "version": 3,
+              "format": "",
+              "id": "6b09635250e4d260f3527102",
+              "fields": {},
+              "relationTo": "media",
+              "value": "6b0963522e62ded3fb52b2bb"
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "tableOfContents": true,
+      "icon": "file-text",
+      "order": 0,
+      "__v": 0
     }
   ],
   "questions": [
@@ -26345,40 +28605,40 @@
         "$date": "2026-10-26T13:27:29.842Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T13:27:29.842Z"
+        "$date": "2026-11-26T12:02:50.049Z"
       },
       "globalType": "common-questions-page",
       "title": "Vanliga",
       "highlightedTitle": "frågor",
       "lead": {
         "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
           "children": [
             {
-              "type": "paragraph",
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Snabba svar på det som de flesta undrar över",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
               "direction": "ltr",
               "format": "",
               "indent": 0,
+              "type": "paragraph",
               "version": 1,
               "textFormat": 0,
-              "textStyle": "",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Snabba svar på det som de flesta undrar över.",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
+              "textStyle": ""
             }
-          ]
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
         }
       },
       "__v": 0
@@ -26391,9 +28651,53 @@
         "$date": "2026-10-26T14:36:27.645Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T14:36:27.645Z"
+        "$date": "2026-11-26T12:02:26.785Z"
       },
       "globalType": "home-page",
+      "lead": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Guider och svar för allt du gör i SaleSys",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "6adf656b8107051a9a733c62"
+      },
+      "createdAt": {
+        "$date": "2026-10-26T14:36:27.672Z"
+      },
+      "updatedAt": {
+        "$date": "2026-11-02T12:51:21.185Z"
+      },
+      "globalType": "services-page",
       "lead": {
         "root": {
           "type": "root",
@@ -26413,7 +28717,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Guider och svar för allt du gör i SaleSys.",
+                  "text": "Välj en funktion för att se vad den gör och hur du kommer igång.",
                   "format": 0,
                   "detail": 0,
                   "mode": "normal",
@@ -26423,6 +28727,69 @@
               ]
             }
           ]
+        }
+      },
+      "developerNote": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Vill du koppla ihop den här funktionen med ett annat system? Se sidan för ",
+                  "type": "text",
+                  "version": 1
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "API-referens",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "link",
+                  "version": 3,
+                  "fields": {
+                    "url": "https://docs.salesys.io/api-reference",
+                    "linkType": "custom"
+                  },
+                  "id": "6ae887210e0f058f121880fc"
+                },
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": ".",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
         }
       },
       "__v": 0
@@ -26435,10 +28802,10 @@
         "$date": "2026-10-26T14:36:27.678Z"
       },
       "updatedAt": {
-        "$date": "2026-10-26T14:36:27.678Z"
+        "$date": "2026-11-26T12:02:33.292Z"
       },
       "globalType": "site-settings",
-      "metaDescription": "Guider och svar på vanliga frågor om SaleSys.",
+      "metaDescription": "Guider och svar på vanliga frågor om SaleSys",
       "footerText": "© 2026 SaleSys Sverige AB",
       "__v": 0
     },
@@ -26450,38 +28817,38 @@
         "$date": "2026-10-28T07:41:48.402Z"
       },
       "updatedAt": {
-        "$date": "2026-11-13T08:37:52.221Z"
+        "$date": "2026-11-27T08:06:19.798Z"
       },
       "globalType": "api-reference-page",
       "lead": {
         "root": {
-          "type": "root",
-          "direction": "ltr",
-          "format": "",
-          "indent": 0,
-          "version": 1,
           "children": [
             {
-              "type": "paragraph",
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Koppla ihop SaleSys med dina egna system. Här hittar du allt du behöver för att hämta och skicka data via vårt REST-API.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
               "direction": "ltr",
               "format": "",
               "indent": 0,
+              "type": "paragraph",
               "version": 1,
               "textFormat": 0,
-              "textStyle": "",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "Koppla ihop SaleSys med dina egna system. Här hittar du allt du behöver för att hämta och skicka data via vårt REST-API.",
-                  "format": 0,
-                  "detail": 0,
-                  "mode": "normal",
-                  "style": "",
-                  "version": 1
-                }
-              ]
+              "textStyle": ""
             }
-          ]
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
         }
       },
       "__v": 0,
@@ -26609,7 +28976,7 @@
                       "format": 0,
                       "mode": "normal",
                       "style": "",
-                      "text": "En access token skapar du genom att först skapa en systemanvändare.",
+                      "text": "En access token hämtar du genom att först skapa en systemanvändare.",
                       "type": "text",
                       "version": 1
                     }
@@ -26731,7 +29098,7 @@
                           "format": 0,
                           "mode": "normal",
                           "style": "",
-                          "text": "Säkerställ att du kan se alla systemanvändare, detta kan du göra genom att klicka på kugghjulet högst upp till vänster (till höger om sökrutan). Bocka sedan i ",
+                          "text": "Säkerställ att du kan se alla systemanvändare, detta kan du göra genom att klicka på kugghjulet högst upp till höger (till höger om sökrutan). Bocka sedan i ",
                           "type": "text",
                           "version": 1
                         },
